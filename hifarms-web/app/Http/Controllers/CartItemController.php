@@ -86,14 +86,42 @@ class CartItemController extends Controller
 
     public function update(Request $request,Cart_item $cartitem){
 
+        if($request->unit > $cartitem->unit || $cartitem->unit==0){
+
+            return redirect()->back()->with(['error'=>'Out of Stock']);
+
+        }
+
         $cartitem->unit = $request->unit;
         $cartitem->save();
+        return redirect()->back()->with(['success'=>'Cart-updated']);
+    }
+
+    // clear cart 
+    public function clear(Request $request){
+
+        $tempid =  $request->cookie('carts');
+        $cartItems = Cart_item::where('temp_id',$tempid)->get();
+        if(!$cartItems){
+            return response()->json(['error'=>'Nothing to delete'], 400);
+        }
+        $check = $cartItems->delete();
+
+        if(!$check) {
+            return response()->json(['success'=>'failed'], 400);
+        }
+        
+        return response()->json(['success'=>'Cleared success'], 204);
+        
     }
     public function destroy(Request $request,Cart_item $cartitem){
 
         $delete=$cartitem->delete();
-        $msg= $delete? 'item deleted succesfully':'delete fail';
-        return response()->json([$msg], 204);
+        
+        if(!$delete){
+            return response()->json(['error'=>'delete failed'], 400);
+        }
+        return response()->json(['success'=>'delete success'], 200);
         
     }
 

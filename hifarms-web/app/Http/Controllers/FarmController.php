@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class FarmController extends Controller
 {   
@@ -48,4 +49,24 @@ class FarmController extends Controller
         return redirect()->back()->with(['success'=>'Farm created successfully']);
 
     }
+    
+    public function destroy(Farm $farm){
+
+        if($farm->user_id != Auth::user()->id){
+            return redirect()->back()->with('error', 'UnAuthorized to Delete farm');
+        }
+        // saving image url
+        $tempurl=$farm->image;
+        //delete farm
+        $deleted = $farm->delete();
+    
+        //check if delete is success
+        if(!$delete){
+            return redirect()->back()->with('error', 'Delete Failed');
+        }
+    
+        File::delete($tempurl);
+        return redirect()->back()->with('success', 'Delete Success');
+
+       }
 }

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     //Userdasboard/investment PAGE
-    public function viewInvestment(){
+    public function viewInvestment(Request $request){
 
         $user = User::with(['investments'=>function($query){
             $query->where('farm_id','!=',null)->get();
@@ -17,7 +17,7 @@ class UserController extends Controller
    }
 
      //Userdasboard/Maketpalace/orders PAGE
-    public function viewOrders(){
+    public function viewOrders(Request $request){
 
         $user = User::with(['orders'=>function($query){
             $query->where('product_id','!=',null)->get();
