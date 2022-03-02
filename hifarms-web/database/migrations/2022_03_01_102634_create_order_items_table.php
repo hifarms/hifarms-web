@@ -16,7 +16,7 @@ class CreateOrderItemsTable extends Migration
         Schema::create('order_items', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('unit');
-            $table->unsignedInteger('amount');
+            $table->unsignedFloat('amount');
             $table->boolean('delivered')->default(0);
             $table->boolean('cleared_to_wallet')->default(false); // indicate if user has moved his return to wallet
             $table->foreignId('product_id')->constrained();

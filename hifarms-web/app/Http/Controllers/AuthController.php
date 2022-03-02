@@ -44,7 +44,7 @@ class UserController extends Controller
     public function signup(Request $request)
     {
         // Validation
-        $this->validate($request, [
+        $this->validate($request->all(), [
             'fname' => 'required',
             'lname' => 'required',
             'email' => 'required',
