@@ -19,7 +19,7 @@ class Farm extends Model
         return $this->hasMany(Farm_return_type::class);
     }
 
-    public function investment(){
+    public function investments(){
 
         return $this->hasMany(Order_item::class);
     }

@@ -16,14 +16,16 @@ class CreateFarmsTable extends Migration
         Schema::create('farms', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedInteger('Capital')->nullable(0);
-            $table->unsignedInteger('i_units')->nullable(0);
-            $table->unsignedInteger('c_units')->nullable(0);
+            $table->unsignedInteger('capital')->nullable()->default(0);
+            $table->unsignedInteger('i_units')->nullable()->default(0);
+            $table->unsignedInteger('c_units')->nullable()->default(0);
+            $table->unsignedFloat('unit_price')->nullable()->default(0);
             $table->string('image')->nullable();
             $table->string('location');
-            $table->boolean('active')->default(1);
+            $table->boolean('active')->default(0); // looking for investment
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('farm_type_id')->constrained()->onDelete('cascade');
+            $table->foreignId('category_id')->constrained();
+            $table->foreignId('farm_type_id')->constrained();
             $table->timestamps();
         });
     }

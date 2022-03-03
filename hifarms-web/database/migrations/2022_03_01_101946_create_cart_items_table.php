@@ -15,12 +15,12 @@ class CreateCartItemsTable extends Migration
     {   //Generic cart item for market place and farm investment
         Schema::create('cart_items', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('unit');
+            $table->unsignedFloat('unit');
             $table->unsignedInteger('price');
             $table->foreignId('product_id')->constrained()->onDelete('cascade');
             $table->foreignId('farm_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('farm_return_type_id')->constrained()->onDelete('cascade');
+            $table->foreignId('farm_return_type_id')->constrained();
             $table->string('temp_id')->nullable(); // temp id for guest visitor
             $table->timestamps();
         });

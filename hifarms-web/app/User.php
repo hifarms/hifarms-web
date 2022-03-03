@@ -54,5 +54,10 @@ class User extends Authenticatable
 
         return $this->hasMany(Order::class);
     }
+
+    public function investments(){
+
+        return $this->hasManyThrough('App\Order_item', 'App\Order', 'user_id', 'id','id','user_id');
+    }
     
 }
