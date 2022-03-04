@@ -11,7 +11,8 @@ class UserController extends Controller
 
         $user = User::with(['investments'=>function($query){
             $query->where('farm_id','!=',null)->get();
-        }])->get();
+        }])->where('user_id','=',Auth::user()->id)->get();
+        
         return view('userdashboard.investment',['$user'=>$user]);
 
    }
@@ -20,8 +21,11 @@ class UserController extends Controller
     public function viewOrders(Request $request){
 
         $user = User::with(['orders'=>function($query){
+
             $query->where('product_id','!=',null)->get();
-        }])->get();
+
+        }])->where('user_id','=',Auth::user()->id)->get();
+
         return view('userdashboard.orders',['$user'=>$user]);
    }
 

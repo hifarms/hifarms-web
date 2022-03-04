@@ -21,8 +21,8 @@ class UserController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'email' => 'required',
-            'password' => 'required'
+            'email' => 'required|email',
+            'password' => 'required|min:4'
         ]);
         if ($validator->fails()) {
             return redirect('/login')
@@ -46,8 +46,8 @@ class UserController extends Controller
         // Validation
         $this->validate($request->all(), [
             'fname' => 'required',
-            'lname' => 'required',
-            'email' => 'required',
+            'username' => 'required|unique:users',
+            'email' => 'required|unique:users|email',
             'phone' => 'required',
             'password' => 'required|min:4',
             'confirm_password' => 'required|same:password',
@@ -62,12 +62,8 @@ class UserController extends Controller
         $user->role_id = 2;
         $user->activated = $link;
         $user->status = 0;
-
-        if (User::where('email', '=', $user->email)->where('role_id', '=', '2')->exists()) {
-            return redirect()->back()->with('warning_message', 'user already exist');
-        } else {
-            $user->save();
-        }
+        $user->save();
+        
         // Save Record into profile DB
         $profile = new Profile();
         $profile->user_id = $user->id;

@@ -7,13 +7,22 @@ use Illuminate\Support\Facades\Validator;
 
 class FarmController extends Controller
 {   
-    public function index(){
+    public function __construct()
+    {
+        $this->middleware('auth');
+ 
+    }
 
+    public function index(){
+    
        $farms= Farm::where('user_id',Auth::user()->id)->get();
        return view('farm.index',['farms'=>$farms]);
     }
 
     public function show(Farm $farm){
+    
+    //check if user is the Owner
+    $this->authorize('view', $farm);
 
         return view('farm.view',['farm'=>$farm]);
     }
@@ -52,9 +61,8 @@ class FarmController extends Controller
     
     public function destroy(Farm $farm){
 
-        if($farm->user_id != Auth::user()->id){
-            return redirect()->back()->with('error', 'UnAuthorized to Delete farm');
-        }
+        $this->authorize('view', $farm);
+
         // saving image url
         $tempurl=$farm->image;
         //delete farm

@@ -21,6 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('address')->nullable();
             $table->unsignedInteger('phone')->nullable();
             $table->string('state')->nullable();
+            $table->string('gender')->nullable();
+            $table->string('occupation')->nullable();
             $table->string('avatar')->nullable();
             $table->string('activated')->nullable();
             $table->boolean('status')->default(0);
