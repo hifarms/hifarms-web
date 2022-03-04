@@ -6,9 +6,17 @@ use App\Farm;
 use Illuminate\Http\Request;
 
 class FarmInvestment extends Controller
-{
+{    
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index','show']);
+ 
+    }
+
      //activate farm to look for invest
      public function seekInvesment(Request $request,Farm $farm){
+
+        $this->authorize('view', $farm);
 
         $validator = Validator::make($request->all(), [
             'unit' => 'required',
@@ -32,6 +40,8 @@ class FarmInvestment extends Controller
     
 
     public function addReturn(Request $request,Farm $farm) {
+
+        $this->authorize('view', $farm);
 
         $validator = Validator::make($request->all(), [
             'name' => 'required',

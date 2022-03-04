@@ -13,13 +13,14 @@ class CartItemController extends Controller
 
         //get temp_id from cookie
         $tempid =  $request->cookie('carts');
-        if(!Auth::check()){
+      
+        //market place cart
+        $martCartItems=Cart_item::with('product')->where('temp_id',$tempid)->Where('product_id','!=',null)->get();
 
-            $cartItems=Cart_item::with('product')->where('temp_id',$tempid)->get();
-            return view('cart',['carts'=>$cartItems]);
-        }
-        $cartItems=Cart_item::with('product')->where('temp_id',$tempid)-orWhere('user_id',Auth::user()->id)->get();
-        return view('cart',['carts'=>$cartItems]);
+        //farm investment cart
+        $farmCartItems=Cart_item::with('farm')->where('temp_id',$tempid)->Where('product_id','!=',null)->get();
+
+        return view('cart',['mart'=>$martCartItems,'farm'=>$farmCartItems]);
     }
     
     public function addCart(Request $request,$type){
@@ -86,10 +87,9 @@ class CartItemController extends Controller
 
     public function update(Request $request,Cart_item $cartitem){
 
-        if($request->unit > $cartitem->unit || $cartitem->unit==0){
+        if($request->unit > $cartitem->unit){
 
-            return redirect()->back()->with(['error'=>'Out of Stock']);
-
+            return response()->json(['error'=>'Unit Not Available'],200);
         }
 
         $cartitem->unit = $request->unit;

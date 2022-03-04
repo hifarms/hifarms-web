@@ -6,7 +6,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
-{
+{  
+   public function __construct(){
+
+        $this->middleware('auth')->except(['index','show']);
+    }
+
    public function index(){
 
     $result = Product::where('category_id',$request->category)->get();
@@ -57,15 +62,17 @@ class ProductController extends Controller
 
    public function edit(Request $request,Product $product){
 
-    if($product->user_id != Auth::user()->id){
-        return redirect()->back()->with('error', 'UnAuthorized to edit Product');
+    if ($request->user()->cannot('view', $product)) {
+        abort(403);
     }
 
     return view('product.edit',['product'=>$product]);
      
    }
    public function update(Request $request,Product $product){
-       
+    
+    $this->authorize('view', $product);
+
     $validator = Validator::make($request->all(), [
         'name' => 'required',
         'price' => 'required',
@@ -73,6 +80,7 @@ class ProductController extends Controller
         'location' => 'required',
         'image'  => 'mimes:jpg,png'
     ]);
+
     if($validator->fails()) {
         return redirect()->back()->withErrors($validator)->withInput();
     }
@@ -98,9 +106,8 @@ class ProductController extends Controller
 
    public function destroy(Product $product){
 
-    if($product->user_id != Auth::user()->id){
-        return redirect()->back()->with('error', 'UnAuthorized to Delete Product');
-    }
+    $this->authorize('view', $product);
+
     // saving image url
     $tempurl=$product->image;
     //delete product

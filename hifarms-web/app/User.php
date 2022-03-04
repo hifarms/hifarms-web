@@ -39,7 +39,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
+   
     public function carts(){
 
         return $this->hasMany(Cart_item::class);
@@ -60,4 +60,9 @@ class User extends Authenticatable
         return $this->hasManyThrough('App\Order_item', 'App\Order', 'user_id', 'id','id','user_id');
     }
     
+    public function isAdmin(){
+
+        return $this->role()->name==='Admin';
+        
+    }
 }
