@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Sign Up</title>
+    <title>Sign In</title>
 </head>
 <body>
     <!--Header starts here-->
@@ -20,8 +20,8 @@
               <span>Blog</span>
           </div>
           <div class="buttons">
-            <span class="register"><a href="signup.html">Sign up</a></span>
-            <span class="login"><a href="signin.html">Login</a></span>
+              <span class="register"><a href="signup.html">Sign up</a></span>
+              <span class="login"><a href="signin.html">Login</a></span>
               <img src="img/get on google play.png" alt="play-store" class="play-store">
           </div>
           <div class="cart-whatsapp">
@@ -36,20 +36,24 @@
 
   <!--Registration form starts here-->
   <div class="container">
-      <div class="sign-up-large">SIGN UP</div>
+      <div class="sign-up-large">SIGN IN</div>
       <img src="img/Flower.svg" alt="flower" class="flower">
-      <p>Already have an account? <span><a href="signin.html">Sign in</a></span> </p>
-      <div class="form-container">
-        <form>
-            <input type="text" placeholder="Username">
-            <input type="text" placeholder="Full name">
-            <input type="text" placeholder="Email">
-            <input type="password" placeholder="Password">
-            <input type="password" placeholder="Confirm Password">
+      <p>Don't have an account yet? <span><a href="index.html">Sign up</a></span> </p>
+      <div class="form-container sign-in-container">
+
+        {{-- <p class="text-success"> {{Session('success_message')}}</p>
+        <p class="text-success"> {{Session('warning_message')}}</p> --}}
+
+        <form class="sign-in" action="{{route('signin')}}" method="post">
+            @csrf
+            <input type="text" placeholder="Email" name="email">
+            <input type="password" placeholder="Password" name="password">
+            <p class="forgot-password">Forgot Password?</p>
+
         </form>
         <img src="img/logo.png" alt="showcase-image">
       </div>
-      <div class="google-fb-btn">
+      <div class="google-fb-btn sign-in-google">
       <img src="img/google.jpg" alt="google" class="google-logo">
       <img src="img/facebook.png" alt="facebook" class="facebook-logo">
       <button>Submit</button>

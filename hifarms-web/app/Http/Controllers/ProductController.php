@@ -7,118 +7,130 @@ use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {  
-   public function __construct(){
+    public function __construct(){
 
         $this->middleware('auth')->except(['index','show']);
     }
 
-   public function index(){
+    public function index(){
 
-    $result = Product::where('category_id',$request->category)->get();
+        $sort=$request->input('category')==null? "all" : $request->input('category');
+        if($sort=='all'){
+            $result = Product::where('activated','=',1)->paginate(20)->withQueryString();
+        }
+        else{
+            $result = Product::where('activated','=',1)->where('category_id',$rquest->input('category'))->paginate(20)->withQueryString();
+        }
+
+        return view('product.list',['products'=>$result]);
+
 
    }
 
-   public function show(Product $product){
+    public function show(Product $product){
        
-    return view('product.show',['product'=>$product]);
+        return view('product.show',['product'=>$product]);
 
    }
+   public function create(){
 
-   public function create(Request $request){
+        $product_type= DB::table('product_type')->get();
+        $service_type= DB::table('service_type')->get();
+        return view('product.create',['product_type'=>$product_type,'service_type'=>$service_type]);
+   }
 
-    $validator = Validator::make($request->all(), [
-        'name' => 'required',
-        'price' => 'required',
-        'unit' => 'required',
-        'location' => 'required',
-        'image'  => 'mimes:jpg,png'
-    ]);
+    public function store(Request $request){
 
-    if($validator->fails()) {
-        return redirect()->back()->withErrors($validator)->withInput();
-    }
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'price' => 'required',
+            'unit' => 'required',
+            'location' => 'required',
+            'image'  => 'mimes:jpg,png'
+        ]);
 
-    $product = new Product();
-    $product->unit = $request->unit;
-    $product->user_id = Auth::user()->id;
-    $product->location = $request->location;
-    $product->category = $request->category;
-    $product->description= $request->description;
-    $product->activated= 1;
-    $request->product_type? $product->product_type_id = $request->product_type: null;
-    $request->service_type? $product->product_type_id = $request->product_type: null;
+        if($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
-    if ($request->hasFile('image'))
-    {
-        $file  = $request->file('image');
-        $path = $file->store('/images/product','public');
-        $product->image = 'storage/'.$path;
-    }
-    $product->save();
+        $product = new Product();
+        $product->unit = $request->unit;
+        $product->user_id = Auth::user()->id;
+        $product->location = $request->location;
+        $product->category = $request->category;
+        $product->description= $request->description;
+        $product->activated= 1;
+        $request->product_type? $product->product_type_id = $request->product_type: null;
+        $request->service_type? $product->product_type_id = $request->product_type: null;
 
-    return redirect()->back()->with('status', 'Product Created!');
+        if ($request->hasFile('image')){
+            $file  = $request->file('image');
+            $path = $file->store('/images/product','public');
+            $product->image = 'storage/'.$path;
+        }
+        $product->save();
+
+        return redirect()->back()->with('status', 'Product Created!');
     
    }
 
-   public function edit(Request $request,Product $product){
+    public function edit(Request $request,Product $product){
 
-    if ($request->user()->cannot('view', $product)) {
-        abort(403);
-    }
+        $this->authorize('view', $product);
 
-    return view('product.edit',['product'=>$product]);
-     
+        return view('product.edit',['product'=>$product]);
+
    }
-   public function update(Request $request,Product $product){
-    
-    $this->authorize('view', $product);
+    public function update(Request $request,Product $product){
+        
+        $this->authorize('view', $product);
 
-    $validator = Validator::make($request->all(), [
-        'name' => 'required',
-        'price' => 'required',
-        'unit' => 'required',
-        'location' => 'required',
-        'image'  => 'mimes:jpg,png'
-    ]);
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'price' => 'required',
+            'unit' => 'required',
+            'location' => 'required',
+            'image'  => 'mimes:jpg,png'
+        ]);
 
-    if($validator->fails()) {
-        return redirect()->back()->withErrors($validator)->withInput();
-    }
-    
-    if($product->user_id != Auth::user()->id){
-        return redirect()->back()->with('error', 'UnAuthorized to Update Product');
-    }
+        if($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        
+        if($product->user_id != Auth::user()->id){
+            return redirect()->back()->with('error', 'UnAuthorized to Update Product');
+        }
 
-    $product->unit = $request->unit;
-    $product->location = $request->location;
-    $product->description= $request->description;
-    if ($request->hasFile('image'))
-    {
-        $file  = $request->file('image');
-        $path = $file->store('/images/product','public');
-        File::delete($product->image);
-        $product->image = 'storage/'.$path;
-    }
-    $product->save();
-    return redirect()->back()->with('status', 'Product Created!');
+        $product->unit = $request->unit;
+        $product->location = $request->location;
+        $product->description= $request->description;
+        if ($request->hasFile('image'))
+        {
+            $file  = $request->file('image');
+            $path = $file->store('/images/product','public');
+            File::delete($product->image);
+            $product->image = 'storage/'.$path;
+        }
+        $product->save();
+        return redirect()->back()->with('status', 'Product Created!');
 
    }
 
-   public function destroy(Product $product){
+    public function destroy(Product $product){
 
-    $this->authorize('view', $product);
+        $this->authorize('view', $product);
 
-    // saving image url
-    $tempurl=$product->image;
-    //delete product
-    $deleted = $product->delete();
+        // saving image url
+        $tempurl=$product->image;
+        //delete product
+        $deleted = $product->delete();
 
-    //check if delete is success
-    if(!$delete){
-        return redirect()->back()->with('error', 'Delete Failed');
+        //check if delete is success
+        if(!$delete){
+            return redirect()->back()->with('error', 'Delete Failed');
+        }
+
+        File::delete($tempurl);
+        return redirect()->back()->with('success', 'Delete Success');
     }
-
-    File::delete($tempurl);
-    return redirect()->back()->with('success', 'Delete Success');
-   }
 }
