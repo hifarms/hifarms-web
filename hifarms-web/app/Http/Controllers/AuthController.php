@@ -106,6 +106,6 @@ class AuthController extends Controller
 
     public function signInForm(){
 
-        return view('signup');
+        return view('signin');
     }
 }
