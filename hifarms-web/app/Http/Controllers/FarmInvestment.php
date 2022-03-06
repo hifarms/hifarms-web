@@ -58,20 +58,23 @@ class FarmInvestment extends Controller
         $return->duration = $request->duration;
         $return->percentage = $request->percentage;
         $return->farm_id = $farm->id;
+        $return->save();
+        
+        return redirect()->back()->with(['success'=>'Farm Invesment Return added']);
     }
 
     // list of farms looking for investment
     public function index(Request $request){
     
-    $sort=$request->input('category')==null? "all" : $request->input('category');
-    if($sort=='all'){
-        $result = Farm::with('return')->where('activated','=',1)->get();
-    }
-    else{
-        $result = Farm::with('return')->where('activated','=',1)->where('category_id',$rquest->input('category'))->get();
-    }
+        $sort=$request->input('category')==null? "all" : $request->input('category');
+        if($sort=='all'){
+            $result = Farm::with('returns')->where('activated','=',1)->get();
+        }
+        else{
+            $result = Farm::with('returns')->where('activated','=',1)->where('category_id',$rquest->input('category'))->get();
+        }
 
-    return view('farm.list',['products'=>$result]);
+        return view('farm.list',['products'=>$result]);
     }
 
     //farmInvesment detail page

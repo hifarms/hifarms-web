@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 class BlogPostController extends Controller
 {
+    public function index(){
+        return 'hello';
+    }
     public function getpost(){
 
         $posts = BlogPost::orderBy('created_at','DESC')->paginate(10);
@@ -85,7 +88,6 @@ class BlogPostController extends Controller
         $post->save();
    
     }
-
 
     public function destroy(BlogPost $post){
 

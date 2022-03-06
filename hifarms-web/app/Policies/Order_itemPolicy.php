@@ -32,6 +32,19 @@ class Order_itemPolicy
     {
         return $user->id === $orderItem->user_id;
     }
+    
+    public function itemOwner(User $user, Order_item $orderItem)
+    {
+
+        return $user->id === $orderItem->product()->user()->id;
+        
+    }
+
+    public function buyer(User $user, Order_item $orderItem)
+    {
+        return $user->id === $orderItem->user_id;
+    }
+
 
     /**
      * Determine whether the user can create models.

@@ -4,6 +4,7 @@ namespace App;
 
 use App\Role;
 use App\Order;
+use App\Wallet;
 use App\Cart_item;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -58,6 +59,11 @@ class User extends Authenticatable
     public function investments(){
 
         return $this->hasManyThrough('App\Order_item', 'App\Order', 'user_id', 'id','id','user_id');
+    }
+
+    public function wallet(){
+
+        return $this->hasOne(Wallet::class);
     }
     
     public function isAdmin(){

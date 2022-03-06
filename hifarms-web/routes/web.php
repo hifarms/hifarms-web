@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BlogPostController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,8 +25,13 @@ Route::post('/forget-password', 'ResetPasswordController@submitForgetPasswordFor
 
 Route::post('/reset-password', 'ResetPasswordController@submitResetPasswordForm')->name('reset.password.post');
 
-Route::post('/sigin', 'AuthController@signin')->name('signin');
+Route::post('/signin', "AuthController@signin")->name('signin');
+
+Route::get('/signup', "AuthController@signupForm")->name('signUpForm');
+
+Route::get('/signin',  "AuthController@signinForm")->name('signInForm');
+
 
 Route::get('/logout', 'AuthController@logout')->name('logout');
 
-Route::post('/savelogin', 'AuthController@signup')->name('savelogin');
+Route::post('/signup', "AuthController@signup")->name('signup');
