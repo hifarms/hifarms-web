@@ -40,26 +40,18 @@
       <img src="img/Flower.svg" alt="flower" class="flower">
       <p>Already have an account? <span><a href="signin.html">Sign in</a></span> </p>
       <div class="form-container">
-        {{-- <p class="text-success"> {{Session('success_message')}}</p> --}}
         <form action="{{route('signup')}}" method="post">
           @csrf
-            <input
-            type="text" 
-            placeholder="Username" 
-            name="username"
-            value=""
+            <span class="username-msg"></span>
+            <input type="text" placeholder="Username">
+             <span class="full-name-msg"></span>
+            <input type="text" placeholder="Full name">
+            <span class="email-msg"></span>
+            <input type="text" placeholder="Email">
+            <span class="password-msg"></span>
+            <input type="password" placeholder="Password">
+            <input type="password" placeholder="Confirm Password">
 
-            >
-            <input 
-            type="text" 
-            placeholder="Full name"
-            name="fullname"
-            value=""
-            >
-            <input type="text" placeholder="Email" name='email'>
-            <input type="password" placeholder="Password" name='password'>
-            <input type="password" placeholder="Confirm Password" name='confirm_password'>
-           
         </form>
         <img src="img/logo.png" alt="showcase-image">
       </div>

@@ -17,8 +17,17 @@ use App\Http\Controllers\BlogPostController;
 |
 */
 
+//Static Page
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
+});
+
+Route::get('/services', function () {
+    return view('index');
+});
+
+Route::get('/', function () {
+    return view('index');
 });
 
 Route::post('/forget-password', 'ResetPasswordController@submitForgetPasswordForm')->name('forget.password.post');

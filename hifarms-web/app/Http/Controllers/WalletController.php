@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Order;
-use Illuminate\Support\Str;
+use App\Payment;
+use App\WalletTransaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Date;
 
@@ -51,6 +52,4 @@ class WalletController extends Controller
         redirect()->back()->with('success','Order successfully placed');
     }
 
-       
-    
 }

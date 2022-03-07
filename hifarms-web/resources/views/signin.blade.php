@@ -40,14 +40,11 @@
       <img src="img/Flower.svg" alt="flower" class="flower">
       <p>Don't have an account yet? <span><a href="index.html">Sign up</a></span> </p>
       <div class="form-container sign-in-container">
-
-        {{-- <p class="text-success"> {{Session('success_message')}}</p>
-        <p class="text-success"> {{Session('warning_message')}}</p> --}}
-
         <form class="sign-in" action="{{route('signin')}}" method="post">
-            @csrf
-            <input type="text" placeholder="Email" name="email">
-            <input type="password" placeholder="Password" name="password">
+            <span class="email-msg"></span>
+            <input type="text" placeholder="Email">
+            <span class="password-msg"></span>
+            <input type="password" placeholder="Password">
             <p class="forgot-password">Forgot Password?</p>
 
         </form>
