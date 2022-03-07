@@ -36,7 +36,7 @@ class Order_itemPolicy
     public function itemOwner(User $user, Order_item $orderItem)
     {
 
-        return $user->id === $orderItem->product()->user()->id;
+        return $user->id === $orderItem->order()->user()->id;
         
     }
 

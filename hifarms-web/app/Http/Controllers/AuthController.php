@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Wallet;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -59,13 +60,12 @@ class AuthController extends Controller
         $user->status = 1;
         $user->save();
         
-        // Save Record into profile DB
-        // $profile = new Profile();
-        // $profile->user_id = $user->id;
-        // $profile->fname = $request->input('fname');
-        // $profile->lname = $request->input('lname');
-        // $profile->phone = $request->input('phone');
-        // $profile->save();
+        //Save Record into profile DB
+        $wallet = new Wallet();
+        $wallet->user_id = $user->id;
+        $wallet->ledger_balance = 0;
+        $wallet->curren_balance = 0;
+        $wallet->save();
 
         Auth::login($user);
 

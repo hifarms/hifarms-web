@@ -57,8 +57,10 @@ class UserController extends Controller
         $newTransaction->transaction_status= 1; // Success;
         $newTransaction->amount = $item->amount;
         $newTransaction->amount_before = $userWallet->current_balance;
-        $newTransaction->amount_after = $item->amount + $user->current_balance;
-        $newTransaction->description = 'Move Farm investment to Wallet Of ORDERID '.$item->id;
+        $userWallet->current_balance = $item->amount + $userWallet->current_balance;
+        $wallet->save();
+        $newTransaction->amount_after =$userWallet->current_balance;
+        $newTransaction->description = 'Move Farm investment to Wallet Of itemID '.$item->id;
         $newTransaction->save();
 
         if(!$newTransaction){
@@ -73,16 +75,17 @@ class UserController extends Controller
 
     }
 
-    //Moving service payment to wallet
-    public function serviceDelivered(Request $request,Order_item $item) {
+    //Moving Product/service payment to wallet
+    public function ProductDelivered(Request $request,Order_item $item) {
 
         $this->authorize('itemOwner', $item);
 
-        if($item->cleared_to_wallet && $item->delivered){
+        if($item->cleared_to_wallet && $item->delivered && !$item->order()->payment()->status_code = 200){
 
             redirect()->back()->with(['error'=>'Sorry cant move the fund to Wallet']);
         }
-        $userWallet= $item->order()->user()->wallet()->id;
+        //Product Owner Wallet
+        $userWallet= $item->product()->user()->wallet()->id;
 
         $newTransaction = new WalletTransaction();
         $newTransaction->wallet_id = $userWallet->id;
@@ -90,8 +93,10 @@ class UserController extends Controller
         $newTransaction->transaction_status= 1; // Success;
         $newTransaction->amount = $item->amount;
         $newTransaction->amount_before = $userWallet->current_balance;
-        $newTransaction->amount_after = $item->amount + $user->current_balance;
-        $newTransaction->description = 'Move service order to Wallet Of ORDERID '.$item->id;
+        $userWallet->current_balance = $item->amount + $userWallet->current_balance;
+        $userWallet->save();
+        $newTransaction->amount_after =  $userWallet->current_balance;
+        $newTransaction->description = 'Received Product/service Payment to Wallet id '.$item->id;
         $newTransaction->save();
 
         if(!$newTransaction){
@@ -99,7 +104,7 @@ class UserController extends Controller
             $newTransaction->save();
             redirect()->back()->with(['error'=>'Sorry Operation Failed Try Again Later']);
         }
-        
+        $item->delivered = 1; //Marked as Delivered
         $item->cleared_to_wallet = 1; // Moved
         $item->save();
         redirect()->back()->with(['success'=>'Fund Moved to Wallet']);

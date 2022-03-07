@@ -6,9 +6,7 @@ use Illuminate\Http\Request;
 
 class BlogPostController extends Controller
 {
-    public function index(){
-        return 'hello';
-    }
+    
     public function getpost(){
 
         $posts = BlogPost::orderBy('created_at','DESC')->paginate(10);
@@ -42,7 +40,7 @@ class BlogPostController extends Controller
 
 
         $post = new BlogPost();
-        $post->title= $request->title();
+        $post->title= $request->title;
         $post->content = $request->content;
         $post->slug= Str::slug($request->title).'-'.rand(1000);
       

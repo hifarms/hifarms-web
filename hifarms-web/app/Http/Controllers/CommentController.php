@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
-    public function store(){
+    public function store(Request $request){
 
         $comment = new Comment();
         $comment->content = $request->content;
@@ -18,6 +18,18 @@ class CommentController extends Controller
         $comment->save();
 
         return redirect()->back()->with(['success'=>'Comment success']);
+
+    }
+
+    public function destroy(Comment $comment){
+
+        $deleted=$comment->delete();
+
+        if(!$deleted){
+            return redirect()->back()->with(['error'=>'Delete Failed']);
+        }
+
+        return redirect()->back()->with(['success'=>'Delete Successfully']);
 
     }
 }

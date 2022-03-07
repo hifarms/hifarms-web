@@ -24,4 +24,16 @@ class CategoryController extends Controller
         return redirect()->back()->with(['success'=>'Created Successfully']);
 
     }
+
+    public function destroy(Category $category){
+
+        $deleted=$category->delete();
+
+        if(!$deleted){
+            return redirect()->back()->with(['error'=>'Delete Failed']);
+        }
+
+        return redirect()->back()->with(['success'=>'Delete Successfully']);
+
+    }
 }
