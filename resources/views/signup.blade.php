@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Sign In</title>
+    <title>Sign Up</title>
 </head>
 <body>
     <!--Header starts here-->
@@ -20,8 +20,8 @@
               <span>Blog</span>
           </div>
           <div class="buttons">
-              <span class="register"><a href="signup.html">Sign up</a></span>
-              <span class="login"><a href="signin.html">Login</a></span>
+            <span class="register"><a href="signup.html">Sign up</a></span>
+            <span class="login"><a href="signin.html">Login</a></span>
               <img src="img/get on google play.png" alt="play-store" class="play-store">
           </div>
           <div class="cart-whatsapp">
@@ -36,21 +36,25 @@
 
   <!--Registration form starts here-->
   <div class="container">
-      <div class="sign-up-large">SIGN IN</div>
+      <div class="sign-up-large">SIGN UP</div>
       <img src="img/Flower.svg" alt="flower" class="flower">
-      <p>Don't have an account yet? <span><a href="index.html">Sign up</a></span> </p>
-      <div class="form-container sign-in-container">
-        <form class="sign-in" action="{{route('signin')}}" method="post">
+      <p>Already have an account? <span><a href="signin.html">Sign in</a></span> </p>
+      <div class="form-container">
+        <form action="{{route('signup')}}" method="post">
+          @csrf
+            <span class="username-msg"></span>
+            <input type="text" placeholder="Username">
+             <span class="full-name-msg"></span>
+            <input type="text" placeholder="Full name">
             <span class="email-msg"></span>
             <input type="text" placeholder="Email">
             <span class="password-msg"></span>
             <input type="password" placeholder="Password">
-            <p class="forgot-password">Forgot Password?</p>
-
+            <input type="password" placeholder="Confirm Password">
         </form>
         <img src="img/logo.png" alt="showcase-image">
       </div>
-      <div class="google-fb-btn sign-in-google">
+      <div class="google-fb-btn">
       <img src="img/google.jpg" alt="google" class="google-logo">
       <img src="img/facebook.png" alt="facebook" class="facebook-logo">
       <button>Submit</button>
