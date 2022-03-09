@@ -40,8 +40,8 @@
       <img src="img/Flower.svg" alt="flower" class="flower">
       <p>Already have an account? <span><a href="signin.html">Sign in</a></span> </p>
       <div class="form-container">
-<<<<<<< HEAD:hifarms-web/public/signup.html
-        <form>
+        <form action="{{route('signup')}}" method="post">
+          @csrf
             <span class="username-msg"></span>
             <input type="text" placeholder="Username">
              <span class="full-name-msg"></span>
@@ -51,28 +51,6 @@
             <span class="password-msg"></span>
             <input type="password" placeholder="Password">
             <input type="password" placeholder="Confirm Password">
-=======
-        {{-- <p class="text-success"> {{Session('success_message')}}</p> --}}
-        <form action="{{route('signup')}}" method="post">
-          @csrf
-            <input
-            type="text" 
-            placeholder="Username" 
-            name="username"
-            value=""
-
-            >
-            <input 
-            type="text" 
-            placeholder="Full name"
-            name="fullname"
-            value=""
-            >
-            <input type="text" placeholder="Email" name='email'>
-            <input type="password" placeholder="Password" name='password'>
-            <input type="password" placeholder="Confirm Password" name='confirm_password'>
-           
->>>>>>> dbdb48dca468256bde83d9c275ff6e639c605234:hifarms-web/resources/views/signup.blade.php
         </form>
         <img src="img/logo.png" alt="showcase-image">
       </div>

@@ -17,6 +17,7 @@ class AuthServiceProvider extends ServiceProvider
         Farm::class => FarmPolicy::class,
         Order::class => OrderPolicy::class,
         Product::class => ProductPolicy::class,
+        Wallet::class => WalletPolicy::class,
         Order_item::class => Order_itemPolicy::class,
     ];
 

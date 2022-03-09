@@ -11,7 +11,7 @@ class OrderController extends Controller
         $this->middleware('auth');
     }
 
-    public function checkout(){
+    public function checkout(Request $request){
 
         $validator = Validator::make($request->all(), [
             'address' => 'required',
@@ -49,6 +49,11 @@ class OrderController extends Controller
          
         }
         
+        if(boolval($request->payment_through_wallet)){
+
+            return redirect()->action('${App\Http\Controllers\WallectController@makePayment}', ['order' => $order]);
+        }
+
         return redirect()->action('${App\Http\Controllers\FlutterController@makePayment}', ['order' => $order]);
     }
 }

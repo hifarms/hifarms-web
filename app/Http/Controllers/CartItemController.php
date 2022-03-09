@@ -87,7 +87,7 @@ class CartItemController extends Controller
 
     public function update(Request $request,Cart_item $cartitem){
 
-        if($request->unit > $cartitem->unit){
+        if($request->unit > $cartitem->product()->unit){
 
             return response()->json(['error'=>'Unit Not Available'],200);
         }
