@@ -7,9 +7,65 @@
     font-family: 'Quicksand', Arial, Helvetica, sans-serif;
 }
 
+/*Drop down menu CSS*/
+.about-children{
+  position: absolute;
+  top: 23px;
+  border-top: 1px solid #404a3d;
+  left: 25px;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  padding: 8px;
+  border-radius: 5px;
+  visibility: hidden;
+}
+
+.service-hover{
+  position: absolute;
+  top: 23px;
+  border-top: 1px solid #404a3d;
+  right:  180px;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  padding: 8px;
+  border-radius: 5px;
+  visibility: hidden;
+}
+
+.header-container .services .gug{
+  display: inline-block;
+}
+
+.header-container .services .services-hover{
+  display: inline-block;
+}
+
+.header-container .services .services-hover:hover .service-hover{
+  visibility: visible;
+}
+
+.header-container .services .gug:hover .about-children{
+    visibility: visible;
+}
+
+.about-children a{
+   padding: 10px 10px;
+  font-weight: 900;
+  font-size: 20px;
+}
+
+.service-hover{
+  padding: 10px 10px;
+  font-weight: 900;
+  font-size: 20px;
+}
+/*Drop down menu CSS ends*/
+
 a{
   text-decoration: none;
-  color: #49a760;
+  color: inherit;
 }
 
 /* Header starts */
@@ -42,6 +98,10 @@ header{
 
 .header-container .services span:hover{
   color: #49a760; 
+}
+
+.header-container .services{
+  position: relative;
 }
 
 .header-container .services span{
