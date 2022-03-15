@@ -386,12 +386,13 @@ header{
 
 .footer-container .footer-newsletter{
   margin-left: 60px;
+  margin-right: 70px;
   position: relative;
+  margin-bottom: -40px;
 }
 
 .footer-container .footer-newsletter .newsletter-head{
   color: #ffffff;
-  margin-top: 3px;
 }
 
 .footer-container .footer-newsletter p{
@@ -399,33 +400,43 @@ header{
    padding-bottom: 8px;
 }
 
-.footer-container .form-newsletter .form-subscribe {
+.form-subscribe {
   position: relative;
-  display: none;
+  width: 250px;
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
 
-.footer-container .footer-newsletter .form-subscribe input{
-  padding: 9px;
-  width: 100%;
-  margin-bottom: 8px;
+ .form-subscribe input{
+  margin: 0px;
+  padding: 8px;
+  width: 130%;
+  outline: none;
+  height: 42px;
+  border: none;
+  border-radius: 5px;
 }
 
-.footer-container .footer-newsletter button{
+.form-subscribe button{
   position: absolute;
-  top: 126px;
-  right: 11px;
-  padding-top: 5px;
-  width: 80px;
-  margin-left: 35px;
-  padding-bottom: 5px ;
-  padding-left: 12px;
-  padding-right: 12px;
-   border-radius: 5px;
-   font-weight: 560;
-   background-color: #49a760;
-   border: solid 1px #49a760;
-   color: #fff;
-   cursor: pointer;
+  border-radius: 5px;
+  right: -26%;
+  z-index: 2;
+  border: none;
+  top: 6px;
+  height: 30px;
+  cursor: pointer;
+  padding: 5px;
+  color: white;
+  background-color: #49a760;
+  transform: translateX(2px);
+}
+
+.form-subscribe button:hover{
+  background: #ffffff;
+  color: #49a760;
+  border: 1px solid #49a760;
+  transition: 0.4s all ease-in-out;
 }
 /*sign up footer ends*/
 
@@ -725,10 +736,6 @@ header{
   float: right;
   height: 5px;
   background: #49a760;
-}
-
-.footer-container .footer-newsletter.about-page button {
-  top: 109px;
 }
 
 .flower{
@@ -1045,6 +1052,13 @@ header{
   position: relative;
 }
 
+.blog-no-content{
+  color: #404a3d;
+   width: 90%;
+   font-weight: 400;
+   padding: 100px;
+}
+
 .blog-container{
   width: 90%;
   max-width: 750px;
@@ -1093,6 +1107,7 @@ header{
   color: #404A3D;
   width: 100%;
   max-width: 850px;
+  position: relative;
   margin-left: 100px;
   display: flex;
   justify-content: space-between;
@@ -1100,10 +1115,25 @@ header{
   border-radius: 0px;
 }
 
-.flex-line{
+.blog-flex p{
+  padding-bottom: 10px;
+  z-index: 3;
+  color: #404a3d;
+  font-weight: 400;
+}
+
+.blog-flex p.current-blog{
+  color: #49a760;
+  border-bottom: 7px solid #49a760;
+}
+
+.blog-flex .flex-line{
   margin-left: 100px;
-  width: 860px;
+  width: 852px;
   margin-top: 5px;
+  position: absolute;
+  bottom: 8px;
+  left: -11.8%;
   border-radius: 5px;
   background-color: #c4c4c4;
   height: 7px;
@@ -1142,17 +1172,9 @@ header{
 }
 
 .blog-flex p{
-  font-weight: bold;
   cursor: pointer;
 }
 
-.blog-flex p:hover{
-  color: #49A760;
-}
-
-.blog-flex-grid{
-
-}
 /*Blog page ends*/
 
 /*Home Page starts*/
@@ -1250,6 +1272,7 @@ header{
   justify-content: center;
   align-items: center;
   width: 100%;
+  color: #404a3d;
   position: relative;
   margin: auto;
   padding-bottom: 50px;
@@ -1291,6 +1314,7 @@ header{
 
 .homepage-services .images-grid .grid h1{
   font-size: 20px;
+  font-weight: bolder;
   margin-bottom: 8px;
 }
 
@@ -1501,6 +1525,7 @@ header{
   max-width: 900px;
   margin: auto;
   width: 90%;
+  color: #404a3d;
   margin-top: 40px;
   width: 100%;
 }
@@ -2295,13 +2320,11 @@ width: 338px;
   box-sizing: border-box;
   border-radius: 10px;
   margin: 40px 40px;
-  
-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
-  
-background: #F5F5F5;
-border: 1px solid #C7DEC3;
-box-sizing: border-box;
-border-radius: 10px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); 
+  background: #F5F5F5;
+  border: 1px solid #C7DEC3; 
+  box-sizing: border-box; 
+  border-radius: 10px;
 }
 
 .blog-container.partners .blog-grid .grid-blog img{
@@ -2561,10 +2584,6 @@ border-radius: 10px;
   text-align: unset;
 }
 .footer-container .footer-newsletter button{
-  top: 103px;
-  padding: 6px;
-}
-.footer-container .footer-newsletter.about-page button{
   top: 103px;
   padding: 6px;
 }
