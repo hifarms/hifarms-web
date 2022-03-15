@@ -942,7 +942,6 @@ header{
   width: 100px;
 }
 
-
 .opportunities-grid p{
   font-size: 12px;
   margin-top: 10px;
@@ -1974,12 +1973,26 @@ width: 338px;
   position: relative;
 }
 
+.sponsor-categories{
+ padding-top: 20px;
+ letter-spacing: 1.5px;
+ padding-bottom: 8px;
+}
+
+.filter-line{
+  width: 195px;
+  height: 1.49px;
+  background: #c4c4c4;
+}
+
 .sponsors-flex{
   display: flex;
   justify-content: space-between;
   margin: auto;
   max-width: 1000px;
   padding: 10px;
+  padding-top: 40px;
+  padding-bottom: 20px;
   color: #404a3d;
   width: 90%;
 }
@@ -1987,15 +2000,18 @@ width: 338px;
 .sponsor-option{
   border: none;
   padding: 3px;
-  font-size: 16px;
+  font-size: 18px;
   outline: none;
+  color: #404a3d;
 }
 
 .sponsors-flex .filter-heading{
   font-weight: bold;
   font-size: 18px;
-  margin-left: -30px;
-  margin-top: 5px;
+  margin-left: -58px;
+  margin-top: 0px;
+  border-bottom: 1px solid #c4c4c4;
+  letter-spacing: 3px;
   color: #404A3D;
 }
 
@@ -2019,19 +2035,12 @@ width: 338px;
   justify-content: space-between;
   padding-bottom: 20px;
   max-width: 190px;
-  text-align: center;
   color: #404a3d;
 }
 
-.sponsor-grid .sponsor-option .flex p:nth-child(2){
-  font-size: 15px;
-  font-weight: bold;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-.sponsor-grid .sponsor-option .flex p:nth-child(3){
-  margin-left: 20px;
+.sponsor-grid .sponsor-option .flex .sponsor-crop{
+    margin-left: -36px;
+    text-align: center;
 }
 
 .sponsor-grid [type=checkbox]{
@@ -2046,7 +2055,9 @@ width: 338px;
 
 .sponsor-data .grid{
   padding: 20px;
-  margin: 40px 15px;
+  margin-bottom: 40px;
+  margin-left: 15px;
+  margin-right: 15px;
   color: #404a3d;
   background: #F5F5F5;
   box-shadow: 5px 5px 10px 3px rgba(0, 0, 0, 0.25);
@@ -2113,10 +2124,11 @@ width: 338px;
 .filter .button-filter{
   margin-top: 20px;
   margin-bottom: 15px;
-  padding: 10px;
+  padding: 15px;
   width: 120px;
   border-radius: 8px;
   font-size: 16px;
+  letter-spacing: 3px;
   font-weight: bolder;
   color: #404a3d;
   cursor: pointer;  
@@ -2130,6 +2142,10 @@ width: 338px;
   margin-bottom: 30px;
   color: #404A3D;
   font-weight: bolder;
+}
+
+.showing-result{
+  font-size: 19px;
 }
 
 /*Sponsor page ends */
@@ -2230,6 +2246,8 @@ width: 338px;
   background: #FEE565;
   border: 1px solid #FEE565;
   cursor: pointer;
+  margin-left: 10px;
+  border-radius: 5px;
   color: #404a3d;
   font-weight: bolder;
   font-size: 15px;
