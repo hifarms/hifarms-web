@@ -47,15 +47,14 @@
             <input type="password" placeholder="Password" name="password">
 
             <p class="forgot-password">Forgot Password?</p>
-
+            <div class="google-fb-btn sign-in-google">
+             <img src="img/google.jpg" alt="google" class="google-logo">
+             <img src="img/facebook.png" alt="facebook" class="facebook-logo">
+             <button>Submit</button>
+             </div>
         </form>
-        <img src="img/logo.png" alt="showcase-image">
+        <img src="img/logo.png" alt="showcase-image" class="sign-in-image">
       </div>
-      <div class="google-fb-btn sign-in-google">
-      <img src="img/google.jpg" alt="google" class="google-logo">
-      <img src="img/facebook.png" alt="facebook" class="facebook-logo">
-      <button>Submit</button>
-    </div>
   </div>
   <!--Registration form end-->
 

@@ -51,14 +51,14 @@
             <span class="password-msg"></span>
             <input type="password" placeholder="Password">
             <input type="password" placeholder="Confirm Password">
+            <div class="google-fb-btn">
+           <img src="img/google.jpg" alt="google" class="google-logo">
+           <img src="img/facebook.png" alt="facebook" class="facebook-logo">
+           <button>Submit</button>
+    </div>
         </form>
         <img src="img/logo.png" alt="showcase-image">
       </div>
-      <div class="google-fb-btn">
-      <img src="img/google.jpg" alt="google" class="google-logo">
-      <img src="img/facebook.png" alt="facebook" class="facebook-logo">
-      <button>Submit</button>
-    </div>
   </div>
   <!--Registration form end-->
 
