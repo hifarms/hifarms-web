@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\BlogPost;
 use Illuminate\Http\Request;
 
 class BlogPostController extends Controller
@@ -9,18 +10,21 @@ class BlogPostController extends Controller
     public function index(){
         return 'hello';
     }
-    public function getpost(){
+    public function getpost($category=null){
+        if($category !=null ){
+            $posts= BlogPost::where("blog_category_id",$category)->get();
+            return view('blog',['posts'=>$posts]);
+        }
+        $posts = BlogPost::all();
 
-        $posts = BlogPost::orderBy('created_at','DESC')->paginate(10);
-
-        return view('blog.list',['posts'=>$posts]);
+        return view('blog',['posts'=>$posts]);
     }
 
     public function show(Request $request,$slug){
 
         $post = BlogPost::where('slug',$slug)->firstOrFail();
 
-        return view('blog.single',['posts'=>$post]);
+        return view('blog-view',['post'=>$post]);
     }
 
     public function create(Request $request){

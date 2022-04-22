@@ -9,18 +9,18 @@ use Illuminate\Support\Facades\Auth;
 class CartItemController extends Controller
 {   
   
-    public function getCart(){
+    public function getCart(Request $request){
 
         //get temp_id from cookie
         $tempid =  $request->cookie('carts');
       
         //market place cart
-        $martCartItems=Cart_item::with('product')->where('temp_id',$tempid)->Where('product_id','!=',null)->get();
+        $martCartItems=Cart_item::where('temp_id',$tempid)->orWhere('user_id','==',1)->get();
 
         //farm investment cart
-        $farmCartItems=Cart_item::with('farm')->where('temp_id',$tempid)->Where('product_id','!=',null)->get();
+        $farmCartItems=Cart_item::where('temp_id',$tempid)->orWhere('user_id','==',1)->get();
 
-        return view('cart',['mart'=>$martCartItems,'farm'=>$farmCartItems]);
+        return view('cart',['mart'=>$martCartItems,'farms'=>$farmCartItems]);
     }
     
     public function addCart(Request $request,$type){

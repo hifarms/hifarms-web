@@ -7,6 +7,8 @@ const successBlog = document.querySelector('.success-story');
 const outbreakBlog = document.querySelector('.out-break');
 const othersBlog = document.querySelector('.others');
 
+
+
 agricTechBlog.addEventListener('click', ()=>{
     //adding color and border bottom;
     agricTechBlog.style.color = "#49a760";
