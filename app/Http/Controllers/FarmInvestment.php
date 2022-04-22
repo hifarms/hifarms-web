@@ -68,18 +68,20 @@ class FarmInvestment extends Controller
     
         $sort=$request->input('category')==null? "all" : $request->input('category');
         if($sort=='all'){
-            $result = Farm::with('returns')->where('activated','=',1)->get();
+            $result = Farm::where('active','=',1)->get();
         }
         else{
-            $result = Farm::with('returns')->where('activated','=',1)->where('category_id',$rquest->input('category'))->get();
+            //$category= explode(',',$request->input('category'))
+            //$price = explode('-',$request->input('price)
+            $result = Farm::where('active','=',1)->where('category_id',$rquest->input('category'))->get();
         }
 
-        return view('farm.list',['products'=>$result]);
+        return view('sponsor',['products'=>$result]);
     }
 
     //farmInvesment detail page
     public function show(Request $request,Farm $farm){
 
-        return view('farm.single',$farm);
+        return view('product-show',['farm'=>$farm]);
     }
 }

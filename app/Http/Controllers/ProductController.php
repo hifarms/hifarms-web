@@ -22,19 +22,19 @@ class ProductController extends Controller
             $result = Product::where('activated','=',1)->where('category_id',$rquest->input('category'))->paginate(20)->withQueryString();
         }
 
-        return view('product.list',['products'=>$result]);
+        return view('sponsor',['products'=>$result]);
 
 
    }
 
     public function show(Product $product){
        
-        return view('product.show',['product'=>$product]);
+        return view('product-single',['product'=>$product]);
 
    }
    public function create(){
 
-        $product_type= DB::table('product_type')->get();
+        // $product_type= DB::table('product_type')->get();
         $service_type= DB::table('service_type')->get();
         return view('product.create',['product_type'=>$product_type,'service_type'=>$service_type]);
    }

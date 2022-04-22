@@ -23,12 +23,22 @@ Route::get('/', function () {
 });
 
 Route::get('/services', function () {
-    return view('index');
+    return view('services');
 });
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/services/sponsor', 'Farminvestment@index');
+
+
+
+Route::get('services/sponsor/{farm}', 'Farminvestment@show');
+
+
+Route::get('/blog', 'BlogPostController@getPost');
+
+Route::get('/blog/{slug}/', 'BlogPostController@show');
+
+Route::get('/cart', 'CartitemController@getCart');
+
 
 Route::post('/forget-password', 'ResetPasswordController@submitForgetPasswordForm')->name('forget.password.post');
 

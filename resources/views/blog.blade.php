@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{url('style.css')}}">
     <title>Blog</title>
 </head>
 <body>
@@ -69,114 +69,111 @@
      <div class="flex-line"></div>
    </div>
    
-   <div class="all-blog-container">  
+   <div class="all-blog-container">
+    @foreach($posts as $post)
     <div class="blog-flex-grid">
-       <div class="blog-content">
-           <h4>AgriTech <span style="font-weight: 300;">• Mar 03, 2022</span></h4>
-           <h1>Tillage, irrigation and maize cropping.</h1>
-           <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nam fugit ducimus laudantium earum debitis deleniti culpa eaque? Consectetur voluptas doloremque exercitationem magni laboriosam ab laudantium odit atque voluptatem error. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente omnis minus ut optio, nisi dolores sunt eaque velit odit consequatur.</p>
+      <div class="blog-content">
+           <h4>{{$post->blog_category->name}} <span style="font-weight: 300;">• {{ \Carbon\Carbon::parse($post->created_at)->isoFormat('MMM Do YYYY')}}
+        </span></h4>
+           <h1>{{$post->title}}.</h1>
+           <p>{{$post->content}}.</p>
        </div>
-       <img src="img/unsplash_KEKVOJt7lOY.png" alt="">
-   </div>
-   <div class="blog-flex-grid">
-    <div class="blog-content">
-        <h4>AgriTech <span style="font-weight: 300;">• Mar 03, 2022</span></h4>
-        <h1>Tillage, irrigation and maize cropping.</h1>
-        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nam fugit ducimus laudantium earum debitis deleniti culpa eaque? Consectetur voluptas doloremque exercitationem magni laboriosam ab laudantium odit atque voluptatem error. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente omnis minus ut optio, nisi dolores sunt eaque velit odit consequatur.</p>
+       <img src={{url($post->image_cover)}} alt="">
     </div>
-    <img src="img/unsplash_KEKVOJt7lOY.png" alt="">
+   @endforeach
 </div>
+
+
+<div class="agritech-container" style="display: none">
+@foreach($posts as $post)
+@if($post->blog_category->name=='agritech')
+    <div class="blog-flex-grid">
+        <div class="blog-content">
+            <h4>{{$post->blog_category->name}} <span style="font-weight: 300;">• {{ \Carbon\Carbon::parse($post->created_at)->isoFormat('MMM Do YYYY')}}</span></h4>
+            <h1>{{$post->title}}.</h1>
+           <p>{{$post->content}}.</p>
+        </div>
+        <img src={{url($post->image_cover)}} alt="">
+    </div>
+    @endif
+    @endforeach
+</div>
+
+<div class="agric-science-container" style="display: none">
+@foreach($posts as $post)
+@if($post->blog_category->name=='agric-science')
+
+    <div class="blog-flex-grid">
+        <div class="blog-content">
+            <h4>{{$post->blog_category->name}} <span style="font-weight: 300;">• {{ \Carbon\Carbon::parse($post->created_at)->isoFormat('MMM Do YYYY')}}</span></h4>
+            <h1>{{$post->title}}.</h1>
+            <p>{{$post->content}}.</p>
+        </div>
+        <img src={{url($post->image_cover)}} alt="">
+    </div>
+    @endif
+    @endforeach
+</div>
+
+
+<div class="update-blog-container" style="display: none">
+@foreach($posts as $post)
+@if($post->blog_category->name=='updates')
+    <div class="blog-flex-grid">
+        <div class="blog-content">
+            <h4>{{$post->blog_category->name}} <span style="font-weight: 300;">• {{ \Carbon\Carbon::parse($post->created_at)->isoFormat('MMM Do YYYY')}}</span></h4>
+            <h1>{{$post->title}}.</h1>
+            <p>{{$post->content}}.</p>
+        </div>
+        <img src={{url($post->image_cover)}} alt="">
+    </div>
+@endif
+@endforeach
+</div>
+
+<div class="success-stories-blog" style="display: none">
+@foreach($posts as $post)
+@if($post->blog_category->name=='success-stories')
+    <div class="blog-flex-grid">
+        <div class="blog-content">
+            <h4>{{$post->blog_category->name}} <span style="font-weight: 300;">• {{ \Carbon\Carbon::parse($post->created_at)->isoFormat('MMM Do YYYY')}}</span></h4>
+            <h1>{{$post->title}}.</h1>
+            <p>{{$post->content}}.</p>
+        </div>
+        <img src={{url($post->image_cover)}} alt="">
+    </div>
+@endif
+@endforeach
+</div>
+
+<div class="out-break-blog" style="display: none">
+@foreach($posts as $post)
+@if($post->blog_category->name=='out-break')
 <div class="blog-flex-grid">
     <div class="blog-content">
-        <h4>AgriTech <span style="font-weight: 300;">• Mar 03, 2022</span></h4>
-        <h1>Tillage, irrigation and maize cropping.</h1>
-        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nam fugit ducimus laudantium earum debitis deleniti culpa eaque? Consectetur voluptas doloremque exercitationem magni laboriosam ab laudantium odit atque voluptatem error. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente omnis minus ut optio, nisi dolores sunt eaque velit odit consequatur.</p>
+        <h4>{{$post->blog_category->name}} <span style="font-weight: 300;">• {{ \Carbon\Carbon::parse($post->created_at)->isoFormat('MMM Do YYYY')}}</span></h4>
+        <h1>{{$post->title}}.</h1>
+        <p>{{$post->content}}.</p>
     </div>
-    <img src="img/unsplash_KEKVOJt7lOY.png" alt="">
+    <img src={{url($post->image_cover)}} alt="">
 </div>
-<div class="blog-flex-grid">
-    <div class="blog-content">
-        <h4>AgriTech <span style="font-weight: 300;">• Mar 03, 2022</span></h4>
-        <h1>Tillage, irrigation and maize cropping.</h1>
-        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nam fugit ducimus laudantium earum debitis deleniti culpa eaque? Consectetur voluptas doloremque exercitationem magni laboriosam ab laudantium odit atque voluptatem error. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente omnis minus ut optio, nisi dolores sunt eaque velit odit consequatur.</p>
-    </div>
-    <img src="img/unsplash_KEKVOJt7lOY.png" alt="">
-  </div>
-</div> 
+@endif
+@endforeach
+</div>
 
-<div class="agritech-container">
+<div class="other-blog" style="display: none">
+@foreach($posts as $post)
+@if($post->blog_category->name=='other')
     <div class="blog-flex-grid">
         <div class="blog-content">
-            <h4>AgriTech <span style="font-weight: 300;">• Mar 03, 2022</span></h4>
-            <h1>Tillage, irrigation and maize cropping.</h1>
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nam fugit ducimus laudantium earum debitis deleniti culpa eaque? Consectetur voluptas doloremque exercitationem magni laboriosam ab laudantium odit atque voluptatem error. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente omnis minus ut optio, nisi dolores sunt eaque velit odit consequatur.</p>
+            <h4>{{$post->blog_category->name}} <span style="font-weight: 300;">• {{ \Carbon\Carbon::parse($post->created_at)->isoFormat('MMM Do YYYY')}}</span></h4>
+            <h1>{{$post->title}}.</h1>
+            <p>{{$post->content}}.</p>
         </div>
         <img src="img/unsplash_KEKVOJt7lOY.png" alt="">
     </div>
-    <div class="blog-flex-grid">
-     <div class="blog-content">
-         <h4>AgriTech <span style="font-weight: 300;">• Mar 03, 2022</span></h4>
-         <h1>Tillage, irrigation and maize cropping.</h1>
-         <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nam fugit ducimus laudantium earum debitis deleniti culpa eaque? Consectetur voluptas doloremque exercitationem magni laboriosam ab laudantium odit atque voluptatem error. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente omnis minus ut optio, nisi dolores sunt eaque velit odit consequatur.</p>
-     </div>
-     <img src="img/unsplash_KEKVOJt7lOY.png" alt="">
- </div>
-</div>
-
-<div class="agric-science-container">
-    <div class="blog-flex-grid">
-        <div class="blog-content">
-            <h4>Agric Sciences <span style="font-weight: 300;">• Mar 03, 2022</span></h4>
-            <h1>Tillage, irrigation and maize cropping.</h1>
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nam fugit ducimus laudantium earum debitis deleniti culpa eaque? Consectetur voluptas doloremque exercitationem magni laboriosam ab laudantium odit atque voluptatem error. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente omnis minus ut optio, nisi dolores sunt eaque velit odit consequatur.</p>
-        </div>
-        <img src="img/unsplash_KEKVOJt7lOY.png" alt="">
-    </div>
-    <div class="blog-flex-grid">
-     <div class="blog-content">
-         <h4>Agric Sciences <span style="font-weight: 300;">• Mar 03, 2022</span></h4>
-         <h1>Tillage, irrigation and maize cropping.</h1>
-         <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nam fugit ducimus laudantium earum debitis deleniti culpa eaque? Consectetur voluptas doloremque exercitationem magni laboriosam ab laudantium odit atque voluptatem error. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente omnis minus ut optio, nisi dolores sunt eaque velit odit consequatur.</p>
-     </div>
-     <img src="img/unsplash_KEKVOJt7lOY.png" alt="">
- </div>
-</div>
-
-<div class="update-blog-container">
-    <div class="blog-flex-grid">
-        <div class="blog-content">
-            <h4>Updates <span style="font-weight: 300;"> • Mar 03, 2022</span></h4>
-            <h1>Poultry Establishments At Kalgo Road.</h1>
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nam fugit ducimus laudantium earum debitis deleniti culpa eaque? Consectetur voluptas doloremque exercitationem magni laboriosam ab laudantium odit atque voluptatem error. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente omnis minus ut optio, nisi dolores sunt eaque velit odit consequatur.</p>
-        </div>
-        <img src="img/unsplash_KEKVOJt7lOY.png" alt="">
-    </div>
-</div>
-
-<div class="success-stories-blog">
-    <div class="blog-flex-grid">
-        <div class="blog-content">
-            <h4>Success Stories <span style="font-weight: 300;">• Mar 03, 2022</span></h4>
-            <h1>Invested In Fish Farm Got 25% ROI</h1>
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nam fugit ducimus laudantium earum debitis deleniti culpa eaque? Consectetur voluptas doloremque exercitationem magni laboriosam ab laudantium odit atque voluptatem error. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente omnis minus ut optio, nisi dolores sunt eaque velit odit consequatur.</p>
-        </div>
-        <img src="img/unsplash_KEKVOJt7lOY.png" alt="">
-    </div>
-</div>
-
-<div class="out-break-blog">
-    <P class="blog-no-content">No stories on this section yet</P>
-</div>
-
-<div class="other-blog">
-    <div class="blog-flex-grid">
-        <div class="blog-content">
-            <h4>Others <span style="font-weight: 300;"> • Mar 03, 2022</span></h4>
-            <h1>HiFarms Recorded 25% Increase In Sales.</h1>
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nam fugit ducimus laudantium earum debitis deleniti culpa eaque? Consectetur voluptas doloremque exercitationem magni laboriosam ab laudantium odit atque voluptatem error. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente omnis minus ut optio, nisi dolores sunt eaque velit odit consequatur.</p>
-        </div>
-        <img src="img/unsplash_KEKVOJt7lOY.png" alt="">
-    </div>
+@endif
+@endforeach
 </div>
 
   <!--Blog page end-->
@@ -233,6 +230,10 @@
         <div class="copyright-hifarms">&copy; copyright 2022 hifarmsWeb</div>
    </footer>
   <!--Footer ends-->
+<<<<<<< HEAD:public/blog.html
 <script src="../public/js/main.js"></script>  
+=======
+<script src="/js/main.js"></script>  
+>>>>>>> a95d9ab67ad486b1986c9e47c40b080835585298:resources/views/blog.blade.php
 </body>
 </html>

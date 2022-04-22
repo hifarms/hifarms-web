@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{url('style.css')}}">
     <title>Blog Page</title>
 </head>
 <body>
@@ -59,11 +59,11 @@
    </div>
 
    <div class="blog-page-container">
-       <p>Agric Sciences . <span style="font-weight: 200;">Mar 07 2022</span></p>
-       <h1>Best Way To Do Eco And Agriculture.</h1>
+       <p>{{$post->blog_category->name}} <span style="font-weight: 200;">• {{ \Carbon\Carbon::parse($post->created_at)->isoFormat('MMM Do YYYY')}}</span></p>
+       <h1>{{$post->title}}</h1>
 
        <div class="blog-page-flex">
-           <img src="img/unsplash_0ZX8_HDWHN4.png" alt="blog-image">
+           <img src={{url($post->image_cover)}} alt="blog-image">
            <div class="social-icons">
             <p style="color: #A0D468;">Share Post</p>
             <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -84,9 +84,7 @@
             </svg>                
            </div>
        </div>
-       <p class="blog-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dolor purus non enim praesent elementum facilisis leo vel Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dolor purus non enim praesent elementum facilisis leo vel Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dolor purus non enim praesent elementum facilisis leo vel Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <br> <br> 
-
-        Dolor purus non enim praesent elementum facilisis leo vel Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dolor purus non enim praesent elementum facilisis leo vel</p>
+       <p class="blog-content">{{$post->content}}</p>
    </div>
   <!--Blog page end-->
 

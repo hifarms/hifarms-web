@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Sponsor Product Page</title>
+    <link rel="stylesheet" href="{{url('style.css')}}">
+    <title>Cart</title>
 </head>
 <body>
-    <!--Header starts here-->
     <header>
         <div class="header-container">
             <img src="img/logo.png" alt="logo" class="logo4x">
@@ -45,59 +44,47 @@
         </div>
     </header>
     <!--Header Ends-->
-  <!--Header Ends-->
 
-  <!--Single sponsors Page starts here-->
-  <div class="showcase-img sponsor">
-    <div class="showcase-content">
-     <h1>Sponsors</h1>
-    </div>
-</div>
-<div class="about-description">
-   <a href="services.html">Services</a> <img src="img/Arrow 1.svg" width="12"> <a href="single-product.html">Single Product</a>
-</div>
-
-<div class="sponsor-services">
-    <div class="sponsor-service-grid">
-        <img src="img/unsplash_vLQzopDRSNI.png" alt="product-image">
-        <div class="sponsor-service-content">
-            <h1>Fish Farm</h1>
-            <h3>₦ 300,000</h3>
-            <h4>Fish Farming</h4>
-            <p style="color: #404a3d; padding-bottom: 10px; border-bottom: 1.55px solid #c4c4c4;">Fish Farming which is famously known as Heliculture is the act of rearing or raising snails specifically for flesh, slime, eggs, or other economic uses. <br><br>
-                Very few individuals are making a fortune from snail farming, despite being a very lucrative venture with enormous benefits and huge market potential.  Numerous researches has proven snail farming to be a very profitable farming venture and that rearing or breeding snails is one way of becoming self-reliant. <br><br>
-                
-                In Nigeria, Fish Farming is a high profit-yielding farming venture when properly and professionally managed. <br> <br>
-                
-                Duration - 6 montha
-                
-                Return – 10% <br> <br>
-                
-                Location - Birnin Kebbi and Kebbi State. <br><br>
-                
-                Unit price: N300,000</p> <br><br>
-            <p style="color: #404a3d;">Return: 10% <br><br>
-                Location: Kebbi  <br><br>
-                Available Units: 101 from 500</p> <br>
-            <h4 class="profit" style="text-align: center;padding-top: 10px;color: #ff3d00;">Min Value of ₦ 5000 expected </h4>
-            <p class="amount"><input type="text" placeholder="Amount"></p>
-            <div class="add-to-cart">
-                <div class="cart-items">
-                    <button class="add">+</button> <br>
-                    <button class="minus">-</button>
-                </div>
-                <p>1</p>
-                <button class="add-to-cart-button">ADD TO CART</button>
+  <!--Cart starts here-->
+  <img src="img/Flower.svg" alt="flower" class="flower cart">
+  <div class="cart-section">Cart</div>
+  <div class="cart-container">
+      <p class="info">You can add item up to ₦2,000,000.00</p>
+      <div class="cart-flex">
+          <p>Name</p>
+          <p>Units</p>
+          <p>Rate</p>
+          <p>Amount</p>
+          <p>Remove</p>
+      </div>
+      @foreach($farms as $cart)
+      <div class="cart-content">
+          <div class="image-name">
+              <img src={{url($cart->farm->image)}} alt="image">
+              <p>{{$cart->farm->name}}</p>
+          </div>
+          <div class="add-to-cart">
+            <div class="cart-items">
+                <button class="add" style="color:#6E7A89;">+</button> <br>
+                <button class="minus" style="color:#6E7A89;">-</button>
             </div>
+            <p>{{$cart->unit}}</p>
         </div>
+        <div class="rate">
+            <p>{{$cart->farm->unit_price}}</p>
+        </div>
+        <div class="amount">
+            <p>₦ {{$cart->farm->unit_price * $cart->unit}}</p>
+        </div>
+        <div class="remove" style="color:#FF3D00;">Remove</div>
+      </div>
+      @endforeach
+      <div class="checkout">
+        <p>Total: ₦ 10,000.00</p>
+        <button>CHECK OUT</button>
     </div>
-</div>
-<div class="project-milestone">
-    <h1>Project Milestone</h1>
-    <div class="line"></div> <br><br>
-    <p>null.</p>
-</div>
-<!--Single sponsor page end-->
+  </div>
+  <!--Cart page end-->
 
   <!--Footer starts here-->
   <footer class="signup-footer">
@@ -151,6 +138,6 @@
         <div class="copyright-hifarms">&copy; copyright 2022 hifarmsWeb</div>
  </footer>
   <!--Footer ends-->
-<script src="/hifarms-web/public/js/main.js"></script>  
+<script src="../public/js/main.js"></script>  
 </body>
 </html>

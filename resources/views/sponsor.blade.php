@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{url('style.css')}}">
     <title>Sponsor</title>
 </head>
 <body>
@@ -61,9 +61,9 @@
     <p class="filter-heading">FILTER BY PRICE</p>
     <p class="showing-result">Showing 1-42</p>
     <select class="sponsor-option">
-        <option>Sort By</option>
-        <option>Newest</option>
-        <option>Oldest</option>
+        <option value="all">Sort By</option>
+        <option value="new">Newest</option>
+        <option value="old">Oldest</option>
     </select>
 </div>
 <div class="sponsor-grid">
@@ -99,26 +99,28 @@
         </div>
     </div>
     <div class="sponsor-data">
+        @foreach($products as $product)
         <div class="grid">
             <p class="label">New</p>
-            <img src="img/unsplash_yFU8qIDo9s4.png" alt="">
-            <h1>Fish Farm</h1>
+            <img src={{url($product->image)}} alt="">
+            <h1>{{$product->name}}</h1>
             <div class="sponsor-inner-flex">
-                <img src="img/location.svg" alt="">
-                <p>Birnin Kebbi, Central Market</p>
+                <img src={{url("img/location.svg")}} alt="">
+                <p>{{$product->location}}</p>
             </div>
             <div class="sponsor-inner-flex">
-                <img src="img/graph.svg" alt="">
-                <p>10%</p>
+                <img src={{url("img/graph.svg")}} alt="">
+                <p>{{$product->returns[0]->percentage}}%</p>
             </div>
             <div class="sponsor-inner-flex">
-                <img src="img/calendar.svg" alt="">
-                <p>6 months</p>
+                <img src={{url("img/calendar.svg")}} alt="">
+                <p>{{$product->returns[0]->duration}}</p>
             </div>
             <div class="sponsor-inner-flex">
-                <img src="img/sponsor-cart.svg" alt="">
+                <img src={{url("img/sponsor-cart.svg")}} alt="">
                 <p>74% sold</p>
             </div>
+<<<<<<< HEAD:public/sponsor.html
             <h3>$10,000</h3>
             <div class="search-div">
                 <img src="img/search.png" alt="search-icon">
@@ -149,7 +151,11 @@
             <div class="search-div">
                 <img src="img/search.png" alt="search-icon">
             </div>
+=======
+            <h3>${{$product->unit_price}}</h3>
+>>>>>>> a95d9ab67ad486b1986c9e47c40b080835585298:resources/views/sponsor.blade.php
         </div>
+        @endforeach
 
         <div class="grid">
             <p class="label">New</p>
