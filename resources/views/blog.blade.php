@@ -230,10 +230,7 @@
         <div class="copyright-hifarms">&copy; copyright 2022 hifarmsWeb</div>
    </footer>
   <!--Footer ends-->
-<<<<<<< HEAD:public/blog.html
-<script src="../public/js/main.js"></script>  
-=======
+
 <script src="/js/main.js"></script>  
->>>>>>> a95d9ab67ad486b1986c9e47c40b080835585298:resources/views/blog.blade.php
 </body>
 </html>

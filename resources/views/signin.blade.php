@@ -110,6 +110,6 @@
         <div class="copyright-hifarms">&copy; copyright 2022 hifarmsWeb</div>
  </footer>
   <!--Footer ends-->
-<script src="/hifarms-web/public/js/main.js"></script>  
+<script src="/js/main.js"></script>  
 </body>
 </html>

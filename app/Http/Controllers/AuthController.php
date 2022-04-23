@@ -27,7 +27,8 @@ class AuthController extends Controller
 
         if (Auth::attempt(['email' => $request['email'], 'password' => $request['password'], 'role_id' => '1', 'status' =>'1'])) {
 
-            return redirect()->back()->with('success_message','Login Sucess');
+            // return redirect()->back()->with('success_message','Login Sucess');
+            return redirect('/');
         }
 
         // \Session::flash('warning_message', 'These credentials do not match our records.');
@@ -64,7 +65,7 @@ class AuthController extends Controller
         $wallet = new Wallet();
         $wallet->user_id = $user->id;
         $wallet->ledger_balance = 0;
-        $wallet->curren_balance = 0;
+        $wallet->current_balance = 0;
         $wallet->save();
 
         Auth::login($user);

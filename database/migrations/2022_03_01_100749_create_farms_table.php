@@ -22,10 +22,13 @@ class CreateFarmsTable extends Migration
             $table->unsignedFloat('unit_price')->nullable()->default(0);
             $table->string('image')->nullable();
             $table->string('location');
+            $table->text("description");
             $table->boolean('active')->default(0); // looking for investment
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('category_id')->constrained();
-            $table->foreignId('farm_type_id')->constrained();
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('category_id')->nullable()->constrained();
+            $table->foreignId('farm_type_id')->nullable()->constrained();
+            $table->foreignId('label_id')->nullable()->constrained();
+
             $table->timestamps();
         });
     }

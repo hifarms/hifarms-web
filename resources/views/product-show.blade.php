@@ -66,29 +66,19 @@
             <h4>Fish Farming</h4>
             <p style="color: #404a3d; padding-bottom: 10px; border-bottom: 1.55px solid #c4c4c4;">{{$farm->description}}<br> <br>
                 
-                Duration - {{$farm->returns[0]->duration}}
+                Duration - {{$farm->returns[0]->duration}} <br><br>
                 
                 Return – {{$farm->returns[0]->percentage}}% <br> <br>
                 
                 Location - {{$farm->location}}. <br><br>
                 
-<<<<<<< HEAD:public/single-product.html
-                Location - Birnin Kebbi and Kebbi State. <br><br>
                 
-                Unit price: N300,000</p> <br><br>
-            <p style="color: #404a3d;">Return: 10% <br><br>
-                Location: Kebbi  <br><br>
-                Available Units: 101 from 500</p> <br>
+                Unit price: N{{$farm->unit_price}}</p> <br><br>
+            <p style="color: #404a3d;">Return: {{$farm->returns[0]->percentage}} <br><br>
+                Location: {{$farm->location}} <br><br>
+                Available Units: {{$farm->c_units}} from {{$farm->i_units}}</p> <br>
             <h4 class="profit" style="text-align: center;padding-top: 10px;color: #ff3d00;">Min Value of ₦ 5000 expected </h4>
             <p class="amount"><input type="text" placeholder="Amount"></p>
-=======
-                Unit price: N{{$farm->unit_price}}</p> <br><br>
-            <p style="color: #404a3d;">Return: {{$farm->returns[0]->percentage}}% <br><br>
-                Location: {{$farm->location}}  <br><br>
-                Available Units: {{$farm->i_units}} from {{$farm->c_units}}</p> <br>
-            <h4 class="profit" style="text-align: center;padding-top: 10px;">Profit: ₦ 0</h4>
-            <p class="amount">Amount</p>
->>>>>>> a95d9ab67ad486b1986c9e47c40b080835585298:resources/views/product-show.blade.php
             <div class="add-to-cart">
                 <div class="cart-items">
                     <button class="add">+</button> <br>
