@@ -19,7 +19,7 @@ class CreateFarmReturnTypesTable extends Migration
             $table->integer('percentage');
             $table->string('duration');
             $table->boolean('payment_ready')->default(0);
-            $table->foreignId('farm_id')->constrained()->onDelete('cascade');
+            $table->foreignId('farm_id')->nullable()->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -17,10 +17,10 @@ class CreateCartItemsTable extends Migration
             $table->id();
             $table->unsignedFloat('unit');
             $table->unsignedInteger('price');
-            $table->foreignId('product_id')->constrained()->onDelete('cascade');
-            $table->foreignId('farm_id')->constrained()->onDelete('cascade');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('farm_return_type_id')->constrained();
+            $table->foreignId('product_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('farm_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('farm_return_type_id')->nullable()->constrained();
             $table->string('temp_id')->nullable(); // temp id for guest visitor
             $table->timestamps();
         });

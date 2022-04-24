@@ -8,7 +8,15 @@ use Illuminate\Support\Facades\Auth;
 
 class CartItemController extends Controller
 {   
-  
+    public function cartNum(){
+        //get temp_id from cookie
+        $tempid =  $request->cookie('carts');
+      
+        if($request->json()){
+            $data=count(Cart_item::where('temp_id',$tempid)->get());
+            return response()->json(['cartNumber'=>$data], 200);
+        }
+    }
     public function getCart(Request $request){
 
         //get temp_id from cookie
@@ -22,11 +30,12 @@ class CartItemController extends Controller
 
         return view('cart',['mart'=>$martCartItems,'farms'=>$farmCartItems]);
     }
+
     
     public function addCart(Request $request,$type){
 
         $validator = Validator::make($request->all(), [
-            'product_id' => 'required',
+            'id' => 'required',
             'unit' => 'required',
             'amount' => 'required',
         ]);
@@ -45,7 +54,12 @@ class CartItemController extends Controller
         }
 
         //check if cart item is already in cart
-        $Item=Cart_item::where('product_id',$request->product_id)->where('temp_id',$tempid)->first();
+        $Item=Cart_item::where('product_id',$request->id)->where('temp_id',$tempid)->first();
+        if($Items){
+            return redirect()->back()->with(['error'=>'Item is already in the cart']);
+        }
+
+        $Item=Cart_item::where('farm_id',$request->id)->where('temp_id',$tempid)->first();
         if($Items){
             return redirect()->back()->with(['error'=>'Item is already in the cart']);
         }
@@ -54,7 +68,7 @@ class CartItemController extends Controller
         if($type=='product'){
 
                 $cart = new Cart_item();
-                $cart->product_id= $request->product_id;
+                $cart->product_id= $request->id;
                 $cart->unit = $request->unit;
                 $cart->price = $request->amount;
                 Auth::check() && $cart->user_id = Auth::user()->id;
@@ -69,7 +83,7 @@ class CartItemController extends Controller
         else if($type=='invesment'){
 
                 $cart = new Cart_item();
-                $cart->farm_id= $request->farm_id;
+                $cart->farm_id= $request->id;
                 $cart->unit = $request->unit;
                 $cart->price = $request->amount;
                 $cart->farm_return_type = $request->farm_return_type;
@@ -108,7 +122,7 @@ class CartItemController extends Controller
         $check = $cartItems->delete();
 
         if(!$check) {
-            return response()->json(['success'=>'failed'], 400);
+            return response()->json(['error'=>'failed'], 400);
         }
         
         return response()->json(['success'=>'Cleared success'], 204);

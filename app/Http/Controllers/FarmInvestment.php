@@ -66,17 +66,33 @@ class FarmInvestment extends Controller
     // list of farms looking for investment
     public function index(Request $request){
     
-        $sort=$request->input('category')==null? "all" : $request->input('category');
-        if($sort=='all'){
-            $result = Farm::where('active','=',1)->get();
-        }
-        else{
-            //$category= explode(',',$request->input('category'))
-            //$price = explode('-',$request->input('price)
-            $result = Farm::where('active','=',1)->where('category_id',$rquest->input('category'))->get();
-        }
+        
+            $products = Farm::where('active','=',1)->get();
 
-        return view('sponsor',['products'=>$result]);
+            if($request->input('range')){
+                $products= $products->where('unit_price',"<",$request->input('range'));
+            }
+
+            $cat=[];
+            if($request->input('livestock')){
+                array_push($cat,1);
+            }
+            if($request->input('cattle')){
+                array_push($cat,2);
+            }
+            if($request->input('crop')){
+                array_push($cat,3);
+            }
+            if($request->input('poultry')){
+                array_push($cat,4);
+            }
+            // $category= explode(',',$request->input('category'))
+
+            $cat && $products=$products->whereIn('category_id',$cat);
+            //$price = explode('-',$request->input('price)//
+            // $products = Farm::where('active','=',1)->where('category_id',$rquest->input('category'))->get();        }
+
+        return view('sponsor',['products'=>$products]);
     }
 
     //farmInvesment detail page

@@ -202,6 +202,6 @@
  </footer>
   <!--Footer ends-->
 </div>
-<script src="../public/js/lightbox.js"></script>  
+<script src="/js/lightbox.js"></script>  
 </body>
 </html>

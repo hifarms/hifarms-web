@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\label;
 use App\Farm_type;
 use App\Order_item;
 use App\Farm_return_type;
@@ -17,6 +18,11 @@ class Farm extends Model
     public function returns(){
 
         return $this->hasMany(Farm_return_type::class);
+    }
+
+    public function label(){
+        
+        return $this->belongsTo(label::class);
     }
 
     public function investments(){

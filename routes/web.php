@@ -26,12 +26,24 @@ Route::get('/services', function () {
     return view('services');
 });
 
+Route::get('/partners', function () {
+    return view('partners');
+});
+Route::get('/faq', function () {
+    return view('faq');
+});
+
+Route::get('/gallery', function () {
+    return view('gallery');
+});
+
+Route::get('/about', function () {
+    return view('gallery');
+});
+
 Route::get('/services/sponsor', 'Farminvestment@index');
 
-
-
 Route::get('services/sponsor/{farm}', 'Farminvestment@show');
-
 
 Route::get('/blog', 'BlogPostController@getPost');
 
@@ -39,6 +51,15 @@ Route::get('/blog/{slug}/', 'BlogPostController@show');
 
 Route::get('/cart', 'CartitemController@getCart');
 
+Route::put('/cart/{id}', 'CartitemController@update');
+
+Route::delete('/cart/clear', 'CartitemController@clear');
+
+Route::delete('/cart/{id}', 'CartitemController@destroy');
+
+Route::post('/addcart/{type}', 'CartitemController@addCart');
+
+Route::get('/cartnum', 'CartitemController@cartNum');
 
 Route::post('/forget-password', 'ResetPasswordController@submitForgetPasswordForm')->name('forget.password.post');
 

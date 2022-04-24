@@ -24,9 +24,9 @@ class CreateProductsTable extends Migration
             //ready to start selling
             $table->boolean('active')->default(1);
             $table->unsignedInteger('unit_sold')->default(0);
-            $table->foreignId('category_id')->constrained()->onDelete('cascade');
-            $table->foreignId('service_type_id')->constrained()->onDelete('cascade');
-            $table->foreignId('product_type_id')->constrained()->onDelete('cascade');
+            $table->foreignId('category_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('service_type_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('product_type_id')->nullable()->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

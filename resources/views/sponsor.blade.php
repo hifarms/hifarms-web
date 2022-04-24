@@ -70,32 +70,34 @@
     <div class="sponsor-option">
         <div class="sponsor-checkbox">
             <div class="filter">
-                <input type="range" min="0" max="2" step="0.1" value="0" class="rate">
-                <p class="button-filter">FILTER</p>
+            <form>
+                <input type="range" min="0" max="2000000" step="0.1" value="0" name='range' class="rate">
+                <input type="submit" class="button-filter" value='FILTER'>
                 <p class="filter-price">Price: ₦ 0 - ₦ 100</p>
                  <h3 class="sponsor-categories">CATEGORIES</h3>
                  <div class="filter-line"></div>
             </div>
             <div class="flex">
-                <input type="checkbox" class="check">
+                <input type="checkbox" name="crop" class="check">
                 <p class="sponsor-crop">Crop</p>
                 <P>0</P>
             </div>
             <div class="flex">
-                <input type="checkbox">
+                <input type="checkbox" name="cattle">
                 <p class="sponsor-crop">Cattles</p>
                 <P>0</P>
             </div>
             <div class="flex">
-                <input type="checkbox">
+                <input type="checkbox" name="poultry">
                 <p class="sponsor-crop">Poultry</p>
                 <P>0</P>
             </div>
             <div class="flex">
-                <input type="checkbox">
+                <input type="checkbox" name="livestock">
                 <p class="sponsor-crop">Livestock</p>
                 <P>0</P>
             </div>
+            <form>
         </div>
     </div>
     <div class="sponsor-data">
@@ -120,6 +122,7 @@
                 <img src={{url("img/sponsor-cart.svg")}} alt="">
                 <p>74% sold</p>
             </div>
+<<<<<<< HEAD
             <h3>$10,000</h3>
             <div class="search-div">
                 <img src="img/search.png" alt="search-icon">
@@ -151,6 +154,12 @@
                 <img src="img/search.png" alt="search-icon">
             </div>
             <h3>${{$product->unit_price}}</h3>
+=======
+            <h3>${{$product->unit_price}}</h3>
+            <div class="search-div">
+                <img src="img/search.png" alt="search-icon">
+            </div>
+>>>>>>> 705c7018b614492e75fd8d175384f7a6b3ffb693
         </div>
         @endforeach
 
