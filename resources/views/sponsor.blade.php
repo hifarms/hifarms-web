@@ -120,7 +120,6 @@
                 <img src={{url("img/sponsor-cart.svg")}} alt="">
                 <p>74% sold</p>
             </div>
-<<<<<<< HEAD:public/sponsor.html
             <h3>$10,000</h3>
             <div class="search-div">
                 <img src="img/search.png" alt="search-icon">
@@ -151,9 +150,7 @@
             <div class="search-div">
                 <img src="img/search.png" alt="search-icon">
             </div>
-=======
             <h3>${{$product->unit_price}}</h3>
->>>>>>> a95d9ab67ad486b1986c9e47c40b080835585298:resources/views/sponsor.blade.php
         </div>
         @endforeach
 
