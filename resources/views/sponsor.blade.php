@@ -60,6 +60,7 @@
 <div class="sponsors-flex">
     <p class="filter-heading">FILTER BY PRICE</p>
     <p class="showing-result">Showing 1-42</p>
+    <form>
     <select class="sponsor-option">
         <option value="all">Sort By</option>
         <option value="new">Newest</option>
@@ -70,7 +71,7 @@
     <div class="sponsor-option">
         <div class="sponsor-checkbox">
             <div class="filter">
-            <form>
+            
                 <input type="range" min="0" max="2000000" step="0.1" value="0" name='range' class="rate">
                 <input type="submit" class="button-filter" value='FILTER'>
                 <p class="filter-price">Price: ₦ 0 - ₦ 100</p>

@@ -2327,6 +2327,12 @@ width: 338px;
    margin-right: 70px;
 }
 
+.sponsor-option.selet-option{
+  position: absolute;
+  top: 480px;
+  right: 6%;
+}
+
 .sponsor-grid .sponsor-option .flex{
   margin-top: 20px;
   display: flex;
@@ -2472,6 +2478,7 @@ width: 338px;
 
 .showing-result{
   font-size: 19px;
+  
 }
 
 /*Sponsor page ends */
@@ -3613,6 +3620,113 @@ width: 338px;
 .profile-inclusive:hover .my-profile-log-out{
     display: flex;
 }
+
+.guide-download{
+  position: absolute;
+  top: 61px;
+  right: 4%;
+  background: #ffffff;
+  padding-top: 20px;
+  border: 1px solid #565656;
+  padding-bottom: 40px;
+  width: 200px;
+  border-radius: 10px;
+  display: none;
+}
+
+.guide-download h2{
+  font-size: 20px;
+  font-weight: 300;
+  padding-top: 15px;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-bottom: 0px;
+}
+
+.guide-download .line{
+  width: 70px;
+  margin-left: 13px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  height: 3px;
+  background: #545E66;
+}
+
+.guide-download p{
+  padding: 15px;
+  cursor: pointer;
+}
+
+.guides:hover .guide-download{
+  display: block ;
+}
+
+.notification-modal{
+  position: absolute;
+  top: 61px;
+  right: -10%;
+  background: #FFFFFF;
+  padding: 15px;
+  border: 1px solid #545E66;
+  border-radius: 10px;
+  color: #545E66;
+  width: 500px;
+  display: none;
+}
+
+.notification-modal .notif-head{
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.notification-modal .notif-head  .ntf .line{
+    width: 60px;
+    margin-left: 0px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    height: 3px;
+    background: #545E66;
+}
+
+.notification-modal .notif-head button{
+  background: transparent;
+  width: 120px;
+  color: #A5CD3D;
+  border: 2px solid #A5CD3D;
+  border-radius: 10px;
+}
+
+.notification-modal .notif-1{
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold; 
+  margin-bottom: 10px;
+  padding-bottom: 15px;
+  border-bottom: 1.5px solid #545E66;
+}
+
+.notification-modal .notif-2{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding-bottom: 15px;
+  border-bottom: 1.5px solid #545E66;
+}
+
+.notification-modal .notif-3{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding-bottom: 15px;
+} 
+
+.notifs:hover .notification-modal{
+  display: block;
+}
 /* Dashboard ends */
 
 /*Media Queries*/
@@ -4037,6 +4151,11 @@ width: 338px;
 
 /*sponsort page end*/
 
+@media (max-width: 700px){
+  .container .sign-up-large{
+  
+  }
+}
 
 
 
