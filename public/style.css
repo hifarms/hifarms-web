@@ -4152,8 +4152,11 @@ width: 338px;
 /*sponsort page end*/
 
 @media (max-width: 700px){
-  .container .sign-up-large{
-  
+  .sign-in-image{
+      display: none;
+  }
+  .sign-up-large{
+    
   }
 }
 

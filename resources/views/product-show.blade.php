@@ -192,6 +192,21 @@
                 });
     }
     getCartNum()
+     
+    let addNumberCounter = 2;
+    const addNumber = document.querySelector('.add');
+    const substractNumber = document.querySelector('.minus');
+
+    addNumber.addEventListener('click', ()=>{
+         let unit = document.querySelector('#unit');
+         unit.innerHTML = Number(unit.innerHTML) + 1;
+    })
+
+    substractNumber.addEventListener('click', ()=>{
+         let unit = document.querySelector('#unit');
+         unit.innerHTML = `${unit.innerHTML - 1}`;
+    })
+    
     
 </script>
 </body>
