@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Farm;
+use App\Cart_item;
 use Illuminate\Http\Request;
 
 class FarmInvestment extends Controller
@@ -67,8 +68,8 @@ class FarmInvestment extends Controller
     public function index(Request $request){
     
         
-            $products = Farm::where('active','=',1)->get();
-
+            $products = Farm::where('active','=',1)->paginate(15)->withQueryString();
+            session()->flashInput($request->input());
             if($request->input('range')){
                 $products= $products->where('unit_price',"<",$request->input('range'));
             }
@@ -97,7 +98,9 @@ class FarmInvestment extends Controller
 
     //farmInvesment detail page
     public function show(Request $request,Farm $farm){
-
-        return view('product-show',['farm'=>$farm]);
+        $tempid = $request->cookie('carts');
+        $added_to_cart =  Cart_item::where('temp_id',$tempid)->where('farm_id',$farm->id)->first();
+        return view('product-show',['farm'=>$farm,"added_to_cart"=>boolval($added_to_cart)]);
     }
+
 }

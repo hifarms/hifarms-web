@@ -51,11 +51,11 @@ Route::get('/blog/{slug}/', 'BlogPostController@show');
 
 Route::get('/cart', 'CartitemController@getCart');
 
-Route::put('/cart/{id}', 'CartitemController@update');
+Route::put('/cart/{cartitem}', 'CartitemController@update');
 
 Route::delete('/cart/clear', 'CartitemController@clear');
 
-Route::delete('/cart/{id}', 'CartitemController@destroy');
+Route::delete('/cart/{cartitem}', 'CartitemController@destroy');
 
 Route::post('/addcart/{type}', 'CartitemController@addCart');
 

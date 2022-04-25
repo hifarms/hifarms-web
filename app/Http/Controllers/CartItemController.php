@@ -2,19 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Farm;
 use App\Cart_item;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class CartItemController extends Controller
 {   
-    public function cartNum(){
+    public function cartNum(Request $request){
         //get temp_id from cookie
         $tempid =  $request->cookie('carts');
-      
+        $number = 0;
         if($request->json()){
-            $data=count(Cart_item::where('temp_id',$tempid)->get());
-            return response()->json(['cartNumber'=>$data], 200);
+            $datas=Cart_item::where('temp_id',$tempid)->get();
+            foreach($datas as $data){
+                $number=$number + $data->unit;
+            }
+            return response()->json(['cartNumber'=>$number], 200);
         }
     }
     public function getCart(Request $request){
@@ -37,30 +43,31 @@ class CartItemController extends Controller
         $validator = Validator::make($request->all(), [
             'id' => 'required',
             'unit' => 'required',
-            'amount' => 'required',
+            
         ]);
 
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $tempid = $request->cookie('cart');
+        $tempid = $request->cookie('carts');
+        $cookie = cookie('carts',$tempid, 60*300);
         if(!$tempid){
 
             // generating ramdom Str
             $tempid= Str::random(20);
 
-            $cookie = cookie('carts',$tempid, 60*30);
+            $cookie = cookie('carts',$tempid, 60*300);
         }
 
         //check if cart item is already in cart
         $Item=Cart_item::where('product_id',$request->id)->where('temp_id',$tempid)->first();
-        if($Items){
+        if($Item){
             return redirect()->back()->with(['error'=>'Item is already in the cart']);
         }
 
         $Item=Cart_item::where('farm_id',$request->id)->where('temp_id',$tempid)->first();
-        if($Items){
+        if($Item){
             return redirect()->back()->with(['error'=>'Item is already in the cart']);
         }
 
@@ -80,13 +87,13 @@ class CartItemController extends Controller
         }
         
         // adding Farm investments to cart
-        else if($type=='invesment'){
-
+        else if($type=='investment'){
+               $farm= Farm::where('id',$request->id)->firstOrFail();
                 $cart = new Cart_item();
                 $cart->farm_id= $request->id;
                 $cart->unit = $request->unit;
-                $cart->price = $request->amount;
-                $cart->farm_return_type = $request->farm_return_type;
+                $cart->price = $request->unit * $farm->unit_price;
+                $cart->farm_return_type_id = 1;
                 Auth::check() && $cart->user_id = Auth::user()->id;
                 $cart->temp_id = $tempid;
                 $cart->save();
@@ -101,14 +108,15 @@ class CartItemController extends Controller
 
     public function update(Request $request,Cart_item $cartitem){
 
-        if($request->unit > $cartitem->product()->unit){
+        if($request->unit > $cartitem->farm->i_units){
 
-            return response()->json(['error'=>'Unit Not Available'],200);
+            return response()->json(['error'=>'Unit Not Available'],400);
         }
 
         $cartitem->unit = $request->unit;
         $cartitem->save();
-        return redirect()->back()->with(['success'=>'Cart-updated']);
+        return response()->json(['success'=>'Item updated'],200);
+
     }
 
     // clear cart 

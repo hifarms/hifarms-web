@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="_token" content="{{ csrf_token() }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{url('style.css')}}">
+    <script src="{{url('js/jquery.min.js')}}"></script>
     <title>Cart</title>
 </head>
 <body>
@@ -138,6 +140,58 @@
         <div class="copyright-hifarms">&copy; copyright 2022 hifarmsWeb</div>
  </footer>
   <!--Footer ends-->
-<script src="../public/js/main.js"></script>  
+<script src="../public/js/main.js"></script>
+<script>
+    $.ajaxSetup({
+  headers: {
+      'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+  }
+});
+    
+    
+    function getCartNum(){
+        jQuery.ajax({
+                    url: "http://127.0.0.1:8000/cartnum",
+                    method: "get",
+                    success: function (data) {
+                    alert(data.cartNumber)
+                    },
+                    error: function (e) {
+                        console.log(e);
+                    },
+                });
+    }
+    
+    function update(id,qauntity){
+        jQuery.ajax({
+                    url: `http://127.0.0.1:8000/cart/${id}`,
+                    method: "put",
+                    data:{
+                    unit:qauntity
+                    },
+                    success: function (data) {
+                    alert(data);
+                    },
+                    error: function (e) {
+                        console.log(e);
+                    },
+                });
+    }
+
+    function remove(id){
+        jQuery.ajax({
+                    url: `http://127.0.0.1:8000/cart/${id}`,
+                    method: "delete",
+                    success: function (data) {
+                    alert(data);
+                    },
+                    error: function (e) {
+                        console.log(e);
+                    },
+                });
+    }
+
+    remove(11);
+</script>
 </body>
 </html>

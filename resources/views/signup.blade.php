@@ -42,17 +42,19 @@
       <div class="form-container">
         <form action="{{route('signup')}}" method="post">
           @csrf
+          @error('username')
             <span class="username-msg">
-
+              {{$message}}
             </span>
+          @enderror
             <input type="text" placeholder="Username" name="username">
-             <span class="full-name-msg"></span>
+             @error('fullname')<span class="full-name-msg">{{$message}}</span>@enderror
             <input type="text" placeholder="Full name" name="fullname">
-            <span class="email-msg"></span>
+            @error('email')<span class="email-msg">{{$message}}</span>@enderror
             <input type="text" placeholder="Email" name="email">
-            <span class="password-msg"></span>
+            @error('password')<span class="password-msg">{{$message}}</span>@enderror
             <input type="password" placeholder="Password" name="password">
-            <input type="password" placeholder="Confirm Password" name="confirm_password">
+            <input type="password" placeholder="Confirm Password" name="password_confirmation">
             <div class="google-fb-btn">
            <img src="img/google.jpg" alt="google" class="google-logo">
            <img src="img/facebook.png" alt="facebook" class="facebook-logo">
