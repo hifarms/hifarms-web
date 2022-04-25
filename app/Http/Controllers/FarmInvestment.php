@@ -66,10 +66,12 @@ class FarmInvestment extends Controller
 
     // list of farms looking for investment
     public function index(Request $request){
-    
         
-            $products = Farm::where('active','=',1)->paginate(15)->withQueryString();
+            $sort = $request->input('sort')=="new"? "ASC" : "DESC";
+            $products= Farm::where('active','=',1)->orderBy('created_at',$sort)->paginate(15)->withQueryString();
+
             session()->flashInput($request->input());
+
             if($request->input('range')){
                 $products= $products->where('unit_price',"<",$request->input('range'));
             }

@@ -61,7 +61,7 @@
     <p class="filter-heading">FILTER BY PRICE</p>
     <p class="showing-result">Showing 1-42</p>
     <form>
-    <select class="sponsor-option">
+    <select name="sort" class="sponsor-option">
         <option value="all">Sort By</option>
         <option value="new">Newest</option>
         <option value="old">Oldest</option>
