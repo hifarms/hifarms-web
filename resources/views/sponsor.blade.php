@@ -54,7 +54,7 @@
     </div>
 </div>
 <div class="about-description">
-    Home <img src="img/Arrow 1.svg" width="12" style="margin-left: 4px;margin-right: 4px;"> Services  <img src="img/Arrow 1.svg" width="12" style="margin-left: 4px;margin-right: 4px;">  Sponsors
+    Home <img src={{url("img/Arrow%201.svg")}} width="12" style="margin-left: 4px;margin-right: 4px;"> Services  <img src={{url("img/Arrow%201.svg")}} width="12" style="margin-left: 4px;margin-right: 4px;">  Sponsors
 </div>
 <div class="sponsor-container">
 <div class="sponsors-flex">
@@ -71,30 +71,30 @@
     <div class="sponsor-option">
         <div class="sponsor-checkbox">
             <div class="filter">
-            
-                <input type="range" min="0" max="2000000" step="0.1" value="0" name='range' class="rate">
+            <form>
+                <input type="range" min="0" max="2000000" step="0.1" value="{{old('range')}}" name='range' class="rate">
                 <input type="submit" class="button-filter" value='FILTER'>
                 <p class="filter-price">Price: ₦ 0 - ₦ 100</p>
                  <h3 class="sponsor-categories">CATEGORIES</h3>
                  <div class="filter-line"></div>
             </div>
             <div class="flex">
-                <input type="checkbox" name="crop" class="check">
+                <input type="checkbox" name="crop" class="check" {{ (old('crop'))=='on' ?"checked":null}}>
                 <p class="sponsor-crop">Crop</p>
                 <P>0</P>
             </div>
             <div class="flex">
-                <input type="checkbox" name="cattle">
+                <input type="checkbox" name="cattle" {{ (old('cattle'))=='on' ?"checked":null}}>
                 <p class="sponsor-crop">Cattles</p>
                 <P>0</P>
             </div>
             <div class="flex">
-                <input type="checkbox" name="poultry">
+                <input type="checkbox" name="poultry" {{ (old('poultry'))=='on' ?"checked":null}}>
                 <p class="sponsor-crop">Poultry</p>
                 <P>0</P>
             </div>
             <div class="flex">
-                <input type="checkbox" name="livestock">
+                <input type="checkbox" name="livestock" {{ (old('livestock'))=='on' ?"checked":null}}>
                 <p class="sponsor-crop">Livestock</p>
                 <P>0</P>
             </div>
@@ -104,7 +104,7 @@
     <div class="sponsor-data">
         @foreach($products as $product)
         <div class="grid">
-            <p class="label">New</p>
+            <p class="label {{$product->label->color}}">{{$product->label->name}}</p>
             <img src={{url($product->image)}} alt="">
             <h1>{{$product->name}}</h1>
             <div class="sponsor-inner-flex">
@@ -123,44 +123,10 @@
                 <img src={{url("img/sponsor-cart.svg")}} alt="">
                 <p>74% sold</p>
             </div>
-<<<<<<< HEAD
-            <h3>$10,000</h3>
-            <div class="search-div">
-                <img src="img/search.png" alt="search-icon">
-            </div>
-        </div>
-
-        <div class="grid">
-            <p class="label">New</p>
-            <img src="img/unsplash_484GsKrL5r8.png" alt="">
-            <h1>Potatoes Farm</h1>
-            <div class="sponsor-inner-flex">
-                <img src="img/location.svg" alt="">
-                <p>Birnin Kebbi, Central Market</p>
-            </div>
-            <div class="sponsor-inner-flex">
-                <img src="img/graph.svg" alt="">
-                <p>10%</p>
-            </div>
-            <div class="sponsor-inner-flex">
-                <img src="img/calendar.svg" alt="">
-                <p>6 months</p>
-            </div>
-            <div class="sponsor-inner-flex">
-                <img src="img/sponsor-cart.svg" alt="">
-                <p>74% sold</p>
-            </div>
-            <h3>$10,000</h3>
-            <div class="search-div">
-                <img src="img/search.png" alt="search-icon">
-            </div>
-            <h3>${{$product->unit_price}}</h3>
-=======
             <h3>${{$product->unit_price}}</h3>
             <div class="search-div">
-                <img src="img/search.png" alt="search-icon">
+                <img src={{url("img/search.png")}} alt="search-icon">
             </div>
->>>>>>> 705c7018b614492e75fd8d175384f7a6b3ffb693
         </div>
         @endforeach
 

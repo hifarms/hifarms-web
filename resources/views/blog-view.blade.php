@@ -55,7 +55,7 @@
        </div>
    </div>
    <div class="about-description">
-       Home <img src="img/Arrow 1.svg" width="12"> Blog
+       Home <img src={{url("img/Arrow%201.svg")}} width="12"> Blog
    </div>
 
    <div class="blog-page-container">

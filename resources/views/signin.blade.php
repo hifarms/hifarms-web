@@ -39,8 +39,8 @@
       <div class="sign-up-large">SIGN IN</div>
       <img src="img/Flower.svg" alt="flower" class="flower">
       <p>Don't have an account yet? <span><a href="index.html">Sign up</a></span> </p>
+      {{Session('warning_message')}}
       <div class="form-container sign-in-container">
-
         <form class="sign-in" action="{{route('signin')}}" method="post">
             @csrf
             <input type="text" placeholder="Email" name="email">

@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="_token" content="{{ csrf_token() }}" />
     <link rel="stylesheet" href="{{url('style.css')}}">
+    <script src="{{url('js/jquery.min.js')}}"></script>
     <title>Sponsor Product Page</title>
 </head>
 <body>
@@ -61,7 +63,7 @@
     <div class="sponsor-service-grid">
         <img src={{url($farm->image)}} alt="product-image">
         <div class="sponsor-service-content">
-            <h1>{{$farm->name}}</h1>
+            <h1 class="farmid" id="{{$farm->id}}">{{$farm->name}}</h1>
             <h3>₦{{$farm->unit_price}}</h3>
             <h4>Fish Farming</h4>
             <p style="color: #404a3d; padding-bottom: 10px; border-bottom: 1.55px solid #c4c4c4;">{{$farm->description}}<br> <br>
@@ -84,7 +86,8 @@
                     <button class="add">+</button> <br>
                     <button class="minus">-</button>
                 </div>
-                <p>1</p>
+                <p class="q" id="unit">1</p>
+                {{$added_to_cart}}
                 <button class="add-to-cart-button">ADD TO CART</button>
             </div>
         </div>
@@ -149,6 +152,47 @@
         <div class="copyright-hifarms">&copy; copyright 2022 hifarmsWeb</div>
  </footer>
   <!--Footer ends-->
-<script src="/hifarms-web/public/js/main.js"></script>  
+<script src="/js/main.js"></script>
+<script>
+    $.ajaxSetup({
+  headers: {
+      'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+  }
+});
+
+
+    $('.add-to-cart-button').on('click',()=>{
+        // add your logic before ajax
+        jQuery.ajax({
+                    url: "http://127.0.0.1:8000/addcart/investment",
+                    method: "post",
+                    data: {
+                        id:$('.farmid')[0].id,
+                        unit:$('#unit').text()
+                    },
+                    success: function (data) {
+                       alert(data)
+                    },
+                    error: function (e) {
+                        console.log(e);
+                    },
+                });
+    })
+
+    function getCartNum(){
+        jQuery.ajax({
+                    url: "http://127.0.0.1:8000/cartnum",
+                    method: "get",
+                    success: function (data) {
+                    alert(data.cartNumber)
+                    },
+                    error: function (e) {
+                        console.log(e);
+                    },
+                });
+    }
+    getCartNum()
+    
+</script>
 </body>
 </html>

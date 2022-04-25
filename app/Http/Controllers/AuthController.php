@@ -44,8 +44,7 @@ class AuthController extends Controller
             'fullname' => 'required',
             'username' => 'required|unique:users',
             'email' => 'required|unique:users|email',
-            'password' => 'required|min:4',
-            'confirm_password' => 'required|same:password',
+            'password' => 'required|confirmed|min:4',
         ]);
 
         $link = Str::random(30);
@@ -65,7 +64,7 @@ class AuthController extends Controller
         $wallet = new Wallet();
         $wallet->user_id = $user->id;
         $wallet->ledger_balance = 0;
-        $wallet->current_balance = 0;
+        $wallet->balance = 0;
         $wallet->save();
 
         Auth::login($user);
