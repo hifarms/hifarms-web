@@ -63,12 +63,12 @@ class CartItemController extends Controller
         //check if cart item is already in cart
         $Item=Cart_item::where('product_id',$request->id)->where('temp_id',$tempid)->first();
         if($Item){
-            return redirect()->back()->with(['error'=>'Item is already in the cart']);
+            return response()->json(['error'=>'Item is already in the cart'],401);
         }
 
         $Item=Cart_item::where('farm_id',$request->id)->where('temp_id',$tempid)->first();
         if($Item){
-            return redirect()->back()->with(['error'=>'Item is already in the cart']);
+            return response()->json(['error'=>'Item is already in the cart'],401);
         }
 
         // add market place products to cart 
