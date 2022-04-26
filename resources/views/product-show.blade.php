@@ -42,7 +42,7 @@
             <div class="cart-whatsapp">
                   <img src="img/Group 51.png" alt="cart" class="cart">
                    <img src="img/Group 47@2x.png" alt="call" class="call">
-                   <span class="cart-counter">0</span>
+                   <span class="cart-counter"></span>
             </div>
         </div>
     </header>
@@ -87,7 +87,6 @@
                     <button class="minus">-</button>
                 </div>
                 <p class="q" id="unit">1</p>
-                {{$added_to_cart}}
                 <button class="add-to-cart-button">ADD TO CART</button>
             </div>
         </div>
@@ -161,7 +160,7 @@
 });
 
 
-    $('.add-to-cart-button').on('click',()=>{
+$('.add-to-cart-button').on('click',()=>{
         // add your logic before ajax
         jQuery.ajax({
                     url: "http://127.0.0.1:8000/addcart/investment",
@@ -171,10 +170,15 @@
                         unit:$('#unit').text()
                     },
                     success: function (data) {
-                       alert(data)
+                       console.log(data.responseJSON);
+                       const addToCart = document.querySelector('.add-to-cart-button');
+                       addToCart.innerHTML = 'Added'
+                       addToCart.style.backgroundColor = '#FEE565';
+                       addToCart.style.fontSize = '16px';
+                       getNum();
                     },
                     error: function (e) {
-                        console.log(e);
+                       alert(e.responseJSON.error);
                     },
                 });
     })
@@ -184,7 +188,8 @@
                     url: "http://127.0.0.1:8000/cartnum",
                     method: "get",
                     success: function (data) {
-                    alert(data.cartNumber)
+                    const cartCounter = document.querySelector('.cart-counter');
+                    cartCounter.innerHTML = data.cartNumber;
                     },
                     error: function (e) {
                         console.log(e);
@@ -193,7 +198,6 @@
     }
     getCartNum()
      
-    let addNumberCounter = 2;
     const addNumber = document.querySelector('.add');
     const substractNumber = document.querySelector('.minus');
 
@@ -205,9 +209,13 @@
     substractNumber.addEventListener('click', ()=>{
          let unit = document.querySelector('#unit');
          unit.innerHTML = `${unit.innerHTML - 1}`;
+         
+         if(unit.innerHTML <= 0){
+            alert("You can't add '0' unit");
+             unit.innerHTML = 1;
+         }
     })
-    
-    
+        
 </script>
 </body>
 </html>

@@ -113,7 +113,7 @@ class CartItemController extends Controller
             return response()->json(['error'=>'Unit Not Available'],400);
         }
 
-        $cartitem->unit = $request->unit;
+        $cartitem->unit = intval($request->unit);
         $cartitem->save();
         return response()->json(['success'=>'Item updated'],200);
 

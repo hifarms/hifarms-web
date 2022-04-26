@@ -306,7 +306,9 @@ header{
 }
 
 /*Registration ends*/
-
+.hide-id{
+  display:none;
+}
 /*sign in form*/
 .sign-in-container{
   align-items: flex-start;
@@ -4148,7 +4150,6 @@ width: 338px;
 }
 /*cart page ends*/
 /*sponsors page starts */
-
 /*sponsort page end*/
 
 @media (max-width: 700px){
@@ -4156,7 +4157,7 @@ width: 338px;
       display: none;
   }
   .sign-up-large{
-    
+
   }
 }
 

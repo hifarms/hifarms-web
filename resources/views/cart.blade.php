@@ -62,6 +62,7 @@
       @foreach($farms as $cart)
       <div class="cart-content">
           <div class="image-name">
+              <p class="hide-id">{{$cart->id}}</p>
               <img src={{url($cart->farm->image)}} alt="image">
               <p>{{$cart->farm->name}}</p>
           </div>
@@ -70,7 +71,7 @@
                 <button class="add" style="color:#6E7A89;">+</button> <br>
                 <button class="minus" style="color:#6E7A89;">-</button>
             </div>
-            <p>{{$cart->unit}}</p>
+            <p id="unit">{{$cart->unit}}</p>
         </div>
         <div class="rate">
             <p>{{$cart->farm->unit_price}}</p>
@@ -191,6 +192,33 @@
                 });
     }
 
+    const addNumber = document.querySelector('.add');
+    const substractNumber = document.querySelector('.minus');
+
+    addNumber.addEventListener('click', ()=>{
+         let unit = document.querySelector('#unit');
+         unit.innerHTML = Number(unit.innerHTML) + 1;
+         let id = document.querySelector('.hide-id').innerHTML;
+         id = Number(id)
+         unit = Number(unit)
+        update(id,unit)
+    })
+
+    substractNumber.addEventListener('click', ()=>{
+         let unit = document.querySelector('#unit');
+         unit.innerHTML = `${unit.innerHTML - 1}`;
+         
+         if(unit.innerHTML <= 0){
+            alert("You can't add '0' unit");
+             unit.innerHTML = 1;
+         }
+
+         let id = document.querySelector('.hide-id').innerHTML;
+        id = Number(id)
+        unit = Number(unit)
+        console.log(typeof(id));
+        update(id,unit)
+    })
     remove(11);
 </script>
 </body>
