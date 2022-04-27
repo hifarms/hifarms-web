@@ -176,6 +176,7 @@ $('.add-to-cart-button').on('click',()=>{
                        addToCart.style.backgroundColor = '#FEE565';
                        addToCart.style.fontSize = '16px';
                        getNum();
+                       getCartNum()
                     },
                     error: function (e) {
                        alert(e.responseJSON.error);

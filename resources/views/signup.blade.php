@@ -36,7 +36,9 @@
 
   <!--Registration form starts here-->
   <div class="container">
-      <div class="sign-up-large">SIGN UP</div>
+    <div class="sign-in-cont">
+    <div class="sign-up-large">SIGN UP</div>
+    </div>
       <img src="img/Flower.svg" alt="flower" class="flower">
       <p>Already have an account? <span><a href="signin.html">Sign in</a></span> </p>
       <div class="form-container">
@@ -61,7 +63,7 @@
            <button>Submit</button>
     </div>
         </form>
-        <img src="img/logo.png" alt="showcase-image">
+        <img src="img/logo.png" alt="showcase-image" class="signup-img">
       </div>
   </div>
   <!--Registration form end-->
@@ -101,7 +103,8 @@
                <div class="form-subscribe">
                  <input type="email" placeholder="Enter your email">
                  <button>Subscribe</button>
-               </div>
+               </div> 
+               <div class="svg-flex">
                <svg width="103" height="42" viewBox="0 0 103 42" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <rect width="103" height="42" rx="5" fill="url(#pattern0)"/>
                 <defs>
@@ -113,6 +116,7 @@
                 </svg>
             
                 <img src="img/get on google play.png" alt="play-store" style="margin-left: 14px;" class="play-store" width="109">
+               </div>
          </div>
         </div>
         <div class="copyright-hifarms">&copy; copyright 2022 hifarmsWeb</div>

@@ -9,7 +9,7 @@
 </head>
 <body>
     <!--Header starts here-->
-  <header>
+  <header class="sign-in">
       <div class="header-container">
           <img src="img/logo.png" alt="logo" class="logo4x">
           <div class="services">
@@ -36,13 +36,16 @@
 
   <!--Registration form starts here-->
   <div class="container">
-      <div class="sign-up-large">SIGN IN</div>
+      <div class="sign-in-cont">
+         <div class="sign-up-large">SIGN IN</div>
+      </div>
       <img src="img/Flower.svg" alt="flower" class="flower">
       <p>Don't have an account yet? <span><a href="index.html">Sign up</a></span> </p>
       {{Session('warning_message')}}
       <div class="form-container sign-in-container">
         <form class="sign-in" action="{{route('signin')}}" method="post">
             @csrf
+            <span class="span-login" style="padding-bottom: 15px"></span>
             <input type="text" placeholder="Email" name="email">
             <input type="password" placeholder="Password" name="password">
 
@@ -94,6 +97,7 @@
                  <input type="email" placeholder="Enter your email">
                  <button>Subscribe</button>
                </div>
+               <div class="svg-flex">
                <svg width="103" height="42" viewBox="0 0 103 42" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <rect width="103" height="42" rx="5" fill="url(#pattern0)"/>
                 <defs>
@@ -105,6 +109,7 @@
                 </svg>
             
                 <img src="img/get on google play.png" alt="play-store" style="margin-left: 14px;" class="play-store" width="109">
+               </div>
          </div>
         </div>
         <div class="copyright-hifarms">&copy; copyright 2022 hifarmsWeb</div>

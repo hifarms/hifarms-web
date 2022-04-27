@@ -173,7 +173,7 @@
        </div>
    </div>
    <div class="egg-container">
-       <img src="img/eggs 1.png" alt="eggs" width="100%">
+       <img src="img/eggs 1.png" alt="eggs" width="100%" class="eggs">
    </div>
   <!--Services page end-->
 
@@ -213,6 +213,7 @@
                  <input type="email" placeholder="Enter your email">
                  <button>Subscribe</button>
                </div>
+               <div class="svg-flex">
                <svg width="103" height="42" viewBox="0 0 103 42" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <rect width="103" height="42" rx="5" fill="url(#pattern0)"/>
                 <defs>
@@ -224,6 +225,7 @@
                 </svg>
             
                 <img src="img/get on google play.png" alt="play-store" style="margin-left: 14px;" class="play-store" width="109">
+               </div>
          </div>
         </div>
         <div class="copyright-hifarms">&copy; copyright 2022 hifarmsWeb</div>

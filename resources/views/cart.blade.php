@@ -41,7 +41,7 @@
             <div class="cart-whatsapp">
                   <img src="img/Group 51.png" alt="cart" class="cart">
                    <img src="img/Group 47@2x.png" alt="call" class="call">
-                   <span class="cart-counter">0</span>
+                   <span class="cart-counter"></span>
             </div>
         </div>
     </header>
@@ -179,12 +179,28 @@
                 });
     }
 
-    function remove(id){
+    function getCartNum(){
+        jQuery.ajax({
+                    url: "http://127.0.0.1:8000/cartnum",
+                    method: "get",
+                    success: function (data) {
+                    const cartCounter = document.querySelector('.cart-counter');
+                    cartCounter.innerHTML = data.cartNumber;
+                    },
+                    error: function (e) {
+                        console.log(e);
+                    },
+                });
+    }
+    getCartNum()
+
+    function remove(id, cart){
         jQuery.ajax({
                     url: `http://127.0.0.1:8000/cart/${id}`,
                     method: "delete",
                     success: function (data) {
-                    alert(data);
+                    cart.remove();
+                    getCartNum()
                     },
                     error: function (e) {
                         console.log(e);
@@ -200,8 +216,8 @@
          unit.innerHTML = Number(unit.innerHTML) + 1;
          let id = document.querySelector('.hide-id').innerHTML;
          id = Number(id)
-         unit = Number(unit)
-        update(id,unit)
+         unit = unit.innerHTML;
+        update(id,unit);
     })
 
     substractNumber.addEventListener('click', ()=>{
@@ -215,11 +231,21 @@
 
          let id = document.querySelector('.hide-id').innerHTML;
         id = Number(id)
-        unit = Number(unit)
+        unit = unit.innerHTML
         console.log(typeof(id));
         update(id,unit)
     })
-    remove(11);
+    
+    const cartContent = document.querySelectorAll ('.cart-content');
+    cartContent.forEach((cart)=>{
+        let removeCart = cart.querySelector('.remove');
+        removeCart.addEventListener('click', ()=>{
+            cart.remove();
+            let id = cart.querySelector('.hide-id').innerHTML;
+            id = Number(id)
+            remove(id, cart)
+        })
+    })
 </script>
 </body>
 </html>
