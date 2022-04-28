@@ -108,12 +108,22 @@ class CartItemController extends Controller
 
     public function update(Request $request,Cart_item $cartitem){
 
+        $validator = Validator::make($request->all(), [
+            'unit' => 'required',
+            
+        ]);
+
+        if($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+
         if($request->unit > $cartitem->farm->i_units){
 
             return response()->json(['error'=>'Unit Not Available'],400);
         }
 
-        $cartitem->unit = intval($request->unit);
+        $cartitem->unit = $request->unit;
         $cartitem->save();
         return response()->json(['success'=>'Item updated'],200);
 

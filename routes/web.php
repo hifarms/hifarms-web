@@ -38,7 +38,7 @@ Route::get('/gallery', function () {
 });
 
 Route::get('/about', function () {
-    return view('gallery');
+    return view('about');
 });
 
 Route::get('/services/sponsor', 'Farminvestment@index');
