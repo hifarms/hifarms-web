@@ -7,6 +7,10 @@
     font-family: 'Quicksand', Arial, Helvetica, sans-serif;
 }
 
+.hamburger-modal{
+  display: none;
+}
+
 /*Drop down menu CSS*/
 .about-children{
   position: absolute;
@@ -4584,7 +4588,7 @@ width: 338px;
   }
   .hamburger-modal{
      position: absolute;
-    top: 7%;
+    top: -100%;
     z-index: 2;
      background: rgba(160, 212, 104, 0.65);
      display: flex;
@@ -4593,7 +4597,6 @@ width: 338px;
      padding-top: 10px;
      padding-bottom: 8px;
      width: 100%;
-     display: none;
   }
   .hamburger-modal a{
     padding: 17px;
