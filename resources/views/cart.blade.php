@@ -84,12 +84,28 @@
                 });
     }
 
-    function remove(id){
+    function getCartNum(){
+        jQuery.ajax({
+                    url: "http://127.0.0.1:8000/cartnum",
+                    method: "get",
+                    success: function (data) {
+                    const cartCounter = document.querySelector('.cart-counter');
+                    cartCounter.innerHTML = data.cartNumber;
+                    },
+                    error: function (e) {
+                        console.log(e);
+                    },
+                });
+    }
+    getCartNum()
+
+    function remove(id, cart){
         jQuery.ajax({
                     url: `http://127.0.0.1:8000/cart/${id}`,
                     method: "delete",
                     success: function (data) {
-                    alert(data);
+                    cart.remove();
+                    getCartNum()
                     },
                     error: function (e) {
                         console.log(e);
@@ -104,10 +120,9 @@
          let unit = document.querySelector('#unit');
          unit.innerHTML = Number(unit.innerHTML) + 1;
          let id = document.querySelector('.hide-id').innerHTML;
-         id1 = Number(id)
-         unit2 = Number(unit)
-
-        update(id1,unit2)
+         id = Number(id)
+         unit = unit.innerHTML;
+        update(id,unit);
     })
 
     substractNumber.addEventListener('click', ()=>{
@@ -120,13 +135,22 @@
          }
 
          let id = document.querySelector('.hide-id').innerHTML;
-        id1 = Number(id)
-        unit = Number(unit)
-        console.log(typeof(unit));
-        alert(unit)
+        id = Number(id)
+        unit = unit.innerHTML
+        console.log(typeof(id));
         update(id,unit)
     })
-    remove(11);
+    
+    const cartContent = document.querySelectorAll ('.cart-content');
+    cartContent.forEach((cart)=>{
+        let removeCart = cart.querySelector('.remove');
+        removeCart.addEventListener('click', ()=>{
+            cart.remove();
+            let id = cart.querySelector('.hide-id').innerHTML;
+            id = Number(id)
+            remove(id, cart)
+        })
+    })
 </script>
 @endsection('js')
 </body>

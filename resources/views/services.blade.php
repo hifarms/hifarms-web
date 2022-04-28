@@ -126,7 +126,7 @@
        </div>
    </div>
    <div class="egg-container">
-       <img src="img/eggs 1.png" alt="eggs" width="100%">
+       <img src="img/eggs 1.png" alt="eggs" width="100%" class="eggs">
    </div>
   <!--Services page end-->
 

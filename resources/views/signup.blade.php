@@ -3,7 +3,9 @@
 @section('content')
   <!--Registration form starts here-->
   <div class="container">
-      <div class="sign-up-large">SIGN UP</div>
+    <div class="sign-in-cont">
+    <div class="sign-up-large">SIGN UP</div>
+    </div>
       <img src="img/Flower.svg" alt="flower" class="flower">
       <p>Already have an account? <span><a href="signin.html">Sign in</a></span> </p>
       <div class="form-container">
@@ -28,7 +30,7 @@
            <button>Submit</button>
     </div>
         </form>
-        <img src="img/logo.png" alt="showcase-image">
+        <img src="img/logo.png" alt="showcase-image" class="signup-img">
       </div>
   </div>
   <!--Registration form end-->

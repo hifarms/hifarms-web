@@ -3,13 +3,16 @@
 @section('content')
   <!--Registration form starts here-->
   <div class="container">
-      <div class="sign-up-large">SIGN IN</div>
+      <div class="sign-in-cont">
+         <div class="sign-up-large">SIGN IN</div>
+      </div>
       <img src="img/Flower.svg" alt="flower" class="flower">
       <p>Don't have an account yet? <span><a href="index.html">Sign up</a></span> </p>
       {{Session('warning_message')}}
       <div class="form-container sign-in-container">
         <form class="sign-in" action="{{route('signin')}}" method="post">
             @csrf
+            <span class="span-login" style="padding-bottom: 15px"></span>
             <input type="text" placeholder="Email" name="email">
             <input type="password" placeholder="Password" name="password">
 

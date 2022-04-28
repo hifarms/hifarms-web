@@ -16,9 +16,11 @@
         <div class="image-container">
             <img src="img/Rectangle 11.png" alt="image">
             <img src="img/Rectangle 13.png" alt="image">
-            <img src="img/Rectangle 15.png" alt="image">
+            <img src="img/Rectangle 15.png" alt="image" class="grid3">
         </div>
     </div>
+    <img src="img/Right.svg" alt="right-icon" id="right-icon">
+     <img src="img/Left.svg" alt="left-icon" id="left-icon">
     <div class="homepage-services">
         <img src="img/Flower.svg" alt="flower" class="flower-services" width="300">
         <div class="images-grid">
@@ -32,8 +34,8 @@
                 <h1>Diary Products</h1>
                 <p>Lorem ipsum dolor sit amet adipisicing, sedioeius mod tempor incididunt.</p>
             </div>
-            <div class="grid">
-                <img src="img/Group (2).svg" alt="vector">
+            <div class="grid grid-3">
+                <img src="img/Group (2).svg" alt="vector" class="vector-3">
                 <h1>Agricutural Products</h1>
                 <p>Lorem ipsum dolor sit amet adipisicing, sedioeius mod tempor incididunt.</p>
             </div>
@@ -59,7 +61,7 @@
                         </div>
                 </div>
                 <div class="tractor-image">
-                    <img src="img/tractor.svg" alt="">
+                    <img src="img/tractor.svg" alt="" class="tractor2">
                     <div class="pararaph">
                         <h3>128</h3>
                         <p>Units of technic</p>

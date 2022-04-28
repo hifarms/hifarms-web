@@ -25,6 +25,13 @@ faq1.addEventListener('click', (e)=>{
             line1.style.marginBottom = 'unset';
             open = true;
         }
+
+        setInterval(()=>{
+           if(screen.width <= 700){
+            let line1 = document.querySelector('.faq-8-line');
+            line1.style.marginBottom = 'unset';
+           }
+        }, 500)
 });
 
 
@@ -54,6 +61,13 @@ faq2.addEventListener('click', (e)=>{
             line1.style.marginBottom = 'unset';
             open2 = true;
         }
+
+        setInterval(()=>{
+            if(screen.width <= 700){
+             let line1 = document.querySelector('.faq-9-line');
+             line1.style.marginBottom = 'unset';
+            }
+         }, 500)
     });
 
 //faq3 
@@ -82,6 +96,13 @@ faq3.addEventListener('click', (e)=>{
             line1.style.marginBottom = 'unset';
             open3 = true;
         }
+
+        setInterval(()=>{
+            if(screen.width <= 700){
+             let line1 = document.querySelector('.faq-10-line');
+             line1.style.marginBottom = 'unset';
+            }
+         }, 500)
     });
 
 //faq4
@@ -111,6 +132,13 @@ faq4.addEventListener('click', (e)=>{
             line1.style.marginBottom = 'unset';
             open4 = true;
         }
+
+        setInterval(()=>{
+            if(screen.width <= 700){
+             let line1 = document.querySelector('.faq-11-line');
+             line1.style.marginBottom = 'unset';
+            }
+         }, 500)
     }); 
 
 //faq 5
@@ -139,6 +167,13 @@ faq5.addEventListener('click', (e)=>{
             line1.style.marginBottom = 'unset';
             open5 = true;
         }
+
+        setInterval(()=>{
+            if(screen.width <= 700){
+             let line1 = document.querySelector('.faq-12-line');
+             line1.style.marginBottom = 'unset';
+            }
+         }, 500)
     });
 
 //faq 6
@@ -167,6 +202,13 @@ faq6.addEventListener('click', (e)=>{
             line1.style.marginBottom = 'unset';
             open6 = true;
         }
+
+        setInterval(()=>{
+            if(screen.width <= 700){
+             let line1 = document.querySelector('.faq-13-line');
+             line1.style.marginBottom = 'unset';
+            }
+         }, 500)
     });
 
 //faq 7
@@ -195,6 +237,13 @@ faq7.addEventListener('click', (e)=>{
             line1.style.marginBottom = 'unset';
             open7 = true;
         }
+
+        setInterval(()=>{
+            if(screen.width <= 700){
+             let line1 = document.querySelector('.faq-14-line');
+             line1.style.marginBottom = 'unset';
+            }
+         }, 500)
     });
 
 
@@ -224,6 +273,13 @@ faq8.addEventListener('click', (e)=>{
             line1.style.marginBottom = 'unset';
             open8 = true;
         }
+
+        setInterval(()=>{
+            if(screen.width <= 700){
+             let line1 = document.querySelector('.faq-1-line');
+             line1.style.marginBottom = 'unset';
+            }
+         }, 500)
 });
 
 //Faq 9
@@ -252,6 +308,13 @@ faq9.addEventListener('click', (e)=>{
             line1.style.marginBottom = 'unset';
             open9 = true;
         }
+
+        setInterval(()=>{
+            if(screen.width <= 700){
+             let line1 = document.querySelector('.faq-2-line');
+             line1.style.marginBottom = 'unset';
+            }
+         }, 500)
     });
 
 //Faq10
@@ -280,6 +343,13 @@ faq10.addEventListener('click', (e)=>{
             line1.style.marginBottom = 'unset';
             open10 = true;
         }
+
+        setInterval(()=>{
+            if(screen.width <= 700){
+             let line1 = document.querySelector('.faq-3-line');
+             line1.style.marginBottom = 'unset';
+            }
+         }, 500)
     });
 
 //Faq11
@@ -308,6 +378,13 @@ faq11.addEventListener('click', (e)=>{
             line1.style.marginBottom = 'unset';
             open11 = true;
         }
+
+        setInterval(()=>{
+            if(screen.width <= 700){
+             let line1 = document.querySelector('.faq-4-line');
+             line1.style.marginBottom = 'unset';
+            }
+         }, 500)
     });
 
 //Faq12
@@ -336,6 +413,13 @@ faq12.addEventListener('click', (e)=>{
             line1.style.marginBottom = 'unset';
             open12 = true;
         }
+
+        setInterval(()=>{
+            if(screen.width <= 700){
+             let line1 = document.querySelector('.faq-5-line');
+             line1.style.marginBottom = 'unset';
+            }
+         }, 500)
     });
 
 
@@ -366,6 +450,13 @@ faq13.addEventListener('click', (e)=>{
             line1.style.marginBottom = 'unset';
             open13 = true;
         }
+
+        setInterval(()=>{
+            if(screen.width <= 700){
+             let line1 = document.querySelector('.faq-6-line');
+             line1.style.marginBottom = 'unset';
+            }
+         }, 500)
     });
 
 
@@ -395,4 +486,11 @@ faq14.addEventListener('click', (e)=>{
             line1.style.marginBottom = 'unset';
             open14 = true;
         }
+
+        setInterval(()=>{
+            if(screen.width <= 700){
+             let line1 = document.querySelector('.faq-7-line');
+             line1.style.marginBottom = 'unset';
+            }
+         }, 500)
     });
