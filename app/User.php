@@ -58,12 +58,12 @@ class User extends Authenticatable
 
     public function investments(){
 
-        return $this->hasManyThrough('App\Order_item', 'App\Order', 'user_id', 'id','id','user_id');
+        return $this->hasManyThrough('App\Order_item', 'App\Order', 'user_id', 'order_id','id','id');
     }
 
     public function wallet(){
 
-        return $this->hasOne(Wallet::class);
+        return $this->belongsTo(Wallet::class);
     }
     
     public function isAdmin(){

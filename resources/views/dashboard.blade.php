@@ -56,8 +56,8 @@
                 <div class="profile-inclusive">
                     <img src="img/Profile.png" alt="profile" class="profile-header">
                     <div class="my-profile-log-out">
-                        <button><a href="profile.html">My Profile</a></button>
-                        <button>Log Out</button>
+                        <button><a href="profile">My Profile</a></button>
+                        <button><a href="logout">Log Out</a></button>
                     </div>
                 </div>
             </div>
@@ -68,12 +68,12 @@
             <img src="img/side-bar.svg" alt="side-bar">
         </div>
         <div class="second-side-bar">
-            <a href="dashboard.html"> <img src="img/Dashboard.svg" alt="dashboard" class="current"></a>
-            <a href="marketplace.html"><img src="img/marketplace.svg" alt="marketplace"></a>
-            <a href="livestock.html"><img src="img/livestock-dashboard.svg" alt="livestock"></a>
-            <a href="invest.html"><img src="img/invest.svg" alt="marketplace"></a>
-            <a href="invest-returns.html"><img src="img/history.svg" alt="history"></a>
-            <a href="wallet.html"><img src="img/wallet.svg" alt="wallet"></a>
+            <a href="dashboard"> <img src="img/Dashboard.svg" alt="dashboard" class="current"></a>
+            <a href="marketplace"><img src="img/marketplace.svg" alt="marketplace"></a>
+            <a href="user-farms"><img src="img/livestock-dashboard.svg" alt="livestock"></a>
+            <a href="farm-invest"><img src="img/invest.svg" alt="marketplace"></a>
+            <a href="investment"><img src="img/history.svg" alt="history"></a>
+            <a href="wallet"><img src="img/wallet.svg" alt="wallet"></a>
         </div>
         <div class="third-side-bar">
             <img src="img/log out.svg" alt="log-out">
@@ -91,7 +91,7 @@
                     <p>Hi Farms Products</p>
                   </div>
                 <div class="views-numbers">
-                    <p>48</p>
+                    <p>{{$product}}</p>
                     <img src="img/eye-icon.svg" alt="eye-icon" width="23">
                 </div>
             </div>
@@ -108,7 +108,7 @@
                 </div>
                 <div class="referral">
                     <h1>Referral link</h1>
-                    <p>https://hifarms.com.ng/home/signup?ref=Hafiz</p>
+                    <p>https://hifarms.com.ng/home/signup?ref={{auth()->user()->username}}</p>
                     <div class="ref-img">
                         <img src="img/copy-paste.svg" alt="copy-icon">
                     </div>
@@ -136,7 +136,7 @@
                     <p>Active Projects</p>
                   </div>
                 <div class="views-numbers">
-                    <p>0</p>
+                    <p>{{$active}}</p>
                     <img src="img/add-my-farm.svg" alt="eye-icon" width="23">
                 </div>
             </div>

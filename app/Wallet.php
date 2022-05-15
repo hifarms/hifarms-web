@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\User;
 use App\WalletTransaction;
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,4 +13,8 @@ class Wallet extends Model
         return $this->hasMany(WalletTransaction::class);
     }
     
+    public function user(){
+        return $this->belongsTo(User::class);
+
+    }
 }

@@ -298,3 +298,4 @@ allBlogs.addEventListener('click', ()=>{
     otherContainer.style.display = 'block';
     agriscienceContainer.style.display = 'block'
 })
+

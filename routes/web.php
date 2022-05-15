@@ -61,6 +61,25 @@ Route::post('/addcart/{type}', 'CartitemController@addCart');
 
 Route::get('/cartnum', 'CartitemController@cartNum');
 
+Route::get('/check-in-cart/{id}', 'CartitemController@checkInCart');
+
+Route::get('/checkout', 'OrderController@checkout')->name('checkout');
+
+Route::get('/profile', 'UserController@profile')->name('profile');
+
+Route::get('/dashboard', 'UserController@dashboard')->name('dashboard');
+
+Route::get('/user-farms', 'UserController@farmIndex')->name('dashboard');
+
+Route::get('/wallet', 'UserController@wallet')->name('dashboard');
+
+Route::get('/investment', 'UserController@investment')->name('dashboard');
+
+Route::get('/farm-invest', 'UserController@farmInvest')->name('dashboard');
+
+
+Route::get('/marketplace', 'ProductController@marketplace')->name('dashboard');
+
 Route::post('/forget-password', 'ResetPasswordController@submitForgetPasswordForm')->name('forget.password.post');
 
 Route::post('/reset-password', 'ResetPasswordController@submitResetPasswordForm')->name('reset.password.post');

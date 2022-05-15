@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -12,17 +13,34 @@ class ProductController extends Controller
         $this->middleware('auth')->except(['index','show']);
     }
 
-    public function index(){
+    public function marketplace(Request $request){
+        $sort = $request->input('sort')=="new"? "ASC" : "DESC";
 
-        $sort=$request->input('category')==null? "all" : $request->input('category');
-        if($sort=='all'){
-            $result = Product::where('activated','=',1)->paginate(20)->withQueryString();
-        }
-        else{
-            $result = Product::where('activated','=',1)->where('category_id',$rquest->input('category'))->paginate(20)->withQueryString();
-        }
+        $products= Product::where('active','=',1)->orderBy('created_at',$sort)->paginate(15)->withQueryString();
 
-        return view('sponsor',['products'=>$result]);
+        session()->flashInput($request->input());
+
+
+        $cat=[];
+        if($request->input('livestock')){
+            array_push($cat,1);
+        }
+        if($request->input('cattle')){
+            array_push($cat,2);
+        }
+        if($request->input('crop')){
+            array_push($cat,3);
+        }
+        if($request->input('poultry')){
+            array_push($cat,4);
+        }
+        // $category= explode(',',$request->input('category'))
+
+        $cat && $products=$products->whereIn('category_id',$cat);
+        //$price = explode('-',$request->input('price)//
+        // $products = Farm::where('active','=',1)->where('category_id',$rquest->input('category'))->get();        }
+
+    return view('marketplace',['products'=>$products]);
 
 
    }

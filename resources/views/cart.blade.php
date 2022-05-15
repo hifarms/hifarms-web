@@ -37,7 +37,7 @@
       </div>
       @endforeach
       <div class="checkout">
-        <p>Total: ₦ 10,000.00</p>
+        <p>Total: ₦<span class="total-price">0.00</span></p>
         <button>CHECK OUT</button>
     </div>
   </div>
@@ -54,18 +54,7 @@
 });
     
     
-    function getCartNum(){
-        jQuery.ajax({
-                    url: "http://127.0.0.1:8000/cartnum",
-                    method: "get",
-                    success: function (data) {
-                    alert(data.cartNumber)
-                    },
-                    error: function (e) {
-                        console.log(e);
-                    },
-                });
-    }
+   
     
     function update(id,qauntity){
         console.log(qauntity);
@@ -76,7 +65,8 @@
                     unit:qauntity
                     },
                     success: function (data) {
-                    alert(data);
+                    getCartNum()
+                    alert("Update sucessfully");
                     },
                     error: function (e) {
                         console.log(e);
@@ -84,20 +74,6 @@
                 });
     }
 
-    function getCartNum(){
-        jQuery.ajax({
-                    url: "http://127.0.0.1:8000/cartnum",
-                    method: "get",
-                    success: function (data) {
-                    const cartCounter = document.querySelector('.cart-counter');
-                    cartCounter.innerHTML = data.cartNumber;
-                    },
-                    error: function (e) {
-                        console.log(e);
-                    },
-                });
-    }
-    getCartNum()
 
     function remove(id, cart){
         jQuery.ajax({
@@ -116,17 +92,23 @@
     const addNumber = document.querySelector('.add');
     const substractNumber = document.querySelector('.minus');
 
-    addNumber.addEventListener('click', ()=>{
-         let unit = document.querySelector('#unit');
-         unit.innerHTML = Number(unit.innerHTML) + 1;
-         let id = document.querySelector('.hide-id').innerHTML;
-         id = Number(id)
-         unit = unit.innerHTML;
-        update(id,unit);
-    })
+   
+    
+    
+    const cartContent = document.querySelectorAll('.cart-content');
+    cartContent.forEach((cart)=>{
+        let removeCart = cart.querySelector('.remove');
+        let addNumber = cart.querySelector('.add');
+        let substractNumber = cart.querySelector('.minus');
+        removeCart.addEventListener('click', ()=>{
+            cart.remove();
+            let id = cart.querySelector('.hide-id').innerHTML;
+            id = Number(id)
+            remove(id, cart)
+        })
 
-    substractNumber.addEventListener('click', ()=>{
-         let unit = document.querySelector('#unit');
+        substractNumber.addEventListener('click', ()=>{
+         let unit = cart.querySelector('#unit');
          unit.innerHTML = `${unit.innerHTML - 1}`;
          
          if(unit.innerHTML <= 0){
@@ -134,23 +116,35 @@
              unit.innerHTML = 1;
          }
 
-         let id = document.querySelector('.hide-id').innerHTML;
+         let id = cart.querySelector('.hide-id').innerHTML;
         id = Number(id)
         unit = unit.innerHTML
         console.log(typeof(id));
         update(id,unit)
     })
-    
-    const cartContent = document.querySelectorAll ('.cart-content');
-    cartContent.forEach((cart)=>{
-        let removeCart = cart.querySelector('.remove');
-        removeCart.addEventListener('click', ()=>{
-            cart.remove();
-            let id = cart.querySelector('.hide-id').innerHTML;
-            id = Number(id)
-            remove(id, cart)
-        })
+
+    addNumber.addEventListener('click', ()=>{
+         let unit = cart.querySelector('#unit');
+         unit.innerHTML = Number(unit.innerHTML) + 1;
+         let id = cart.querySelector('.hide-id').innerHTML;
+         id = Number(id)
+         unit = unit.innerHTML;
+        update(id,unit);
     })
+
+    })
+
+
+    // jQuery.ajax({
+    //                 url: `http://127.0.0.1:8000/checkout`,
+    //                 method: "get",
+    //                 success: function (data) {
+    //                console.log(data)
+    //                 },
+    //                 error: function (e) {
+    //                     console.log(e);
+    //                 },
+    //             });
 </script>
 @endsection('js')
 </body>

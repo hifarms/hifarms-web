@@ -3,8 +3,8 @@
 namespace App;
 
 use App\User;
+use App\Payment;
 use App\Cart_item;
-use Faker\Provider\sl_SI\Payment;
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
@@ -15,9 +15,9 @@ class Order extends Model
     }
     public function payment(){
 
-        return $this->hasOne(Payment::class);
+        return $this->belongsTo(Payment::class);
     }
-    public function orderItems(){
+    public function orderitems(){
 
         return $this->hasMany(Cart_item::class);
     }

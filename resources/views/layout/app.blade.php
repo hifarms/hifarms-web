@@ -37,14 +37,19 @@
                     <a href="{{url('/blog')}}"><span>Blog</span></a>
                 </div>
                 <div class="buttons">
+                    @guest
                     <span class="register"><a href="{{url('/signup')}}">Sign up</a></span>
                     <span class="login"><a href="{{url('/signin')}}">Login</a></span>
+                    @endguest
+                    @auth
+                    <span class="login"><a href="{{url('/dashboard')}}">Dashboard</a></span>
+                    @endauth
                     <img src="{{asset('img/get on google play.png')}}" alt="play-store" class="play-store">
                 </div>
                 <div class="cart-whatsapp">
-                      <img src="{{asset('img/Group 51.png')}}" alt="cart" class="cart">
+                    <a href='{{url('/cart')}}'><img src="{{asset('img/Group 51.png')}}" alt="cart" class="cart"></a>
                        <img src="{{asset('img/Group 47@2x.png')}}" alt="call" class="call">
-                       <span class="cart-counter">0</span>
+                       <span class="cart-counter"></span>
                 </div>
             </div>
         </header>
@@ -124,6 +129,26 @@
         <div class="copyright-hifarms">&copy; copyright 2022 hifarmsWeb</div>
  </footer>
  @yield('js')
+ <script>
+     function getCartNum(){
+    jQuery.ajax({
+                url: "http://127.0.0.1:8000/cartnum",
+                method: "get",
+                success: function (data) {
+                const cartCounter = document.querySelector('.cart-counter');
+                const cartTotal = document.querySelector('.total-price');
+                cartCounter.innerHTML = data.cartNumber;
+                cartTotal? cartTotal.innerHTML = data.total:null;
+                },
+                error: function (e) {
+                    console.log(e);
+                },
+            });
+}
+
+getCartNum()
+ </script>
  <script src="../js/hamburger.js"></script>
+
 </body>
 </html>

@@ -22,4 +22,9 @@ class Product extends Model
 
         return $this->hasMany(Order_item::class);
     }
+    
+    public function label(){
+        
+        return $this->belongsTo(label::class);
+    }
 }

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Investment</title>
+    <title>Livestock</title>
 </head>
 <body>
     <header>
@@ -56,8 +56,8 @@
                 <div class="profile-inclusive">
                     <img src="img/Profile.png" alt="profile" class="profile-header">
                     <div class="my-profile-log-out">
-                        <button><a href="profile.html">My Profile</a></button>
-                        <button>Log Out</button>
+                        <button><a href="profile">My Profile</a></button>
+                        <button><a href="logout">Log Out</a></button>
                     </div>
                 </div>
             </div>
@@ -68,42 +68,75 @@
             <img src="img/side-bar.svg" alt="side-bar">
         </div>
         <div class="second-side-bar">
-            <a href="dashboard.html"> <img src="img/Dashboard (1).svg" alt="dashboard"></a>
-            <a href="marketplace.html"><img src="img/marketplace.svg" alt="marketplace"></a>
-            <a href="livestock.html"><img src="img/livestock-dashboard.svg" alt="livestock"></a>
-            <a href="invest.html"><img src="img/invest.svg" alt="marketplace"></a>
-            <a href="invest-returns.html"><img src="img/returns-current.svg" alt="history" class="current"> </a>
-            <a href="wallet.html"><img src="img/wallet.svg" alt="wallet"></a>
+            <a href="dashboard"> <img src="img/Dashboard (1).svg" alt="dashboard"></a>
+            <a href="marketplace"><img src="img/marketplace.svg" alt="marketplace"></a>
+            <a href="user-farms"><img src="img/livestock-current.svg" alt="livestock" class="current"> </a>
+            <a href="farm-invest"><img src="img/invest.svg" alt="marketplace"></a>
+            <a href="investment"> <img src="img/history.svg" alt="history"> </a>
+            <a href="wallet"><img src="img/wallet.svg" alt="wallet"> </a>
         </div>
         <div class="third-side-bar">
             <img src="img/log out.svg" alt="log-out">
         </div>
     </div>
-    <div class="dashboard-container returns">
-        <h1>Investment Returns.</h1>
-
-        <div class="investment-returns">
-            <div class="total-investment">
-                <p>Total Investment</p>
-                <p>₦ 0.00</p>
+    <div class="dashboard-container livestock">
+      <h1>My Farm</h1>
+      <div class="my-farm-1">
+        <img src="img/Farmer Icon (1).svg" alt="farm-icon" width="130" class="farm-icon">
+        <div class="weatherflex">
+            <div class="weather-2">
+                <div class="flex-1">
+                    <p>Weather</p>
+                    <img src="img/clouds.png" alt="clouds">
+                    <img src="img/temprature.png" alt="celsius">
+                </div>
+                <div class="flex-2">
+                    <img src="img/options.png" alt="">
+                </div>
             </div>
-            <div class="total-returns">
-                <p>Total Investment Returns</p>
-                <p>₦ 0.00</p>
-            </div>
-            <div class="active-projects">
-                <p>Active Projects</p>
-                <p>0</p>
+            <div class="weather-2">
+                <div class="flex-1">
+                    <p>Humidity</p>
+                    <img src="img/clouds.png" alt="clouds">
+                    <img src="img/16º.svg" alt="celsius">
+                </div>
+                <div class="flex-2">
+                    <img src="img/options.png" alt="">
+                </div>
             </div>
         </div>
-
-        <div class="investment-table">
-            <p>You have no investments yet.</p>
-            <div class="buttons">
-                <button><img src="img/csv.svg" width="120"></button>
-                <button><img src="img/pdf.svg" width="120"></button>
+          <img src="img/Farm chart.svg" alt="farm-chart" class="farm-chart">
+      </div>
+        <div class="dashboard-flex livestock">
+       <div class="marketplace-flex manage-your-farm livestock">
+                <div class="top-marketplace-flex">
+                    <p>Manage Your Farm</p>
+                    <img src="img/livestock-dashboard.svg" alt="icon">
+                </div>
+                  <div class="marketplace-body">
+                    <p>Livestock Farming</p>
+                  </div>
+                <div class="views-numbers">
+                    <p>{{$livestock}}</p>
+                    <img src="img/play-button.svg" alt="eye-icon" width="23">
+                </div>
             </div>
+            <div class="marketplace-flex invest-your-farm livestock">
+                <div class="top-marketplace-flex">
+                    <p>Manage Your Farm</p>
+                    <img src="img/manage-farm.svg" alt="icon">
+                </div>
+                  <div class="marketplace-body">
+                    <p>Crops Farming</p>
+                  </div>
+                <div class="views-numbers">
+                    <p>{{ $crop}}</p>
+                    <img src="img/play-button.svg" alt="eye-icon" width="23">
+                </div>
+            </div>  
         </div>
+   
+        <p class="livestock-bottom">Livestock Farming</p>
     </div>
 </body>
 </html>
