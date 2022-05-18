@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{asset('style.css')}}">
     <meta name="_token" content="{{ csrf_token() }}" />
     <script src="{{asset('js/jquery.min.js')}}"></script>
-    <title>About</title>
+    <title>Home</title>
 </head>
 <body>
 
