@@ -7,7 +7,7 @@
          <div class="sign-up-large">SIGN IN</div>
       </div>
       <img src="img/Flower.svg" alt="flower" class="flower">
-      <p>Don't have an account yet? <span><a href="index.html">Sign up</a></span> </p>
+      <p>Don't have an account yet? <span><a href="/signup">Sign up</a></span> </p>
       {{Session('warning_message')}}
       <div class="form-container sign-in-container">
         <form class="sign-in" action="{{route('signin')}}" method="post">

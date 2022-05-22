@@ -7,7 +7,7 @@
     <div class="sign-up-large">SIGN UP</div>
     </div>
       <img src="img/Flower.svg" alt="flower" class="flower">
-      <p>Already have an account? <span><a href="signin.html">Sign in</a></span> </p>
+      <p>Already have an account? <span><a href="/signin">Sign in</a></span> </p>
       <div class="form-container">
         <form action="{{route('signup')}}" method="post">
           @csrf

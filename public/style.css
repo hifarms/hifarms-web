@@ -81,6 +81,7 @@ header{
   top: 0;
   padding-top: 14px;
   padding-bottom: 14px;
+  z-index: 12;
 }
 
 .header-container{
@@ -360,6 +361,7 @@ header{
   margin: auto;
   width: 95%;
   font-size: 15px;
+  overflow: hidden;
   max-width: 1250px;
   padding: 50px;
   color: #c7dec3;
@@ -436,7 +438,6 @@ header{
  .form-subscribe input{
   margin: 0px;
   padding: 8px;
-  width: 130%;
   outline: none;
   height: 42px;
   border: none;
@@ -549,7 +550,7 @@ header{
   padding-top: 20px;
   display: flex;
   margin: auto;
-  width: 75%;
+  width: 90%;
   align-items: center;
   justify-content: space-evenly;
 }
@@ -568,7 +569,7 @@ header{
 }
 
 .mission-vision-grid .mission-grid p{
-  width: 50%;
+  width: 90%;
   text-align: center;
   margin: auto;
   padding-bottom: 30px;
@@ -631,15 +632,12 @@ header{
   font-size: 16px;
   margin-bottom: 30px;
 }
-
 .ui-wahala img{
   width: 100%;
 }
-
 .hamburger{
   display: none;
 }
-
 #right-icon{
   display: none;
 }
@@ -662,6 +660,7 @@ header{
     position: absolute;
     top: 50%;
     left: 50%;
+    overflow: hidden;
     transform: translate(-50%, -50%);
     color: white;
 }
@@ -692,12 +691,14 @@ header{
 
 .purpose{
   padding: 30px;
+  overflow: auto;
 }
 
 .svg-flex{
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 10px;
 }
 
 .purpose-grid{
@@ -1305,6 +1306,8 @@ header{
    margin-top: 300px;
    left: 50%;
    transform: translate(-50%, -0%);
+   padding-left: 20px;
+   padding-right: 0px;
 }
 
 .showcase-home-image .image-container img{
@@ -1353,14 +1356,15 @@ header{
 }
 
 .homepage-services .images-grid .grid img{
-  width: 40px;
-  margin-bottom: 8px;
+  width: 35px;
+  margin-bottom: .5px;
 }
 
 .homepage-services .images-grid .grid h1{
   font-size: 20px;
   font-weight: bolder;
-  margin-bottom: 8px;
+  margin-bottom: 2px;
+  margin-top: 4px;
 }
 
 .homepage-services .images-grid .grid p{
@@ -1540,7 +1544,7 @@ header{
   cursor: pointer;
   box-shadow: 0px 10px 20px rgba(33, 84, 46, 0.1);
   margin-bottom: 20px;
-  margin-left: 90px;
+  margin-left: 60px;
 }
 
 .services-menu button:hover{
@@ -1770,8 +1774,7 @@ header{
 
 .blog-homepage{
   background: #F5F0E9;
-  padding: 30px;
-  padding-bottom: 30px;
+  padding: 20px;
 }
 
 .blog-homepage p{
@@ -3797,16 +3800,16 @@ width: 338px;
  }
  /*About media queries */
  .showcase-img{
-   height: 20vh;
+   height: 33vh;
  }
  .showcase-content h1{
-   font-size: 25px;
+   font-size: 23px;
  }
  .showcase-content{
-   width: 80%;
+   width: 90%;
  }
  .showcase-content p{
-   font-size: 15px;
+   font-size: 13px;
    width: 100%;
  }
  .about-description{
@@ -3858,6 +3861,7 @@ width: 338px;
  }
  .what-drives-us-content{
    margin-left: 20px;
+   width: 80%;
  }
  .what-drives-us-content h1{
    font-size: 25px;
@@ -3868,7 +3872,7 @@ width: 338px;
   text-align: unset;
  }
  .what-drives-us-content img{
-   width: 335px;
+   width: 100%;
    margin-bottom: 20px;
  }
  .quote-content p {
@@ -3884,11 +3888,14 @@ width: 338px;
    width: 30px;
    right: -15px;
 }
+.purpose{
+  padding: 0px;
+}
 .purpose-grid{
   flex-direction: column;
 }
 .purpose-content h1{
-  margin-left: -10px;
+  margin-left: 0px;
   font-size: 20px;
 }
 .purpose-content .line{
@@ -3897,12 +3904,19 @@ width: 338px;
 .purpose-content p {
   width: unset;
   text-align: unset;
+  font-size: 14px;
 }
 .purpose-content ul{
   width: unset;
   padding-left: unset;
   margin-bottom: 25px;
 } 
+.purpose-content ul li{
+  font-size: 14px;
+}
+.our-partners.our-partners.powered h1{
+  font-size: 23px;
+}
 .purpose-grid img {
   height: unset;
   width: 329px;
@@ -3974,7 +3988,7 @@ width: 338px;
 /*Footer container ends*/
 /*Services starts*/
 .showcase-img.services{
-  height: 20vh;
+  height: 33vh;
 }
 .showcase-img.services .showcase-content h1{
   font-size: 25px;
@@ -4086,12 +4100,20 @@ width: 338px;
 }
 .opportunities .opportunities-grid{
   grid-template-columns: 1fr 1fr;
-  width: 100%;
-  padding: 10px;
+  text-align: center;
+}
+.opportunities .opportunities-grid .grid-3 img{
+ width: 100px;
+}
+.opportunities .opportunities-grid .grid-5 img{
+   width: 90px;
+}
+.opportunities .opportunities-grid .grid-6 img{
+  width: 70px;
 }
 .opportunities-grid p {
   margin-top: 3px;
-  font-size: 10px;  
+  font-size: 9px;  
 }
 .our-partners .partners-container{
   flex-direction:column ;
@@ -4119,7 +4141,7 @@ width: 338px;
 }
 .why-choose-flex .flex-1{
   width: 100%;
-  height: 35vh;
+  height: 250px;
 }
 .why-choose-flex .flex-1-content h1 {
   font-family: 'Dancing Script';
@@ -4133,16 +4155,24 @@ width: 338px;
   top: unset;
   bottom: unset;
   position: unset;
-  margin-top: -180px;
-  margin-left: -50px;
+  margin-top: -140px;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.why-choose-flex .flex-2 div img {
+  width: 20px;
+  padding-right: 7px;
 }
 .why-choose-flex .flex-2 div{
-  width: 120%;
+  width: 100%;
+  padding: 10px;
 }
 /*Faq page starts */
 .showcase-img.faq{
-  height: 20vh;
+  height: 33vh;
 }
 .showcase-img.faq .showcase-content h1{
   font-size: 25px;
@@ -4187,14 +4217,14 @@ width: 338px;
 /*sponsort page end*/
 
 @media (max-width: 700px){
-  *{
-    overflow-x: hidden!important;
-  }
+ *{
+  overflow-x: hidden!important;
+ }
   .header-container .cart-whatsapp .cart{
-    width: 21px;
+    width: 18px;
   }
   .header-container .cart-whatsapp .call{
-    width: 22px;
+    width: 18px;
   }
   .sign-in-image{
       display: none;
@@ -4205,12 +4235,16 @@ width: 338px;
     align-items: center;
     margin-top: 18px;
   }
+  .container{
+    padding-bottom: 70px;
+  }
   .container .sign-up-large{
     font-size: 25px;
   }
   .container p{
     font-weight: bold;
     color: rgba(64, 74, 61, 1);
+    text-align: center;
   }
   header.sign-in{
     border-bottom: 2px solid rgba(0, 0, 0, 0.26);
@@ -4219,6 +4253,7 @@ width: 338px;
   .flower{
     top: -1.5%;
     left: -13%;
+    display: none;
   }
   .sign-in-container{
     height: unset;
@@ -4231,7 +4266,8 @@ width: 338px;
     width: 90%;
   }
   .container .form-container form input{
-    padding: 20px;
+    padding: 15px;
+    margin-bottom: 20px;
     border: 0.4px solid #49A760;
   }
   .container .google-fb-btn {
@@ -4284,16 +4320,31 @@ width: 338px;
      display: block;
   }
   .svg-flex img{
-    width: 112px;
+    width: 110px;
   }
   .signup-img{
     display: none;
+  }
+  .row{
+    grid-template-columns: 1fr;
+    margin-top: 30px;
+    margin-left: unset;
+  }
+  .row > .column{
+    padding: unset;
+  }
+  .row > .column img{
+    width: 100%;
+  }
+  .column{
+    width: 100%;
+    float: unset;
   }
   .faq-container{
     display: unset;
   }
   .faq-container .line{
-    width: 345px;
+    width: 90%;
     margin-left: 20px;
     margin-right: 20px;
   }
@@ -4311,7 +4362,10 @@ width: 338px;
     margin-left: -22px;
   }
   .faq-container .faq-flex p{
-    font-size: 15px;
+    font-size: 14px;
+  }
+  .faq-container .faq-content{
+    margin-left: 27px;
   }
   .service-grid-1{
     padding: 10px;
@@ -4325,17 +4379,22 @@ width: 338px;
   .service-grid-4{
     padding: 8px;
   }
+  .what-we-do .line{
+    height: 3px;
+  }
   .about-history h1{
-    font-size: 18px;
+    font-size: 20px;
+    margin-top: 15px;
   } 
   .our-partners .partners-container img {
-    width: 380px;
+    width: 300px;
+    margin-bottom: 50px;
   }
   .copyright-hifarms{
     font-size: 15px;
   }
   .eggs{
-    width: 390px;
+    width: 100%;
   }
   .signup-footer{
     margin-top: 0px;
@@ -4351,8 +4410,7 @@ width: 338px;
     margin-bottom: 30px;
   } 
   .blog-homepage .blog-container .blog-grid .grid-blog img {
-    width: 280px;
-    height: 250px;
+    width: 100%;
     margin: auto;
   }
   .blog-container .blog-grid .grid-blog h1{
@@ -4361,12 +4419,15 @@ width: 338px;
   .harvest-info .harvest-flex {
     justify-content: space-between;
   }
+  .harvest-info .harvest-flex .flex{
+    margin-right: 0px;
+  }
   .harvest-info .harvest-flex img{
-    width: 35px;
-    height: 35px;
+    width: 25px;
+    height: 25px;
   }
   .harvest-info{
-    padding: 30px;
+    padding: 14px;
   }
   .harvest-info .harvest-flex h1{
     font-size: 11px;
@@ -4374,7 +4435,7 @@ width: 338px;
     margin-bottom: 5px;
   }
   .harvest-info .harvest-flex p{
-    font-size: 8px;
+    font-size: 7px;
   }
   .management-homepage .management-flex .content {
       width: unset;
@@ -4404,11 +4465,15 @@ width: 338px;
     margin-top: 20px;
   }
   .offers-flex .flex img{
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
   }
   .offers-flex .flex p{
     font-size: 9px;
+    padding-top: 7px;
+  }
+  .management-homepage{
+    padding: 50px;
   }
   .gallery h1{
     font-size: 20px;
@@ -4425,10 +4490,13 @@ width: 338px;
     margin-bottom: 0px;
   }
   .services-menu{
-    width: 360px;
+    width: 300px;
     bottom: 8%;
-    left: 6%;
-    padding: 40px;
+    left: 9%;
+    padding: 20px;
+  }
+  .services-menu .homepage-service-grid img{
+    width: 100px;
   }
   .services-menu h3{
     font-size: 13px;
@@ -4484,19 +4552,20 @@ width: 338px;
   margin-left: 0px;
   }
   .showcase-home-image{
-     height: 57vh;
+     height: 385px;
+     margin-bottom: 20px;
   }
   .showcase-home-image .showcase-home-content h1{
-    font-size: 40px;
+    font-size: 35px;
   }
   .showcase-home-image .showcase-home-content .sub-1 {
-    font-size: 12px;
+    font-size: 11px;
     margin-left: 15px;
     font-style: italic;
   }
   .showcase-home-image .showcase-home-content .sub-2{
     width: 90%;
-    font-size: 12px;
+    font-size: 11px;
     padding-left: 35px;
     line-height: 17px;
   }
@@ -4514,15 +4583,23 @@ width: 338px;
   }
   .showcase-home-image .showcase-home-content .sb-3{
     margin-top: 10px;
-    font-size: 12px;
+    font-size: 10px;
     font-weight: unset;
+    width: 100px;
+    height: 35px;
   }
   .showcase-home-image .image-container img{
-    width: 180px;
+    width: 185px;
     margin-right: 20px;
   }
   .showcase-home-image .image-container{
-    left: 76.5%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   left: 315px;
+   margin-top: 0px;
+   padding-left: 4px;
+   padding-right: 4px;
   }
   .homepage-services .flower-services{
     display: none;
@@ -4543,7 +4620,8 @@ width: 338px;
     left: 0%; 
   }
   .homepage-services .images-grid .grid h1{
-    font-size: 15px;
+    font-size: 14px;
+    margin-top: 2px;
   }
   .homepage-services .images-grid .grid img{
     width: 30px;
@@ -4557,41 +4635,34 @@ width: 338px;
     font-size: 13px;
   }
   .homepage-services{
-     height: 23vh;
-  }
-  .homepage-services .images-grid .grid-2 {
-    margin-left: 25px;
+     height: 160px;
   }
   #right-icon{
-    display: block;
     position: absolute;
-    bottom: 410px;
-    right: 3%;
-    width: 35px;
-    z-index: 5;
+    display: block;
+    right: 1%;
+    bottom: 0%;
   }
   #left-icon{
     position: absolute;
-    bottom: 410px;
-    left: 3%;
-    width: 35px;
-    z-index: 5;
+    left: 1%;
+    bottom: 0%;
   }
   .hamburger{
     display: block;
-    margin-right: -25px;
-    width: 20px;
+    margin-right: -20px;
+    width: 17.5px;
     cursor: pointer;
   }
   .hamburger-modal{
      position: absolute;
     top: -100%;
-    z-index: 2;
+    z-index: 10;
      background: rgba(160, 212, 104, 0.65);
      display: flex;
      justify-content: left;
      flex-direction: column;
-     padding-top: 10px;
+     padding-top: 28px;
      padding-bottom: 8px;
      width: 100%;
   }
@@ -4611,3 +4682,51 @@ width: 338px;
   }
 }
 }
+
+@media(max-width: 380px){
+  .showcase-home-image .image-container img{
+    width: 160px;
+  }
+  .showcase-home-image .image-container{
+    left: 285px;
+  }
+}
+
+@media(max-width: 280px){
+  .showcase-home-image .image-container{
+    display: none;
+  }
+  .showcase-home-image{
+    height: 300px;
+  }
+  #right-icon{
+    display: none;
+  }
+  #left-icon{
+    display: none;
+  }
+  .homepage-services{
+    display: none;
+  }
+  .services-homepage{
+    display: none;
+  }
+  .footer-container .footer-newsletter {
+    display: none;
+  }
+  .button-container{
+    display: none;
+  }
+  .hamburger{
+    margin-right: 5px;
+  }
+  .our-partners .partners-container img {
+    width: 210px;
+  }
+  .blog-container .blog-grid .grid-blog img{
+    height: unset;
+  }
+}
+
+
+
