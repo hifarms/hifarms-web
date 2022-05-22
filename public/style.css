@@ -569,7 +569,7 @@ header{
 }
 
 .mission-vision-grid .mission-grid p{
-  width: 90%;
+  width: 50%;
   text-align: center;
   margin: auto;
   padding-bottom: 30px;
@@ -815,8 +815,8 @@ header{
 
 .services-grid-image .line{
   position: absolute;
-  top: 48.1%;
-  left: 53.3%;
+  top: 332px;
+  left: 667px;
   transform: translate(-50%, -50%);
   width: 19px;
   height: 570px;
@@ -825,8 +825,8 @@ header{
 
 .services-grid-image .oval{
   position: absolute;
-  top: 5.6%;
-  left: 51.2%;
+  top: 40px;
+  left: 643px;
   height: 20px;
   width: 50px;
   background-color: #fff;
