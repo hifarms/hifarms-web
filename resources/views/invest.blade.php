@@ -129,7 +129,7 @@
                         <div class="sponsor-inner-flex">
                             <img src="img/graph.svg" alt="">
                             <p>10%</p>
-                        </div>
+                       </div>
                         <div class="sponsor-inner-flex">
                             <img src="img/calendar.svg" alt="">
                             <p>6 months</p>

@@ -2385,6 +2385,7 @@ width: 338px;
 .sponsor-grid [type=checkbox]{
   width: 25px;
   height: 25px;
+  outline: none;
 }
 
 .sponsor-data{
@@ -2796,10 +2797,6 @@ width: 338px;
   justify-content: space-between;
   align-items: center;
   position: relative;
-}
-
-.header-img{
-
 }
 
 .my-profile-log-out{
@@ -4613,6 +4610,4 @@ width: 338px;
      transition: all 0.4s ease-in-out;
   }
 }
-
-
-
+}
