@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{asset('style.css')}}">
     <meta name="_token" content="{{ csrf_token() }}" />
     <script src="{{asset('js/jquery.min.js')}}"></script>
-    <title>About</title>
+    <title>Home</title>
 </head>
 <body>
 
@@ -15,7 +15,7 @@
         <header>
             <div class="header-container">
                 <img src="img/hamburger.svg" alt="hamburger" class="hamburger">
-                <img src="{{asset('img/logo.png')}}" alt="logo" class="logo4x">
+               <a href="/"><img src="{{asset('img/logo.png')}}" alt="logo" class="logo4x"></a>
                 <div class="services">
                     <a href="{{url('/')}}"><span>Home</span></a>
                     <div class="gug">
@@ -56,11 +56,11 @@
         <!--Header Ends-->
         <div class="hamburger-modal">
             <a href="/">Home</a>
-            <a href="/">About</a>
-            <a href="/">Services</a>
-            <a href="/">Blog</a>
-            <a href="/">Register</a>
-            <a href="/">Login</a>
+            <a href="/about">About</a>
+            <a href="/services">Services</a>
+            <a href="/blog">Blog</a>
+            <a href="/signup">Register</a>
+            <a href="/signin">Login</a>
             <div class="svg-flex" style="margin-bottom: 8px">
                 <svg width="103" height="42" viewBox="0 0 103 42" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                <rect width="103" height="42" rx="5" fill="url(#pattern0)"/>
@@ -77,17 +77,16 @@
         </div>
 
 @yield('content')
-
 <footer class="signup-footer">
     <div class="footer-container">
         <div class="footer-info">
-            <img src="{{asset('img/logo.png')}}" alt="logo" width="75">
+            <img src="img/logo.png" alt="logo" width="75">
             <p>We are industry leading organic farm delivering the best products that boost your daily life energy and potential.</p>
              <div class="footer-social">
-                 <a href="#"><img src="{{asset('img/whatsapp-footer.svg')}}" alt="whatsapp" width="20"></a>
-                 <a href="#"><img src="{{asset('img/ig.svg')}}" alt="instagram" width="20"></a>
-                 <a href="#"><img src="{{asset('img/twitter-footer.png')}}" alt="twitter" width="20"></a>
-                 <a href="#"><img src="{{asset('img/fb-footer.png')}}" alt="facebook" width="20"></a>
+                 <a href="#"><img src="img/whatsapp-footer.svg" alt="whatsapp" width="20"></a>
+                 <a href="#"><img src="img/ig.svg" alt="instagram" width="20"></a>
+                 <a href="#"><img src="img/twitter-footer.png" alt="twitter" width="20"></a>
+                 <a href="#"><img src="img/fb-footer.png" alt="facebook" width="20"></a>
              </div>
            </div>
         <div class="footer-links">
@@ -113,6 +112,7 @@
                  <input type="email" placeholder="Enter your email">
                  <button>Subscribe</button>
                </div>
+            <div class="svg-flex">
                <svg width="103" height="42" viewBox="0 0 103 42" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <rect width="103" height="42" rx="5" fill="url(#pattern0)"/>
                 <defs>
@@ -123,7 +123,8 @@
                 </defs>
                 </svg>
             
-                <img src="{{asset('img/get on google play.png')}}" alt="play-store" style="margin-left: 14px;" class="play-store" width="109">
+                <img src="img/get on google play.png" alt="play-store" style="margin-left: 14px;" class="play-store" width="109">
+            </div>
          </div>
         </div>
         <div class="copyright-hifarms">&copy; copyright 2022 hifarmsWeb</div>

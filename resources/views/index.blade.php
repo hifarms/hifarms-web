@@ -18,9 +18,9 @@
             <img src="img/Rectangle 13.png" alt="image">
             <img src="img/Rectangle 15.png" alt="image" class="grid3">
         </div>
+      <img src="img/Left.svg" alt="left-icon" id="left-icon">
+      <img src="img/Right.svg" alt="right-icon" id="right-icon">
     </div>
-    <img src="img/Right.svg" alt="right-icon" id="right-icon">
-     <img src="img/Left.svg" alt="left-icon" id="left-icon">
     <div class="homepage-services">
         <img src="img/Flower.svg" alt="flower" class="flower-services" width="300">
         <div class="images-grid">
@@ -227,7 +227,9 @@
 
 @endsection('content')
 @section('js')
-<script src="js/main.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/hamburger.js"></script>
+<script src="/js/index.js"></script>
 @endsection('js')
 </body>
 </html>
