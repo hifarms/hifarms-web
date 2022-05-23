@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\BlogPostController;
 
 
@@ -49,19 +50,19 @@ Route::get('/blog', 'BlogPostController@getPost');
 
 Route::get('/blog/{slug}/', 'BlogPostController@show');
 
-Route::get('/cart', 'CartitemController@getCart');
+Route::get('/cart', 'CartItemController@getCart');
 
-Route::put('/cart/{cartitem}', 'CartitemController@update');
+Route::put('/cart/{cartitem}', 'CartItemController@update');
 
-Route::delete('/cart/clear', 'CartitemController@clear');
+Route::delete('/cart/clear', 'CartItemController@clear');
 
-Route::delete('/cart/{cartitem}', 'CartitemController@destroy');
+Route::delete('/cart/{cartitem}', 'CartItemController@destroy');
 
-Route::post('/addcart/{type}', 'CartitemController@addCart');
+Route::post('/addcart/{type}', 'CartItemController@addCart');
 
-Route::get('/cartnum', 'CartitemController@cartNum');
+Route::get('/cartnum', 'CartItemController@cartNum');
 
-Route::get('/check-in-cart/{id}', 'CartitemController@checkInCart');
+Route::get('/check-in-cart/{id}', 'CartItemController@checkInCart');
 
 Route::get('/checkout', 'OrderController@checkout')->name('checkout');
 
