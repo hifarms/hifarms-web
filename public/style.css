@@ -81,7 +81,7 @@ header{
   top: 0;
   padding-top: 14px;
   padding-bottom: 14px;
-  z-index: 12;
+  z-index: 2;
 }
 
 .header-container{
@@ -2782,6 +2782,86 @@ width: 338px;
   font-size: 28px;
 }
 /*Partner ends*/
+
+/*Admin Dashboard Starts */
+.general-information{
+  display: flex;
+  justify-content: space-around;
+}
+
+.info-1.diff{
+  background-color: #8BC53E;
+  padding: 30px;
+  height: 186px;
+  border-radius: 5px;
+  width: 21%;
+  color: #ffffff;
+}
+
+.info-1.diff .info-images{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info-1.diff .info-images img{
+  width: 30px;
+}
+
+.info-1.diff h5{
+  padding-top: 15px;
+  padding-bottom: 10px;
+}
+
+.info-1.diff h3{
+  font-size: 26px;
+  font-weight: 200;
+  padding-bottom: 10px;
+}
+
+.info-1.diff p{
+  font-size: 12px;
+  border-top: 1px solid #ffffff;
+  padding-top: 15px;
+}
+
+.info-2{
+  background-color: #ffffff;
+  padding: 30px;
+  height: 186px;
+  border-radius: 5px;
+  width: 21%;
+  color: #545E66;
+}
+
+.info-2 .info-images{
+  display: flex;
+}
+
+.info-2 .info-images img{
+  width: 30px;
+}
+
+.info-2 h5{
+  padding-top: 15px;
+  padding-bottom: 10px;
+}
+
+.info-2 h3{
+  font-size: 26px;
+  font-weight:300;
+  padding-top: 15px;
+  padding-bottom: 10px;
+}
+
+.info-1.diff p{
+  font-size: 12px;
+  border-top: 1px solid #ffffff;
+  padding-top: 15px;
+}
+
+
+/*Admin Dashboard ends  */
 
 
 /* Dashboard starts */
