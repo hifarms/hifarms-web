@@ -56,8 +56,8 @@
                 <div class="profile-inclusive">
                     <img src="img/Profile.png" alt="profile" class="profile-header">
                     <div class="my-profile-log-out">
-                        <button><a href="profile.html">My Profile</a></button>
-                        <button>Log Out</button>
+                        <button><a href="profile">My Profile</a></button>
+                        <button><a href="logout">Log Out</a></button>
                     </div>
                 </div>
             </div>
@@ -68,12 +68,12 @@
             <img src="img/side-bar.svg" alt="side-bar">
         </div>
         <div class="second-side-bar">
-            <a href="dashboard.html"><img src="img/Dashboard (1).svg" alt="dashboard"></a>
-            <a href="marketplace.html"><img src="img/marketplaces-current.svg" alt="marketplace" class="current"></a>
-             <a href="livestock.html"><img src="img/livestock-dashboard.svg" alt="livestock"></a>
-             <a href="invest.html"><img src="img/invest.svg" alt="marketplace"></a>
-            <img src="img/history.svg" alt="history">
-            <img src="img/wallet.svg" alt="wallet">
+            <a href="dashboard"><img src="img/Dashboard (1).svg" alt="dashboard"></a>
+            <a href="marketplace"><img src="img/marketplaces-current.svg" alt="marketplace" class="current"></a>
+             <a href="user-farms"><img src="img/livestock-dashboard.svg" alt="livestock"></a>
+             <a href="farm-invest"><img src="img/invest.svg" alt="marketplace"></a>
+             <a href="investment"> <img src="img/history.svg" alt="history"> </a>
+             <a href="wallet"><img src="img/wallet.svg" alt="wallet"> </a>
         </div>
         <div class="third-side-bar">
             <img src="img/log out.svg" alt="log-out">
@@ -82,6 +82,7 @@
     <div class="dashboard-container">
         <h1>Hi Farms Marketplace.</h1>
         <div class="sponsor-container">
+            
             <div class="sponsors-flex dashboard">
                 <p class="filter-heading dashboard">CATEGORIES</p>
                 <p class="showing-result">Showing 1-42</p>
@@ -96,26 +97,27 @@
                     <div class="sponsor-checkbox dashboard">
                         <div class="line" style="height: 1px;width: 300px;background: #c4c4c4;margin-bottom: 10px;"></div>
                         <div class="flex dashboard">
-                            <input type="checkbox" class="check">
+                            <input type="checkbox" class="check" name='crop'>
                             <p class="sponsor-crop dashboard">Crop</p>
                             <P>0</P>
                         </div>
                         <div class="flex dashboard">
-                            <input type="checkbox">
+                            <input type="checkbox" name="cattle">
                             <p class="sponsor-crop dashboard">Cattles</p>
                             <P>0</P>
                         </div>
                         <div class="flex dashboard">
-                            <input type="checkbox">
+                            <input type="checkbox" class="poultry">
                             <p class="sponsor-crop dashboard">Poultry</p>
                             <P>0</P>
                         </div>
                         <div class="flex dashboard">
-                            <input type="checkbox">
+                            <input type="checkbox" name="livestock">
                             <p class="sponsor-crop dashboard">Livestock</p>
                             <P>0</P>
                         </div>
                     </div>
+                
                     <div class="farmer-section">
                        <h3>Farmer</h3>
                        <div class="i-want-to-sell">
@@ -153,24 +155,28 @@
                            </div>
                     </div>
                 </div>
-                <div class="sponsor-data dashboard">                        
+            
+                <div class="sponsor-data dashboard">
+                    
+                    @foreach($products as $product)
                     <div class="grid dashboard">
-                        <p class="label">New</p>
+                        <p class="label">{{$product->label->name}}</p>
                         <img src="img/unsplash_aIghKsc3H34.png" alt="image" class="marketplace-image">
-                        <h1>Fish Farm</h1>
+                        <h1>{{$product->name}}</h1>
                         <div class="sponsor-inner-flex">
                             <img src="img/location.svg" alt="">
-                            <p>Birnin Kebbi, Central Market</p>
+                            <p>{{$product->location}}</p>
                         </div>
                         <div class="sponsor-inner-flex">
                             <img src="img/sponsor-cart.svg" alt="">
                             <p>74% sold</p>
                         </div>
-                        <h3 class="h3-dashboard">₦ 10,000</h3>
+                        <h3 class="h3-dashboard">₦ {{$product->price}}</h3>
                         <div class="purchase-div dashboard">
                             <button>Purchase</button>
                         </div>
                     </div>
+                    @endforeach
             
                     <div class="grid dashboard">
                         <p class="label">New</p>

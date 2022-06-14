@@ -15,20 +15,15 @@ class AuthController extends Controller
     public function signin(Request $request)
     {
 
-        $validator = Validator::make($request->all(), [
+        $this->validate($request, [
             'email' => 'required|email',
-            'password' => 'required|min:4'
+            'password' => 'required|min:4',
         ]);
-        if ($validator->fails()) {
-            return redirect('/login')
-                ->withErrors($validator)
-                ->withInput($request->all());
-        }
 
         if (Auth::attempt(['email' => $request['email'], 'password' => $request['password'], 'role_id' => '1', 'status' =>'1'])) {
 
             // return redirect()->back()->with('success_message','Login Sucess');
-            return redirect('/');
+            return redirect('/dashboard');
         }
 
         // \Session::flash('warning_message', 'These credentials do not match our records.');
@@ -49,6 +44,7 @@ class AuthController extends Controller
 
         $link = Str::random(30);
 
+        
         // Save Record into user DB
         $user = new User();
         $user->email = $request->input('email');
@@ -67,6 +63,9 @@ class AuthController extends Controller
         $wallet->balance = 0;
         $wallet->save();
 
+        $user->wallet_id = $wallet->id;
+        $user->save();
+
         Auth::login($user);
 
         $user = Auth::user();
@@ -84,7 +83,7 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('login');
+        return redirect('/');
     }
 
     public function activatesystemuser($id)

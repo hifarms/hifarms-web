@@ -56,8 +56,8 @@
             <div class="profile-inclusive">
                 <img src="img/Profile.png" alt="profile" class="profile-header">
                 <div class="my-profile-log-out">
-                    <button><a href="profile.html">My Profile</a></button>
-                    <button>Log Out</button>
+                    <button><a href="profile">My Profile</a></button>
+                    <button><a href="logout">Log Out</a></button>
                 </div>
             </div>
         </div>
@@ -68,32 +68,32 @@
             <img src="img/side-bar.svg" alt="side-bar">
         </div>
         <div class="second-side-bar">
-            <a href="dashboard.html"> <img src="img/Dashboard (1).svg" alt="dashboard"></a>
-            <a href="marketplace.html"><img src="img/marketplace.svg" alt="marketplace"></a>
-            <a href="livestock.html"><img src="img/livestock-dashboard.svg" alt="livestock"></a>
-            <a href="invest.html"><img src="img/invest.svg" alt="marketplace"></a>
-            <a href="invest-returns.html"><img src="img/history.svg" alt="history"></a>
-            <a href="wallet.html"><img src="img/wallet.svg" alt="wallet"></a>
+            <a href="dashboard"> <img src="img/Dashboard (1).svg" alt="dashboard"></a>
+            <a href="marketplace"><img src="img/marketplace.svg" alt="marketplace"></a>
+            <a href="user-farms"><img src="img/livestock-dashboard.svg" alt="livestock"></a>
+            <a href="farm-invest"><img src="img/invest.svg" alt="marketplace"></a>
+            <a href="investment"><img src="img/history.svg" alt="history"></a>
+            <a href="wallet"><img src="img/wallet.svg" alt="wallet"></a>
         </div>
         <div class="third-side-bar">
             <img src="img/log out.svg" alt="log-out">
         </div>
-    </div>
+    </div> 
     <div class="dashboard-container profile">
         <h1>My Profile.</h1>
-        <p>Hello Hafiz</p>
+        <p>Hello {{ explode(' ',$user->fullname)[0]}}</p>
         <div class="profile-hero">
             <img src="img/Image icon.png" alt="profile-image">
-            <p>Hafiz Ibrahim Bello</p>
+            <p>{{ $user->fullname }}</p>
             <button>Upload Image</button>
         </div>
         <div class="profile-details">
-            <div class="contact">Contact: <span>07067834186</span></div>
-            <div class="gender">Gender: <span>Male</span></div>
-            <div class="email">Email: <span>hifarmsltd@gmail.com</span></div>
-            <div class="soo">State of Origin: <span></span></div>
-            <div class="occupation">Occupation: <span></span></div>
-            <div class="address">Residence Address: <span></span></div>
+            <div class="contact">Contact: <span>{{$user->phone}}</span></div>
+            <div class="gender">Gender: <span>{{$user->gender}}</span></div>
+            <div class="email">Email: <span>{{$user->email}}</span></div>
+            <div class="soo">State of Origin: <span>{{$user->State}}</span></div>
+            <div class="occupation">Occupation: <span>{{$user->occupation}}</span></div>
+            <div class="address">Residence Address: <span>{{$user->address}}</span></div>
         </div>
         <div class="buttons-profile">
             <button>Update Profile</button>

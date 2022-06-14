@@ -2,20 +2,70 @@
 
 namespace App\Http\Controllers;
 
+use App\Farm;
+use App\Order;
+use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    //Userdasboard/investment PAGE
-    public function viewInvestment(Request $request){
-
-        $user = User::with(['investments'=>function($query){
-            $query->where('farm_id','!=',null)->get();
-        }])->where('user_id','=',Auth::user()->id)->get();
+    public function __construct(){
         
-        return view('userdashboard.investment',['$user'=>$user]);
+        $this->middleware('auth');
+    }
 
+   public function dashboard(){
+    $product = count(Product::all());
+    $farms = count(Farm::where('user_id',auth()->user()->id)->get());
+    $orders = Order::where('user_id',auth()->user()->id)->get();
+    $active=0;
+    foreach($orders as $order){
+        if($order->payment->status_code !== 200 || $order->payment->status_message !== 'success'){
+            continue;
+        }
+        $active=$active+count($order->orderitems->where('delivered',0));
+    }
+    return view('dashboard',['product'=>$product,'farm'=>$farms,'active'=>$active]);
+
+   }
+
+   public function farmIndex(Request $request){
+       $farms = Farm::where('user_id',auth()->user()->id)->get();
+       $livestokeCount = 0;
+       $cropCount = 0;
+       foreach($farms as $farm){
+           if($farm->farm_type->name == 'Livestock'){
+               $livestokeCount++;
+               continue;
+           }
+           $cropCount++;
+       }
+
+       return view('livestock',['livestock'=>$livestokeCount,'crop'=>$cropCount]);
+   }
+
+   public function farmInvest(Request $request){
+   
+
+    return view('invest');
+}
+
+    //Userdasboard/investment PAGE
+    public function investment(Request $request){
+
+        $user = auth()->user();
+        // User::with(['investments'=>function($query){
+        //     $query->where('farm_id','!=',null)->get();
+        // }])->where('user_id','=',Auth::user()->id)->get();
+        
+        return view('invest-returns',['user'=>$user]);
+
+   }
+
+   public function Profile(){
+    $user = auth()->user();
+       return view('profile',['user'=>$user]);
    }
 
      //Userdasboard/Maketpalace/orders PAGE
@@ -31,13 +81,13 @@ class UserController extends Controller
    }
 
     //Userdasboard/wallect PAGE
-   public function Wallet(Request $request){
+   public function wallet(Request $request){
 
         $user = Auth::user();
 
-        $transactions = $user->wallet()->walletTransactions()->paginate(20);
+        // $transactions = $user->wallet()->walletTransactions()->paginate(20);
 
-        return view('wallet.view',['$user'=>$user,'transactions'=>$transactions]);
+        return view('wallet',['user'=>$user]);
     }
 
     //Moving Farm investment Return/payment to wallet

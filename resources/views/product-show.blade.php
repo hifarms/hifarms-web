@@ -61,7 +61,21 @@
       'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
   }
 });
-
+jQuery.ajax({
+                url: "http://127.0.0.1:8000/check-in-cart/"+$('.farmid')[0].id,
+                method: "get",
+                success: function (data) {
+                    if(data.status){
+                        const addToCart = document.querySelector('.add-to-cart-button');
+                       addToCart.innerHTML = 'Added'
+                       addToCart.style.backgroundColor = '#FEE565';
+                       addToCart.style.fontSize = '16px';
+                    }
+                },
+                error: function (e) {
+                    console.log(e);
+                },
+            });
 
 $('.add-to-cart-button').on('click',()=>{
         // add your logic before ajax
@@ -78,7 +92,6 @@ $('.add-to-cart-button').on('click',()=>{
                        addToCart.innerHTML = 'Added'
                        addToCart.style.backgroundColor = '#FEE565';
                        addToCart.style.fontSize = '16px';
-                       getNum();
                        getCartNum()
                     },
                     error: function (e) {
@@ -87,21 +100,8 @@ $('.add-to-cart-button').on('click',()=>{
                 });
     })
 
-    function getCartNum(){
-        jQuery.ajax({
-                    url: "http://127.0.0.1:8000/cartnum",
-                    method: "get",
-                    success: function (data) {
-                    const cartCounter = document.querySelector('.cart-counter');
-                    cartCounter.innerHTML = data.cartNumber;
-                    },
-                    error: function (e) {
-                        console.log(e);
-                    },
-                });
-    }
-    getCartNum()
-     
+    
+    
     const addNumber = document.querySelector('.add');
     const substractNumber = document.querySelector('.minus');
 

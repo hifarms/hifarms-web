@@ -225,14 +225,11 @@
     </div>
   <!--Home page end-->
 
-  <!--Footer starts here-->
-  <!--Footer ends-->
-  @endsection('content')
- @section('js')
-<script src="../js/main.js"></script>  
-<script src="../js/hamburger.js"></script>
-<script src="../js/index.js"></script>
-<script src="/hifarms-web/public/js/main.js"></script>
-@endsection('js') 
+@endsection('content')
+@section('js')
+<script src="/js/main.js"></script>
+<script src="/js/hamburger.js"></script>
+<script src="/js/index.js"></script>
+@endsection('js')
 </body>
 </html>

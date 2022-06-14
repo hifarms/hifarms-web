@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Farm extends Model
 {
-    public function type(){
+    public function farm_type(){
 
         return $this->belongsTo(Farm_type::class);
     }

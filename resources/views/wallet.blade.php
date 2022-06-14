@@ -56,8 +56,8 @@
                 <div class="profile-inclusive">
                     <img src="img/Profile.png" alt="profile" class="profile-header">
                     <div class="my-profile-log-out">
-                        <button><a href="profile.html">My Profile</a></button>
-                        <button>Log Out</button>
+                        <button><a href="profile">My Profile</a></button>
+                        <button><a href="logout">Log Out</a></button>
                     </div>
                 </div>
             </div>
@@ -68,12 +68,12 @@
             <img src="img/side-bar.svg" alt="side-bar">
         </div>
         <div class="second-side-bar">
-            <a href="dashboard.html"> <img src="img/Dashboard (1).svg" alt="dashboard"></a>
-            <a href="marketplace.html"><img src="img/marketplace.svg" alt="marketplace"></a>
-            <a href="livestock.html"><img src="img/livestock-dashboard.svg" alt="livestock"></a>
-            <a href="invest.html"><img src="img/invest.svg" alt="marketplace"></a>
-            <a href="invest-returns.html"><img src="img/history.svg" alt="history"></a>
-            <a href="wallet.html"><img src="img/wallet-active.svg" alt="wallet" class="current"></a>
+            <a href="dashboard"> <img src="img/Dashboard (1).svg" alt="dashboard"></a>
+            <a href="marketplace"><img src="img/marketplace.svg" alt="marketplace"></a>
+            <a href="user-farms"><img src="img/livestock-dashboard.svg" alt="livestock"></a>
+            <a href="farm-invest"><img src="img/invest.svg" alt="marketplace"></a>
+            <a href="investment"><img src="img/history.svg" alt="history"></a>
+            <a href="wallet"><img src="img/wallet-active.svg" alt="wallet" class="current"></a>
         </div>
         <div class="third-side-bar">
             <img src="img/log out.svg" alt="log-out">
@@ -93,11 +93,11 @@
             <div class="spending-2">
                 <div class="ledger">
                     <p>Ledger Balance</p>
-                    <p>₦ 32, 450.60</p>
+                    <p>₦ {{$user->wallet->ledger_balance}}</p>
                 </div>
                 <div class="wallet-ledge">
                     <p>Available Balance</p>
-                    <p>₦ 30, 450.60</p>
+                    <p>₦ {{$user->wallet->balance}}</p>
                 </div>
             </div>
         </div>

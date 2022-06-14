@@ -12,8 +12,11 @@
       <div class="form-container sign-in-container">
         <form class="sign-in" action="{{route('signin')}}" method="post">
             @csrf
-            <span class="span-login" style="padding-bottom: 15px"></span>
+            <span class="span-login" style="padding-bottom: 15px">{{Session('warning_message')}}
+            </span>
+            @error('email')<span class="full-name-msg">{{$message}}</span>@enderror
             <input type="text" placeholder="Email" name="email">
+            @error('password')<span class="full-name-msg">{{$message}}</span>@enderror
             <input type="password" placeholder="Password" name="password">
 
             <p class="forgot-password">Forgot Password?</p>

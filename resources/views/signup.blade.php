@@ -7,7 +7,8 @@
     <div class="sign-up-large">SIGN UP</div>
     </div>
       <img src="img/Flower.svg" alt="flower" class="flower">
-      <p>Already have an account? <span><a href="/signin">Sign in</a></span> </p>
+      @if(Session('Success_message'))<p style="color: rgb(14, 185, 91);font-size:16px;">{{Session('Success_message')}} <a href="/dashboard" style="color: rgb(30, 30, 209)">click here</a></p>@endif
+      <p>Already have an account? <span><a href="signin">Sign in</a></span> </p>
       <div class="form-container">
         <form action="{{route('signup')}}" method="post">
           @csrf

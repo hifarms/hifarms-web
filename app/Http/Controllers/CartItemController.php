@@ -15,13 +15,28 @@ class CartItemController extends Controller
         //get temp_id from cookie
         $tempid =  $request->cookie('carts');
         $number = 0;
+        $total=0;
         if($request->json()){
             $datas=Cart_item::where('temp_id',$tempid)->get();
+           
             foreach($datas as $data){
                 $number=$number + $data->unit;
+                $sub=$data->unit * $data->farm->unit_price;
+                $total=$total+$sub;
             }
-            return response()->json(['cartNumber'=>$number], 200);
+            return response()->json(['cartNumber'=>$number,'total'=>$total], 200);
         }
+    }
+
+    public function checkInCart(Request $request,$id){
+        $tempid =  $request->cookie('carts');
+
+        $bool=Cart_item::where('temp_id',$tempid)->where('farm_id',$id)->first();
+        if($bool){
+            return response()->json(['status'=>true], 200);
+        }
+        return response()->json(['status'=>false], 200);
+
     }
     public function getCart(Request $request){
 
