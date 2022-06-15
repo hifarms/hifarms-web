@@ -2934,7 +2934,75 @@ width: 338px;
   padding-top: 15px;
 }
 
+.product-table{
+   margin-left: 30px;
+   margin-top: 30px;
+   width: 53%;
+   background-color: #fff;
+   padding: 20px;
+   border-radius: 9px;
+}
 
+.product-table .product-names{
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  color: #404A3D;
+}
+
+.product-list-container{
+  margin-left: 10px;
+  margin-top: 0px;
+  padding: 20px;
+}
+
+.product-list{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 600px;
+  padding-right: 25px;
+  padding-left: 25px;
+  display: flex;
+  color: #404a3d;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #F5F7F9;
+  border-radius: 9px;
+}
+
+.admin-active{
+   color: #438FFE;
+}
+
+.product-list-grid{
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  color: #404A3D;
+  width: 110px;
+  font-weight: bold;
+}
+
+.product-list-grid img{
+  width: 50px;
+  margin-right: 10px;
+  border-radius: 10px;
+}
+
+.product-list-grid p{
+  font-size: 14px;
+
+}
+
+.admin-sold{
+
+}
+
+.admin-view{
+
+}
 /*Admin Dashboard ends  */
 
 
