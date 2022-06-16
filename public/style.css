@@ -2943,15 +2943,18 @@ width: 338px;
    border-radius: 9px;
 }
 
+.product-table .admin-status{
+  margin-left: 50px;
+}
+
 .product-table .product-names{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   font-weight: 600;
   color: #404A3D;
 }
 
 .product-list-container{
-  margin-left: 10px;
   margin-top: 0px;
   padding: 20px;
 }
@@ -2974,6 +2977,10 @@ width: 338px;
 
 .admin-active{
    color: #438FFE;
+}
+
+.admin-inactive{
+  color: #FF3D00;
 }
 
 .product-list-grid{
