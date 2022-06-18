@@ -81,7 +81,7 @@ header{
   top: 0;
   padding-top: 14px;
   padding-bottom: 14px;
-  z-index: 12;
+  z-index: 2;
 }
 
 .header-container{
@@ -2782,6 +2782,235 @@ width: 338px;
   font-size: 28px;
 }
 /*Partner ends*/
+
+/*Admin Dashboard Starts */
+.general-information{
+  display: flex;
+  justify-content: space-around;
+}
+
+.info-1.diff{
+  background-color: #8BC53E;
+  padding: 30px;
+  height: 186px;
+  border-radius: 5px;
+  width: 21%;
+  color: #ffffff;
+}
+
+.info-1.diff .info-images{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info-1.diff .info-images img{
+  width: 25px;
+}
+
+.info-1.diff h5{
+  padding-top: 15px;
+  padding-bottom: 10px;
+}
+
+.info-1.diff h3{
+  font-size: 26px;
+  font-weight: 200;
+  padding-bottom: 10px;
+}
+
+.info-1.diff p{
+  font-size: 12px;
+  border-top: 1px solid #ffffff;
+  padding-top: 15px;
+}
+
+.info-2{
+  background-color: #ffffff;
+  padding: 30px;
+  height: 186px;
+  border-radius: 5px;
+  width: 21%;
+  color: #545E66;
+}
+
+.info-2 .info-images{
+  display: flex;
+}
+
+.info-2 .info-images img{
+  width: 25px;
+}
+
+.info-2 h2{
+  margin: 0;
+  font-size: 24px;
+  padding-bottom: 14px;
+}
+
+.info-2 h5{
+  font-weight: 300;
+  padding-top: 15px;
+  padding-bottom: 10px;
+}
+
+.info-2 p{
+  font-size: 12px;
+  border-top: 1px solid #545E66;
+  padding-top: 15px;
+  cursor: pointer;
+  color: #438FFE;
+}
+
+.info-3{
+  background-color: #ffffff;
+  padding: 30px;
+  height: 186px;
+  border-radius: 5px;
+  width: 21%;
+  color: #545E66;
+}
+
+.info-3 .info-images{
+  display: flex;
+}
+
+.info-3 .info-images img{
+  width: 30px;
+}
+
+.info-3 h2{
+  margin: 0;
+  font-size: 24px;
+  padding-bottom: 14px;
+}
+
+.info-3 h5{
+  font-weight: 300;
+  padding-top: 15px;
+  padding-bottom: 10px;
+}
+
+.info-3 p{
+  font-size: 12px;
+  border-top: 1px solid #545E66;
+  padding-top: 15px;
+}
+
+.info-4{
+  background-color: #ffffff;
+  padding: 30px;
+  height: 186px;
+  border-radius: 5px;
+  width: 21%;
+  color: #545E66;
+}
+
+.info-4 .info-images{
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+
+.info-4 .info-images img{
+  width: 25px;
+}
+
+.info-4 h2{
+  margin: 0;
+  font-size: 24px;
+  padding-bottom: 14px;
+}
+
+.info-4 h5{
+  font-weight: 300;
+  padding-top: 15px;
+  padding-bottom: 10px;
+}
+
+.info-4 p{
+  font-size: 12px;
+  border-top: 1px solid #545E66;
+  padding-top: 15px;
+}
+
+.product-table{
+   margin-left: 30px;
+   margin-top: 30px;
+   width: 53%;
+   background-color: #fff;
+   padding: 20px;
+   border-radius: 9px;
+}
+
+.product-table .admin-status{
+  margin-left: 50px;
+}
+
+.product-table .product-names{
+  display: flex;
+  justify-content: space-around;
+  font-weight: 600;
+  color: #404A3D;
+}
+
+.product-list-container{
+  margin-top: 0px;
+  padding: 20px;
+}
+
+.product-list{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 600px;
+  padding-right: 25px;
+  padding-left: 25px;
+  display: flex;
+  color: #404a3d;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #F5F7F9;
+  border-radius: 9px;
+}
+
+.admin-active{
+   color: #438FFE;
+}
+
+.admin-inactive{
+  color: #FF3D00;
+}
+
+.product-list-grid{
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  color: #404A3D;
+  width: 110px;
+  font-weight: bold;
+}
+
+.product-list-grid img{
+  width: 50px;
+  margin-right: 10px;
+  border-radius: 10px;
+}
+
+.product-list-grid p{
+  font-size: 14px;
+
+}
+
+.admin-sold{
+
+}
+
+.admin-view{
+
+}
+/*Admin Dashboard ends  */
 
 
 /* Dashboard starts */
