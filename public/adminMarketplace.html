@@ -68,12 +68,12 @@
             <img src="img/side-bar.svg" alt="side-bar">
         </div>
         <div class="second-side-bar">
-            <a href="dashboard"><img src="img/Dashboard (1).svg" alt="dashboard"></a>
-            <a href="marketplace"><img src="img/marketplaces-current.svg" alt="marketplace" class="current"></a>
-             <a href="user-farms"><img src="img/livestock-dashboard.svg" alt="livestock"></a>
-             <a href="farm-invest"><img src="img/invest.svg" alt="marketplace"></a>
-             <a href="investment"> <img src="img/history.svg" alt="history"> </a>
-             <a href="wallet"><img src="img/wallet.svg" alt="wallet"> </a>
+            <a href="adminDashboard.html"><img src="img/Dashboard (1).svg" alt="dashboard"></a>
+            <a href="adminMarketplace.html"><img src="img/marketplaces-current.svg" alt="marketplace" class="current"></a>
+             <a href="adminMyFarm.html"><img src="img/livestock-dashboard.svg" alt="livestock"></a>
+             <a href="#"><img src="img/invest.svg" alt="marketplace"></a>
+             <a href="#"> <img src="img/history.svg" alt="history"> </a>
+             <a href="#"><img src="img/wallet.svg" alt="wallet"> </a>
         </div>
         <div class="third-side-bar">
             <img src="img/log out.svg" alt="log-out">
@@ -183,7 +183,7 @@
                         </div>
                         <h3 class="h3-dashboard">₦ 10,000</h3>
                         <div class="purchase-div dashboard">
-                            <img src="img/admin-delete.png" alt="delete" width="20" style="cursor: pointer;">
+                            <img src="img/admin-delete.png" class="delete-admin" alt="delete" width="20" style="cursor: pointer;">
                             <button>Purchase</button>
                         </div>
                     </div>
@@ -206,7 +206,7 @@
                         </div>
                         <h3 class="h3-dashboard">₦ 10,000</h3>
                         <div class="purchase-div dashboard">
-                            <img src="img/admin-delete.png" alt="delete" width="20" style="cursor: pointer;">
+                            <img src="img/admin-delete.png"  class="delete-admin" alt="delete" width="20" style="cursor: pointer;">
                             <button>Purchase</button>
                         </div>
                     </div>
@@ -228,19 +228,15 @@
                         </div>
                         <h3 class="h3-dashboard">₦ 10,000</h3>
                         <div class="purchase-div dashboard">
-                            <img src="img/admin-delete.png" alt="delete" width="20" style="cursor: pointer;">
+                            <img src="img/admin-delete.png"  class="delete-admin" alt="delete" width="20" style="cursor: pointer;">
                            <button>Purchase</button>
                         </div>
                     </div>
 
                     <div class="grid dashboard add-new-product">
-                         <div class="border-dashed">
-                             +
-                         </div>
-                    </div>
-            
-            
-            
+                        <img src="img/admin-add.svg" alt="admin-add" class="admin-add-pic">
+                    </div>    
+                    
                     <div class="grid dashboard">
                         <div class="label-edit">
                             <img src="img/edit-admin-dashboard.png" alt="edit-icon" width="28">
@@ -258,7 +254,7 @@
                         </div>
                         <h3 class="h3-dashboard">₦ 10,000</h3>
                         <div class="purchase-div dashboard">
-                            <img src="img/admin-delete.png" alt="delete" width="20" style="cursor: pointer;">
+                            <img src="img/admin-delete.png"  class="delete-admin" alt="delete" width="20" style="cursor: pointer;">
                             <button>Purchase</button>
                         </div>
                     </div>
@@ -281,7 +277,7 @@
                         </div>
                         <h3 class="h3-dashboard">₦ 10,000</h3>
                         <div class="purchase-div dashboard">
-                            <img src="img/admin-delete.png" alt="delete" width="20" style="cursor: pointer;">
+                            <img src="img/admin-delete.png" class="delete-admin" alt="delete" width="20" style="cursor: pointer;">
                             <button>Purchase</button>
                         </div>
                     </div>
@@ -289,6 +285,74 @@
             </div>
             </div>
     </div>
+
+    <!--Add Item Modal Begins-->
+    <div class="admin-add-item">
+        <div class="admin-add-item-container">
+            <div class="close-add-item">x</div>
+            <h1>Add Item</h1>
+            <label class="class-name">Name</label> <br>
+            <input type="text"placeholder="Enter item name" class="name">
+            <div class="category-percentage-flex">
+                <div class="category">
+                    <label>Category</label> <br> 
+                    <select class="category-select">
+                        <option>Select Category</option>
+                        <option>Livestock</option>
+                        <option>Meat Breeding</option>
+                        <option>Cattle Farming</option>
+                    </select>
+                </div>
+                <div class="percentage">
+                    <label>Percentage Sold(%)</label>  <br>
+                    <select>
+                        <option>10%</option>
+                        <option>40%</option>
+                        <option>60%</option>
+                        <option>80%</option>
+                        <option>100%</option>
+                    </select>
+                </div>
+            </div>
+            <div class="price-image-flex">
+                <div class="price">
+                    <label>Item Price(₦)</label> <br>
+                     <input type="text" placeholder="Enter Price...">
+                </div>
+                <div class="image">
+                    <label style="margin-left: 20px;">Image</label> <br>
+                    <input type="file" class="category-select">
+                </div>
+            </div>
+            <label class="admin-location">Location</label> <br>
+            <select class="admin-location-input">
+                <option>Select Location</option>
+                <option>Sokoto</option>
+                <option>Kebbi</option>
+                <option>Zamfara</option>
+            </select> <br>
+            <div class="button-admin-container">
+                <button class="add-item-submit">Submit</button>
+            </div>
+        </div>
+    </div>
+    <!--Add Item Modal ends-->
+
+    <!--Delete Item starts-->
+       <div class="delete-modal">
+           <div class="delete-modal-container">
+               <div class="close-delete-modal">x</div>
+               <h1>Are you sure?🙁</h1>
+               <div class="yes-no-delete-modal">
+                   <button class="yes-delete-modal">Yes</button>
+                   <button class="no no-delete-modal">No</button>
+               </div>
+           </div>
+       </div>
+       <div class="overlay"></div>
+
+    <!--Delete item ends-->
+    <script src="js/adminMarketplace.js"></script>
     <script src="js/marketplace.js"></script>
 </body>
 </html>

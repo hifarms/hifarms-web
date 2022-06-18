@@ -3023,13 +3023,258 @@ width: 338px;
 
 }
 
-.admin-sold{
-
+.overlay{
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
+  transition: .5s ease;
+  background: linear-gradient( rgba(64, 74, 61, 0.73),  rgba(64, 74, 61, 0.73)) ;
 }
 
-.admin-view{
-
+/* Delete Modal starts */
+.delete-modal{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  width: 400px;
+  color: #404a3d;
+  display: none;
+  z-index: 3000;
 }
+
+.delete-modal-container{
+  width: 90%;
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+}
+
+.delete-modal-container h1{
+   text-align: center;
+   font-size: 29px;
+   margin-top: 80px;
+   margin-bottom: 50px;
+}
+
+.yes-no-delete-modal{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.yes-no-delete-modal button{
+  width: 40%;
+  padding: 15px;
+  border: 1px solid #E53802;
+  background: transparent;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #E53802;
+  border-radius: 7px;
+}
+
+.yes-no-delete-modal .no {
+  width: 40%;
+  padding: 15px;
+  border: 1px solid #1565C0;
+  background: transparent;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #1565C0;
+  border-radius: 7px;
+}
+
+.yes-no-delete-modal .no:hover{
+  background-color: #1565C0;
+  color: #fff;
+  transition: all 0.4 ease-out;
+}
+
+.yes-no-delete-modal button:hover{
+  background-color: #E53802;
+  color: #fff;
+  transition: all 0.4 ease-out;
+}
+
+
+.close-delete-modal{
+  float: right;
+  padding-bottom: 20px;
+  background: #E53802;
+  cursor: pointer;
+  padding-top: 4px;
+  color: #fff;
+  font-size: 22px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  font-weight: bolder;
+}
+
+/* Delete Modal ends */
+
+/*Add item admin dashboard starts*/
+.admin-add-item{
+  position: fixed;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  width: 800px;
+  color: #404a3d;
+  z-index: 3000;
+  display: none;
+}
+
+.admin-add-item-container{
+  width: 90%;
+  max-width: 700px;
+  margin: auto;
+  padding: 20px;
+}
+
+.admin-add-item-container h1{
+  padding-top: 30px;
+  padding-bottom: 5px;
+  margin-left: -20px;
+  text-transform: uppercase;
+}
+
+.class-name{
+  font-size: 18px;
+  color: #8bc53e;
+}
+
+.admin-add-item-container .category-percentage-flex{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.admin-add-item-container .price-image-flex{
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.admin-add-item-container .category-percentage-flex label{
+  font-size: 18px;
+  color: #8bc53e;
+}
+
+.admin-add-item-container .price-image-flex label{
+  font-size: 18px;
+  color: #8bc53e;
+}
+
+.admin-location{
+  font-size: 18px;
+  color: #8bc53e;
+}
+
+.admin-location-input{
+  padding: 10px;
+  width: 70%;
+  border: 1px solid #8bc53e;
+  margin-top: 5px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.button-admin-container{
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.add-item-submit{
+  margin-top: 15px;
+  padding-top: 10px ;
+  padding-bottom: 10px ;
+  padding-left: 40px;
+  padding-right: 40px;
+  background: #1565C0;
+  cursor: pointer;
+  color: #fff;
+  border: 1px solid #1565C0;
+  border-radius: 6px;
+}
+
+.add-item-submit:hover{
+  background-color: #fff;
+  color: #1565C0;
+  border: 1px solid #1565C0;
+  transition: all 0.4s ease-in-out;
+}
+
+.admin-add-item-container .category-percentage-flex select{
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #8bc53e;
+  margin-top: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.admin-add-item-container .price-image-flex input{
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #8bc53e;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.admin-add-item-container .price-image-flex .category-select{
+    margin-left: 20px;
+    width: 135%;
+}
+
+
+.admin-add-item-container .category-percentage-flex .category-select{
+  width: 290%;
+}
+
+.admin-add-item-container .name{
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #8bc53e;
+  margin-top: 6px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.admin-add-item-container .close-add-item{
+  float: right;
+  padding-bottom: 20px;
+  background: #E53802;
+  cursor: pointer;
+  padding-top: 4px;
+  color: #fff;
+  font-size: 22px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  font-weight: bolder;
+}
+/*Add item admin dashboard ends */
+
+
+
 /*Admin Dashboard ends  */
 
 
@@ -3368,13 +3613,16 @@ width: 338px;
   font-size: 23px;
 }
 
-.sponsor-data .grid.dashboard.add-new-product{
- 
+.sponsor-data .grid.dashboard.add-new-product img{
+    width: 150px;
+    height: 300px;
+    margin-top:70px;
+    margin-left: 25px;
+    cursor: pointer;
 }
 
-.border-dashed{
-  padding: 30px;
-  border-style: dotted;
+.sponsor-data .grid.dashboard.add-new-product{
+  height: 506px;
 }
 
 .purchase-div.dashboard{
