@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <meta name="_token" content="{{ csrf_token() }}" />
+    <script src="{{asset('js/jquery.min.js')}}"></script>
     <title>Invest</title>
 </head>
 <body>
@@ -116,169 +118,99 @@
                             <P>0</P>
                         </div>
                     </div>
+           
                 </div>
-                <div class="sponsor-data dashboard">                        
+                <div class="sponsor-data dashboard">
+                    @foreach($products as $product)                        
                     <div class="grid dashboard">
-                        <p class="label">New</p>
-                        <img src="img/unsplash_aIghKsc3H34.png" alt="image" class="marketplace-image">
-                        <h1>Fish Farm</h1>
-                        <div class="sponsor-inner-flex">
-                            <img src="img/location.svg" alt="">
-                            <p>Birnin Kebbi, Central Market</p>
-                        </div>
-                        <div class="sponsor-inner-flex">
-                            <img src="img/graph.svg" alt="">
-                            <p>10%</p>
-                       </div>
-                        <div class="sponsor-inner-flex">
-                            <img src="img/calendar.svg" alt="">
-                            <p>6 months</p>
-                        </div>
-                        <div class="sponsor-inner-flex">
-                            <img src="img/sponsor-cart.svg" alt="">
-                            <p>74% sold</p>
-                        </div>
-                        <div class="purchase-div invest">
-                            <h3>₦ 300,000</h3>
-                            <button>Invest</button>
-                        </div>
-                    </div>
+                        <p class="label {{$product->label->color}}">{{$product->label->name}}</p>
+            <img src={{url($product->image)}} alt="">
+            <h1>{{$product->name}}</h1>
+            <div class="sponsor-inner-flex">
+                <img src={{url("img/location.svg")}} alt="">
+                <p>{{$product->location}}</p>
+            </div>
+            <div class="sponsor-inner-flex">
+                <img src={{url("img/graph.svg")}} alt="">
+                <p>{{$product->returns[0]->percentage}}%</p>
+            </div>
+            <div class="sponsor-inner-flex">
+                <img src={{url("img/calendar.svg")}} alt="">
+                <p>{{$product->returns[0]->duration}}</p>
+            </div>
+            <div class="sponsor-inner-flex">
+                <img src={{url("img/sponsor-cart.svg")}} alt="">
+                <p>74% sold</p>
+            </div>
+            <div class="purchase-div invest">
+            <h3>₦ {{$product->unit_price}}</h3>
+            <button class="investBtn" id="{{$product->id}}">Invest</button>
+            </div>
+            </div>
             
-                    <div class="grid dashboard">
-                        <p class="label">New</p>
-                        <img src="img/unsplash_leOh1CzRZVQ.png" alt="image" class="marketplace-image">
-                        <h1>Fish Farm</h1>
-                        <div class="sponsor-inner-flex">
-                            <img src="img/location.svg" alt="">
-                            <p>Birnin Kebbi, Central Market</p>
-                        </div>
-                        <div class="sponsor-inner-flex">
-                            <img src="img/graph.svg" alt="">
-                            <p>10%</p>
-                        </div>
-                        <div class="sponsor-inner-flex">
-                            <img src="img/calendar.svg" alt="">
-                            <p>6 months</p>
-                        </div>
-                        <div class="sponsor-inner-flex">
-                            <img src="img/sponsor-cart.svg" alt="">
-                            <p>74% sold</p>
-                        </div>
-                        <div class="purchase-div invest">
-                            <h3>₦ 300,000</h3>
-                            <button>Invest</button>
-                        </div>
-                    </div>
-            
-            
-                    <div class="grid dashboard">
-                        <p class="label">New</p>
-                        <img src="img/unsplash_eOktYr3tAMo.png" alt="image" class="marketplace-image">
-                        <h1>Fish Farm</h1>
-                        <div class="sponsor-inner-flex">
-                            <img src="img/location.svg" alt="">
-                            <p>Birnin Kebbi, Central Market</p>
-                        </div>
-                        <div class="sponsor-inner-flex">
-                            <img src="img/graph.svg" alt="">
-                            <p>10%</p>
-                        </div>
-                        <div class="sponsor-inner-flex">
-                            <img src="img/calendar.svg" alt="">
-                            <p>6 months</p>
-                        </div>
-                        <div class="sponsor-inner-flex">
-                            <img src="img/sponsor-cart.svg" alt="">
-                            <p>74% sold</p>
-                        </div>
-                        <div class="purchase-div invest">
-                            <h3>₦ 300,000</h3>
-                            <button>Invest</button>
-                        </div>
-                    </div>
-            
-                    <div class="grid dashboard">
-                        <p class="label sold-out">Sold Out</p>
-                        <img src="img/unsplash_eOktYr3tAMo.png" alt="image" class="marketplace-image">
-                        <h1>Meat Breeding</h1>
-                        <div class="sponsor-inner-flex">
-                            <img src="img/location.svg" alt="">
-                            <p>Birnin Kebbi, Central Market</p>
-                        </div>
-                        <div class="sponsor-inner-flex">
-                            <img src="img/graph.svg" alt="">
-                            <p>10%</p>
-                        </div>
-                        <div class="sponsor-inner-flex">
-                            <img src="img/calendar.svg" alt="">
-                            <p>6 months</p>
-                        </div>
-                        <div class="sponsor-inner-flex">
-                            <img src="img/sponsor-cart.svg" alt="">
-                            <p>74% sold</p>
-                        </div>
-                        <div class="purchase-div invest">
-                            <h3>₦ 300,000</h3>
-                            <button>Invest</button>
-                        </div>
-                    </div>
-            
-            
-                    <div class="grid dashboard">
-                        <p class="label sold-out">Sold Out</p>
-                        <img src="img/unsplash_yFU8qIDo9s4.png" alt="image" class="marketplace-image">
-                        <h1>Fish Farm</h1>
-                        <div class="sponsor-inner-flex">
-                            <img src="img/location.svg" alt="">
-                            <p>Birnin Kebbi, Central Market</p>
-                        </div>
-                        <div class="sponsor-inner-flex">
-                            <img src="img/graph.svg" alt="">
-                            <p>10%</p>
-                        </div>
-                        <div class="sponsor-inner-flex">
-                            <img src="img/calendar.svg" alt="">
-                            <p>6 months</p>
-                        </div>
-                        <div class="sponsor-inner-flex">
-                            <img src="img/sponsor-cart.svg" alt="">
-                            <p>74% sold</p>
-                        </div>
-                        <div class="purchase-div invest">
-                            <h3>₦ 300,000</h3>
-                            <button>Invest</button>
-                        </div>
-                    </div>
-            
-                    <div class="grid dashboard">
-                        <p class="label out-of-stock">Out Of Stock</p>
-                        <img src="img/unsplash_yFU8qIDo9s4.png" alt="image" class="marketplace-image">
-                        <h1>Fish Farm</h1>
-                        <div class="sponsor-inner-flex">
-                            <img src="img/location.svg" alt="">
-                            <p>Birnin Kebbi, Central Market</p>
-                        </div>
-                        <div class="sponsor-inner-flex">
-                            <img src="img/graph.svg" alt="">
-                            <p>10%</p>
-                        </div>
-                        <div class="sponsor-inner-flex">
-                            <img src="img/calendar.svg" alt="">
-                            <p>6 months</p>
-                        </div>
-                        <div class="sponsor-inner-flex">
-                            <img src="img/sponsor-cart.svg" alt="">
-                            <p>74% sold</p>
-                        </div>
-                        <div class="purchase-div invest">
-                            <h3>₦ 300,000</h3>
-                            <button>Invest</button>
-                        </div>
-                    </div>
+                    @endforeach
+                    
                 </div>
             </div>
             </div>
     </div>
     <script src="js/marketplace.js"></script>
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+
+    <script>
+        $('.investBtn').on('click',function(){
+            jQuery.ajax({
+                    url: `http://127.0.0.1:8000/single-checkout/${this.id}`,
+                    method: "get",
+                    success: function(data) {
+                        console.log(data)
+                        var handler = PaystackPop.setup({
+                            key: 'pk_test_d31a3ad9815642087a323749cd60597aad8f7a73',
+                            email: data.user.email,
+                            amount: data.total_amount * 100,
+                            metadata: {
+                                custom_fields: [{
+                                    display_name: "order_id",
+                                    variable_name: "order_id",
+                                    value: data.id
+                                },
+                                {
+                                    display_name: "first_name",
+                                    variable_name: "first_name",
+                                    value:data.user.fullname.split[0]
+                                },
+                                {
+                                    display_name: "last_name",
+                                    variable_name: "last_name",
+                                    value:data.user.fullname.split[1]
+                                },
+                            ]
+                            },
+                            callback: function(response) {
+
+                                let message = 'Payment complete! Reference: ' + response.reference;
+                                console.log(response);
+                                alert(message);
+                                window.location.replace(response.redirecturl);
+
+                            },
+                            onClose: function() {
+                                alert('window closed');
+                            }
+                        });
+                        handler.openIframe();
+                    
+                },
+                error: function(e) {
+                    if(e.status==401){
+                    alert("Login To CheckOut Cart")
+                    window.location.replace('/signin');
+                }
+
+                }
+            });
+       
+        })
+    </script>
 </body>
 </html>

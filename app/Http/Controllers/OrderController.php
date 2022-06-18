@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Farm;
 use App\Order;
+use App\Payment;
 use App\Cart_item;
 use App\Order_item;
 use Illuminate\Http\Request;
@@ -34,6 +36,9 @@ class OrderController extends Controller
             $orderitem->delivered = 0;
             $orderitem->unit = $item->unit;
             $orderitem->amount = $item->farm->unit_price * $item->unit;
+            $orderitem->farm_id = $item->farm_id;
+            $orderitem->farm_return_type_id = $item->farm_return_type_id;
+
             // if($item->farm_id){
             //     $orderitem->farm_id = $item->farm_id;
             //     $orderitem->farm_return_type_id = $farm_return_type_id;
@@ -44,19 +49,102 @@ class OrderController extends Controller
 
             $orderitem->save();
             $total=$total+$orderitem->amount;
+
          
         }
         $order->total_amount = $total;
         $order->save();
+        $orderData= Order::with('user')->where('id',$order->id)->first();
+        return response()->json($orderData, 200);
 
-        return response()->json($order, 200);
 
+        // if(boolval($request->payment_through_wallet)){
 
-        if(boolval($request->payment_through_wallet)){
+        //     return redirect()->action('${App\Http\Controllers\WallectController@makePayment}', ['order' => $order]);
+        // }
 
-            return redirect()->action('${App\Http\Controllers\WallectController@makePayment}', ['order' => $order]);
+        // return redirect()->action('${App\Http\Controllers\FlutterController@makePayment}', ['order' => $order]);
+    }
+
+    public function singleCheckout(Request $request,Farm $farm){
+      $order = new Order();
+      $order->user_id = Auth::user()->id;
+      $order->save();
+      $total =0;
+
+          $orderitem = new Order_item();
+          $orderitem->order_id = $order->id;
+          $orderitem->cleared_to_wallet = 0;
+          $orderitem->delivered = 0;
+          $orderitem->unit = 1;
+          $orderitem->amount = $farm->unit_price;
+          $orderitem->farm_id = $farm->id;
+          $orderitem->farm_return_type_id = 1;
+          $orderitem->save();
+       
+      
+      $order->total_amount = $farm->unit_price;
+      $order->save();
+      $orderData= Order::with('user')->where('id',$order->id)->first();
+      return response()->json($orderData, 200);
+
+    }
+
+    public function verifyTransaction(Request $request){
+        
+        $tempid=$request->cookie('carts');
+        $cartitems = Cart_item::where('temp_id',$tempid)->delete();
+
+        $ref = $request->input('trxref');
+        $curl = curl_init();
+  
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => "https://api.paystack.co/transaction/verify/".$ref,
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => "",
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 30,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => "GET",
+          CURLOPT_HTTPHEADER => array(
+            "Authorization: Bearer sk_test_4a81d0d2b632d9f3422a154cb4d8052b5decd2b8",
+            "Cache-Control: no-cache",
+          ),
+        ));
+        
+        $response  = curl_exec($curl);
+        $err = curl_error($curl);
+        curl_close($curl);
+        $response =json_decode($response);
+        if ($err) {
+          return view('test',['msg'=>$err]);
         }
+        if($response->status){
+            $payment = new Payment();
+            $payment->ref_id = $response->data->reference;
+            $payment->status_code =200;
+            $payment->status_message = $response->data->status;
+            $payment->payment_method = $response->data->channel;
+            $payment->transaction_status = 1;
+            $payment->save();
 
-        return redirect()->action('${App\Http\Controllers\FlutterController@makePayment}', ['order' => $order]);
+           
+        }else{
+          $payment = new Payment();
+            $payment->ref_id = $response->data->reference;
+            $payment->status_code =201;
+            $payment->status_message = $response->data->status;
+            $payment->payment_method = $response->data->channel;
+            $payment->transaction_status = 1;
+            $payment->save();
+
+            
+        }
+        $order = Order::where('id',$response->data->metadata->custom_fields[0]->value)->first();
+        $order->payment_id = $payment->id;
+        $order->save();
+        return redirect('/investment');
+
+        
     }
 }

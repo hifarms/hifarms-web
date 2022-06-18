@@ -80,13 +80,13 @@
 <footer class="signup-footer">
     <div class="footer-container">
         <div class="footer-info">
-            <img src="img/logo.png" alt="logo" width="75">
+            <img src={{asset("img/logo.png")}} alt="logo" width="75">
             <p>We are industry leading organic farm delivering the best products that boost your daily life energy and potential.</p>
              <div class="footer-social">
-                 <a href="#"><img src="img/whatsapp-footer.svg" alt="whatsapp" width="20"></a>
-                 <a href="#"><img src="img/ig.svg" alt="instagram" width="20"></a>
-                 <a href="#"><img src="img/twitter-footer.png" alt="twitter" width="20"></a>
-                 <a href="#"><img src="img/fb-footer.png" alt="facebook" width="20"></a>
+                 <a href="#"><img src={{asset("img/whatsapp-footer.svg")}} alt="whatsapp" width="20"></a>
+                 <a href="#"><img src={{asset("img/ig.svg")}} alt="instagram" width="20"></a>
+                 <a href="#"><img src={{asset("img/twitter-footer.png")}} alt="twitter" width="20"></a>
+                 <a href="#"><img src={{asset("img/fb-footer.png")}} alt="facebook" width="20"></a>
              </div>
            </div>
         <div class="footer-links">
@@ -123,7 +123,7 @@
                 </defs>
                 </svg>
             
-                <img src="img/get on google play.png" alt="play-store" style="margin-left: 14px;" class="play-store" width="109">
+                <img src='{{asset("img/get on google play.png")}}' alt="play-store" style="margin-left: 14px;" class="play-store" width="109">
             </div>
          </div>
         </div>
@@ -149,7 +149,7 @@
 
 getCartNum()
  </script>
- <script src="../js/hamburger.js"></script>
+ <script src="http://127.0.0.1:8000/js/hamburger.js"></script>
 
 </body>
 </html>

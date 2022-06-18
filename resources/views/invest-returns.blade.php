@@ -86,20 +86,28 @@
         <div class="investment-returns">
             <div class="total-investment">
                 <p>Total Investment</p>
-                <p>₦ 0.00</p>
+                <p>₦ {{$total_invest}}.00</p>
             </div>
             <div class="total-returns">
                 <p>Total Investment Returns</p>
-                <p>₦ 0.00</p>
+                <p>₦ {{$total_return}}.00</p>
             </div>
             <div class="active-projects">
                 <p>Active Projects</p>
-                <p>0</p>
+                <p>{{$active}}</p>
             </div>
         </div>
 
         <div class="investment-table">
             <p>You have no investments yet.</p>
+            <span>ID</span>-----<span>Amount</span><br>
+            @foreach(auth()->user()->investments as $investment)
+                @if($investment->order->payment && $investment->order->payment->status_code==200)
+                <span>
+                    {{$investment->id}}
+                </span>-----<span>{{$investment->amount}}</span><br>
+                @endif
+            @endforeach
             <div class="buttons">
                 <button><img src="img/csv.svg" width="120"></button>
                 <button><img src="img/pdf.svg" width="120"></button>

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BlogPostController;
@@ -19,6 +20,11 @@ use App\Http\Controllers\BlogPostController;
 */
 
 //Static Page
+Route::get('/clear-cache', function() {
+    $exitCode = Artisan::call('cache:clear');
+    // return what you want
+});
+
 Route::get('/', function () {
     return view('index');
 });
@@ -42,9 +48,9 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/services/sponsor', 'Farminvestment@index');
+Route::get('/services/sponsor', 'FarmInvestment@index');
 
-Route::get('services/sponsor/{farm}', 'Farminvestment@show');
+Route::get('services/sponsor/{farm}', 'FarmInvestment@show');
 
 Route::get('/blog', 'BlogPostController@getPost');
 
@@ -66,6 +72,12 @@ Route::get('/check-in-cart/{id}', 'CartItemController@checkInCart');
 
 Route::get('/checkout', 'OrderController@checkout')->name('checkout');
 
+Route::get('/single-checkout/{farm}', 'OrderController@singleCheckout')->name('single-checkout');
+
+
+Route::get('/paystack/callback', 'OrderController@verifyTransaction')->name('verify');
+
+
 Route::get('/profile', 'UserController@profile')->name('profile');
 
 Route::get('/dashboard', 'UserController@dashboard')->name('dashboard');
@@ -76,7 +88,7 @@ Route::get('/wallet', 'UserController@wallet')->name('dashboard');
 
 Route::get('/investment', 'UserController@investment')->name('dashboard');
 
-Route::get('/farm-invest', 'UserController@farmInvest')->name('dashboard');
+Route::get('/farm-invest', 'FarmInvestment@farmInvest')->name('dashboard');
 
 
 Route::get('/marketplace', 'ProductController@marketplace')->name('dashboard');

@@ -5,6 +5,7 @@ namespace App;
 use App\User;
 use App\Payment;
 use App\Cart_item;
+use App\Order_item;
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
@@ -19,6 +20,6 @@ class Order extends Model
     }
     public function orderitems(){
 
-        return $this->hasMany(Cart_item::class);
+        return $this->hasMany(Order_item::class);
     }
 }

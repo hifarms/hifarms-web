@@ -228,7 +228,6 @@
 @endsection('content')
 @section('js')
 <script src="/js/main.js"></script>
-<script src="/js/hamburger.js"></script>
 <script src="/js/index.js"></script>
 @endsection('js')
 </body>
