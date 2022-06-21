@@ -20,7 +20,6 @@ class CreatePaymentsTable extends Migration
             $table->string('status_code');
             $table->string('status_message');
             $table->boolean('transaction_status')->default(0);
-            $table->date('date_of_payment');
             $table->timestamps();
         });
     }

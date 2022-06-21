@@ -44,6 +44,9 @@ class ProductController extends Controller
 
 
    }
+    // public function OrderProduct(Request $request){
+    //     $request->
+    // }
 
     public function show(Product $product){
        

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Farm;
+use App\User;
 use App\Order;
 use App\Product;
+use App\Farm_return_type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,9 +23,9 @@ class UserController extends Controller
     $orders = Order::where('user_id',auth()->user()->id)->get();
     $active=0;
     foreach($orders as $order){
-        if($order->payment->status_code !== 200 || $order->payment->status_message !== 'success'){
-            continue;
-        }
+        // if($order->payment->status_code !== 200 || $order->payment->status_message !== 'success'){
+        //     continue;
+        // }
         $active=$active+count($order->orderitems->where('delivered',0));
     }
     return view('dashboard',['product'=>$product,'farm'=>$farms,'active'=>$active]);
@@ -45,21 +47,30 @@ class UserController extends Controller
        return view('livestock',['livestock'=>$livestokeCount,'crop'=>$cropCount]);
    }
 
-   public function farmInvest(Request $request){
-   
-
-    return view('invest');
-}
 
     //Userdasboard/investment PAGE
     public function investment(Request $request){
 
         $user = auth()->user();
-        // User::with(['investments'=>function($query){
+        $total_return=0;
+        $active=0;
+        $total_invest=0;
+        $active_invest=$user->investments->where('delivered',0);
+        foreach($active_invest as $invest){
+            if($invest->order->payment==null){
+                continue;
+            }
+            $per = Farm_return_type::where('id',$invest->farm_return_type_id)->first();
+            $rtn=($per->percentage/100)*$invest->amount;
+            $total_invest=$total_invest+$invest->amount;
+            $total_return=$total_return+$rtn;
+            $active++;
+        }
+        // $investment= User::with(['investments'=>function($query){
         //     $query->where('farm_id','!=',null)->get();
-        // }])->where('user_id','=',Auth::user()->id)->get();
+        // }])->where('id','=',Auth::user()->id)->get();
         
-        return view('invest-returns',['user'=>$user]);
+        return view('invest-returns',['user'=>$user,'total_invest'=>$total_invest,'total_return'=>$total_return,'active'=>$active]);
 
    }
 
@@ -90,7 +101,7 @@ class UserController extends Controller
         return view('wallet',['user'=>$user]);
     }
 
-    //Moving Farm investment Return/payment to wallet
+//Moving Farm investment Return/payment to wallet
     public function moveToWallet(Request $request,Order_item $item){
         
         $this->authorize('view', $item);

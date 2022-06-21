@@ -105,4 +105,39 @@ class FarmInvestment extends Controller
         return view('product-show',['farm'=>$farm,"added_to_cart"=>boolval($added_to_cart)]);
     }
 
+
+
+    public function farmInvest(Request $request){
+        
+            $sort = $request->input('sort')=="new"? "ASC" : "DESC";
+            $products= Farm::where('active','=',1)->orderBy('created_at',$sort)->paginate(15)->withQueryString();
+
+            session()->flashInput($request->input());
+
+            if($request->input('range')){
+                $products= $products->where('unit_price',"<",$request->input('range'));
+            }
+
+            $cat=[];
+            if($request->input('livestock')){
+                array_push($cat,1);
+            }
+            if($request->input('cattle')){
+                array_push($cat,2);
+            }
+            if($request->input('crop')){
+                array_push($cat,3);
+            }
+            if($request->input('poultry')){
+                array_push($cat,4);
+            }
+            // $category= explode(',',$request->input('category'))
+
+            $cat && $products=$products->whereIn('category_id',$cat);
+            //$price = explode('-',$request->input('price)//
+            // $products = Farm::where('active','=',1)->where('category_id',$rquest->input('category'))->get();        }
+
+        return view('invest',['products'=>$products]);
+    
+    }
 }
