@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>My Farm</title>
+    <title>Admin Wallet</title>
 </head>
 <body>
     <header>
@@ -70,73 +70,86 @@
         <div class="second-side-bar">
             <a href="adminDashboard.html"> <img src="img/Dashboard (1).svg" alt="dashboard"></a>
             <a href="adminMarketplace.html"><img src="img/marketplace.svg" alt="marketplace"></a>
-            <a href="adminMyFarm.html"> <img src="img/livestock-current.svg" alt="livestock" class="current"> </a>
+            <a href="adminMyFarm.html"><img src="img/livestock-dashboard.svg" alt="livestock"></a>
             <a href="adminInvest.html"><img src="img/invest.svg" alt="marketplace"></a>
-            <a href="adminInvestReturns.html"> <img src="img/history.svg" alt="history"> </a>
-            <a href="adminWallet.html"><img src="img/wallet.svg" alt="wallet"> </a>
+            <a href="adminInvestReturns.html"><img src="img/history.svg" alt="history"></a>
+            <a href="adminWallet.html"><img src="img/wallet-active.svg" alt="wallet" class="current"></a>
         </div>
         <div class="third-side-bar">
             <img src="img/log out.svg" alt="log-out">
         </div>
     </div>
-    <div class="dashboard-container livestock">
-      <h1>My Farm</h1>
-      <div class="my-farm-1">
-        <img src="img/Farmer Icon (1).svg" alt="farm-icon" width="130" class="farm-icon">
-        <div class="weatherflex">
-            <div class="weather-2">
-                <div class="flex-1">
-                    <p>Weather</p>
-                    <img src="img/clouds.png" alt="clouds">
-                    <img src="img/temprature.png" alt="celsius">
+    <div class="dashboard-container">
+        <h1>My Wallet.</h1>
+        <div class="wallet-flex">
+            <div class="spending">
+                <div class="spend-1">
+                    <p>My Spendings</p>
+                    <p>₦ 10, 250, 450.60</p>
                 </div>
-                <div class="flex-2">
-                    <img src="img/options.png" alt="">
-                </div>
+                <img src="img/analye.png" alt="chart" class="analyze">
+                <img src="img/options.png" >
             </div>
-            <div class="weather-2">
-                <div class="flex-1">
-                    <p>Humidity</p>
-                    <img src="img/clouds.png" alt="clouds">
-                    <img src="img/16º.svg" alt="celsius">
+            <div class="spending-2">
+                <div class="ledger">
+                    <p>Ledger Balance</p>
+                    <p>₦ 3, 200, 360.00</p>
                 </div>
-                <div class="flex-2">
-                    <img src="img/options.png" alt="">
+                <div class="wallet-ledge">
+                    <p>Available Balance</p>
+                    <p>₦ 3, 200, 360.00</p>
                 </div>
             </div>
         </div>
-          <img src="img/Farm chart.svg" alt="farm-chart" class="farm-chart">
-      </div>
-        <div class="dashboard-flex livestock">
-       <div class="marketplace-flex manage-your-farm livestock">
-                <div class="top-marketplace-flex">
-                    <p>Manage Your Farm</p>
-                    <img src="img/livestock-dashboard.svg" alt="icon">
-                </div>
-                  <div class="marketplace-body">
-                    <p>Livestock Farming</p>
-                  </div>
-                <div class="views-numbers">
-                    <p>6</p>
-                    <img src="img/play-button.svg" alt="eye-icon" width="23">
+        <div class="search-show-entry">
+            <div>Show Entries: <span class="ten">10</span></div>
+            <div class="entry-search"> <p>Search</p>   
+                 <div class="input-search">
+                    <input type="text" placeholder="search for">
+                    <img src="img/Vector (8).png" alt="search-icon">
                 </div>
             </div>
-            <div class="marketplace-flex invest-your-farm livestock">
-                <div class="top-marketplace-flex">
-                    <p>Manage Your Farm</p>
-                    <img src="img/manage-farm.svg" alt="icon">
-                </div>
-                  <div class="marketplace-body">
-                    <p>Crops Farming</p>
-                  </div>
-                <div class="views-numbers">
-                    <p>3</p>
-                    <img src="img/play-button.svg" alt="eye-icon" width="23">
-                </div>
-            </div>  
         </div>
-   
-        <p class="livestock-bottom">Livestock Farming</p>
+        <div class="transaction-history">
+                <p>Transaction history</p>
+                <div class="transaction-history-flex">
+                    <div class="transact-history-option">
+                        <div>User ID</div>
+                        <div>Order ID</div>
+                        <div>Status</div>
+                        <div>Project Type</div>
+                        <div>Amount</div>
+                    </div>
+                    <div class="transaction-records">
+                        <div>Hi-001</div>
+                        <div>#023</div>
+                        <div style="color: #53AF46;">Paid</div>
+                        <div>Purchase</div>
+                        <div>₦ 225,000</div>
+                    </div>
+                    <div class="transaction-records">
+                        <div>Hi-001</div>
+                        <div>#023</div>
+                        <div style="color: #1E88E5;">Pending</div>
+                        <div>Purchase</div>
+                        <div>₦ 550,000</div>
+                    </div>
+                    <div class="transaction-records">
+                        <div>Hi-001</div>
+                        <div>#023</div>
+                        <div style="color: #53AF46;">Paid</div>
+                        <div>Investment</div>
+                        <div>₦ 25,000</div>
+                    </div>
+                    <div class="transaction-records">
+                        <div>Hi-001</div>
+                        <div>#023</div>
+                        <div style="color: #53AF46;">Paid</div>
+                        <div>Purchase</div>
+                        <div>₦ 25,000</div>
+                    </div>
+                </div>
+        </div>
     </div>
 </body>
 </html>

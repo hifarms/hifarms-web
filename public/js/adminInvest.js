@@ -1,4 +1,3 @@
-//Setting variable
 const addItem = document.querySelector('.admin-add-pic');
 const deleteItem = document.querySelectorAll('.delete-admin');
 const editIcon = document.querySelectorAll('.edit-icon');
@@ -59,11 +58,10 @@ deleteItem.forEach((item)=>{
 editIcon.forEach((edit)=>{
   edit.addEventListener('click', ()=>{
 
-    let itemName = edit.parentElement.parentElement.querySelector('h1');
-    let itemPrice = edit.parentElement.parentElement.querySelector('.h3-dashboard');
-    let itemLocation = edit.parentElement.parentElement.querySelector('.location');
-    let itemPercentage = edit.parentElement.parentElement.querySelector('.percentage-sold');
-
+    let itemName = edit.parentElement.parentElement.parentElement.querySelector('h1');
+    let itemPrice = edit.parentElement.parentElement.parentElement.querySelector('.h3-dashboard');
+    let itemLocation = edit.parentElement.parentElement.parentElement.querySelector('.location');
+    let itemPercentage = edit.parentElement.parentElement.parentElement.querySelector('.percentage-sold');
     const editItemModal = document.querySelector('.edit-add-item')
     editItemModal.innerHTML = `
     <div class="admin-add-item-container">

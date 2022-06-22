@@ -2471,6 +2471,10 @@ width: 338px;
   margin-top: 0px;
 }
 
+.edit-icon{
+  cursor: pointer;
+}
+
 .faq-last-image .faq-form button:hover{
   background-color: #fff;
   color: #49a760;
@@ -3247,6 +3251,12 @@ width: 338px;
   z-index: 3000;
 }
 
+.delete-modal.invest h1{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 31px;
+}
+
 .delete-modal-container{
   width: 90%;
   max-width: 400px;
@@ -3322,6 +3332,18 @@ width: 338px;
 /* Delete Modal ends */
 
 /*Add item admin dashboard starts*/
+.edit-add-item{
+  position: fixed;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  width: 800px;
+  color: #404a3d;
+  z-index: 3000;
+  display: none;
+}
+
 .admin-add-item{
   position: fixed;
   top: 55%;
@@ -3452,6 +3474,21 @@ width: 338px;
   margin-top: 6px;
   border-radius: 5px;
   font-size: 16px;
+}
+
+.admin-add-item-container .close-edit-item{
+  float: right;
+  padding-bottom: 20px;
+  background: #E53802;
+  cursor: pointer;
+  padding-top: 4px;
+  color: #fff;
+  font-size: 22px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  font-weight: bolder;
 }
 
 .admin-add-item-container .close-add-item{
@@ -3811,15 +3848,14 @@ width: 338px;
 }
 
 .sponsor-data .grid.dashboard.add-new-product img{
-    width: 150px;
+    width: 200px;
     height: 300px;
-    margin-top:70px;
-    margin-left: 25px;
+    margin-top:50px;
     cursor: pointer;
 }
 
 .sponsor-data .grid.dashboard.add-new-product{
-  height: 506px;
+  height: 450px;
 }
 
 .purchase-div.dashboard{
@@ -3827,6 +3863,10 @@ width: 338px;
   justify-content: space-between;
   align-items: center;
   margin-top: 8px;
+}
+
+.h3-dashboard.invest{
+  padding-top: 10px;
 }
 
 .purchase-div.dashboard button{
@@ -4074,7 +4114,7 @@ width: 338px;
 }
 
 .purchase-div.invest h3{
-  font-size: 17px;
+  font-size: 19px;
 }
 
 .dashboard-container.returns{
@@ -4262,10 +4302,42 @@ width: 338px;
   margin-top: 15px;
     margin-left: 40px;
     padding: 20px;
-    height: 300px;
     border-radius: 20px;
-    width: 1100px;
+    width: 93%;
     background: #ffffff;
+}
+
+.transaction-history-flex{
+  margin: auto;
+  max-width: 1050px;
+}
+
+.transaction-history-flex .transact-history-option{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+}
+
+.transaction-records div{
+  text-align: center;
+}
+
+.transaction-history-flex .transact-history-option div{
+  color: #404A3D;
+  font-size: 17px;
+}
+
+.transaction-history-flex .transaction-records{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  background: #f1f4f7;
+  border-radius: 5px;
+  color: #404a3d;
 }
 
 .transaction-history p{
