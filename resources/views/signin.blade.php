@@ -21,8 +21,8 @@
 
             <p class="forgot-password">Forgot Password?</p>
             <div class="google-fb-btn sign-in-google">
-             <img src="img/google.jpg" alt="google" class="google-logo">
-             <img src="img/facebook.png" alt="facebook" class="facebook-logo">
+            <a href="{{ route('signin.google')}}"><img src="img/google.jpg" alt="google" class="google-logo"></a>
+             <a href=" {{ route('signin.facebook')}}"><img src="img/facebook.png" alt="facebook" class="facebook-logo"></a>
              <button>Submit</button>
              </div>
         </form>

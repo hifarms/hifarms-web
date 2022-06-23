@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
 {
@@ -106,5 +107,55 @@ class AuthController extends Controller
     public function signInForm(){
 
         return view('signin');
+    }
+
+    //Google Login
+    public function redirectToGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    //Google Callback
+    public function handleGoogleCallback()
+    {
+        $user = Socialite::driver('google')->user();
+
+        $this-> _registerOrLoginUser($table);
+
+        //Return to Idex after sign in
+        return redirect()->route('index');
+    }
+
+
+    //Facebook Login
+    public function redirectToFacebook()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    //Facebook Callback
+    public function handleFacebookCallback()
+    {
+        $user = Socialite::driver('facebook')->user();
+
+        $this-> _registerOrLoginUser($table);
+
+        //Return to Idex after sign in
+        return redirect()->route('index');
+    }
+
+    protected function _registerOrLoginUser($table)
+    {
+        $user = User::where('email', '=', $table->email)->first();
+        if(!$table){
+            $table = new User();
+            $table->name = $table->name;
+            $table->email = $table->email;
+            $table->provider_id = $table->id;
+            $table->avatar = $table->avatar;
+            $table->save();
+        }
+
+        Auth::login($table);
     }
 }
