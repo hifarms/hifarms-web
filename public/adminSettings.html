@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Admin Wallet</title>
+    <title>Admin Settings</title>
 </head>
 <body>
     <header>
@@ -73,84 +73,109 @@
             <a href="adminMyFarm.html"><img src="img/livestock-dashboard.svg" alt="livestock"></a>
             <a href="adminInvest.html"><img src="img/invest.svg" alt="marketplace"></a>
             <a href="adminInvestReturns.html"><img src="img/history.svg" alt="history"></a>
-            <a href="adminWallet.html"><img src="img/wallet-active.svg" alt="wallet" class="current"></a>
+            <a href="adminWallet.html"><img src="img/wallet.svg" alt="wallet"></a>
         </div>
         <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;margin-bottom: 10px;">
-            <a href="adminSettings.html"><img src="img/settings.png" style="margin-bottom: 30px;" alt="settings"></a>
+            <a href="adminSettings.html"><img src="img/settings.png"  style=" border-radius: 50%; margin-bottom: 30px;" alt="settings"></a>
             <img src="img/log out.svg" alt="log-out">
         </div>
     </div>
-    <div class="dashboard-container">
-        <h1>My Wallet.</h1>
-        <div class="wallet-flex">
-            <div class="spending">
-                <div class="spend-1">
-                    <p>My Spendings</p>
-                    <p>₦ 10, 250, 450.60</p>
-                </div>
-                <img src="img/analye.png" alt="chart" class="analyze">
-                <img src="img/options.png" >
-            </div>
-            <div class="spending-2">
-                <div class="ledger">
-                    <p>Ledger Balance</p>
-                    <p>₦ 3, 200, 360.00</p>
-                </div>
-                <div class="wallet-ledge">
-                    <p>Available Balance</p>
-                    <p>₦ 3, 200, 360.00</p>
-                </div>
+    <div class="dashboard-container admin-setting">
+       <div class="settings-header">
+           <div class="settings-inner">
+           <h1>Settings</h1>
+        <div class="check-box-reset">
+               <!-- Rounded switch -->
+               <div class="round-switch-name">
+                 <div class="switch-button">
+                    <label class="switch">
+                    <input type="checkbox" id="admin-chekbox">
+                    <span class="slider round"></span>
+                    </label>
+                 </div>
+                 <h2 class="disable">Disabled</h2>
+               </div>
+            <div class="reset-admin">
+                <img src="img/admin-reset-off.png" alt="reset">
+                <h2>Reset</h2>
             </div>
         </div>
-        <div class="search-show-entry">
-            <div>Show Entries: <span class="ten">10</span></div>
-            <div class="entry-search"> <p>Search</p>   
-                 <div class="input-search">
-                    <input type="text" placeholder="search for">
-                    <img src="img/Vector (8).png" alt="search-icon">
-                </div>
-            </div>
-        </div>
-        <div class="transaction-history">
-                <p>Transaction history</p>
-                <div class="transaction-history-flex">
-                    <div class="transact-history-option">
-                        <div>User ID</div>
-                        <div>Order ID</div>
-                        <div>Status</div>
-                        <div>Project Type</div>
-                        <div>Amount</div>
-                    </div>
-                    <div class="transaction-records">
-                        <div>Hi-001</div>
-                        <div>#023</div>
-                        <div style="color: #53AF46;">Paid</div>
-                        <div>Purchase</div>
-                        <div>₦ 225,000</div>
-                    </div>
-                    <div class="transaction-records">
-                        <div>Hi-001</div>
-                        <div>#023</div>
-                        <div style="color: #1E88E5;">Pending</div>
-                        <div>Purchase</div>
-                        <div>₦ 550,000</div>
-                    </div>
-                    <div class="transaction-records">
-                        <div>Hi-001</div>
-                        <div>#023</div>
-                        <div style="color: #53AF46;">Paid</div>
-                        <div>Investment</div>
-                        <div>₦ 25,000</div>
-                    </div>
-                    <div class="transaction-records">
-                        <div>Hi-001</div>
-                        <div>#023</div>
-                        <div style="color: #53AF46;">Paid</div>
-                        <div>Purchase</div>
-                        <div>₦ 25,000</div>
-                    </div>
-                </div>
-        </div>
+       </div>
     </div>
+    <div class="setting-options">
+        <div class="current">General Settings</div>
+        <div>Manage Users</div>
+        <div>Account</div>
+        <div>Blog Posts</div>
+        <div>Referrals</div>
+    </div>
+
+
+    <!---General Settings starts-->
+       <div class="general-settings">
+           <div class="general-ser">
+           <div class="head">General Settings</div>
+           <form class="general-settings-form">
+               <label>User:</label>
+               <input type="text"> <br>
+               <label>Email:</label>
+               <input type="text"> <br>
+               <label>Phone Number:</label>
+               <select>
+                   <option>+234</option>
+               </select>
+               <input type="text"> <br>
+               <label>Password:</label>
+               <button class="pass">Change Password</button> <br>
+               <div class="lb-auth">
+                <label>Two-Factor Auth:</label>
+                <div class="round-switch-name">
+                 <div  style="margin-left: 20px;" class="switch-button">
+                    <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                    </label>
+                 </div>
+                 <h2>Disabled</h2>
+               </div> <br>
+               </div>
+
+              <div class="save-changes">
+                  <button>Save Changes</button>
+              </div>
+           </form>
+       </div>
+    </div>
+    <!---General Settings ends-->
+
+        <!---Manager User Settings starts-->
+        <div class="general-settings managify">
+            <div class="general-ser manage">
+            <div class="head">Manage Users</div>
+             <div class="users-list">
+                 <div class="user">
+                     <div class="user-part">
+                         <img src="img/user-list-user.png" alt="user-avatar">
+                         <p>muhammadsaniharuna44@gmail.com</p>
+                     </div>
+                     <div class="delete-edit-user">
+                         <img src="img/user-list-edit.png" alt="edit">
+                         <img src="img/user-list-delete.png" alt="delete">
+                     </div>
+                 </div>
+             </div>
+
+            <form class="general-settings-form">
+               <div class="save-changes">
+                   <button>Delete All</button>
+               </div>
+            </form>
+        </div>
+     </div>
+     <!---Manage Users Settings ends-->
+
+
+</div>
+<script src="js/adminSettings.js"></script>
 </body>
 </html>
