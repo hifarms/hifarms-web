@@ -3091,6 +3091,7 @@ input:checked + .slider:before {
 
 .reset-admin{
   display: flex;
+  cursor: pointer;
   align-items: center;
 }
 
@@ -3152,7 +3153,7 @@ input:checked + .slider:before {
   width: 550px;
 }
 
-.general-settings.managify{
+.display-manage{
   display: none;
 }
 
@@ -3218,6 +3219,12 @@ input:checked + .slider:before {
   background: transparent;
   color: #404A3D;
   font-size: 16px;
+}
+
+.save-changes button:hover{
+    background-color: #E7EBEC;
+    border: 2px solid #E7EBEC;
+    transition: all 0.3s ease-in-out;
 }
 
 .general-ser input{
