@@ -3157,6 +3157,57 @@ input:checked + .slider:before {
   display: none;
 }
 
+.admin-add-item.change-password{
+  max-width: 500px;
+}
+
+.admin-add-item.change-password h1{
+  font-size: 20px;
+  text-align: center;
+  text-transform: unset;
+}
+
+.admin-add-item.change-password .admin-add-item-container .close-add-item {
+  width: 30px;
+  height: 30px;
+  padding-top: 0px;
+}
+
+.admin-add-item.change-password label{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.old-password-flex{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.password-visible{
+  display: flex;
+  width: 280px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 4px;
+  align-items: center;
+  justify-content: space-between;
+  border:2px solid #D4DCDE;
+}
+
+.password-visible img{
+  width: 20px;
+  cursor: pointer;
+}
+
+.password-visible input{
+  border: none;
+  outline: none;
+  font-size: 18px;
+  margin: 0;
+  width:100%;
+}
+
 .general-ser .head{
   text-align: center;
   padding-top: 15px;
@@ -3666,9 +3717,13 @@ input:checked + .slider:before {
 
 .admin-add-item-container .category-percentage-flex{
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
   align-items: center;
   padding-top: 10px;
+}
+
+.percentage{
+  margin-right: 70px;
 }
 
 .admin-add-item-container .price-image-flex{
@@ -3727,6 +3782,15 @@ input:checked + .slider:before {
   transition: all 0.4s ease-in-out;
 }
 
+.admin-add-item-container .category-percentage-flex .contact-input{
+  width: 120%;
+  padding: 10px;
+  border: 1px solid #8bc53e;
+  margin-top: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
 .admin-add-item-container .category-percentage-flex select{
   width: 100%;
   padding: 10px;
@@ -3735,6 +3799,7 @@ input:checked + .slider:before {
   border-radius: 5px;
   font-size: 16px;
 }
+
 
 .admin-add-item-container .price-image-flex input{
   width: 100%;
@@ -3753,7 +3818,7 @@ input:checked + .slider:before {
 
 
 .admin-add-item-container .category-percentage-flex .category-select{
-  width: 290%;
+  width: 198%;
 }
 
 .admin-add-item-container .name{

@@ -1,6 +1,10 @@
+
 const toggleSwitch = document.querySelector('#admin-chekbox');
 const reset = document.querySelector('.reset-admin')
-const settingsOption = document.querySelectorAll('.settings-heading')
+const settingsOption = document.querySelectorAll('.settings-heading');
+const togglePassword = document.querySelectorAll('.toggle-password');
+const changePassword = document.querySelector('.pass')
+
 
 const toggle = () =>{
     if(toggleSwitch.checked === true){
@@ -63,4 +67,48 @@ settingsOption.forEach((setting)=>{
             generalSettings.style.display = 'none';
         }
     })
+})
+
+togglePassword.forEach((icon)=>{
+    let isToggled = false;
+    icon.addEventListener('click', ()=>{
+        if(!isToggled){
+            icon.src = 'img/visible.png';
+            
+            let input = icon.parentElement.querySelector('.pass-val')
+            input.type = 'text';
+
+            isToggled = true;
+        } else if(isToggled == true) {
+            icon.src = 'img/invisible.png';
+
+            let input = icon.parentElement.querySelector('.pass-val')
+            input.type = 'password';
+
+            isToggled = false
+        }
+    })
+});
+
+const showPasswordModal = () => {
+     let overlay = document.querySelector('.overlay');
+     let changePasswordModal = document.querySelector('.change-password');
+
+     overlay.style.display ='block';
+     changePasswordModal.style.display = 'block';
+
+     //Close Modal
+     const closeModal = document.querySelector('.close-add-item');
+     closeModal.addEventListener('click', ()=>{
+        let overlay = document.querySelector('.overlay');
+        let changePasswordModal = document.querySelector('.change-password');
+   
+        overlay.style.display ='none';
+        changePasswordModal.style.display = 'none';
+     })
+} 
+
+changePassword.addEventListener('click', (e)=>{
+    e.preventDefault();
+    showPasswordModal();
 })
