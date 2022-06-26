@@ -497,6 +497,164 @@ header{
 }
 /* Contact Page Ends */
 
+/*Sell item modal dashboard*/
+.product-name-category{
+  display: flex;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.product-name-category .product-name-dash{
+  width: 45%;
+  margin-right: 20px;
+}
+
+.product-name-category{
+  color: #8BC53E;
+  font-size: 20px;
+}
+
+.product-name-category .product-name-dash input{
+  width: 100%;
+  margin-top: 5px;
+  padding: 10px;
+  border: 1px solid #dbd4d4;
+  margin-right: 15px;
+  color: #404a3d;
+  border-radius: 4px;
+}
+
+.product-category-dash{
+  width:  45%;
+  margin-left: 20px;
+}
+
+.product-category-dash select{
+  width: 108%;
+  padding: 10px;
+  border: 1px solid #dbd4d4;
+  margin-top: 5px;
+  border-radius: 4px;
+}
+
+.product-category-dash select option{
+  color: #404a3d;
+}
+
+.qty-item-image{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.qty-item-image .qty{
+  display: flex;
+  flex-direction: column;
+}
+
+.qty-item-image .qty label{
+  color: #8BC53E;
+  font-size: 20px;
+}
+
+.qty-item-image .qty input{
+  margin-top: 5px;
+  width: 55%;
+  padding: 7px;
+  border: 1px solid #dbd4d4;
+  font-size: 16px;
+  color: #404a3d;
+}
+
+.qty-item-image .item-price label{
+   color: #8bc53e;
+   font-size: 20px;
+}
+
+.qty-item-image .item-price input{
+  margin-top: 5px;
+  padding: 10px;
+  border: 1px solid #dbd4d4;
+  width:100%;
+  margin-left: -30px;
+  font-size: 16px;
+}
+
+.qty-item-image .img-dash label{
+  font-size: 20px;
+  color: #8bc53e;
+}
+
+.qty-item-image .img-dash input{
+  padding: 10px;
+  border: 1px solid #dbd4d4;
+  margin-top: 5px;
+}
+
+.acc-name-number{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.acc-name-number label{
+  font-size: 20px;
+  color: #8bc53e;
+}
+
+.acc-name-number .bank-name select{
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #dbd4d4;
+  margin-top: 5px;
+  border-radius: 4px;
+}
+
+.acc-name-number .acc-name input{
+  margin-top: 5px;
+  padding: 10px;
+  border: 1px solid #dbd4d4;
+  width:80%;
+  margin-left: 20px;
+  font-size: 16px;
+}
+
+.acc-name-number .acc-number input{
+  margin-top: 5px;
+  padding: 10px;
+  border: 1px solid #dbd4d4;
+  width:100%;
+  font-size: 16px;
+}
+
+.location-dash{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.location-dash label{
+  font-size: 20px;
+  color: #8bc53e;
+}
+
+.location-dash select{
+  margin-top: 10px;
+  width: 65%;
+  padding: 10px;
+  color: #404a3d;
+  border: 1px solid #dbd4d4;
+}
+
+
+
+
+
+
+
+/*Sell item modal dashboard ends*/
+
 
 /*sign in form*/
 .form-container form span{
@@ -3686,7 +3844,7 @@ input:checked + .slider:before {
 
 .admin-add-item{
   position: fixed;
-  top: 55%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: #fff;
@@ -3717,7 +3875,6 @@ input:checked + .slider:before {
 
 .admin-add-item-container .category-percentage-flex{
   display: flex;
-  justify-content: left;
   align-items: center;
   padding-top: 10px;
 }
@@ -3792,7 +3949,7 @@ input:checked + .slider:before {
 }
 
 .admin-add-item-container .category-percentage-flex select{
-  width: 100%;
+  width: 166%;
   padding: 10px;
   border: 1px solid #8bc53e;
   margin-top: 10px;
@@ -3819,6 +3976,10 @@ input:checked + .slider:before {
 
 .admin-add-item-container .category-percentage-flex .category-select{
   width: 198%;
+}
+
+.admin-add-item-container .category-percentage-flex .category-select.add-item{
+  width: 100%;
 }
 
 .admin-add-item-container .name{

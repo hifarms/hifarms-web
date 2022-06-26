@@ -273,6 +273,73 @@
             </div>
             </div>
     </div>
+    <div class="overlay" style="display: block"></div>
+
+    <div class="admin-add-item" style="display:block;">
+        <div class="admin-add-item-container">
+            <div class="close-add-item">x</div>
+            <h1 style="margin-top: 4px;margin-bottom: 15px;font-size:30px">Sell Product</h1>
+            <div class="product-name-category">
+                <div class="product-name-dash">
+                    <label>Product Name</label> <br>
+                    <input type="text" placeholder="Enter product name">
+                </div>
+                <div class="product-category-dash">
+                    <label>Product Category</label> <br>
+                     <select>
+                         <option>Catfish</option>
+                     </select>
+                </div>
+            </div>
+            <div class="qty-item-image">
+                <div class="qty">
+                <label>Qty</label>
+                <input type="number">
+                </div>
+                 <div class="item-price">
+                 <label>Item Price(₦)</label>
+                <input type="text"> 
+                 </div>
+                 <div class="img-dash">
+                 <label>Image</label>
+                <input type="file">
+                 </div>
+                
+            </div>
+            <div class="acc-name-number">
+                <div class="bank-name">
+                <label for="">Bank Name</label>
+                <select>
+                    <option>Access Bank</option>
+                </select>
+                </div>
+                <div class="acc-name">
+                <label style="padding-left: 20px;" for="">Acc. Name</label>
+                <input type="text">
+                </div>
+                <div class="acc-number">
+                <label for="">Acc. Number</label>
+                <input type="text">
+                </div>
+            </div>
+            <div class="location-dash">
+                <label for="">Location</label>
+                <select name="" id="">
+                    <option value="">Arkilla, Federal Lowcost</option>
+                </select>
+            </div>
+            <div class="warning-button">
+                <div class="warning">
+                    <img src="img" alt="warning">
+                    <p>All application to sell a product will be reviewed and processed within
+24hrs. And further details will be notified to you. A re-negotiation 
+clause also applies.</p>
+                </div>
+                <button>Proceed to sell</button>
+            </div>
+    </div>
+ </div>
+</div>
     <script src="js/marketplace.js"></script>
 </body>
 </html>
