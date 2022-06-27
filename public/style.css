@@ -776,7 +776,7 @@ header{
 
 .add-farm-view-farm .view-existing-farm .arrow-right{
   display: flex;
-  justify-content: right;
+  justify-content: space-between;
   align-items: center;
   cursor: pointer;
   transition: all 0.4s ease-in-out;
@@ -797,6 +797,16 @@ header{
   width: 50%;
 }
 
+.add-farm-view-farm .view-existing-farm .existing-mkt{
+  cursor: pointer;
+  margin-top: 25px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  visibility: hidden;
+}
+
 .add-farm-view-farm .add-new-farm p{
   margin-top: 10px;
   font-size: 18px;
@@ -808,9 +818,9 @@ header{
 }
 
 .types-farming{
-  margin-left: -130px;
   visibility: hidden;
-  transition: all 0.4s ease-in-out;
+  margin-left: 20px;
+  margin-right: -100px;
 }
 
 .line-add{
@@ -818,12 +828,19 @@ header{
    width: 2px;
    background: #404A3D ;
    height: 248px;
-   margin-left: -110px;
-   transition: all 0.4s ease-in-out;
+   margin-right: -100px;
+   margin-left: 20px;
+}
+
+.types-farming div:hover{
+  background: rgba(64, 74, 61, 1);
+  color: #fff;
+  transition: 0.6s all ease-in-out;
 }
   
 .types-farming div{
   padding: 17px;
+  cursor: pointer;
   border-radius: 8px;
   background: #fff;
   margin-bottom: 10px;

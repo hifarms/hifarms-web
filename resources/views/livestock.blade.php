@@ -147,11 +147,12 @@
                 <p>Add new farm</p>
             </div>
             <div class="view-existing-farm">
-                <div class="arrow-right">
+                <div class="arrow-right"> 
+                    <img src="img/arrow-left.png" class="arrow-left-user" alt="arrow">
                     <img src="img/arrow-right-farm.png" class="arrow-right-user" alt="arrow">
                 </div>
                 <img src="img/existing-farm.png" alt="existing-farm" class="existing-farm">
-                <p>View Existing Farms</p>
+                <p class="blab">View Existing Farms</p>
             </div>
             <div class="line-add"></div>
             <div class="types-farming">

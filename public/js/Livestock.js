@@ -25,8 +25,34 @@ const showOption = () => {
 }
 
 const displayFarms = () =>{
-    showFarms.style.marginRight = '70px';
-    showFarms.style.transition = '0.4s all ease-in-out'
+    showFarms.style.visibility = 'hidden';
+    showFarms.style.transition = '0.4s all ease-in-out';
+
+    const leftArrow = document.querySelector('.arrow-left-user');
+    leftArrow.style.marginLeft = '180px';
+    leftArrow.style.transition = '0.9s all ease-in-out';
+
+    const background = document.querySelector('.view-existing-farm');
+    background.style.backgroundColor = 'rgba(64, 74, 61, 1)';
+    background.style.transition = '0.4s all ease-in-out';
+
+    const market = document.querySelector('.existing-farm');
+    market.src = 'img/exisiting-mkt.png'
+    market.style.transition = '0.9s all ease-in-out';
+
+    const blab = document.querySelector('.blab');
+    blab.style.color = '#fff';
+    blab.style.transition = '0.9s all ease-in-out';
+
+    const line = document.querySelector('.line-add');
+    line.style.marginRight = '25px'
+    line.style.visibility = 'visible'
+    line.style.transition = '0.9s all ease-in-out';
+
+    const options = document.querySelector('.types-farming');
+    line.style.marginRight = '16px'
+    options.style.visibility = 'visible'
+    options.style.transition = '0.9s all ease-in-out';
 }
 
 showFarms.addEventListener('click', displayFarms)
