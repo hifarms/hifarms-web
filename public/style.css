@@ -98,7 +98,7 @@ header{
   width: 113px;
   height: 31px;
   flex-grow: 0;
-  margin: 0px 73px 0.3px 0;
+  margin: 20 73px 0.3px 0;
   padding: 0.2px 21.5px 0.3px 1.7px;
 }
 
@@ -276,7 +276,7 @@ header{
 }
 
 .container .google-fb-btn{
-  margin-left: 0px;
+  margin-left: 20;
   margin-top: 20px;
   display: flex;
   align-items: center;
@@ -565,6 +565,7 @@ header{
   border: 1px solid #dbd4d4;
   font-size: 16px;
   color: #404a3d;
+  border-radius: 4px;
 }
 
 .qty-item-image .item-price label{
@@ -576,9 +577,10 @@ header{
   margin-top: 5px;
   padding: 10px;
   border: 1px solid #dbd4d4;
-  width:100%;
-  margin-left: -30px;
+  width:170%;
+  margin-left: -85px;
   font-size: 16px;
+  border-radius: 4px;
 }
 
 .qty-item-image .img-dash label{
@@ -590,6 +592,7 @@ header{
   padding: 10px;
   border: 1px solid #dbd4d4;
   margin-top: 5px;
+  border-radius: 4px;
 }
 
 .acc-name-number{
@@ -604,10 +607,12 @@ header{
 }
 
 .acc-name-number .bank-name select{
-  width: 100%;
+  width: 130%;
   padding: 10px;
   border: 1px solid #dbd4d4;
   margin-top: 5px;
+  border-radius: 4px;
+  color: #404a3d;
   border-radius: 4px;
 }
 
@@ -615,7 +620,8 @@ header{
   margin-top: 5px;
   padding: 10px;
   border: 1px solid #dbd4d4;
-  width:80%;
+  width: 100%;
+  border-radius: 4px;
   margin-left: 20px;
   font-size: 16px;
 }
@@ -626,6 +632,7 @@ header{
   border: 1px solid #dbd4d4;
   width:100%;
   font-size: 16px;
+  border-radius: 4px;
 }
 
 .location-dash{
@@ -647,14 +654,264 @@ header{
   border: 1px solid #dbd4d4;
 }
 
+.warning-button{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
 
+.warning-button .warning{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.warning-button .warning img{
+  margin-right: 5px;
+}
 
+.warning-button .warning p{
+  font-size: 11px;
+  font-weight: bold;
+}
 
+.tooltip-flex{
+  display: flex;
+  margin-bottom: -20px;
+}
 
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip{
+  height: 18px;
+  width: 18px;
+  border: 1px solid #E5E5E5;
+  padding-top: 20;
+  font-size: 13px;
+  color: #E5E5E5;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 50%;
+  margin-top: -6px;
+}
+
+.warning-button button{
+  padding-left: 10px;
+  background: #1565C0;
+  padding-right: 10px;
+  font-size: 16px;
+  width: 40%;
+  padding-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #fff;
+  padding-bottom: 10px;
+  border: 1px solid #1565C0;
+}
 
 /*Sell item modal dashboard ends*/
 
+/*Livestock farming section starts*/
+.add-farm-view-farm{
+  display: flex;
+  color: #404A3D;
+  align-items: center;
+  margin-left: 40px;
+  margin-top: -100px;
+  visibility: hidden;
+  transition: all 0.5s ease-in-out;
+}
+
+.add-farm-view-farm .add-new-farm{
+  padding: 50px;
+  background: #fff;
+  margin-right: 60px;
+  border-radius: 9px;
+}
+
+.add-farm-view-farm .view-existing-farm{
+  background: #fff;
+  padding: 20px;
+  height: 245px;
+  width: 250px;
+  border-radius: 9px;
+}
+
+.add-farm-view-farm .view-existing-farm .arrow-right{
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+}
+
+.add-farm-view-farm .view-existing-farm p{
+  margin-top: 10px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.add-farm-view-farm .view-existing-farm .existing-farm{
+  cursor: pointer;
+  margin-top: 25px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.add-farm-view-farm .add-new-farm p{
+  margin-top: 10px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.add-farm-view-farm .add-new-farm img{
+  cursor: pointer;
+}
+
+.types-farming{
+  margin-left: -130px;
+  visibility: hidden;
+  transition: all 0.4s ease-in-out;
+}
+
+.line-add{
+   visibility: hidden;
+   width: 2px;
+   background: #404A3D ;
+   height: 248px;
+   margin-left: -110px;
+   transition: all 0.4s ease-in-out;
+}
+  
+.types-farming div{
+  padding: 17px;
+  border-radius: 8px;
+  background: #fff;
+  margin-bottom: 10px;
+  width: 350px;
+  margin-top: 10px;
+}
+
+.admin-add-item.livestock .product-category-dash select{
+  margin-top: unset;
+}
+
+.admin-add-item.livestock .product-name-dash select{
+  width: 108%;
+    padding: 10px;
+    border: 1px solid #dbd4d4;
+    border-radius: 4px;
+}
+
+.admin-add-item.livestock .qty-item-image .item-price input{
+   margin-left: unset;
+   width: 110%;
+   padding: 7px;
+}
+
+.admin-add-item.livestock .gross-flex{
+  display: flex;
+  margin-top: 5px;
+}
+
+.admin-add-item.livestock .gross-flex input{
+  margin-top: 5px;
+  padding: 10px;
+  border: 1px solid #dbd4d4;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+.admin-add-item.livestock label{
+  font-size: 16px;
+}
+
+.admin-add-item.livestock .product-name-dash{
+  margin-top: -4px;
+}
+
+.admin-add-item.livestock .tooltip-flex{
+  margin-bottom: -20px;
+}
+
+.admin-add-item.livestock .qty-item-image .img-dash input{
+  margin-top: 5px;
+    width: 100%;
+    padding: 7px;
+    border: 1px solid #dbd4d4;
+    font-size: 16px;
+    color: #404a3d;
+    border-radius: 4px
+}
+
+.admin-add-item.livestock .qty-item-image .qty input{
+  width: 110%;
+}
+
+.admin-add-item.livestock .acc-name-number .bank-name select{
+  width: 216%;
+}
+
+.admin-add-item.livestock .acc-number{
+  margin-right: -3px;
+}
+
+.admin-add-item.livestock .acc-name-number .acc-name input{
+  width: 96%;
+}
+
+.admin-add-item.livestock .acc-name{
+  margin-right: -76px;
+}
+
+.admin-add-item.livestock .warning-button{
+  justify-content: right;
+}
+
+.admin-add-item.livestock .warning-button button{
+   width: 20%;
+}
+/*Livestock farming section ends*/
 
 /*sign in form*/
 .form-container form span{
@@ -777,7 +1034,7 @@ header{
 }
 
  .form-subscribe input{
-  margin: 0px;
+  margin: 20;
   padding: 8px;
   outline: none;
   height: 42px;
@@ -1142,7 +1399,7 @@ header{
 }
 
 .about-history.services{
-  padding-bottom: 0px;
+  padding-bottom: 20;
 }
 
 .services-grid{
@@ -1460,7 +1717,7 @@ header{
 .blog-container .blog-grid .grid-blog{
   padding: 20px;
   margin-left: 10px;
-  box-shadow: 0px 20px 25px rgba(37, 89, 70, 0.05);
+  box-shadow: 20 20px 25px rgba(37, 89, 70, 0.05);
   border-radius: 5px;
   margin-right: 10px;
 }
@@ -1495,7 +1752,7 @@ header{
   display: flex;
   justify-content: space-between;
   padding-bottom: 8px;
-  border-radius: 0px;
+  border-radius: 20;
 }
 
 .blog-flex p{
@@ -1619,7 +1876,7 @@ header{
   font-weight: bold;
   width: 120px;
   cursor: pointer;
-  box-shadow: 0px 10px 20px rgba(147, 112, 45, 0.1);
+  box-shadow: 20 10px 20px rgba(147, 112, 45, 0.1);
   border-radius: 5px;
   height: 40px;
   margin-left: 10px;
@@ -1648,7 +1905,7 @@ header{
    left: 50%;
    transform: translate(-50%, -0%);
    padding-left: 20px;
-   padding-right: 0px;
+   padding-right: 20;
 }
 
 .showcase-home-image .image-container img{
@@ -1687,7 +1944,7 @@ header{
 .homepage-services .images-grid .grid{
   padding: 20px;
   margin-top: 15px;
-  box-shadow: 0px 20px 25px rgba(37, 89, 70, 0.05);
+  box-shadow: 20 20px 25px rgba(37, 89, 70, 0.05);
   width: 306px;
   z-index: 2;
 }
@@ -1769,7 +2026,7 @@ header{
 
 .tools-image .tractor-image .pararaph h3{
   font-size: 30px;
-  margin-bottom: 0px;
+  margin-bottom: 20;
 }
 
 .tools-image .tractor-image .pararaph p{
@@ -1832,8 +2089,8 @@ header{
   padding-right: 40px;
   background: rgba(255, 255, 255, 0.97);
   opacity: 0.95;
-  box-shadow: 0px -5px 25px rgba(37, 89, 70, 0.05);
-  border-radius: 5px 5px 0px 0px;  
+  box-shadow: 20 -5px 25px rgba(37, 89, 70, 0.05);
+  border-radius: 5px 5px 20 20;  
 }
 
 .services-menu h3{
@@ -1883,7 +2140,7 @@ header{
   width: 140px;
   border-radius: 5px;
   cursor: pointer;
-  box-shadow: 0px 10px 20px rgba(33, 84, 46, 0.1);
+  box-shadow: 20 10px 20px rgba(33, 84, 46, 0.1);
   margin-bottom: 20px;
   margin-left: 60px;
 }
@@ -2009,7 +2266,7 @@ header{
   font-weight: bold;
   width: 140px;
   margin-bottom: 20px;
-  box-shadow: 0px 10px 20px rgba(147, 112, 45, 0.1);
+  box-shadow: 20 10px 20px rgba(147, 112, 45, 0.1);
   border-radius: 5px;
   cursor: pointer;
 }
@@ -2083,7 +2340,7 @@ header{
 
 .management-homepage .management-flex .title{
   margin-top: 10px;
-  margin-bottom: 0px;
+  margin-bottom: 20;
   font-size: 13px;
 }
 
@@ -2129,7 +2386,7 @@ header{
   color: #404a3d;
   font-size: 32px;
   margin-top: 20px;
-  margin-bottom: 0px;
+  margin-bottom: 20;
 }
 
 .blog-homepage .blog-container .blog-grid{
@@ -2179,7 +2436,7 @@ header{
   margin: auto;
   padding: 30px;
   color: #404a3d;
-  box-shadow: 0px 20px 25px rgba(37, 89, 70, 0.05);
+  box-shadow: 20 20px 25px rgba(37, 89, 70, 0.05);
   border-radius: 5px;
 }
 
@@ -2460,7 +2717,7 @@ img.hover-shadow {
 
 .gallery.gallery-container{
   background-color: #ffffff;
-  margin-top: 0px;
+  margin-top: 20;
 }
 
 .gallery.gallery-container .gallery-grid{
@@ -2622,11 +2879,11 @@ width: 338px;
 }
 
 .faq-last-image.contact{
-  margin-bottom: 0px;
+  margin-bottom: 20;
 }
 
 .signup-footer.contact{
-  margin-top: 0px;
+  margin-top: 20;
 }
 
 .edit-icon{
@@ -2704,7 +2961,7 @@ width: 338px;
   font-weight: bold;
   font-size: 18px;
   margin-left: -58px;
-  margin-top: 0px;
+  margin-top: 20;
   border-bottom: 1px solid #c4c4c4;
   letter-spacing: 3px;
   color: #404A3D;
@@ -3092,7 +3349,7 @@ width: 338px;
   box-sizing: border-box;
   border-radius: 10px;
   margin: 40px 40px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); 
+  filter: drop-shadow(20 4px 4px rgba(0, 0, 0, 0.25)); 
   background: #F5F5F5;
   border: 1px solid #C7DEC3; 
   box-sizing: border-box; 
@@ -3328,7 +3585,7 @@ input:checked + .slider:before {
 .admin-add-item.change-password .admin-add-item-container .close-add-item {
   width: 30px;
   height: 30px;
-  padding-top: 0px;
+  padding-top: 20;
 }
 
 .admin-add-item.change-password label{
@@ -3449,7 +3706,7 @@ input:checked + .slider:before {
   background-color: #fff;
   padding-left: 60px;
   padding-right: 60px;
-  padding-top: 0px;
+  padding-top: 20;
   padding-bottom: 20px;
 }
 
@@ -3674,7 +3931,7 @@ input:checked + .slider:before {
 }
 
 .product-list-container{
-  margin-top: 0px;
+  margin-top: 20;
   padding: 20px;
 }
 
@@ -4168,7 +4425,7 @@ input:checked + .slider:before {
   justify-content: space-around;
   align-items: center;
   height: 65%;
-  margin-top: -0px;
+  margin-top: -20;
 }
 
 .side-bar img{
@@ -4322,13 +4579,13 @@ input:checked + .slider:before {
 
 .marketplace-flex.invest-your-farm{
   margin-top: 50px;
-  margin-left: 0px;
+  margin-left: 20;
 }
 
 .sponsors-flex.dashboard{
   max-width: unset;
   padding-top: 10px;
-  padding-bottom: 0px;
+  padding-bottom: 20;
   padding-left: 20px;
 }
 
@@ -4364,7 +4621,7 @@ input:checked + .slider:before {
 
 .h3-dashboard{
   padding-top: 20px ;
-  padding-bottom: 0px;
+  padding-bottom: 20;
   font-size: 23px;
 }
 
@@ -4805,13 +5062,13 @@ input:checked + .slider:before {
 
 .search-show-entry .entry-search .input-search{
   background: #ffffff;
-  border-radius: 0px;
+  border-radius: 20;
   margin-left: 8px;
 }
 
 .search-show-entry .entry-search .input-search input{
   background: #ffffff;
-  border-radius: 0px;
+  border-radius: 20;
 }
 
 .search-show-entry .ten{
@@ -4868,7 +5125,7 @@ input:checked + .slider:before {
 }
 
 .dashboard-container.profile h1{
-  padding-bottom: 0px;
+  padding-bottom: 20;
 }
 
 .dashboard-container.profile p{
@@ -4890,7 +5147,7 @@ input:checked + .slider:before {
 }
 
 .dashboard-container.profile .profile-hero p{
-  padding-top: 0px;
+  padding-top: 20;
   font-size: 23px;
   padding-bottom: 15px;
 }
@@ -4975,7 +5232,7 @@ input:checked + .slider:before {
   padding-top: 15px;
   padding-right: 15px;
   padding-left: 15px;
-  padding-bottom: 0px;
+  padding-bottom: 20;
 }
 
 .guide-download .line{
@@ -5020,7 +5277,7 @@ input:checked + .slider:before {
 
 .notification-modal .notif-head  .ntf .line{
     width: 60px;
-    margin-left: 0px;
+    margin-left: 20;
     margin-bottom: 10px;
     border-radius: 5px;
     height: 3px;
@@ -5185,13 +5442,13 @@ input:checked + .slider:before {
    right: -15px;
 }
 .purpose{
-  padding: 0px;
+  padding: 20;
 }
 .purpose-grid{
   flex-direction: column;
 }
 .purpose-content h1{
-  margin-left: 0px;
+  margin-left: 20;
   font-size: 20px;
 }
 .purpose-content .line{
@@ -5326,7 +5583,7 @@ input:checked + .slider:before {
 .services-grid .service-grid-1 .second-h1{
   font-size: 14px;
   margin-top: 5px;
-  margin-bottom: 0px;
+  margin-bottom: 20;
   width: 30%;
    display: none;
   text-align: left;
@@ -5420,7 +5677,7 @@ input:checked + .slider:before {
 .our-partners h1{
   font-size: 20px;
   justify-content: center;
-  margin-right: 0px;
+  margin-right: 20;
 }
 .our-partners{
   margin-bottom: 20px;
@@ -5502,7 +5759,7 @@ input:checked + .slider:before {
 }
 .cart-container .cart-flex{
   padding: 10px;
-  margin-top: 0px;
+  margin-top: 20;
 }
 .cart-container .cart-flex p{
   margin-top: 3px;
@@ -5544,7 +5801,7 @@ input:checked + .slider:before {
   }
   header.sign-in{
     border-bottom: 2px solid rgba(0, 0, 0, 0.26);
-    box-shadow: 4px 4px 4px 0px #00000040;
+    box-shadow: 4px 4px 4px 20 #00000040;
   }
   .flower{
     top: -1.5%;
@@ -5600,14 +5857,14 @@ input:checked + .slider:before {
     width: 75%;
   }
   .footer-address p{
-    margin-bottom: 0px;
+    margin-bottom: 20;
   }
   .footer-container .footer-newsletter{
-    margin-left: 0px;
+    margin-left: 20;
     margin-top: 25px;
   }
   .form-subscribe{
-    padding-top: 0px;
+    padding-top: 20;
     margin-top: 10px;
     margin-bottom: 10px;
     width: 100%;
@@ -5693,14 +5950,14 @@ input:checked + .slider:before {
     width: 100%;
   }
   .signup-footer{
-    margin-top: 0px;
+    margin-top: 20;
   }
   .farm-location{
     margin-bottom: -5px;
   }
   .blog-container .blog-grid {
     grid-template-columns: 1fr;
-    margin-left: 0px;
+    margin-left: 20;
   }
   .blog-container .blog-grid .grid-blog{
     margin-bottom: 30px;
@@ -5716,7 +5973,7 @@ input:checked + .slider:before {
     justify-content: space-between;
   }
   .harvest-info .harvest-flex .flex{
-    margin-right: 0px;
+    margin-right: 20;
   }
   .harvest-info .harvest-flex img{
     width: 25px;
@@ -5783,7 +6040,7 @@ input:checked + .slider:before {
   }
   .special-offers h1{
     font-size: 17px;
-    margin-bottom: 0px;
+    margin-bottom: 20;
   }
   .services-menu{
     width: 300px;
@@ -5813,10 +6070,10 @@ input:checked + .slider:before {
     object-fit: contain;
   }
   .nutrition-home-page{
-    padding-bottom: 0px;
+    padding-bottom: 20;
   }
   .nutrition-grid .nutrition-content {
-    padding-left: 0px;
+    padding-left: 20;
   }
   .nutrition-grid .nutrition-content h3 {
     text-align: center;
@@ -5845,7 +6102,7 @@ input:checked + .slider:before {
     font-size: 20px;
   }
   .tools-image .tractor-image .pararaph{
-  margin-left: 0px;
+  margin-left: 20;
   }
   .showcase-home-image{
      height: 385px;
@@ -5893,7 +6150,7 @@ input:checked + .slider:before {
    justify-content: center;
    align-items: center;
    left: 315px;
-   margin-top: 0px;
+   margin-top: 20;
    padding-left: 4px;
    padding-right: 4px;
   }

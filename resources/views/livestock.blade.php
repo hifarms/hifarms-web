@@ -118,7 +118,10 @@
                   </div>
                 <div class="views-numbers">
                     <p>{{$livestock}}</p>
-                    <img src="img/play-button.svg" alt="eye-icon" width="23">
+                    <!--Icon to show when an existing user sign in to the dashboard-->
+                    <img src="img/play-button.svg" style="cursor:pointer" class="eye-icon" alt="eye-icon" width="23">
+                    <!--Icon to show when a new user sign in to the dashboard-->
+                   <!-- <img src="img/Add.png" style="cursor:pointer" alt="eye-icon" width="23"> -->
                 </div>
             </div>
             <div class="marketplace-flex invest-your-farm livestock">
@@ -136,7 +139,158 @@
             </div>  
         </div>
    
+        <div class="define-height" style="height: 350px">
         <p class="livestock-bottom">Livestock Farming</p>
+        <div class="add-farm-view-farm">
+            <div class="add-new-farm">
+                <img src="img/add2.png" class="add-new-farm-item" alt="add-new-farm">
+                <p>Add new farm</p>
+            </div>
+            <div class="view-existing-farm">
+                <div class="arrow-right">
+                    <img src="img/arrow-right-farm.png" class="arrow-right-user" alt="arrow">
+                </div>
+                <img src="img/existing-farm.png" alt="existing-farm" class="existing-farm">
+                <p>View Existing Farms</p>
+            </div>
+            <div class="line-add"></div>
+            <div class="types-farming">
+                <div>Poultry Farm</div>
+                <div>Fish Farm</div>
+                <div>Ruminants</div>
+                <div>Others</div>
+            </div>
+        </div>
     </div>
+    </div>
+
+
+    <div class="overlay"></div>
+
+<div class="admin-add-item livestock">
+    <div class="admin-add-item-container">
+        <div class="close-add-item">x</div>
+        <h1 style="margin-top: 4px;margin-bottom: 20px;font-size:24px">ADD A LIVESTOCK FARM</h1>
+        <div class="product-name-category">
+            <div class="product-name-dash">
+                <div class="tooltip-flex">
+                <label>Farm Type</label>
+                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
+                </div> <br>
+                <select>
+                     <option>Poultry Farm</option>
+                 </select>
+            </div>
+            <div class="product-category-dash" style="margin-bottom:3px">
+            <div class="tooltip-flex">
+                <label>Farm Produce</label>
+                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
+                </div> <br>
+                 <select>
+                     <option>Broiler Chicken</option>
+                 </select>
+            </div>
+        </div>
+        <div class="qty-item-image" style="margin-bottom: 15px">
+             <div class="item-price">
+             <div class="tooltip-flex">
+                <label>Working Cost(₦)</label>
+                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
+                </div> <br>
+            <input type="text" placeholder="Enter item price"> 
+             </div>
+             <div class="qty">
+            <div class="tooltip-flex">
+                <label>Qty Required</label>
+                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
+                </div> <br>
+            <input type="number" min='0' placeholder="Quantity">
+            </div>
+             <div class="img-dash">
+             <div class="tooltip-flex">
+                <label>Unit Price(₦)</label>
+                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
+                </div> <br>
+            <input type="number" min="0">
+             </div>
+            
+        </div>
+
+
+        <div class="acc-name-number" style="margin-bottom: 15px">
+            <div class="bank-name">
+            <div class="tooltip-flex">
+                <label>Measures</label>
+                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
+                </div> <br>
+            <select>
+                <option>Chicks</option>
+            </select>
+            </div>
+            <div class="acc-name">
+            <div class="tooltip-flex">
+            <label style="padding-left: 20px;" for="">Variable Cost(₦)</label>
+                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
+                </div> <br>
+            
+            <input type="text" placeholder="Enter variable cost">
+            </div>
+            <div class="acc-number">
+            <div class="tooltip-flex">
+                <label style="color:rgba(64, 74, 61, 0.5)">Defect Liability(%)</label>
+                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
+                </div> <br>
+            <input type="text" style="color:rgba(64, 74, 61, 0.5)" value="10" disabled placeholder="Enter your account number">
+            </div>
+        </div>
+        <div class="acc-name-number" style="margin-bottom: 10px">
+        <div class="acc-name">
+            <div class="tooltip-flex">
+            <label for="">Variable Cost(₦)</label>
+                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
+                </div> <br>
+            
+            <input type="text" style="margin-left:unset;" placeholder="Enter variable cost">
+            </div>
+            <div class="acc-name" style="margin-left: -40px">
+            <div class="tooltip-flex">
+            <label style="padding-left: 20px;" for="">Fixed Assets(₦)</label>
+                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
+                </div> <br>
+            
+            <input type="text" placeholder="Enter fixed assets">
+            </div>
+            <div class="acc-number">
+            <div class="tooltip-flex">
+                <label>Gross Profit(₦)</label>
+                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
+                </div> <br>
+            <input type="text" placeholder="Gross profits">
+            </div>
+        </div>
+        <div class="location-dash">
+        <div class="gross-flex">
+        <div class="acc-number" style="margin-right:20px">
+            <div class="tooltip-flex">
+            <label style="color:rgba(64, 74, 61, 0.5)">Tax @(7.50)</label>
+                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
+                </div> <br>
+                <input type="text" style="color:rgba(64, 74, 61, 0.5)" value="7.5" disabled >
+            </div>
+            <div class="acc-number">
+            <div class="tooltip-flex">
+                <label>Net Profit(₦)</label>
+                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
+                </div> <br>
+            <input type="text" placeholder="Net profits">
+            </div>
+            </div>
+        </div>
+        <div class="warning-button">
+            <button>Compute</button>
+        </div>
+</div>
+</div>
+<script src="js/livestock.js"></script>
 </body>
 </html>

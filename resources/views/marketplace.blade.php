@@ -95,6 +95,14 @@
             <div class="sponsor-grid dashboard">
                 <div class="sponsor-option">
                     <div class="sponsor-checkbox dashboard">
+
+                    <div class="filter">
+                            <form>
+                                <input type="range" min="0" max="80000" step="0.1" value="{{old('range')==null? 0 :old('range')}}" name='range' class="rate">
+                                <input type="submit" class="button-filter" value='FILTER'>
+                                <p class="filter-price">Price: ₦ 0 - ₦ 100</p>
+                                 <h3 class="sponsor-categories">CATEGORIES</h3>
+                            </div>
                         <div class="line" style="height: 1px;width: 300px;background: #c4c4c4;margin-bottom: 10px;"></div>
                         <div class="flex dashboard">
                             <input type="checkbox" class="check" name='crop'>
@@ -117,8 +125,9 @@
                             <P>0</P>
                         </div>
                     </div>
-                
-                    <div class="farmer-section">
+
+
+                    <div class="farmer-section" style="cursor:pointer">
                        <h3>Farmer</h3>
                        <div class="i-want-to-sell">
                         <img src="img/Farmer Icon.svg" alt="farmer">
@@ -172,7 +181,7 @@
                             <p>74% sold</p>
                         </div>
                         <h3 class="h3-dashboard">₦ {{$product->price}}</h3>
-                        <div class="purchase-div dashboard">
+                        <div class="purchase-div dashboard" style="justify-content: right;">
                             <button>Purchase</button>
                         </div>
                     </div>
@@ -191,7 +200,7 @@
                             <p>74% sold</p>
                         </div>
                         <h3 class="h3-dashboard">₦ 10,000</h3>
-                        <div class="purchase-div dashboard">
+                        <div class="purchase-div dashboard" style="justify-content: right;">
                             <button>Purchase</button>
                         </div>
                     </div>
@@ -210,7 +219,7 @@
                             <p>74% sold</p>
                         </div>
                         <h3 class="h3-dashboard">₦ 10,000</h3>
-                        <div class="purchase-div dashboard">
+                        <div class="purchase-div dashboard" style="justify-content: right;">
                             <button>Purchase</button>
                         </div>
                     </div>
@@ -228,7 +237,7 @@
                             <p>74% sold</p>
                         </div>
                         <h3 class="h3-dashboard">₦ 10,000</h3>
-                        <div class="purchase-div dashboard">
+                        <div class="purchase-div dashboard" style="justify-content: right;">
                            <button>Purchase</button>
                         </div>
                     </div>
@@ -247,7 +256,7 @@
                             <p>74% sold</p>
                         </div>
                         <h3 class="h3-dashboard">₦ 10,000</h3>
-                        <div class="purchase-div dashboard">
+                        <div class="purchase-div dashboard" style="justify-content: right;">
                             <button>Purchase</button>
                         </div>
                     </div>
@@ -265,7 +274,7 @@
                             <p>74% sold</p>
                         </div>
                         <h3 class="h3-dashboard">₦ 10,000</h3>
-                        <div class="purchase-div dashboard">
+                        <div class="purchase-div dashboard" style="justify-content: right;">
                             <button>Purchase</button>
                         </div>
                     </div>
@@ -273,73 +282,102 @@
             </div>
             </div>
     </div>
-    <div class="overlay" style="display: block"></div>
+    <div class="overlay"></div>
 
-    <div class="admin-add-item" style="display:block;">
+    <div class="admin-add-item">
         <div class="admin-add-item-container">
             <div class="close-add-item">x</div>
             <h1 style="margin-top: 4px;margin-bottom: 15px;font-size:30px">Sell Product</h1>
-            <div class="product-name-category">
+            <div class="product-name-category" style="margin-bottom: 10px">
                 <div class="product-name-dash">
-                    <label>Product Name</label> <br>
+                    <div class="tooltip-flex">
+                    <label>Product Name</label>
+                    <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
+                    </div> <br>
                     <input type="text" placeholder="Enter product name">
                 </div>
                 <div class="product-category-dash">
-                    <label>Product Category</label> <br>
+                <div class="tooltip-flex">
+                    <label>Product Category</label>
+                    <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
+                    </div> <br>
                      <select>
                          <option>Catfish</option>
                      </select>
                 </div>
             </div>
-            <div class="qty-item-image">
+            <div class="qty-item-image" style="margin-bottom: 10px">
                 <div class="qty">
-                <label>Qty</label>
-                <input type="number">
+                <div class="tooltip-flex">
+                    <label>Qty</label>
+                    <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
+                    </div> <br>
+                <input type="number" min='0' placeholder="Quantity">
                 </div>
                  <div class="item-price">
-                 <label>Item Price(₦)</label>
-                <input type="text"> 
+                 <div class="tooltip-flex" style="margin-left:-70px">
+                    <label>Item Price</label>
+                    <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
+                    </div> <br>
+                <input type="text" placeholder="Enter item price"> 
                  </div>
                  <div class="img-dash">
-                 <label>Image</label>
+                 <div class="tooltip-flex">
+                    <label>Image</label>
+                    <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
+                    </div> <br>
                 <input type="file">
                  </div>
                 
             </div>
-            <div class="acc-name-number">
+            <div class="acc-name-number" style="margin-bottom: 10px">
                 <div class="bank-name">
-                <label for="">Bank Name</label>
+                <div class="tooltip-flex">
+                    <label>Bank Name</label>
+                    <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
+                    </div> <br>
                 <select>
                     <option>Access Bank</option>
                 </select>
                 </div>
                 <div class="acc-name">
+                <div class="tooltip-flex">
                 <label style="padding-left: 20px;" for="">Acc. Name</label>
-                <input type="text">
+                    <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
+                    </div> <br>
+                
+                <input type="text" placeholder="Enter your account name">
                 </div>
                 <div class="acc-number">
-                <label for="">Acc. Number</label>
-                <input type="text">
+                <div class="tooltip-flex">
+                    <label>Acc. Name</label>
+                    <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
+                    </div> <br>
+                <input type="text" placeholder="Enter your account number">
                 </div>
             </div>
             <div class="location-dash">
-                <label for="">Location</label>
+            <div class="tooltip-flex">
+                    <label>Location</label>
+                    <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
+                    </div> <br>
                 <select name="" id="">
                     <option value="">Arkilla, Federal Lowcost</option>
                 </select>
             </div>
             <div class="warning-button">
                 <div class="warning">
-                    <img src="img" alt="warning">
+                    <img src="img/Warning.png" alt="warning">
                     <p>All application to sell a product will be reviewed and processed within
 24hrs. And further details will be notified to you. A re-negotiation 
 clause also applies.</p>
                 </div>
-                <button>Proceed to sell</button>
+                <button>Proceed to Sell</button>
             </div>
     </div>
  </div>
 </div>
+    <script src="js/userMarketplace.js"></script>
     <script src="js/marketplace.js"></script>
 </body>
 </html>
