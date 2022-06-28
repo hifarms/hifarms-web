@@ -76,7 +76,7 @@ Route::get('/wallet', 'UserController@wallet')->name('dashboard');
 
 Route::get('/investment', 'UserController@investment')->name('dashboard');
 
-Route::get('/farm-invest', 'UserController@farmInvest')->name('dashboard');
+Route::get('/farm-invest', 'FarmInvestment@farmInvest')->name('dashboard');
 
 
 Route::get('/marketplace', 'ProductController@marketplace')->name('dashboard');
@@ -91,6 +91,8 @@ Route::get('/signup', "AuthController@signupForm")->name('signUpForm');
 
 Route::get('/signin',  "AuthController@signinForm")->name('signInForm');
 
+Route::get('/single-checkout/{farm}', 'OrderController@singleCheckout')->name('single-checkout');
+Route::get('/paystack/callback', 'OrderController@verifyTransaction')->name('verify');
 
 Route::get('/logout', 'AuthController@logout')->name('logout');
 

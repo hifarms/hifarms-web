@@ -78,12 +78,12 @@ class ProductController extends Controller
         $product->unit = $request->unit;
         $product->user_id = Auth::user()->id;
         $product->location = $request->location;
-        $product->category = $request->category;
+        $product->category_id = $request->category;
+        $product->price = $request->price;
+        $product->unit = $request->unit;
         $product->description= $request->description;
         $product->activated= 1;
         $request->product_type? $product->product_type_id = $request->product_type: null;
-        $request->service_type? $product->product_type_id = $request->product_type: null;
-
         if ($request->hasFile('image')){
             $file  = $request->file('image');
             $path = $file->store('/images/product','public');

@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <meta name="_token" content="{{ csrf_token() }}" />
+    <script src="{{asset('js/jquery.min.js')}}"></script>
     <title>Marketplace</title>
 </head>
 <body>
@@ -173,7 +175,7 @@
                         </div>
                         <h3 class="h3-dashboard">₦ {{$product->price}}</h3>
                         <div class="purchase-div dashboard">
-                            <button>Purchase</button>
+                            <button class="purchaseBtn" id="{{$product->id}}">Purchase</button>
                         </div>
                     </div>
                     @endforeach
@@ -274,5 +276,30 @@
             </div>
     </div>
     <script src="js/marketplace.js"></script>
+    <script>
+         $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+
+        $('.purchaseBtn').on('click',function(){
+            jQuery.ajax({
+                    url: "http://127.0.0.1:8000/addcart/product",
+                    method: "post",
+                    data: {
+                        id:this.id,
+                        unit:1
+                    },
+                    success: function (data) {
+                        console.log(data)
+                    },
+                    error: function (e) {
+                       console.log(e);
+                    },
+                });
+       
+        })
+    </script>
 </body>
 </html>
