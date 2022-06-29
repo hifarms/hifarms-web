@@ -113,7 +113,7 @@
                  </div>
              </div>
              <div class="scroll-table">
-             <table>
+             <table id="example">
                <tr>
                 <th style="padding-top:10px;padding-bottom:10px;padding-left:20px;padding-right:20px;">S/N</th>
                 <th style="padding-top:5px;padding-bottom:5px;padding-left:10px;padding-right:10px;">Investment ID</th>
@@ -175,10 +175,25 @@
                 @endif
             @endforeach
             <div class="buttons">
-                <button><img src="img/csv.svg" width="120"></button>
-                <button><img src="img/pdf.svg" width="120"></button>
+                <button id="csv"><img src="img/csv.svg" width="120"></button>
+                <button id="pdf"><img src="img/pdf.svg" width="120"></button>
             </div>
         </div>
     </div>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script>
+      <script type="text/javascript" src="libs/FileSaver/FileSaver.min.js"></script>
+      <script type="text/javascript" src="libs/jsPDF/jspdf.umd.min.js"></script>
+    <script type="text/javascript" src="tableExport.min.js"></script>
+    <script>
+      $("#csv").on("click", function () {
+        $("#example").tableExport({ type: "csv", filename: "sample.csv" });
+      });
+      $("#pdf").on("click", function () {
+        $("#example").tablezExport({ type: "pdf", filename: "sample.pdf" });
+      });
+    </script>
 </body>
 </html>
