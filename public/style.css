@@ -5153,6 +5153,51 @@ table, td, th {
   padding: 30px;
 }
 
+.transaction-history-flex .transaction-records:hover{
+   background: rgba(245, 247, 249, 1);
+   transition: 0.2s all ease-in-out;
+}
+
+/*Tooltip ref*/
+.tooltip-ref {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-ref .tooltiptext {
+  visibility: hidden;
+  width: 140px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -75px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip-ref .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip-ref:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+/*Tooltip ref starts*/
+
 .transaction-records div{
   text-align: center;
 }

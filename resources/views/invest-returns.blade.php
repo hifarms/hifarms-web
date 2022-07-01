@@ -76,7 +76,8 @@
             <a href="investment"><img src="img/returns-current.svg" alt="history" class="current"> </a>
             <a href="wallet"><img src="img/wallet.svg" alt="wallet"></a>
         </div>
-        <div class="third-side-bar">
+        <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;margin-bottom: 10px;">
+            <a href="adminSettings.html"><img src="img/settings.png" style="margin-bottom: 30px;" alt="settings"></a>
             <img src="img/log out.svg" alt="log-out">
         </div>
     </div>
@@ -180,20 +181,5 @@
             </div>
         </div>
     </div>
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"></script>
-      <script type="text/javascript" src="libs/FileSaver/FileSaver.min.js"></script>
-      <script type="text/javascript" src="libs/jsPDF/jspdf.umd.min.js"></script>
-    <script type="text/javascript" src="tableExport.min.js"></script>
-    <script>
-      $("#csv").on("click", function () {
-        $("#example").tableExport({ type: "csv", filename: "sample.csv" });
-      });
-      $("#pdf").on("click", function () {
-        $("#example").tablezExport({ type: "pdf", filename: "sample.pdf" });
-      });
-    </script>
 </body>
 </html>
