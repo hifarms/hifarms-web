@@ -45,14 +45,47 @@ const displayFarms = () =>{
     blab.style.transition = '0.9s all ease-in-out';
 
     const line = document.querySelector('.line-add');
-    line.style.marginRight = '25px'
+    line.style.marginLeft = '15px'
     line.style.visibility = 'visible'
-    line.style.transition = '0.9s all ease-in-out';
+    line.style.transition = '0.5s all ease-in-out';
 
     const options = document.querySelector('.types-farming');
-    line.style.marginRight = '16px'
+    line.style.marginLeft= '10px'
     options.style.visibility = 'visible'
-    options.style.transition = '0.9s all ease-in-out';
+    options.style.transition = '0.5s all ease-in-out';
+
+    const arrowLeft = document.querySelector('.arrow-left-user');
+    arrowLeft.addEventListener('click', ()=>{
+        const leftArrow = document.querySelector('.arrow-left-user');
+        leftArrow.style.marginLeft = '0px';
+        leftArrow.style.transition = '0.9s all ease-in-out';
+
+        const background = document.querySelector('.view-existing-farm');
+        background.style.backgroundColor = '#ffffff';
+        background.style.transition = '0.4s all ease-in-out';
+
+        showFarms.style.visibility = 'visible';
+        showFarms.style.transition = '0.4s all ease-in-out';
+
+        const market = document.querySelector('.existing-farm');
+        market.src = 'img/existing-farm.png'
+        market.style.transition = '0.9s all ease-in-out';
+
+        const blab = document.querySelector('.blab');
+        blab.style.color = 'rgba(64, 74, 61, 1)';
+        blab.style.transition = '0.9s all ease-in-out';
+
+        const line = document.querySelector('.line-add');
+        line.style.marginLeft = '-10px'
+        line.style.visibility = 'hidden'
+        line.style.transition = '0.4s all ease-in-out';
+    
+        const options = document.querySelector('.types-farming');
+        line.style.marginLeft = '-10px'
+        options.style.visibility = 'hidden'
+        options.style.transition = '0.4s all ease-in-out';
+
+    })
 }
 
 showFarms.addEventListener('click', displayFarms)

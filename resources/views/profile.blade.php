@@ -75,7 +75,8 @@
             <a href="investment"><img src="img/history.svg" alt="history"></a>
             <a href="wallet"><img src="img/wallet.svg" alt="wallet"></a>
         </div>
-        <div class="third-side-bar">
+        <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;margin-bottom: 10px;">
+            <a href="adminSettings.html"><img src="img/settings.png" style="margin-bottom: 30px;" alt="settings"></a>
             <img src="img/log out.svg" alt="log-out">
         </div>
     </div> 
@@ -97,8 +98,53 @@
         </div>
         <div class="buttons-profile">
             <button>Update Profile</button>
-            <button>Edit Profile</button>
+            <button class="edit-profile">Edit Profile</button>
         </div>
     </div>
+
+    
+       <!--edit profile Modal Begins-->
+       <div class="admin-add-item edit-profile-modal">
+        <div class="admin-add-item-container">
+            <div class="close-add-item">x</div>
+            <h1 style="text-transform: unset;margin-bottom: 10px;">Edit Profile</h1>
+            <label class="class-name">full Name</label> <br>
+            <input type="text"placeholder="Enter your name" class="name">
+            <div class="category-percentage-flex" style="justify-content:left;">
+                <div class="percentage">
+                    <label>Contact</label>  <br>
+                    <input type="text" class="contact-input" placeholder="Enter your contact">
+                </div>
+                <div class="category">
+                    <label>Email</label> <br> 
+                    <input class="category-select contact-input" placeholder="Enter your email">    
+                </div>
+            </div>
+            <div class="category-percentage-flex" style="margin-bottom: 10px;justify-content:left;">
+                <div class="percentage">
+                    <label>Occupation</label>  <br>
+                    <input type="text" class="contact-input" placeholder="Enter your occupation">
+                </div>
+                <div class="category">
+                    <label>State Of Origin</label> <br> 
+                    <select style="width: 313%";>
+                        <option>Sokoto</option>
+                        <option>Kebbi</option>
+                        <option>Zamfara</option>
+                    </select>  
+                </div>
+            </div>
+            <label class="admin-location">Residential Address</label> <br>
+            <input type="text"  class="admin-location-input" placeholder="Enter residential address">
+             <br>
+            <div class="button-admin-container">
+                <button class="add-item-submit">Update</button>
+            </div>
+        </div>
+    </div>
+    <!--edit profile Modal ends-->
+    <div class="overlay"></div>
+
+    <script src="js/userProfile.js"></script>
 </body>
 </html>

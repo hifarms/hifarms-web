@@ -75,13 +75,15 @@
             <a href="investment"><img src="img/history.svg" alt="history"></a>
             <a href="wallet"><img src="img/wallet.svg" alt="wallet"></a>
         </div>
-        <div class="third-side-bar">
+        <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;margin-bottom: 10px;">
+            <a href="adminSettings.html"><img src="img/settings.png" style="margin-bottom: 30px;" alt="settings"></a>
             <img src="img/log out.svg" alt="log-out">
         </div>
     </div>
     <div class="dashboard-container">
         <h1>Dashboard.</h1>
         <div class="dashboard-flex">
+        <a href="/marketplace">
             <div class="marketplace-flex">
                 <div class="top-marketplace-flex">
                     <p>Marketplace</p>
@@ -95,6 +97,7 @@
                     <img src="img/eye-icon.svg" alt="eye-icon" width="23">
                 </div>
             </div>
+            </a>
             <div class="weather">
                 <div class="weather-2">
                     <div class="flex-1">
@@ -108,13 +111,15 @@
                 </div>
                 <div class="referral">
                     <h1>Referral link</h1>
-                    <p>https://hifarms.com.ng/home/signup?ref={{auth()->user()->username}}</p>
-                    <div class="ref-img">
-                        <img src="img/copy-paste.svg" alt="copy-icon">
+                    <p class="copy" id="ref-link">https://hifarms.com.ng/home/signup?ref={{auth()->user()->username}}</p>
+                    <div class="ref- tooltip-ref">
+                    <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>
+                        <img src="img/copy-paste.svg" alt="copy-icon" class="ref-icon">
                     </div>
                 </div>
             </div>
             <div class="marketplace-flex manage-your-farm">
+                <a href="user-farms">
                 <div class="top-marketplace-flex">
                     <p>Manage Your Farm</p>
                     <img src="img/livestock-dashboard.svg" alt="icon">
@@ -126,8 +131,10 @@
                     <p></p>
                     <img src="img/add-my-farm.svg" alt="eye-icon" width="23">
                 </div>
+                </a>
             </div>
             <div class="marketplace-flex invest-your-farm">
+                <a href="farm-invest">
                 <div class="top-marketplace-flex">
                     <p>Invest In A Project</p>
                     <img src="img/invest-dashboard.svg" alt="icon">
@@ -141,6 +148,8 @@
                 </div>
             </div>
         </div>
+        </a>
     </div>
+    <script src="js/userDashboard.js"></script>
 </body>
 </html>

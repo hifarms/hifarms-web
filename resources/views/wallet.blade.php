@@ -75,7 +75,8 @@
             <a href="investment"><img src="img/history.svg" alt="history"></a>
             <a href="wallet"><img src="img/wallet-active.svg" alt="wallet" class="current"></a>
         </div>
-        <div class="third-side-bar">
+        <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;margin-bottom: 10px;">
+            <a href="adminSettings.html"><img src="img/settings.png" style="margin-bottom: 30px;" alt="settings"></a>
             <img src="img/log out.svg" alt="log-out">
         </div>
     </div>
@@ -112,6 +113,45 @@
         </div>
         <div class="transaction-history">
                 <p>Transaction history</p>
+                <div class="scroll-table">
+                <div class="transaction-history-flex">
+                    <div class="transact-history-option">
+                        <div>User ID</div>
+                        <div>Order ID</div>
+                        <div>Status</div>
+                        <div>Project Type</div>
+                        <div>Amount</div>
+                    </div>
+                    <div class="transaction-records">
+                        <div>Hi-001</div>
+                        <div>#023</div>
+                        <div style="color: #53AF46;">Paid</div>
+                        <div>Purchase</div>
+                        <div>₦ 225,000</div>
+                    </div>
+                    <div class="transaction-records">
+                        <div>Hi-001</div>
+                        <div>#023</div>
+                        <div style="color: #1E88E5;">Pending</div>
+                        <div>Purchase</div>
+                        <div>₦ 550,000</div>
+                    </div>
+                    <div class="transaction-records">
+                        <div>Hi-001</div>
+                        <div>#023</div>
+                        <div style="color: #53AF46;">Paid</div>
+                        <div>Investment</div>
+                        <div>₦ 25,000</div>
+                    </div>
+                    <div class="transaction-records">
+                        <div>Hi-001</div>
+                        <div>#023</div>
+                        <div style="color: #53AF46;">Paid</div>
+                        <div>Purchase</div>
+                        <div>₦ 25,000</div>
+                    </div>
+                </div>
+             </div>
         </div>
     </div>
 </body>
