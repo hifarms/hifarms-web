@@ -14,6 +14,7 @@
             <p>Remove</p>
         </div>
         @foreach ($farms as $cart)
+        @if($cart->farm)
             <div class="cart-content">
                 <div class="image-name">
                     <p class="hide-id">{{ $cart->id }}</p>
@@ -35,6 +36,29 @@
                 </div>
                 <div class="remove" style="color:#FF3D00;">Remove</div>
             </div>
+        @else
+        <div class="cart-content">
+                <div class="image-name">
+                    <p class="hide-id">{{ $cart->id }}</p>
+                    <img src={{ url($cart->product->image) }} alt="image">
+                    <p>{{ $cart->product->name }}</p>
+                </div>
+                <div class="add-to-cart">
+                    <div class="cart-items">
+                        <button class="add" style="color:#6E7A89;">+</button> <br>
+                        <button class="minus" style="color:#6E7A89;">-</button>
+                    </div>
+                    <p id="unit">{{ $cart->unit }}</p>
+                </div>
+                <div class="rate">
+                    <p>{{ $cart->product->price }}</p>
+                </div>
+                <div class="amount">
+                    <p>₦ {{ $cart->product->price * $cart->unit }}</p>
+                </div>
+                <div class="remove" style="color:#FF3D00;">Remove</div>
+            </div>
+            @endif
         @endforeach
         <div class="checkout">
             <p>Total: ₦<span class="total-price">0.00</span></p>

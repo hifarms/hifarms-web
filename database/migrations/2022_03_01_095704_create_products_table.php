@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->string('location');
             $table->text('description')->nullable();
             //ready to start selling
+            $table->string('user_id')->constrained();
             $table->boolean('active')->default(1);
             $table->unsignedInteger('unit_sold')->default(0);
             $table->foreignId('category_id')->nullable()->constrained()->onDelete('cascade');

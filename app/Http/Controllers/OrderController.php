@@ -36,16 +36,16 @@ class OrderController extends Controller
             $orderitem->delivered = 0;
             $orderitem->unit = $item->unit;
             $orderitem->amount = $item->farm->unit_price * $item->unit;
-            $orderitem->farm_id = $item->farm_id;
-            $orderitem->farm_return_type_id = $item->farm_return_type_id;
+            // $orderitem->farm_id = $item->farm_id;
+            // $orderitem->farm_return_type_id = $item->farm_return_type_id;
 
-            // if($item->farm_id){
-            //     $orderitem->farm_id = $item->farm_id;
-            //     $orderitem->farm_return_type_id = $farm_return_type_id;
-            // }
-            // else if($item->product_id){
-            //     $orderitem->product_id = $item->product_id;
-            // }
+            if($item->farm_id){
+                $orderitem->farm_id = $item->farm_id;
+                $orderitem->farm_return_type_id = $farm_return_type_id;
+            }
+            else if($item->product_id){
+                $orderitem->product_id = $item->product_id;
+            }
 
             $orderitem->save();
             $total=$total+$orderitem->amount;

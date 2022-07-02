@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <meta name="_token" content="{{ csrf_token() }}" />
+    <script src="{{asset('js/jquery.min.js')}}"></script>
     <title>Marketplace</title>
 </head>
 <body>
@@ -106,25 +108,26 @@
                             </div>
                         <div class="line" style="height: 1px;width: 300px;background: #c4c4c4;margin-bottom: 10px;"></div>
                         <div class="flex dashboard">
-                            <input type="checkbox" class="check" name='crop'>
+                            <input type="checkbox" class="check" name='crop' {{ (old('crop'))=='on' ?"checked":null}}>
                             <p class="sponsor-crop dashboard">Crop</p>
                             <P>0</P>
                         </div>
                         <div class="flex dashboard">
-                            <input type="checkbox" name="cattle">
+                            <input type="checkbox" name="cattle" {{ (old('cattle'))=='on' ?"checked":null}}>
                             <p class="sponsor-crop dashboard">Cattles</p>
                             <P>0</P>
                         </div>
                         <div class="flex dashboard">
-                            <input type="checkbox" class="poultry">
+                            <input type="checkbox" class="poultry" {{ (old('poultry'))=='on' ?"checked":null}}>
                             <p class="sponsor-crop dashboard">Poultry</p>
                             <P>0</P>
                         </div>
                         <div class="flex dashboard">
-                            <input type="checkbox" name="livestock">
+                            <input type="checkbox" name="livestock" {{ (old('livestock'))=='on' ?"checked":null}}>
                             <p class="sponsor-crop dashboard">Livestock</p>
                             <P>0</P>
                         </div>
+                    </form>
                     </div>
 
 
@@ -171,7 +174,7 @@
                     @foreach($products as $product)
                     <div class="grid dashboard">
                         <p class="label">{{$product->label->name}}</p>
-                        <img src="img/unsplash_aIghKsc3H34.png" alt="image" class="marketplace-image">
+                        <img src="{{$product->image}}" alt="image" class="marketplace-image">
                         <h1>{{$product->name}}</h1>
                         <div class="sponsor-inner-flex">
                             <img src="img/location.svg" alt="">
@@ -182,8 +185,9 @@
                             <p>74% sold</p>
                         </div>
                         <h3 class="h3-dashboard">₦ {{$product->price}}</h3>
+
                         <div class="purchase-div dashboard" style="justify-content: right;">
-                            <button>Purchase</button>
+                            <button class="purchaseBtn" id="{{$product->id}}">Purchase</button>
                         </div>
                     </div>
                     @endforeach
@@ -284,7 +288,7 @@
             </div>
     </div>
     <div class="overlay"></div>
-
+    <form method="post" action="/add-sell-product" enctype="multipart/form-data">
     <div class="admin-add-item">
         <div class="admin-add-item-container">
             <div class="close-add-item">x</div>
@@ -295,15 +299,17 @@
                     <label>Product Name</label>
                     <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
                     </div> <br>
-                    <input type="text" placeholder="Enter product name">
+                    <input type="text" name="name" placeholder="Enter product name">
                 </div>
                 <div class="product-category-dash">
                 <div class="tooltip-flex">
                     <label>Product Category</label>
                     <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
                     </div> <br>
-                     <select>
-                         <option>Catfish</option>
+                     <select name="product_type">
+                         @foreach($productType as $type)
+                         <option value="{{$type->id}}">{{$type->name}}</option>
+                         @endforeach
                      </select>
                 </div>
             </div>
@@ -313,21 +319,21 @@
                     <label>Qty</label>
                     <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
                     </div> <br>
-                <input type="number" min='0' placeholder="Quantity">
+                <input type="number" min='0' placeholder="Quantity" name="unit">
                 </div>
                  <div class="item-price">
                  <div class="tooltip-flex" style="margin-left:-70px">
                     <label>Item Price</label>
                     <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
                     </div> <br>
-                <input type="text" placeholder="Enter item price"> 
+                <input type="text" placeholder="Enter item price" name="price"> 
                  </div>
                  <div class="img-dash">
                  <div class="tooltip-flex">
                     <label>Image</label>
                     <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
                     </div> <br>
-                <input type="file">
+                <input type="file" name="image">
                  </div>
                 
             </div>
@@ -337,8 +343,8 @@
                     <label>Bank Name</label>
                     <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
                     </div> <br>
-                <select>
-                    <option>Access Bank</option>
+                <select name="bank-name">
+                    <option name="access">Access Bank</option>
                 </select>
                 </div>
                 <div class="acc-name">
@@ -347,14 +353,14 @@
                     <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
                     </div> <br>
                 
-                <input type="text" placeholder="Enter your account name">
+                <input type="text"name="accName" placeholder="Enter your account name">
                 </div>
                 <div class="acc-number">
                 <div class="tooltip-flex">
                     <label>Acc. Name</label>
                     <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
                     </div> <br>
-                <input type="text" placeholder="Enter your account number">
+                <input type="text" name="accNumber" placeholder="Enter your account number">
                 </div>
             </div>
             <div class="location-dash">
@@ -362,10 +368,11 @@
                     <label>Location</label>
                     <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
                     </div> <br>
-                <select name="" id="">
-                    <option value="">Arkilla, Federal Lowcost</option>
+                <select name="location" id="">
+                    <option value="Arkilla">Arkilla, Federal Lowcost</option>
                 </select>
             </div>
+            @csrf
             <div class="warning-button">
                 <div class="warning">
                     <img src="img/Warning.png" alt="warning">
@@ -376,9 +383,35 @@ clause also applies.</p>
                 <button>Proceed to Sell</button>
             </div>
     </div>
+</form>
  </div>
 </div>
     <script src="js/userMarketplace.js"></script>
     <script src="js/marketplace.js"></script>
+    <script>
+         $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+
+        $('.purchaseBtn').on('click',function(){
+            jQuery.ajax({
+                    url: "http://127.0.0.1:8000/addcart/product",
+                    method: "post",
+                    data: {
+                        id:this.id,
+                        unit:1
+                    },
+                    success: function (data) {
+                        console.log(data)
+                    },
+                    error: function (e) {
+                       console.log(e);
+                    },
+                });
+       
+        })
+    </script>
 </body>
 </html>

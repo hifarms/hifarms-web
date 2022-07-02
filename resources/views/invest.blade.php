@@ -159,59 +159,32 @@
     <script src="https://js.paystack.co/v1/inline.js"></script>
 
     <script>
+          $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+        
         $('.investBtn').on('click',function(){
+            alert(this.id)
             jQuery.ajax({
-                    url: `http://127.0.0.1:8000/single-checkout/${this.id}`,
-                    method: "get",
-                    success: function(data) {
-                        console.log(data)
-                        var handler = PaystackPop.setup({
-                            key: 'pk_test_d31a3ad9815642087a323749cd60597aad8f7a73',
-                            email: data.user.email,
-                            amount: data.total_amount * 100,
-                            metadata: {
-                                custom_fields: [{
-                                    display_name: "order_id",
-                                    variable_name: "order_id",
-                                    value: data.id
-                                },
-                                {
-                                    display_name: "first_name",
-                                    variable_name: "first_name",
-                                    value:data.user.fullname.split[0]
-                                },
-                                {
-                                    display_name: "last_name",
-                                    variable_name: "last_name",
-                                    value:data.user.fullname.split[1]
-                                },
-                            ]
-                            },
-                            callback: function(response) {
-
-                                let message = 'Payment complete! Reference: ' + response.reference;
-                                console.log(response);
-                                alert(message);
-                                window.location.replace(response.redirecturl);
-
-                            },
-                            onClose: function() {
-                                alert('window closed');
-                            }
-                        });
-                        handler.openIframe();
-                    
-                },
-                error: function(e) {
-                    if(e.status==401){
-                    alert("Login To CheckOut Cart")
-                    window.location.replace('/signin');
-                }
-
-                }
-            });
-       
-        })
+                    url: "http://127.0.0.1:8000/addcart/investment",
+                    method: "post",
+                    data: {
+                        id:this.id,
+                        unit:1,
+                        amount:1000,
+                        investmetType:1
+                    },
+                    success: function (data) {
+                      alert("hello world")
+                       getCartNum()
+                    },
+                    error: function (e) {
+                       console.log(e);
+                    },
+                });
+            })
     </script>
 </body>
 </html>
