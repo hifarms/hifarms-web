@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Product_type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {  
@@ -19,6 +22,10 @@ class ProductController extends Controller
         $products= Product::where('active','=',1)->orderBy('created_at',$sort)->paginate(15)->withQueryString();
 
         session()->flashInput($request->input());
+
+        if($request->input('range')){
+            $products= $products->where('price',"<",$request->input('range'));
+        }
 
 
         $cat=[];
@@ -40,7 +47,9 @@ class ProductController extends Controller
         //$price = explode('-',$request->input('price)//
         // $products = Farm::where('active','=',1)->where('category_id',$rquest->input('category'))->get();        }
 
-    return view('marketplace',['products'=>$products]);
+        $product_type=Product_type::all();
+
+    return view('marketplace',['products'=>$products,'productType'=>$product_type]);
 
 
    }
@@ -62,27 +71,29 @@ class ProductController extends Controller
 
     public function store(Request $request){
 
-        $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'price' => 'required',
-            'unit' => 'required',
-            'location' => 'required',
-            'image'  => 'mimes:jpg,png'
-        ]);
+        // $validator = Validator::make($request->all(), [
+        //     'name' => 'required',
+        //     'price' => 'required',
+        //     'unit' => 'required',
+        //     'location' => 'required',
+        //     'image'  => 'mimes:jpg,png'
+        // ]);
 
-        if($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
+        // if($validator->fails()) {
+        //     return redirect()->back()->withErrors($validator)->withInput();
+        // }
 
         $product = new Product();
+        $product->name = $request->name;
         $product->unit = $request->unit;
         $product->user_id = Auth::user()->id;
         $product->location = $request->location;
-        $product->category_id = $request->category;
+        // $product->category_id = $request->category;
         $product->price = $request->price;
         $product->unit = $request->unit;
-        $product->description= $request->description;
-        $product->activated= 1;
+        $product->description= $request->description || "Null";
+        $product->active= 1;
+        $product->label_id= 1;
         $request->product_type? $product->product_type_id = $request->product_type: null;
         if ($request->hasFile('image')){
             $file  = $request->file('image');
