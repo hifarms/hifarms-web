@@ -80,6 +80,8 @@ Route::get('/farm-invest', 'FarmInvestment@farmInvest')->name('dashboard');
 
 
 Route::get('/marketplace', 'ProductController@marketplace')->name('dashboard');
+Route::post('/add-sell-product', 'ProductController@store')->name('sell-product');
+
 
 Route::post('/forget-password', 'ResetPasswordController@submitForgetPasswordForm')->name('forget.password.post');
 

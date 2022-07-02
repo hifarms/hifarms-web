@@ -71,28 +71,28 @@ editIcon.forEach((edit)=>{
     <h1>Edit Item</h1>
     <label class="class-name">Name</label> <br>
     <input type="text"placeholder="Enter item name" value="${itemName.innerHTML}" class="name">
-    <div class="category-percentage-flex">
-        <div class="category">
-            <label>Category</label> <br> 
-            <select class="category-select">
-                <option>${itemName.innerHTML}</option>
-                <option>Livestock</option>
-                <option>Meat Breeding</option>
-                <option>Cattle Farming</option>
-            </select>
-        </div>
-        <div class="percentage">
-            <label>Percentage Sold(%)</label>  <br>
-            <select>
-                <option>${itemPercentage.innerHTML}</option>
-                <option>10%</option>
-                <option>40%</option>
-                <option>60%</option>
-                <option>80%</option>
-                <option>100%</option>
-            </select>
-        </div>
-    </div>
+   <div class="category-percentage-flex">
+                <div class="category" style="width:55%; margin-right: 20px;">
+                    <label>Category</label> <br> 
+                    <select class="category-select add-item">
+                        <option>${itemName.innerHTML}</option>
+                        <option>Livestock</option>
+                        <option>Meat Breeding</option>
+                        <option>Cattle Farming</option>
+                    </select>
+                </div>
+                <div class="percentage">
+                    <label>Percentage Sold(%)</label>  <br>
+                    <select>
+                        <option>${itemPercentage.innerHTML}</option>
+                        <option>10%</option>
+                        <option>40%</option>
+                        <option>60%</option>
+                        <option>80%</option>
+                        <option>100%</option>
+                    </select>
+                </div>
+            </div>
     <div class="price-image-flex">
         <div class="price">
             <label>Item Price(₦)</label> <br>
