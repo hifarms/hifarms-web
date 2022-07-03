@@ -203,8 +203,8 @@
                         </div>
                     </div>
 
-                    <div class="grid dashboard add-new-product">
-                        <img src="img/admin-add.svg" alt="admin-add" class="admin-add-pic invest">
+                    <div class="grid dashboard add-new-product" style="height:522px">
+                        <img src="img/admin-add.svg" style="margin-top:75px;padding-left: 20px;padding-right: 20px;" alt="admin-add" class="admin-add-pic invest">
                     </div>    
                     
                     <div class="grid dashboard">
@@ -261,58 +261,57 @@
             </div>
     </div>
 
-    <!--Add Item Modal Begins-->
-    <div class="admin-add-item">
-        <div class="admin-add-item-container">
-            <div class="close-add-item">x</div>
-            <h1>Add Item</h1>
-            <label class="class-name">Name</label> <br>
-            <input type="text"placeholder="Enter item name" class="name">
-            <div class="category-percentage-flex">
-                <div class="category">
-                    <label>Category</label> <br> 
-                    <select class="category-select">
-                        <option>Select Category</option>
-                        <option>Livestock</option>
-                        <option>Meat Breeding</option>
-                        <option>Cattle Farming</option>
-                    </select>
+           <!--Add Item Modal Begins-->
+           <div class="admin-add-item">
+            <div class="admin-add-item-container">
+                <div class="close-add-item">x</div>
+                <h1 style="margin-top: 4px;margin-bottom: 15px;">Add Item</h1>
+                <label class="class-name">Name</label> <br>
+                <input type="text"placeholder="Enter item name" class="name">
+                <div class="category-percentage-flex">
+                    <div class="category" style="width:55%; margin-right: 20px;">
+                        <label>Category</label> <br> 
+                        <select class="category-select add-item">
+                            <option>Select Category</option>
+                            <option>Livestock</option>
+                            <option>Meat Breeding</option>
+                            <option>Cattle Farming</option>
+                        </select>
+                    </div>
+                    <div class="percentage">
+                        <label>Percentage Sold(%)</label>  <br>
+                        <select>
+                            <option>10%</option>
+                            <option>40%</option>
+                            <option>60%</option>
+                            <option>80%</option>
+                            <option>100%</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="percentage">
-                    <label>Percentage Sold(%)</label>  <br>
-                    <select>
-                        <option>10%</option>
-                        <option>40%</option>
-                        <option>60%</option>
-                        <option>80%</option>
-                        <option>100%</option>
-                    </select>
+                <div class="price-image-flex">
+                    <div class="price">
+                        <label>Item Price(₦)</label> <br>
+                         <input type="text" placeholder="Enter Price...">
+                    </div>
+                    <div class="image">
+                        <label style="margin-left: 20px;">Image</label> <br>
+                        <input type="file" class="category-select">
+                    </div>
                 </div>
-            </div>
-            <div class="price-image-flex">
-                <div class="price">
-                    <label>Item Price(₦)</label> <br>
-                     <input type="text" placeholder="Enter Price...">
+                <label class="admin-location">Location</label> <br>
+                <select class="admin-location-input">
+                    <option>Select Location</option>
+                    <option>Sokoto</option>
+                    <option>Kebbi</option>
+                    <option>Zamfara</option>
+                </select> <br>
+                <div class="button-admin-container">
+                    <button class="add-item-submit">Submit</button>
                 </div>
-                <div class="image">
-                    <label style="margin-left: 20px;">Image</label> <br>
-                    <input type="file" class="category-select">
-                </div>
-            </div>
-            <label class="admin-location">Location</label> <br>
-            <select class="admin-location-input">
-                <option>Select Location</option>
-                <option>Sokoto</option>
-                <option>Kebbi</option>
-                <option>Zamfara</option>
-            </select> <br>
-            <div class="button-admin-container">
-                <button class="add-item-submit">Submit</button>
             </div>
         </div>
-    </div>
-    <!--Add Item Modal ends-->
-
+        <!--Add Item Modal ends-->
     <div class="edit-add-item"></div>
 
     <!--Delete Item starts-->

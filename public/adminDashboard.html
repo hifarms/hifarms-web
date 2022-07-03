@@ -99,7 +99,7 @@
             </div>
             <h5>Total Products</h5>
             <h2>1,234</h2>
-            <p>+Add new products</p>
+            <p class="add-new-product">+Add new products</p>
         </div>
         <div class="info-3">
             <div class="info-images">
@@ -117,11 +117,19 @@
             <h2>456</h2>
             <p>Start from Jan 1, 2022</p>
         </div>
+       </div>    
+        <div class="entry-search admin-search">   
+        <div class="input-search">
+           <input type="text" placeholder="search for">
+           <img src="img/Vector (8).png" style="cursor: pointer;" alt="search-icon">
        </div>
-
+       </div>
        <!---Double Side-->
+
        <div class="admin-outer-container">
+           
        <div class="product-table">
+           
            <div class="product-names">
                <div>No</div>
                <div>Product Name</div>
@@ -191,6 +199,58 @@
        <img src="img/views-sells.png" alt="chart" class="admin-view-sell">
     </div>
     </div>
+        <!--Add Item Modal Begins-->
+        <div class="admin-add-item">
+            <div class="admin-add-item-container">
+                <div class="close-add-item">x</div>
+                <h1 style="margin-top: 4px;margin-bottom: 15px;">Add Item</h1>
+                <label class="class-name">Name</label> <br>
+                <input type="text"placeholder="Enter item name" class="name">
+                <div class="category-percentage-flex">
+                    <div class="category" style="width:55%; margin-right: 20px;">
+                        <label>Category</label> <br> 
+                        <select class="category-select add-item">
+                            <option>Select Category</option>
+                            <option>Livestock</option>
+                            <option>Meat Breeding</option>
+                            <option>Cattle Farming</option>
+                        </select>
+                    </div>
+                    <div class="percentage">
+                        <label>Percentage Sold(%)</label>  <br>
+                        <select>
+                            <option>10%</option>
+                            <option>40%</option>
+                            <option>60%</option>
+                            <option>80%</option>
+                            <option>100%</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="price-image-flex">
+                    <div class="price">
+                        <label>Item Price(₦)</label> <br>
+                         <input type="text" placeholder="Enter Price...">
+                    </div>
+                    <div class="image">
+                        <label style="margin-left: 20px;">Image</label> <br>
+                        <input type="file" class="category-select">
+                    </div>
+                </div>
+                <label class="admin-location">Location</label> <br>
+                <select class="admin-location-input">
+                    <option>Select Location</option>
+                    <option>Sokoto</option>
+                    <option>Kebbi</option>
+                    <option>Zamfara</option>
+                </select> <br>
+                <div class="button-admin-container">
+                    <button class="add-item-submit">Submit</button>
+                </div>
+            </div>
+        </div>
+        <!--Add Item Modal ends-->
+        <div class="overlay"></div>
     <script src="js/adminDashboard.js"></script>
 </body>
 </html>

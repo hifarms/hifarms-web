@@ -3942,10 +3942,17 @@ input:checked + .slider:before {
   display: flex;
   justify-content: space-evenly;
   align-items: flex-start;
+  margin-left: -40px;
 }
 
 .admin-view-sell{
   margin-top: 30px;
+}
+
+.admin-search{
+  margin-top: 50px;
+  margin-bottom: -20px;
+  margin-left: 515px;
 }
 
 .product-table .admin-status{
@@ -5127,18 +5134,18 @@ table, td, th {
   font-size: 17px;
 }
 
-.search-show-entry .entry-search{
+.entry-search{
   display: flex;
   align-items: center;
 }
 
-.search-show-entry .entry-search .input-search{
+.entry-search .input-search{
   background: #ffffff;
   border-radius: 20;
   margin-left: 8px;
 }
 
-.search-show-entry .entry-search .input-search input{
+.entry-search .input-search input{
   background: #ffffff;
   border-radius: 20;
 }

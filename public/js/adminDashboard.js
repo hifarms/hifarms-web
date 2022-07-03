@@ -1,4 +1,5 @@
-const displayStatistics = document.querySelector('.info-1')
+const displayStatistics = document.querySelector('.info-1');
+const addNewProduct = document.querySelector('.add-new-product')
 
 const openSettings = () => {
    const settings = window.open('adminSettings.html');
@@ -23,3 +24,21 @@ const openSettings = () => {
 }
 
 displayStatistics.addEventListener('click', openSettings)
+
+//Add new product
+const openModal = () => {
+    let addItemModal = document.querySelector('.admin-add-item');
+    let overlayEffect = document.querySelector('.overlay');
+     
+    overlayEffect.style.display = 'block';
+    addItemModal.style.display = 'block';
+
+    const closeItem = document.querySelector('.close-add-item');
+
+    closeItem.addEventListener('click', ()=>{
+      overlayEffect.style.display = 'none';
+      addItemModal.style.display = 'none';
+    })
+}
+
+addNewProduct.addEventListener('click', openModal)

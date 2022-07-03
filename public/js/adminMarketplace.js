@@ -20,6 +20,12 @@ addItem.addEventListener('click', ()=>{
 })
 
 deleteItem.forEach((item)=>{
+    item.addEventListener('mouseover', ()=>{
+       item.src = 'img/admin-delete.png'
+    })
+    item.addEventListener('mouseout', ()=>{
+        item.src = 'img/delete-edit.png'
+    })
     item.addEventListener('click', (e)=>{
         let deleteModal = document.querySelector('.delete-modal');
         let overlayEffect = document.querySelector('.overlay');
@@ -57,6 +63,12 @@ deleteItem.forEach((item)=>{
 
 //Edit Modal
 editIcon.forEach((edit)=>{
+  edit.addEventListener('mouseover', ()=>{
+      edit.src = 'img/edit-admin-dashboard.png'
+  })
+  edit.addEventListener('mouseout', ()=>{
+     edit.src = 'img/edit-fade.png'
+  })
   edit.addEventListener('click', ()=>{
 
     let itemName = edit.parentElement.parentElement.querySelector('h1');
