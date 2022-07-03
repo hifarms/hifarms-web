@@ -3,8 +3,10 @@ const toggleSwitch = document.querySelector('#admin-chekbox');
 const reset = document.querySelector('.reset-admin')
 const settingsOption = document.querySelectorAll('.settings-heading');
 const togglePassword = document.querySelectorAll('.toggle-password');
-const changePassword = document.querySelector('.pass')
-
+const changePassword = document.querySelector('.pass');
+const manageUsers = document.querySelector('.display-manage');
+const generalSettings = document.querySelector('.display-general');
+const statistics = document.querySelector('.display-stats');
 
 const toggle = () =>{
     if(toggleSwitch.checked === true){
@@ -46,26 +48,33 @@ reset.addEventListener('click', resetSettings)
 
 settingsOption.forEach((setting)=>{
     setting.addEventListener('click', (e)=>{
+        
         if(e.target.innerText === 'General Settings'){
             let currentClass = document.querySelector('.current');
             currentClass.classList.remove('current')
             e.target.classList.add('current')
-            let manageUsers = document.querySelector('.display-manage');
-            let generalSettings = document.querySelector('.display-general');
-
+            
+            statistics.style.display = 'none';
             manageUsers.style.display = 'none';
             generalSettings.style.display = 'block';
-        }
-        else if(e.target.innerText === 'Manage Users'){
+        } else if(e.target.innerText === 'Manage Users'){
             let currentClass = document.querySelector('.current');
             currentClass.classList.remove('current')
             e.target.classList.add('current')
-            let manageUsers = document.querySelector('.display-manage');
-            let generalSettings = document.querySelector('.display-general');
-
+            
+            statistics.style.display = 'none';
             manageUsers.style.display = 'block';
             generalSettings.style.display = 'none';
+        } else if(e.target.innerText === 'Statistics'){
+            let currentClass = document.querySelector('.current');
+            currentClass.classList.remove('current');
+            e.target.classList.add('current');
+ 
+            statistics.style.display = 'block';
+            manageUsers.style.display = 'none';
+            generalSettings.style.display = 'none';
         }
+    
     })
 })
 

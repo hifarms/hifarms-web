@@ -3565,6 +3565,12 @@ input:checked + .slider:before {
   transition: all 0.2s ease-in-out;  
 }
 
+.setting-options .current-stats{
+  color: #8bc53e;
+  border-bottom: 2px solid #8bc53e;
+  transition: all 0.2s ease-in-out;  
+}
+
 .setting-options div:hover{
   color: #8bc53e;
   border-bottom: 2px solid #8bc53e;
@@ -3584,6 +3590,10 @@ input:checked + .slider:before {
 }
 
 .display-manage{
+  display: none;
+}
+
+.display-stats{
   display: none;
 }
 
@@ -3768,6 +3778,10 @@ input:checked + .slider:before {
 .general-information{
   display: flex;
   justify-content: space-around;
+}
+
+.general-information div{
+  cursor: pointer;
 }
 
 .info-1.diff{
@@ -5422,6 +5436,35 @@ table, td, th {
 .notifs:hover .notification-modal{
   display: block;
 }
+
+/*Statistics Page*/
+.stats-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  grid-gap: 0px;
+}
+
+.stats-grid div{
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  justify-content: center;
+}
+
+.stats-grid label{
+  font-size: 16px;
+  font-weight: normal;
+
+}
+
+.stats-grid input{
+  width: 90px;
+  margin-top: 25px;
+}
+
+/*Statistis Page ends*/
 /* Dashboard ends */
 
 /*Media Queries*/
