@@ -3949,6 +3949,29 @@ input:checked + .slider:before {
   margin-top: 30px;
 }
 
+.add-category{
+  margin-top: 25px;
+}
+
+.add-category p{
+  font-size: 15px;
+}
+
+.add-category button{
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-top: 15px;
+  padding-top: 10px;
+  cursor: pointer;
+  padding-bottom: 12px;
+  font-size: 15px;
+  border:1px solid rgba(21, 101, 192, 1) ;
+  border-radius: 6px;
+  background: rgba(21, 101, 192, 1);
+  color: #fff;
+  padding-bottom: 10px;
+}
+
 .admin-search{
   margin-top: 50px;
   margin-bottom: -20px;
