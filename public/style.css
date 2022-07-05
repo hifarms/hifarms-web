@@ -4501,6 +4501,15 @@ input:checked + .slider:before {
   margin-top: -20;
 }
 
+.second-side-bar.admin{
+  height: 85%;
+  margin-bottom: -20px;
+}
+
+.second-side-bar.admin a{
+  margin-bottom: 25px;
+}
+
 .side-bar img{
   width: 26px;
 }
@@ -4691,8 +4700,6 @@ input:checked + .slider:before {
 .sponsor-grid .sponsor-option .flex.dashboard{
   max-width: 290px;
 }
-
-
 
 .h3-dashboard{
   padding-top: 20px ;
