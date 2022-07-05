@@ -104,6 +104,7 @@
                                  <h3 class="sponsor-categories">CATEGORIES</h3>
                             </div>
                         <div class="line" style="height: 1px;width: 300px;background: #c4c4c4;margin-bottom: 10px;"></div>
+                        <div id="flex-dashboard-container">
                         <div class="flex dashboard">
                             <input type="checkbox" class="check" name='crop'>
                             <p class="sponsor-crop dashboard">Crop</p>
@@ -124,9 +125,10 @@
                             <p class="sponsor-crop dashboard">Livestock</p>
                             <P>0</P>
                         </div>
+                </div>
                         <div class="add-category">
                             <p>Add category</p>
-                            <button>Add category</button>
+                            <button class="add-category-btn">Add category</button>
                         </div>
                     </div>
                 </div>
@@ -320,8 +322,22 @@
            </div>
        </div>
        <div class="overlay"></div>
-
     <!--Delete item ends-->
+
+        <!--Add category starts-->
+        <div class="delete-modal add-category-modal">
+            <div class="delete-modal-container add-category-mdl">
+                <div class="close-delete-modal close-category">x</div>
+                <h1 style="padding: 5px;font-size: 23px;text-align: center;margin-bottom:10px;margin-top: 25px;">ADD CATEGORY</h1>
+                 <label style="color:#cccccc;font-size: 20px;">Name:</label> <br>
+                <input type="text" placeholder="Enter here..." class="category-value" style="border: 1px solid #cccccc;margin-top: 10px;padding: 15px;width: 100%;">
+                <div class="button-admin-container" style="margin-top: 30px;">
+                    <button class="add-item-submit">Add</button>
+                </div>
+            </div>
+        <div class="overlay"></div>
+     <!--Add category ends-->
+
     <script src="js/adminMarketplace.js"></script>
 </body>
 </html>

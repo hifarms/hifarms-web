@@ -1,7 +1,8 @@
-//Setting variable
+//Setting variables
 const addItem = document.querySelector('.admin-add-pic');
 const deleteItem = document.querySelectorAll('.delete-admin');
 const editIcon = document.querySelectorAll('.edit-icon');
+const addCategory = document.querySelector('.add-category-btn')
 
 //add event listeners
 addItem.addEventListener('click', ()=>{
@@ -143,3 +144,22 @@ editIcon.forEach((edit)=>{
   })
 })
 
+
+//Add category
+addCategory.addEventListener('click', (e)=>{
+    e.preventDefault();
+    //Display modal
+    let overlayEffect = document.querySelector('.overlay');
+    overlayEffect.style.display = 'block';
+
+    let modal = document.querySelector('.add-category-modal');
+    modal.style.display = 'block';
+
+    //Close Modal
+       let closeEditModal = document.querySelector('.close-category'); 
+       closeEditModal.addEventListener('click', ()=>{
+         overlayEffect.style.display = 'none';
+         modal.style.display = 'none';
+       });
+   
+})
