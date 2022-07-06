@@ -2,9 +2,45 @@
 const addItem = document.querySelector('.admin-add-pic');
 const deleteItem = document.querySelectorAll('.delete-admin');
 const editIcon = document.querySelectorAll('.edit-icon');
-const addCategory = document.querySelector('.add-category-btn')
+const addCategory = document.querySelector('.add-category-btn');
+const addStatus = document.querySelector('.add-status-btn');
+const sellItem = document.querySelector('.add-hover');
+const deleteIwantToSell = document.querySelector('.delete-hover');
+
 
 //add event listeners
+sellItem.addEventListener('click', ()=>{
+    let sellModal = document.querySelector('.want-to-sell-admin');
+    let overlay = document.querySelector('.overlay');
+    overlay.style.display = 'block'
+    sellModal.style.display = 'block'
+
+    let closeModal = document.querySelector('.sell-item-class');
+    closeModal.addEventListener('click', ()=>{
+        let sellModal = document.querySelector('.want-to-sell-admin');
+        let overlay = document.querySelector('.overlay');
+
+        overlay.style.display = 'none'
+        sellModal.style.display = 'none'
+    })
+})
+
+deleteIwantToSell.addEventListener('click', ()=>{
+    let deleteModal = document.querySelector('.i-want-to-sell-delete');
+    let overlay = document.querySelector('.overlay');
+
+    overlay.style.display = 'block'
+    deleteModal.style.display = 'block'
+
+    let closeModal = document.querySelector('.i-want-to-delete');
+    closeModal.addEventListener('click', ()=>{
+        overlay.style.display = 'none'
+        deleteModal.style.display = 'none'
+    })
+})
+
+
+
 addItem.addEventListener('click', ()=>{
       let addItemModal = document.querySelector('.admin-add-item');
       let overlayEffect = document.querySelector('.overlay');
@@ -145,6 +181,24 @@ editIcon.forEach((edit)=>{
 })
 
 
+addStatus.addEventListener('click', (e)=>{
+    e.preventDefault();
+    //Display modal
+    let overlayEffect = document.querySelector('.overlay');
+    overlayEffect.style.display = 'block';
+
+    let mdl = document.querySelector('.add-status-modal');
+    mdl.style.display = 'block';
+
+        //Close Modal
+        let closeEditModal = document.querySelector('.close-status'); 
+        closeEditModal.addEventListener('click', ()=>{
+          overlayEffect.style.display = 'none';
+          mdl.style.display = 'none';
+        });
+   
+})
+
 //Add category
 addCategory.addEventListener('click', (e)=>{
     e.preventDefault();
@@ -162,4 +216,33 @@ addCategory.addEventListener('click', (e)=>{
          modal.style.display = 'none';
        });
    
+})
+
+
+const editHover = document.querySelector('.edit-hover');
+const addHover  = document.querySelector('.add-hover');
+const deleteHover  = document.querySelector('.delete-hover');
+
+editHover.addEventListener('mouseover', ()=>{
+    editHover.src = 'img/edit-clicked.svg'
+})
+
+editHover.addEventListener('mouseout', ()=>{
+    editHover.src = 'img/admin-edit-marketplace.svg'
+})
+
+addHover.addEventListener('mouseover', ()=>{
+    addHover.src = 'img/add-clicked.svg'
+})
+
+addHover.addEventListener('mouseout', ()=>{
+    addHover.src = 'img/admin-add-market.svg'
+})
+
+deleteHover.addEventListener('mouseover', ()=>{
+    deleteHover.src = 'img/H.svg';
+})
+
+deleteHover.addEventListener('mouseout', ()=>{
+    deleteHover.src = 'img/D.svg';
 })

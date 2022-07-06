@@ -732,6 +732,41 @@ header{
   margin-top: -6px;
 }
 
+/*Notifications classes starts*/
+.added-successfully{
+  display: none;
+  position: absolute;
+  padding: 22px;
+  text-align: center;
+  background-color: rgba(139, 197, 62, 0.7);
+  top: 100px;
+  right: 115px;
+  color: #fff;
+  border-radius: 6px;
+}
+
+.network-error{
+  display: none;
+  text-align: left;
+  position: absolute;
+  padding: 22px;
+  text-align: center;
+  background-color: #E53802;
+  top: 100px;
+  right: 115px;
+  color: #fff;
+  border-radius: 6px;
+}
+/*Notification classes end*/
+
+.loader{
+  object-fit: cover;
+  width: 126px;
+  height: 35px;
+  margin-top: -8px;
+  display: none;
+}
+
 .warning-button button{
   padding-left: 10px;
   background: #1565C0;
@@ -3589,6 +3624,41 @@ input:checked + .slider:before {
   width: 550px;
 }
 
+.general-ser.stats select{
+  background-color: transparent;
+  border: none;
+  color: rgba(84, 94, 102, 0.5);
+  float: right;
+  outline: none;
+}
+
+.general-information.stats{
+  margin-top: 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 40px;
+}
+
+.general-information.stats div{
+  width: 100%;
+}
+
+.general-information.stats .info-2{
+  background: rgba(251, 251, 251, 1);
+ }
+
+.general-information.stats .info-3{
+ background: rgba(251, 251, 251, 1);
+}
+
+.general-information.stats .info-4{
+  background: rgba(251, 251, 251, 1);
+ }
+
+ .general-information.stats .info-4{
+  background: rgba(251, 251, 251, 1);
+ }
+
 .display-manage{
   display: none;
 }
@@ -3731,7 +3801,6 @@ input:checked + .slider:before {
   background-color: #fff;
   padding-left: 60px;
   padding-right: 60px;
-  padding-top: 20;
   padding-bottom: 20px;
 }
 
@@ -3935,7 +4004,10 @@ input:checked + .slider:before {
    background-color: #fff;
    padding: 20px;
    border-radius: 9px;
-  
+}
+
+.product-table.dash{
+  width: unset;
 }
 
 .admin-outer-container{
@@ -3958,9 +4030,8 @@ input:checked + .slider:before {
 }
 
 .add-category button:hover{
-  background-color: #fff;
-  color: #1f6bad;
-  border: 1px solid #1f6bad;
+  background-color: #1E88E5;
+  border: 1px solid #1E88E5;
   transition: 0.4s all ease-in-out;
 }
 
@@ -4057,6 +4128,10 @@ input:checked + .slider:before {
   z-index: 1000;
   transition: .5s ease;
   background: linear-gradient( rgba(64, 74, 61, 0.73),  rgba(64, 74, 61, 0.73)) ;
+}
+
+.i-want-to-sell{
+
 }
 
 /* Delete Modal starts */
@@ -4253,6 +4328,30 @@ input:checked + .slider:before {
   margin-top: 15px;
   padding-top: 10px ;
   padding-bottom: 10px ;
+  padding-left: 40px;
+  padding-right: 40px;
+  background: #1565C0;
+  cursor: pointer;
+  color: #fff;
+  border: 1px solid #1565C0;
+  border-radius: 6px;
+}
+
+.add-item-submit.admin-dash-submit:hover{
+  background-color: #1565C0;
+  color: #fff;
+  border: 1px solid #1565C0;
+  transition: all 0.4s ease-in-out;
+}
+
+.add-item-submit.admin-dash-submit{
+  background-color: #1565C0;
+  height: 40px;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.add-item-submit.add-item-submit.admin-dash-submit span{
   padding-left: 40px;
   padding-right: 40px;
   background: #1565C0;
@@ -4521,9 +4620,23 @@ input:checked + .slider:before {
 }
 
 .dashboard-container.admin-setting{
-  height: 120vh;
+  height: 155vh;
   padding-left: 62px;
   padding-top: 10px;
+}
+
+.farm-activities-setting{
+  margin-top: 60px;
+  background: #FBFBFB;
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.farm-activities-setting h3{
+  color: #545E66;
 }
 
 .dashboard-container h1{
@@ -4769,20 +4882,26 @@ input:checked + .slider:before {
   margin-bottom: 20px;
 }
 
-.farmer-section .i-want-to-sell{
+.i-want-to-sell{
+  margin-top: 10px;
+  cursor: pointer;
   display:flex;
   background: #ffffff;
   padding: 15px;
   box-shadow: 5px 5px 10px 3px rgb(0 0 0 / 25%);
     border-radius: 10.173px;
-  width: 270px;
+  width: 250px;
   justify-content: space-between;
   align-items: center;
 }
 
-.farmer-section .i-want-to-sell p{
+.i-want-to-sell:hover{
+  background: #F4F4F4;
+}
+
+.i-want-to-sell p{
   color: #666666;
-  margin-left: -50px;
+  margin-left: -20px;
 }
 
 .add-product-modal{
@@ -5030,6 +5149,12 @@ input:checked + .slider:before {
 .investment-returns .active-projects p{
   padding: 10px;
   font-size: 20px;
+}
+
+.scroll-table-prdct-table{
+  margin-top: 20px;
+  height: 475px;
+  overflow-y: scroll;
 }
 
 .scroll-table{
