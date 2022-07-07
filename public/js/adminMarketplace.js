@@ -6,6 +6,8 @@ const addCategory = document.querySelector('.add-category-btn');
 const addStatus = document.querySelector('.add-status-btn');
 const sellItem = document.querySelector('.add-hover');
 const deleteIwantToSell = document.querySelector('.delete-hover');
+const editModal = document.querySelector('.edit-hover');
+let submitButton = document.querySelector('.span-class');
 
 
 //add event listeners
@@ -218,6 +220,19 @@ addCategory.addEventListener('click', (e)=>{
    
 })
 
+editModal.addEventListener('click', ()=>{
+    let editModalMenu = document.querySelector('.edit-item-i-want-to-sell');
+    let overlay = document.querySelector('.overlay');
+    
+    overlay.style.display = 'block';
+    editModalMenu.style.display = 'block';
+
+    let closeModal = document.querySelector('.close-edit-want-to-sell');
+    closeModal.addEventListener('click', ()=>{
+        overlay.style.display = 'none';
+        editModalMenu.style.display = 'none';
+    })
+})
 
 const editHover = document.querySelector('.edit-hover');
 const addHover  = document.querySelector('.add-hover');
@@ -246,3 +261,37 @@ deleteHover.addEventListener('mouseover', ()=>{
 deleteHover.addEventListener('mouseout', ()=>{
     deleteHover.src = 'img/D.svg';
 })
+
+const addLoader = ()=>{
+    let submitButton = document.querySelector('.span-class');
+    let loader = document.querySelector('.loader');
+ 
+    submitButton.style.display = 'none'
+    loader.style.display = 'block';
+    
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+ 
+    setTimeout(()=>{
+       let addItemModal = document.querySelector('.add-status-modal');
+       let overlayEffect = document.querySelector('.overlay');
+       let addedClass = document.querySelector('.added-successfully');
+       let submitButton = document.querySelector('.span-class');
+       let loader = document.querySelector('.loader');
+    
+       submitButton.style.display = 'block'
+       loader.style.display = 'none';
+       overlayEffect.style.display = 'none';
+       addItemModal.style.display = 'none';
+       addedClass.style.display = 'block';
+ 
+       setTimeout(()=>{
+          let addedClass = document.querySelector('.added-successfully');
+          addedClass.style.display = 'none'
+       }, 2500)
+       
+    }, 1500)
+ 
+ }
+
+ submitButton.addEventListener('click', addLoader)

@@ -8,6 +8,13 @@
     <title> Admin Marketplace</title>
 </head>
 <body>
+    <div class="added-successfully">
+        Added Successfully!!!
+    </div>
+    <div class="network-error">
+        Error!! 
+        <br> Something went wrong.
+    </div>
     <header>
         <div class="dashboard-header">
             <div class="header-img">
@@ -325,6 +332,57 @@
 
     <div class="edit-add-item"></div>
 
+    <!---Edit item modal for i want to sell starts-->
+     <div class="edit-add-item edit-item-i-want-to-sell">
+        <div class="admin-add-item-container">
+            <div class="close-edit-item close-edit-want-to-sell">x</div>
+            <h1>Edit Item</h1>
+            <label class="class-name">Name</label> <br>
+            <input type="text"placeholder="Enter item name" class="name">
+           <div class="category-percentage-flex">
+                        <div class="category" style="width:55%; margin-right: 20px;">
+                            <label>Category</label> <br> 
+                            <select class="category-select add-item">
+                                <option>Fish Farming</option>
+                                <option>Livestock</option>
+                                <option>Meat Breeding</option>
+                                <option>Cattle Farming</option>
+                            </select>
+                        </div>
+                        <div class="percentage">
+                            <label>Percentage Sold(%)</label>  <br>
+                            <select>
+                                <option>10%</option>
+                                <option>40%</option>
+                                <option>60%</option>
+                                <option>80%</option>
+                                <option>100%</option>
+                            </select>
+                        </div>
+                    </div>
+            <div class="price-image-flex">
+                <div class="price">
+                    <label>Item Price(₦)</label> <br>
+                     <input type="text" placeholder="Enter Price...">
+                </div>
+                <div class="image">
+                    <label style="margin-left: 20px;">Image</label> <br>
+                    <input type="file" class="category-select">
+                </div>
+            </div>
+            <label class="admin-location">Location</label> <br>
+            <select class="admin-location-input">
+                <option>Sokoto</option>
+                <option>Kebbi</option>
+                <option>Zamfara</option>
+            </select> <br>
+            <div class="button-admin-container">
+                <button class="add-item-submit">Update</button>
+            </div>
+        </div>
+     </div>
+     <!---Edit item modal for i wanr to sell ends-->
+
     <!--Delete Item starts-->
        <div class="delete-modal">
            <div class="delete-modal-container">
@@ -478,8 +536,9 @@
                 <h1 style="padding: 5px;font-size: 23px;text-align: center;margin-bottom:10px;margin-top: 25px;">ADD STATUS</h1>
                  <label style="color:#cccccc;font-size: 20px;">Name:</label> <br>
                 <input type="text" placeholder="Enter here..." class="category-value" style="border: 1px solid #cccccc;margin-top: 10px;padding: 15px;width: 100%;">
-                <div class="button-admin-container" style="margin-top: 30px;">
-                    <button class="add-item-submit">Add</button>
+              
+                <div class="button-admin-container"  style="margin-top: 30px;">
+                    <button class="add-item-submit admin-dash-submit"><span class="span-class">Add</span>  <img class="loader" src="img/loader-hifarm.gif" alt="#"> </button>
                 </div>
             </div>
             </div>

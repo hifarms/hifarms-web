@@ -71,5 +71,5 @@ const addLoader = ()=>{
 
 }
 
-submitButton.addEventListener('click', addLoader)
-addNewProduct.addEventListener('click', openModal)
+submitButton.addEventListener('click', addLoader);
+addNewProduct.addEventListener('click', openModal);
