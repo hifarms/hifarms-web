@@ -7,8 +7,13 @@ const addStatus = document.querySelector('.add-status-btn');
 const sellItem = document.querySelector('.add-hover');
 const deleteIwantToSell = document.querySelector('.delete-hover');
 const editModal = document.querySelector('.edit-hover');
-let submitButton = document.querySelector('.span-class');
-
+const submitButton = document.querySelector('.span-class');
+const submitButtonCategory = document.querySelector('.category-span');
+const editLoader = document.querySelector('.edit-want-to-sell-span');
+const addLoaderBtn = document.querySelector('.add-admin-dash');
+const deleteToSell =  document.querySelector('.delete-t-sell');
+const editLoaderMain = document.querySelector('.edit-main-dash');
+const addLoaderMain = document.querySelector('.admin-main-submit')
 
 //add event listeners
 sellItem.addEventListener('click', ()=>{
@@ -68,6 +73,28 @@ deleteItem.forEach((item)=>{
     item.addEventListener('click', (e)=>{
         let deleteModal = document.querySelector('.delete-modal');
         let overlayEffect = document.querySelector('.overlay');
+
+        let mainDelete = document.querySelector('.main-delete');
+
+        mainDelete.addEventListener('click', (e)=>{
+            e.preventDefault();
+
+            let deleteModal = document.querySelector('.i-want-to-sell-delete');
+            let overlay = document.querySelector('.overlay');
+       
+            deleteModal.style.display = 'none';
+            overlay.style.display = 'none';
+       
+           document.body.scrollTop = 0;
+           document.documentElement.scrollTop = 0;
+       
+           let addedClass = document.querySelector('.deleted-successfully');
+           addedClass.style.display = 'block'
+           
+           setTimeout(()=>{
+               addedClass.style.display = 'none'
+            }, 2500)
+        })
        
         overlayEffect.style.display = 'block';
         deleteModal.style.display = 'block';
@@ -161,11 +188,49 @@ editIcon.forEach((edit)=>{
         <option>Kebbi</option>
         <option>Zamfara</option>
     </select> <br>
-    <div class="button-admin-container">
-        <button class="add-item-submit">Update</button>
+    <div class="button-admin-container"  style="margin-top: 30px;">
+    <button class="add-item-submit admin-dash-submit"><span style="padding-left:38px ;padding-right: 39px;" class="edit-want-to-sell-span">Update</span>  <img class="loader loader-main-edit" src="img/loader-hifarm.gif" alt="#"> </button>
     </div>
 </div>
     `;
+
+    let editMain = document.querySelector('.admin-dash-submit');
+
+
+    editMain.addEventListener('click', (e)=>{
+
+        e.preventDefault();
+
+    let submitButton = document.querySelector('.edit-want-to-sell-span');
+    let loader = document.querySelector('.loader-main-edit');
+ 
+    submitButton.style.display = 'none'
+    loader.style.display = 'block';
+    
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+ 
+    setTimeout(()=>{
+       let addItemModal = document.querySelector('.edit-add-item');
+       let overlayEffect = document.querySelector('.overlay');
+       let addedClass = document.querySelector('.edited-successfully');
+       let submitButton = document.querySelector('.edit-want-to-sell-span');
+       let loader = document.querySelector('.loader-main-edit');
+    
+       submitButton.style.display = 'block'
+       loader.style.display = 'none';
+       overlayEffect.style.display = 'none';
+       addItemModal.style.display = 'none';
+       addedClass.style.display = 'block';
+ 
+       setTimeout(()=>{
+          let addedClass = document.querySelector('.edited-successfully');
+          addedClass.style.display = 'none'
+       }, 2500)
+       
+    }, 1500)
+        
+    })
     let overlayEffect = document.querySelector('.overlay');
        
     overlayEffect.style.display = 'block';
@@ -262,9 +327,11 @@ deleteHover.addEventListener('mouseout', ()=>{
     deleteHover.src = 'img/D.svg';
 })
 
-const addLoader = ()=>{
+const addLoader = (e)=>{
+    e.preventDefault();
+
     let submitButton = document.querySelector('.span-class');
-    let loader = document.querySelector('.loader');
+    let loader = document.querySelector('.loader-span');
  
     submitButton.style.display = 'none'
     loader.style.display = 'block';
@@ -277,7 +344,7 @@ const addLoader = ()=>{
        let overlayEffect = document.querySelector('.overlay');
        let addedClass = document.querySelector('.added-successfully');
        let submitButton = document.querySelector('.span-class');
-       let loader = document.querySelector('.loader');
+       let loader = document.querySelector('.loader-span');
     
        submitButton.style.display = 'block'
        loader.style.display = 'none';
@@ -294,4 +361,163 @@ const addLoader = ()=>{
  
  }
 
- submitButton.addEventListener('click', addLoader)
+ const addLoaderCategory = (e)=>{
+    e.preventDefault()
+    let submitButton = document.querySelector('.category-span');
+    let loader = document.querySelector('.loader-category');
+ 
+    submitButton.style.display = 'none'
+    loader.style.display = 'block';
+    
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+ 
+    setTimeout(()=>{
+       let addItemModal = document.querySelector('.add-category-modal');
+       let overlayEffect = document.querySelector('.overlay');
+       let addedClass = document.querySelector('.category-added');
+       let submitButton = document.querySelector('.category-span');
+       let loader = document.querySelector('.loader-category');
+       console.log(addItemModal);
+    
+       submitButton.style.display = 'block'
+       loader.style.display = 'none';
+       overlayEffect.style.display = 'none';
+       addItemModal.style.display = 'none';
+       addedClass.style.display = 'block';
+ 
+       setTimeout(()=>{
+          let addedClass = document.querySelector('.category-added');
+          addedClass.style.display = 'none'
+       }, 2500)
+       
+    }, 1500)
+ 
+ }
+
+ const addEditLoader = (e)=>{
+    e.preventDefault();
+
+    let submitButton = document.querySelector('.edit-want-to-sell-span');
+    let loader = document.querySelector('.loader-edit');
+ 
+    submitButton.style.display = 'none'
+    loader.style.display = 'block';
+    
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+ 
+    setTimeout(()=>{
+       let addItemModal = document.querySelector('.edit-item-i-want-to-sell');
+       let overlayEffect = document.querySelector('.overlay');
+       let addedClass = document.querySelector('.edited-successfully');
+       let submitButton = document.querySelector('.edit-want-to-sell-span');
+       let loader = document.querySelector('.loader-edit');
+    
+       submitButton.style.display = 'block'
+       loader.style.display = 'none';
+       overlayEffect.style.display = 'none';
+       addItemModal.style.display = 'none';
+       addedClass.style.display = 'block';
+ 
+       setTimeout(()=>{
+          let addedClass = document.querySelector('.edited-successfully');
+          addedClass.style.display = 'none'
+       }, 2500)
+       
+    }, 1500)
+ }
+
+ 
+ const addLoaderHover = (e)=>{
+    e.preventDefault();
+
+    let submitButton = document.querySelector('.add-admin-dash');
+    let loader = document.querySelector('.loader-add');
+ 
+    submitButton.style.display = 'none'
+    loader.style.display = 'block';
+    
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+ 
+    setTimeout(()=>{
+       let addItemModal = document.querySelector('.want-to-sell-admin');
+       let overlayEffect = document.querySelector('.overlay');
+       let addedClass = document.querySelector('.added-successfully');
+       let submitButton = document.querySelector('.add-admin-dash');
+       let loader = document.querySelector('.loader-add');
+    
+       submitButton.style.display = 'block'
+       loader.style.display = 'none';
+       overlayEffect.style.display = 'none';
+       addItemModal.style.display = 'none';
+       addedClass.style.display = 'block';
+ 
+       setTimeout(()=>{
+          let addedClass = document.querySelector('.added-successfully');
+          addedClass.style.display = 'none'
+       }, 2500)
+       
+    }, 1500)
+ 
+ }
+
+ deleteToSell.addEventListener('click', (e)=>{
+     e.preventDefault();
+
+     let deleteModal = document.querySelector('.i-want-to-sell-delete');
+     let overlay = document.querySelector('.overlay');
+
+     deleteModal.style.display = 'none';
+     overlay.style.display = 'none';
+
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+
+    let addedClass = document.querySelector('.deleted-successfully');
+    addedClass.style.display = 'block'
+    
+    setTimeout(()=>{
+        addedClass.style.display = 'none'
+     }, 2500)
+ })
+
+ addLoaderMain.addEventListener('click', (e)=>{
+    e.preventDefault();
+
+    let submitButton = document.querySelector('.add-main-dash');
+    let loader = document.querySelector('.loader-add-main');
+ 
+    submitButton.style.display = 'none'
+    loader.style.display = 'block';
+    
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+ 
+    setTimeout(()=>{
+       let addItemModal = document.querySelector('.admin-add-item');
+       let overlayEffect = document.querySelector('.overlay');
+       let addedClass = document.querySelector('.added-successfully');
+       let submitButton = document.querySelector('.add-main-dash');
+       let loader = document.querySelector('.loader-add-main');
+    
+       submitButton.style.display = 'block'
+       loader.style.display = 'none';
+       overlayEffect.style.display = 'none';
+       addItemModal.style.display = 'none';
+       addedClass.style.display = 'block';
+ 
+       setTimeout(()=>{
+          let addedClass = document.querySelector('.added-successfully');
+          addedClass.style.display = 'none'
+       }, 2500)
+       
+    }, 1500)
+ 
+ })
+
+ submitButton.addEventListener('click', addLoader);
+ submitButtonCategory.addEventListener('click', addLoaderCategory);
+ editLoader.addEventListener('click', addEditLoader);
+addLoaderBtn.addEventListener('click', addLoaderHover)

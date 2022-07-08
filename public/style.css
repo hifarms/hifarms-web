@@ -660,6 +660,10 @@ header{
   margin-top: 25px;
 }
 
+.warning-button .admin-dash-submit{
+  width: unset;
+}
+
 .warning-button .warning{
   display: flex;
   justify-content: center;
@@ -734,6 +738,31 @@ header{
 
 /*Notifications classes starts*/
 .added-successfully{
+  display: none;
+  position: absolute;
+  padding: 22px;
+  text-align: center;
+  background-color: rgba(139, 197, 62, 0.7);
+  top: 100px;
+  right: 115px;
+  color: #fff;
+  border-radius: 6px;
+}
+
+.deleted-successfully{
+  display: none;
+  text-align: left;
+  position: absolute;
+  padding: 22px;
+  text-align: center;
+  background-color: #E53802;
+  top: 100px;
+  right: 115px;
+  color: #fff;
+  border-radius: 6px;
+}
+
+.edited-successfully{
   display: none;
   position: absolute;
   padding: 22px;
@@ -4351,6 +4380,13 @@ input:checked + .slider:before {
   transition: all 0.4s ease-in-out;
 }
 
+.add-item-submit.adminfu{
+  background-color: #1565C0;
+  height: 40px;
+  padding: 10px;
+  border-radius: 6px;
+}
+
 .add-item-submit.admin-dash-submit{
   background-color: #1565C0;
   height: 40px;
@@ -4369,8 +4405,8 @@ input:checked + .slider:before {
 }
 
 .add-item-submit:hover{
-  background-color: #fff;
-  color: #1565C0;
+  background-color: #1565C0;
+  color: #FFF;
   border: 1px solid #1565C0;
   transition: all 0.4s ease-in-out;
 }
@@ -4852,7 +4888,7 @@ input:checked + .slider:before {
 .purchase-div.dashboard button{
   padding: 9px;
   margin-top: 15px;
-  width: 90px;
+  
   color: #879EAF;
   border-radius: 7px;
   font-weight: bold;
