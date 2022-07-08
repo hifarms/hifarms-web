@@ -4283,6 +4283,10 @@ input:checked + .slider:before {
   display: none;
 }
 
+.edit-add-item.invest{
+  top: 50%;
+}
+
 .admin-add-item{
   position: fixed;
   top: 50%;

@@ -13,9 +13,28 @@ const editLoader = document.querySelector('.edit-want-to-sell-span');
 const addLoaderBtn = document.querySelector('.add-admin-dash');
 const deleteToSell =  document.querySelector('.delete-t-sell');
 const editLoaderMain = document.querySelector('.edit-main-dash');
-const addLoaderMain = document.querySelector('.admin-main-submit')
+const addLoaderMain = document.querySelector('.admin-main-submit');
+const addedCart = document.querySelectorAll('.added-cart');
 
 //add event listeners
+addedCart.forEach((cart)=>{
+    cart.addEventListener('click', (e)=>{
+        e.preventDefault();
+    
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        
+        let addToCart = document.querySelector('.added-to-cart');
+        addToCart.style.display='block';
+
+        setTimeout(()=>{
+            //let addedClass = document.querySelector('.added-successfully');
+            addToCart.style.display = 'none'
+         }, 2500)
+         
+    })
+})
+
 sellItem.addEventListener('click', ()=>{
     let sellModal = document.querySelector('.want-to-sell-admin');
     let overlay = document.querySelector('.overlay');
@@ -153,10 +172,9 @@ editIcon.forEach((edit)=>{
                 <div class="category" style="width:55%; margin-right: 20px;">
                     <label>Category</label> <br> 
                     <select class="category-select add-item">
-                        <option>${itemName.innerHTML}</option>
-                        <option>Livestock</option>
-                        <option>Meat Breeding</option>
-                        <option>Cattle Farming</option>
+                        <option>Out of Stock</option>
+                        <option>New</option>
+                        <option>Sold Out</option>
                     </select>
                 </div>
                 <div class="percentage">

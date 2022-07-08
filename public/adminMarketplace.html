@@ -14,6 +14,9 @@
     <div class="added-successfully purcahsed-successful">
         Purchase Processed!!!
     </div>
+    <div class="added-successfully added-to-cart">
+        Added to Cart
+    </div>
     <div class="network-error category-error">
         Error!! 
         <br> Something went wrong.
@@ -185,7 +188,7 @@
                         <h3 class="h3-dashboard">₦ 10,000</h3>
                         <div class="purchase-div dashboard">
                             <img src="img/delete-edit.png" class="delete-admin" alt="delete" width="20" style="cursor: pointer;">
-                            <button>Add to Cart</button>
+                            <button class="added-cart">Add to Cart</button>
                         </div>
                     </div>
             
@@ -208,7 +211,7 @@
                         <h3 class="h3-dashboard">₦ 10,000</h3>
                         <div class="purchase-div dashboard">
                             <img src="img/delete-edit.png"  class="delete-admin" alt="delete" width="20" style="cursor: pointer;">
-                            <button>Add to Cart</button>
+                            <button class="added-cart">Add to Cart</button>
                         </div>
                     </div>
             
@@ -230,7 +233,7 @@
                         <h3 class="h3-dashboard">₦ 10,000</h3>
                         <div class="purchase-div dashboard">
                             <img src="img/delete-edit.png"  class="delete-admin" alt="delete" width="20" style="cursor: pointer;">
-                           <button>Add to Cart</button>
+                           <button class="added-cart">Add to Cart</button>
                         </div>
                     </div>
                     <div class="grid dashboard">
@@ -251,7 +254,7 @@
                         <h3 class="h3-dashboard">₦ 10,000</h3>
                         <div class="purchase-div dashboard">
                             <img src="img/delete-edit.png"  class="delete-admin" alt="delete" width="20" style="cursor: pointer;">
-                            <button>Add to Cart</button>
+                            <button class="added-cart">Add to Cart</button>
                         </div>
                     </div>
             
@@ -274,7 +277,7 @@
                         <h3 class="h3-dashboard">₦ 10,000</h3>
                         <div class="purchase-div dashboard">
                             <img src="img/delete-edit.png" class="delete-admin" alt="delete" width="20" style="cursor: pointer;">
-                            <button>Add to Cart</button>
+                            <button class="added-cart">Add to Cart</button>
                         </div>
                     </div>
                     <div class="grid dashboard add-new-product" style="height:575px">
@@ -297,10 +300,9 @@
                 <div class="category" style="width:55%; margin-right: 20px;">
                     <label>Category</label> <br> 
                     <select class="category-select add-item">
-                        <option>Select Category</option>
-                        <option>Livestock</option>
-                        <option>Meat Breeding</option>
-                        <option>Cattle Farming</option>
+                        <option>Out of Stock</option>
+                        <option>Sold Out</option>
+                        <option>New</option>
                     </select>
                 </div>
                 <div class="percentage">
@@ -349,12 +351,11 @@
             <input type="text"placeholder="Enter item name" class="name">
            <div class="category-percentage-flex">
                         <div class="category" style="width:55%; margin-right: 20px;">
-                            <label>Category</label> <br> 
+                            <label>Status</label> <br> 
                             <select class="category-select add-item">
-                                <option>Fish Farming</option>
-                                <option>Livestock</option>
-                                <option>Meat Breeding</option>
-                                <option>Cattle Farming</option>
+                                <option>Out of Stock</option>
+                                <option>Sold Out</option>
+                                <option>New</option>
                             </select>
                         </div>
                         <div class="percentage">
@@ -389,7 +390,7 @@
             </div>
         </div>
      </div>
-     <!---Edit item modal for i wanr to sell ends-->
+     <!---Edit item modal for i want to sell ends-->
 
     <!--Delete Item starts-->
        <div class="delete-modal">
