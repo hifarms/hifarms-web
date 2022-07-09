@@ -1,0 +1,19 @@
+.prev, .next{
+    display: none;
+}
+
+.dt-buttons{
+    display: none;
+}
+
+#datatables_paginate{
+    display: none;
+}
+
+#datatables_info{
+    display: none;
+}
+
+.form-control.input-sm{
+    display: none;
+}
