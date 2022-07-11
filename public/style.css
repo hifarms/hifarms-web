@@ -796,6 +796,18 @@ header{
   display: none;
 }
 
+.loader.admin{
+  display: none;
+  margin-left: auto;
+  height: 30px;
+  margin-right: auto;
+  width: 40%;
+}
+
+.loader.admin.loader-pdf{
+  height: 27px;
+}
+
 .warning-button button{
   padding-left: 10px;
   background: #1565C0;

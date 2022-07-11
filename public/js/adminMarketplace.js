@@ -443,7 +443,7 @@ const addLoader = (e)=>{
           addedClass.style.display = 'none'
        }, 2500)
        
-    }, 1500)
+    }, 500)
  }
 
  

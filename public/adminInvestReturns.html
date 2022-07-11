@@ -9,6 +9,13 @@
     <title>Admin Investment</title>
 </head>
 <body>
+    <div class="added-successfully">
+        Exported!!
+    </div>
+    <div class="network-error">
+        Error!! 
+        <br> Something went wrong.
+    </div>
     <header>
         <div class="dashboard-header">
             <div class="header-img">
@@ -172,8 +179,8 @@
        </table>
 </div> 
      <div class="buttons">
-                <button class="btn-csv" id="csv"><img src="img/csv.svg" width="120"></button>
-                <button class="btn-pdf" id="pdf"><img src="img/pdf.svg" width="120"></button>
+                <button class="btn-csv span-class-csv" id="csv"> <img src="img/csv.svg" style="width: 120px;" class="span-1"> <img src="img/AdminSpinner.gif"class="loader admin loader-csv" alt="#"> </button>
+                <button class="btn-pdf span-class-pdf" id="pdf"> <img src="img/pdf.svg"  style="width: 120px;" class="span-2">   <img src="img/AdminSpinner.gif" class="loader admin loader-pdf" alt="#">  </button>
             </div>
      </div>
     </div>
@@ -189,5 +196,6 @@
     <script src="http://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"></script>
     <script src="http://cdn.datatables.net/buttons/1.3.1/js/buttons.print.min.js"></script>
     <script src="js/table.js"></script>
+    <script src="js/adminInvestReturns.js"></script>
     </body>
 </html>
