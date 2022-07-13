@@ -3886,6 +3886,12 @@ input:checked + .slider:before {
   transition: all 0.2s ease-in-out;  
 }
 
+.currently{
+  color: #8bc53e;
+  border-bottom: 2px solid #8bc53e;
+  transition: all 0.2s ease-in-out; 
+}
+
 .setting-options .current-stats{
   color: #8bc53e;
   border-bottom: 2px solid #8bc53e;

@@ -1,9 +1,46 @@
+//Declaring Variables
 const submitButton = document.querySelector(".span-class");
 const editButton = document.querySelector('.edit-want-to-sell-span')
 const addNewBlog = document.querySelector('.add-new-blog');
 const allBlogEdit = document.querySelectorAll('.blog-edit');
 const allBlogdelete = document.querySelectorAll('.blog-delete');
 const allBlogDraft = document.querySelectorAll('.blog-draft');
+const settingsOption = document.querySelectorAll('.settings-heading');
+const publishedBlogs = document.querySelector('.published-blogs');
+const DraftedBlogs  = document.querySelector('.drafted-blogs');
+const TrashedBlogs = document.querySelector('.trashed-blogs');
+let currentClass = document.querySelector('.currently');
+ 
+
+//Functions
+settingsOption.forEach((setting)=>{
+    setting.addEventListener('click', (e)=>{
+        if(e.target.innerText[0] === 'P'){
+            currentClass.classList.remove('current')
+            e.target.classList.add('current')
+            
+           TrashedBlogs.style.display = 'none';
+           DraftedBlogs.style.display = 'none';
+            publishedBlogs.style.display = 'block';
+        } else if(e.target.innerText[0] === 'D'){
+            currentClass.classList.remove('current')
+            e.target.classList.add('current')
+            
+           TrashedBlogs.style.display = 'none';
+           DraftedBlogs.style.display = 'block';
+            publishedBlogs.style.display = 'none';
+        } else if(e.target.innerText[0] === 'T'){
+            
+        currentClass.classList.remove('current');
+            e.target.classList.add('current');
+ 
+           TrashedBlogs.style.display = 'block';
+           DraftedBlogs.style.display = 'none';
+           publishedBlogs.style.display = 'none';
+        }
+    
+    })
+})
 
 allBlogDraft.forEach((item)=>{
     item.addEventListener('mouseover', ()=>{
