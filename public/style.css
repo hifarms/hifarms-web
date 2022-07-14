@@ -749,6 +749,23 @@ header{
   border-radius: 6px;
 }
 
+.settings.save-successful{
+  display: none;
+  position: absolute;
+  padding: 22px;
+  text-align: center;
+  background-color: rgba(139, 197, 62, 0.7);
+  top: 100px;
+  right: 115px;
+  z-index: 3000; 
+  color: #fff;
+  border-radius: 6px;
+}
+
+.settings.added-successfully{
+  z-index: 3000;
+}
+
 .moved-successfully{
   display: none;
   text-align: left;
