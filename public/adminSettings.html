@@ -8,11 +8,27 @@
     <title>Admin Settings</title>
 </head>
 <body>
+    <div class="mail-sent">
+        <img src="img/mail-sent.png" alt="mail" style="margin-right: 10px;">
+        <div>Mail Sent!!!</div>
+    </div>
+    <div class="priv-added">
+        Set Privileges!
+    </div>
     <div class="settings added-successfully">
         Password Changed!
     </div>
+    <div class="added-successfully-2">
+        Added Successfully!
+    </div>
     <div class="settings save-successful">
         Changes Saved!
+    </div>
+    <div class="deleted-successfully" style="z-index: 3000;">
+        Deleted Successfully!!!
+    </div>
+    <div class="deleted-successfully-2" style="z-index: 3000;">
+        Deleted Successfully!!!
     </div>
     <header>
         <div class="dashboard-header">
@@ -71,7 +87,7 @@
     </header>
     <div class="side-bar">
         <div class="first-side-bar">
-            <img src="img/side-bar.svg" alt="side-bar">
+            <img src="img/side-bar.svg" alt="side-bar" style="margin-bottom: 30px;">
         </div>
         <div class="second-side-bar admin">
             <a href="adminDashboard.html"> <img src="img/Dashboard (1).svg" alt="dashboard"></a>
@@ -82,8 +98,8 @@
             <a href="adminWallet.html"><img src="img/wallet.svg" alt="wallet"></a>
             <a href="adminBlog.html"><img src="img/blog-pin.png" alt="blog-pin> </a>
         </div>
-        <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;margin-bottom: 10px;">
-            <a href="adminSettings.html"><img src="img/settings.png"  style=" border-radius: 50%; margin-bottom: 30px;" alt="settings"></a>
+        <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;margin-bottom: 0px;">
+            <a href="adminSettings.html"><img src="img/settings-clicked.png" class="currensly" alt="settings"></a>
             <img src="img/log out.svg" alt="log-out">
         </div>
     </div>
@@ -96,11 +112,11 @@
                <div class="round-switch-name">
                  <div class="switch-button">
                     <label class="switch">
-                    <input type="checkbox" id="admin-chekbox">
+                    <input type="checkbox" checked id="admin-chekbox">
                     <span class="slider round"></span>
                     </label>
                  </div>
-                 <h2 class="disable">Disabled</h2>
+                 <h2 class="disable" style="color: #8bc53e;">Active</h2>
                </div>
             <div class="reset-admin">
                 <img src="img/admin-reset-off.png" alt="reset" class="reset-img">
@@ -112,7 +128,6 @@
     <div class="setting-options">
         <div class="settings-heading current">General Settings</div>
         <div class="settings-heading">Manage Users</div>
-        <div class="settings-heading">Accounts</div>
         <div class="settings-heading stars">Statistics</div>
         <div class="settings-heading">Inbox</div>
     </div>
@@ -168,21 +183,76 @@
                          <p>muhammadsaniharuna44@gmail.com</p>
                      </div>
                      <div class="delete-edit-user">
-                         <img src="img/user-list-edit.png" alt="edit">
-                         <img src="img/user-list-delete.png" alt="delete">
+                         <img src="img/Priviledges.png" class="priv-setting" alt="priviledge">
+                         <img src="img/user-list-edit.png" class="edit-setting" alt="edit">
+                         <img src="img/user-list-delete.png" class="delete-setting" alt="delete">
                      </div>
                  </div>
+                 <div class="user">
+                    <div class="user-part">
+                        <img src="img/user-list-user.png" alt="user-avatar">
+                        <p>muhammadsaniharuna44@gmail.com</p>
+                    </div>
+                    <div class="delete-edit-user">
+                        <img src="img/Priviledges.png" class="priv-setting" alt="priviledge">
+                        <img src="img/user-list-edit.png" class="edit-setting" alt="edit">
+                        <img src="img/user-list-delete.png" class="delete-setting" alt="delete">
+                    </div>
+                </div> <div class="user">
+                    <div class="user-part">
+                        <img src="img/user-list-user.png" alt="user-avatar">
+                        <p>muhammadsaniharuna44@gmail.com</p>
+                    </div>
+                    <div class="delete-edit-user">
+                        <img src="img/Priviledges.png" class="priv-setting" alt="priviledge">
+                        <img src="img/user-list-edit.png" class="edit-setting" alt="edit">
+                        <img src="img/user-list-delete.png" class="delete-setting" alt="delete">
+                    </div>
+                </div>
+               <div class="line-add-user"><span>+</span> <div>Add account</div> </div>
              </div>
 
             <form class="general-settings-form">
                <div class="save-changes">
-                   <button>Delete All</button>
+                   <button class="delete-all">Delete All</button>
                </div>
             </form>
         </div>
      </div>
     </div>
      <!---Manage Users Settings ends-->
+
+         <!--Inbox settings starts-->
+    <div class="display-general inbox">
+        <div class="general-settings generalify">
+            <div class="general-ser inbox">
+            <div class="head">General Messages</div>
+            <div class="all-mark">
+                <div>All</div>
+                <button>Mark all as read</button>
+            </div>
+            <div class="messages-catalog">
+                <div class="message-inner">
+                    <p>New request on products to be sold.</p>
+                    <span>12mins ago</span>
+                </div>
+                <div class="message-inner">
+                    <p>Let’s get started Admin.</p>
+                    <span>3hr ago</span>
+                </div>
+                <div class="message-inner">
+                    <p>Welcome Admin you are now live!</p>
+                    <span>6hr ago</span>
+                </div>
+            </div>
+               <div class="save-changes">
+                   <button class="send-msg">Send a Message</button>
+               </div>
+            </form>
+        </div>
+     </div>
+ </div>
+    <!--Inbox settings ends-->
 
      <!---Statistics settings starts-->
      <div class="display-stats">
@@ -290,7 +360,173 @@
     </div>
       <!--Change Password Modal ends-->
 
+    <!--Priviledges modal-->
+              <!--Edit User to manage platform starts-->
+              <div class="admin-add-item change-password admin-edit-priv priv">
+                <div class="admin-add-item-container">
+                    <div class="close-add-item priv-close" style="padding-top: unset;">x</div>
+                    <h1 style="font-size:20px;margin-top:-25px;margin-bottom: 20px;display: flex;justify-content: center;">Accounts & Priviledges</h1>
+                    <div class="first-box">
+                        <input type="checkbox" checked class="toggle-priv"> <div>All Priviledges</div>
+                    </div>
+                    <div class="second-box">
+                        <div class="third-box">
+                            <div class="first-box this">
+                                <input type="checkbox" checked class="all"> <div>General Settings</div>
+                            </div>
+                            <div class="first-box this">
+                                <input type="checkbox" checked class="all"> <div>Blog Post</div>
+                            </div>
+                            <div class="first-box this">
+                                <input type="checkbox" checked class="all"> <div>Manage Users</div>
+                            </div>
+                            <div class="first-box this">
+                                <input type="checkbox" checked class="all"> <div>Message Replies</div>
+                            </div>
+                            <div class="first-box this">
+                                <input type="checkbox" checked class="all"> <div>Security Settings</div>
+                            </div>
+                        </div>
+                        <div class="fourth-box">
+                            <div class="first-box this">
+                            <input type="checkbox" checked class="all"> <div>Add/Edit Products</div>
+                        </div>
+                        <div class="first-box this">
+                            <input type="checkbox" checked class="all"> <div>Add/Edit Projects</div>
+                        </div>
+                        <div class="first-box this">
+                            <input type="checkbox" checked class="all"> <div>Account Settings</div>
+                        </div>
+                        <div class="first-box this">
+                            <input type="checkbox" checked class="all"> <div>Manage Farms</div>
+                        </div>
+                        <div class="first-box this">
+                            <input type="checkbox" checked class="all"> <div>Two Fact Auth</div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="save-changes">
+                        <button class="save-priv">Save Changes</button>
+                    </div>
+                </div>
+            </div>
+            <div class="overlay"></div>
+    <!--Priviledges modal ends-->
 
+            <!--Edit User to manage platform starts-->
+            <div class="admin-add-item change-password admin-edit-user">
+                <div class="admin-add-item-container">
+                    <div class="close-add-item edit-user-close" style="padding-top: unset;">x</div>
+                    <h1 style="font-size:25px;margin-bottom: 20px;display: flex;justify-content: left;margin-top: 15px;">Edit User</h1>
+                    <div class="old-password-flex user">
+                        <label>Email:</label>
+                        <div class="password-visible user val">
+                           <input type="email" class="pass-val user">
+                        </div>
+                    </div> <br>
+                    <div class="old-password-flex user">
+                        <label>Password:</label>
+                        <div class="password-visible user">
+                           <input type="password" class="pass-val">
+                           <img src="img/invisible.png" alt="" class="toggle-password">
+                        </div>
+                    </div> <br>
+                    <div class="button-admin-container">
+                        <button class="add-item-submit admin-dash-submit"><span style="padding-left:47px ;padding-right: 46px;" class="edit-want-to-edit-span">Save</span>  <img class="loader loader-user-edit" src="img/loader-hifarm.gif" alt="#"> </button>
+                    </div>
+                </div>
+            </div>
+            <div class="overlay"></div>
+              <!--Edit User to manage platform ends-->
+        
+
+      <!--Add User to manage platform starts-->
+      <div class="admin-add-item change-password admin-add-user">
+        <div class="admin-add-item-container">
+            <div class="close-add-item add-user-close" style="padding-top: unset;">x</div>
+            <h1 style="font-size:25px;margin-bottom: 20px;display: flex;justify-content: left;margin-top: 15px;">Add User</h1>
+            <div class="old-password-flex user">
+                <label>Email:</label>
+                <div class="password-visible user val">
+                   <input type="email" class="pass-val user">
+                </div>
+            </div> <br>
+            <div class="old-password-flex user">
+                <label>Password:</label>
+                <div class="password-visible user">
+                   <input type="password" class="pass-val">
+                   <img src="img/invisible.png" alt="" class="toggle-password">
+                </div>
+            </div> <br>
+            <div class="button-admin-container">
+                <button class="add-item-submit admin-dash-submit"><span style="padding-left:47px ;padding-right: 46px;" class="edit-want-to-add-span">Save</span>  <img class="loader loader-add" src="img/loader-hifarm.gif" alt="#"> </button>
+            </div>
+        </div>
+    </div>
+    <div class="overlay"></div>
+      <!--Add User to manage platform ends-->
+
+      <!--Delete all manage users list starts-->
+      <div class="delete-modal invest">
+        <div class="delete-modal-container">
+            <div class="close-delete-modal">x</div>
+            <h1 style="margin-bottom: 50px;margin-top: 60px;text-align: center;">Are you sure?🙁</h1>
+            <div class="yes-no-delete-modal">
+                <button class="yes-delete-modal main-delete yes-delete">Yes</button>
+                <button class="no no-delete-modal">No</button>
+            </div>
+        </div>
+    </div>
+    <div class="overlay"></div>
+      <!--Delete all manage users list ends-->
+
+       <!--Delete Item starts-->
+       <div class="delete-modal invest btn-delete">
+        <div class="delete-modal-container">
+            <div class="close-delete-modal btn-delete-modal">x</div>
+            <h1 style="margin-bottom: 50px;margin-top: 60px;text-align: center;">Are you sure?🙁</h1>
+            <div class="yes-no-delete-modal">
+                <button class="yes-delete-modal main-delete approve">Yes</button>
+                <button class="no no-delete-modal-btn">No</button>
+            </div>
+        </div>
+    </div>
+    <div class="overlay"></div>
+ <!--Delete item ends-->
+
+ <!--Add new message post modal starts-->
+ <div class="add-blog-post-modal admin-add-item msg-modal">
+    <div class="blog-post-modal">
+        <div class="head-and-back">
+          <div>New Message</div>
+          <img class="close-modal" style="cursor: pointer;" src="img/back-blog.svg" alt="#">
+        </div>
+        <div class="blog-category">
+            <label>From:</label>
+             <input type="text" value="hafiz@hifarms.ng" disabled style="
+                 padding: 10px;
+                 margin-left: 10px;
+                 width: 200px;
+                 border: 1px solid #ebe8e8;
+                 border-radius: 10px;
+              ">
+        </div>
+        <div class="topic-date">
+            <div class="topic">
+                <label>To:</label>
+                <input type="text" placeholder="Input user mails here...">
+            </div>
+        </div>
+        <div class="text">
+            <textarea name="" id="" cols="30" rows="12"  placeholder="Write message here..."></textarea>
+        </div>
+        <div class="add-pic-submit">
+            <img src="img/Direct.png" class="sent" alt="#" style="cursor: pointer;" width="70">
+        </div>
+    </div>
+</div>
+<div class="overlay"></div>
+<!--Add new message post modal ends-->
 </div>
 <div class="overlay"></div>
 <script src="js/adminSettings.js"></script>

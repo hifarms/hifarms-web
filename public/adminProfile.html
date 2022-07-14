@@ -8,6 +8,9 @@
     <title>Profile</title>
 </head>
 <body>
+    <div class="added-successfully">
+        Profile Updated!!
+    </div>
     <header>
       <div class="dashboard-header">
         <div class="header-img">
@@ -76,8 +79,8 @@
             <a href="adminWallet.html"><img src="img/wallet.svg" alt="wallet"></a>
             <a href="adminBlog.html"><img src="img/blog-pin.png" alt="blog-pin> </a>
         </div>
-        <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;margin-bottom: 10px;">
-            <a href="adminSettings.html"><img src="img/settings.png" style="margin-bottom: 30px;" alt="settings"></a>
+        <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;">
+            <a href="adminSettings.html"><img src="img/settings.png"  alt="settings"></a>
             <img src="img/log out.svg" alt="log-out">
         </div>
     </div> 
@@ -87,7 +90,8 @@
         <div class="profile-hero">
             <img src="img/Image icon.png" alt="profile-image">
             <p>Administrator</p>
-            <button>Upload Image</button>
+            <input type="file" hidden class="file">
+            <button class="upload-img">Upload image</button>
         </div>
         <div class="profile-details">
             <div class="contact">Contact: <span></span></div>
@@ -138,8 +142,8 @@
             <label class="admin-location">Residential Address</label> <br>
             <input type="text"  class="admin-location-input" placeholder="Enter residential address">
              <br>
-            <div class="button-admin-container">
-                <button class="add-item-submit">Update</button>
+             <div class="button-admin-container"  style="margin-top: 30px;">
+                <button class="add-item-submit adminfu admin-main-submit"><span style="padding-left:39px ;padding-right: 40px;" class="add-main-dash">Update</span>  <img class="loader loader-add-main" src="img/loader-hifarm.gif" alt="#"> </button>
             </div>
         </div>
     </div>
