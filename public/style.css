@@ -3350,6 +3350,68 @@ width: 338px;
 
 /*FAQ pages end */
 
+/*Invest Modal starts*/
+.invest-modal .profile-id{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.invest-modal .profile-id input{
+  width: 190px;
+  padding: 6px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.invest-modal .type-date{
+  display: flex;
+  align-items: center;
+}
+
+.invest-modal .type-date .invest-type select{
+  margin-top: 5px;
+  width: 190px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #D9D9D9;
+  margin-right: 35px;
+}
+
+.invest-modal .date-flex{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+ margin-top: 5px;
+ margin-bottom: 10px;
+}
+
+.invest-modal .date-flex input{
+  width: 56px;
+  height: 40px;
+  border: 1px solid #D9D9D9;
+  padding: 3px;
+  margin-right: 8px;
+}
+
+.invest-modal .amount-invest{
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.invest-modal .amount-invest input{
+  margin-top: 10px;
+  padding: 9px;
+  width: 260px;
+  border: 1px solid #D9D9D9;
+}
+/*Invest modal ends*/
+
 /*Sponsor page starts */
 .showcase-img.sponsor{
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("img/unsplash_uaO4MZf9ino.png");
@@ -3471,7 +3533,7 @@ width: 338px;
   font-size: 14px;
   color: #ffffff;
   font-weight: bolder;
-  width: 30%;
+  width: 46%;
   text-align: center;
   float: right;
 }
@@ -5819,6 +5881,21 @@ table, td, th {
   margin-top: 30px;
   width: 520px;
   border-radius: 10px;
+  position: relative;
+}
+
+.spending-2 .wallet-ledge .wallet-ledge-btn{
+ position: absolute;
+ top: 45%;
+ right: 4%;
+ border: 2px solid #f0f0f0;
+ padding-top: 10px;
+ font-size: 15px;
+ border-radius: 4px;
+ cursor: pointer;
+ padding-bottom: 10px;
+ padding-left: 27px;
+ padding-right: 27px;
 }
 
 .spending-2 .wallet-ledge p:nth-child(1){
