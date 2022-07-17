@@ -8,8 +8,8 @@
         <p class="info">You can add item up to ₦2,000,000.00</p>
         <div class="cart-flex">
             <p>Name</p>
-            <p>Units</p>
-            <p>Rate</p>
+            <p class="cart-unit">Units</p>
+            <p class="cart-rate">Rate</p>
             <p>Amount</p>
             <p>Remove</p>
         </div>

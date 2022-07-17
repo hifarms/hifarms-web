@@ -10,6 +10,16 @@
    <div class="about-description">
        Home <img src="img/Arrow 1.svg" width="12"> Blog
    </div>
+
+   <select class="select-blog">
+       <option>All</option>
+       <option>AgriTech</option>
+       <option>Agric Sciences</option>
+       <option>Updates</option>
+       <option>Success Stories</option>
+       <option>Out Breaks</option>
+       <option>Others</option>
+   </select>
    
    <div class="blog-flex">
      <p class="current-blog all-blog">ALL</p>

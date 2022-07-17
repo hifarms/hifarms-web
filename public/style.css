@@ -11,6 +11,60 @@
   display: none;
 }
 
+.dashboard-container.sponsor{
+  padding-left: 30px;
+}
+
+.dashboard-container.sponsor h1{
+  text-align: center;
+  margin-bottom: 30px;
+  padding-top: 30px;
+}
+
+.dashboard-container.sponsor .sponsors-flex .filter-heading{
+  margin-top: 11px;
+}
+
+.dashboard-container.sponsor .sponsor-data.dashboard {
+  margin-left: -20px;
+}
+
+.spd{
+   display: flex;
+   justify-content: left;
+   align-items: center;
+}
+
+.map{
+  height: 730px;
+  width: 500px;
+  margin-right: 30px;
+  object-fit: cover;
+}
+
+.social-icons-phone{
+  display: none;
+}
+
+.social-icons-phone{
+  margin-top: 15px;
+  margin-bottom: 25px;
+  margin-left: 20px;
+}
+
+.social-icons-phone svg{
+  height: 35px;
+  width: 35px;
+  margin-right: 15px;
+}
+
+.select-blog{
+  display: none;
+  margin-top:20px;
+  float:right;
+  margin-right:10px;
+  padding: 6px;
+}
 /*Drop down menu CSS*/
 .about-children{
   position: absolute;
@@ -98,8 +152,8 @@ header{
   width: 113px;
   height: 31px;
   flex-grow: 0;
-  margin: 20 73px 0.3px 0;
-  padding: 0.2px 21.5px 0.3px 1.7px;
+  margin-right: 30px;
+  object-fit: contain;
 }
 
 .header-container .services span:hover{
@@ -363,10 +417,11 @@ header{
   font-size: 16px;
   color: #404A3D;
   font-weight: 500;
-  width: 620px;
   border: 1px solid #8bc53e;
 }
-
+.contact-form .contact-subject{
+  width: 97%;
+}
 .contact-form textarea{
   margin-top: 10px;
   resize: none;
@@ -379,7 +434,6 @@ header{
   width: 620px;
   border: 1px solid #8bc53e;
 }
-
 .input-email-contact-flex input{
    margin-top: 10px;
    margin-bottom: 20px;
@@ -1194,7 +1248,7 @@ header{
   margin-left: 60px;
   margin-right: 70px;
   position: relative;
-  margin-bottom: -40px;
+  margin-bottom: -50px;
 }
 
 .footer-container .footer-newsletter .newsletter-head{
@@ -1221,7 +1275,6 @@ header{
 }
 
  .form-subscribe input{
-  margin: 20;
   padding: 8px;
   outline: none;
   height: 42px;
@@ -2897,22 +2950,33 @@ header{
    margin-right: 3px;
 }
 
+.cart-unit{
+  margin-left: 70px;
+}
+
+.cart-rate{
+  margin-left: -25px;
+}
+
 .cart-container .cart-content .image-name p{
   color: #6E7A89;
+  width: 110px;
+  margin-left: 10px;
 }
 
 .cart-container .cart-content .add-to-cart{
-  margin-left: -103px;
+  margin-left: -43px;
   color: #6E7A89;
 }
 
 .cart-container .cart-content .rate{
-  margin-left: -34px;
+  width: 110px;
   color: #6E7A89; 
 }
 
 .cart-container .cart-content .amount{
   color: #6E7A89; 
+  width: 110px;
 }
 
 .cart-container .cart-content .add-to-cart p{
@@ -3415,7 +3479,7 @@ width: 338px;
 /*Sponsor page starts */
 .showcase-img.sponsor{
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("img/unsplash_uaO4MZf9ino.png");
-  height: 50vh;
+
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -4696,10 +4760,6 @@ input:checked + .slider:before {
   z-index: 1000;
   transition: .5s ease;
   background: linear-gradient( rgba(64, 74, 61, 0.73),  rgba(64, 74, 61, 0.73)) ;
-}
-
-.i-want-to-sell{
-
 }
 
 /* Delete Modal starts */
@@ -6257,7 +6317,6 @@ table, td, th {
 @media (max-width:1158px){
  .header-container{
    justify-content: space-between;
-   padding: 5px;
  }
  .header-container .cart-whatsapp .cart{
    width: 20px;
@@ -6285,7 +6344,7 @@ table, td, th {
  }
  /*About media queries */
  .showcase-img{
-   height: 33vh;
+   height: 27vh;
  }
  .showcase-content h1{
    font-size: 23px;
@@ -6458,9 +6517,6 @@ table, td, th {
 }
 .footer-container .footer-newsletter{
   padding-left: unset;
-}
-.form-subscribe{
-  padding-top: 20px;
 }
 .footer-container .footer-newsletter p{
   width: unset;
@@ -6700,18 +6756,150 @@ table, td, th {
 /*cart page ends*/
 /*sponsors page starts */
 /*sponsort page end*/
-
 @media (max-width: 700px){
- *{
-  overflow-x: hidden!important;
+ .logo4x{
+    width: 70px;
+    margin-right: 120px;
  }
-  .header-container .cart-whatsapp .cart{
+ .showcase-img.blog{
+   height: 27vh;
+ }
+ .blog-flex{
+   display: none;
+ }
+.blog-flex-grid .blog-content h4{
+  margin-bottom: 5px;
+  font-size: 10px;
+  padding-bottom: 10px;
+}
+.blog-page-container p {
+  font-size: 10px;
+  padding-top: 80px;
+  padding-bottom: 20px;
+}
+.blog-page-container .blog-content {
+  padding-bottom: 25px;
+  margin-top: -45px;
+}
+.all-blog-container{
+  margin-top: 50px;
+}
+ .select-blog{
+  display: block;
+}
+.blog-flex-grid{
+  display: block;
+  padding-top: 35px;
+  padding-bottom: 35px;
+}
+.blog-flex-grid .blog-content h1{
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+.blog-page-container h1{
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+.blog-container{
+  position: relative;
+}
+.blog-page-container .blog-page-flex{
+  display: unset;
+  margin-bottom: 20px;
+}
+.blog-flex-grid .blog-content p {
+  width: 113%;
+  margin-bottom: 25px;
+}
+.blog-flex-grid img{
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+.blog-page-container .blog-page-flex .social-icons{
+  display: none;
+}
+.blog-page-container .blog-page-flex img{
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+.map{
+  width: 100%;
+  height: 350px;
+}
+.contact-map{
+  display: unset;
+}
+.contact-form h2{
+  padding-left: 25px;
+  font-size: 23px;
+}
+.contact-form h3{
+  padding-left: 25px;
+  font-size: 23px;
+}
+.contact-form p{
+  padding-left: 25px;
+}
+.contact-form form{
+  margin-left: 25px;
+}
+.input-email-contact-flex input{
+  width: 94%;
+}
+.contact-form textarea{
+  width:100%
+}
+.quick-support h3{
+   font-size: 25px;
+}
+.quick-support .quick-support-flex{
+  display: unset;
+}
+.quick-support .quick-support-flex img{
+  width: 90px;
+}
+.quick-support .quick-support-flex .quick-1 img{
+ margin-left: -28px;
+}
+.quick-support .quick-support-flex .quick-2 img{
+  margin-left: -28px; 
+}
+.quick-support .quick-support-flex .quick-3 img{
+  margin-left: -28px;
+}
+.connect-with-us{
+  padding-top: 46px;
+}
+.contact-input .contact-subject{
+  width: 40%;
+}
+.footer-container .footer-newsletter{
+  margin-left: unset;
+  margin-right: 70px;
+  position: relative;
+  margin-bottom: -40px;
+}
+.social-icons-phone{
+  display: block;
+}
+.sponsor-grid{
+  flex-direction: column;
+}
+.dashboard-container h1{
+   font-size: 22px;
+}
+.sponsors-flex.dashboard{
+  display: none;
+}
+.header-container .cart-whatsapp .cart{
+  width: 18px;
+}
+.header-container .cart-whatsapp .call{
     width: 18px;
-  }
-  .header-container .cart-whatsapp .call{
-    width: 18px;
-  }
-  .sign-in-image{
+}
+.sign-in-image{
       display: none;
   }
   .sign-in-cont{
@@ -6792,11 +6980,9 @@ table, td, th {
     margin-bottom: 20;
   }
   .footer-container .footer-newsletter{
-    margin-left: 20;
     margin-top: 25px;
   }
   .form-subscribe{
-    padding-top: 20;
     margin-top: 10px;
     margin-bottom: 10px;
     width: 100%;

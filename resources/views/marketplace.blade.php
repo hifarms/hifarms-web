@@ -93,7 +93,7 @@
         <div class="sponsor-container">
             
             <div class="sponsors-flex dashboard">
-                <p class="filter-heading dashboard">CATEGORIES</p>
+                <p class="filter-heading dashboard">FILTER BY PRICE</p>
                 <p class="showing-result">Showing 1-42</p>
                 <select class="sponsor-option dashboard">
                     <option value="all">Sort By</option>
