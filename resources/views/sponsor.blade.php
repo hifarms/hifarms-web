@@ -23,35 +23,54 @@
                 <div class="sponsor-option">
 <div class="spd">                    
                     <div class="sponsor-checkbox dashboard">
+                       
+                    <div class="sponsors-flex dashboard show-this">
+                        <p class="showing-result">Showing 1-42</p>
+                        <select class="sponsor-option dashboard">
+                            <option value="all">Sort By</option>
+                            <option value="new">Newest</option>
+                            <option value="old">Oldest</option>
+                        </select>
+                    </div>
+
                     <div class="filter">
                             <form>
+                                <div class="mobile-category">
+                                <h2 class="filter-mobile">Filter By Price</h2>
+                                 <div class="line" style="height: 1px;width: 100%;background: #c4c4c4;margin-bottom: 10px;"></div>
+                                </div>
                                 <input type="range" min="0" max="80000" step="0.1" value="{{old('range')==null? 0 :old('range')}}" name='range' class="rate">
                                 <input type="submit" class="button-filter" value='FILTER'>
                                 <p class="filter-price">Price: ₦ 0 - ₦ 100</p>
-                                 <h3 class="sponsor-categories">CATEGORIES</h3>
+                                 <h3 class="sponsor-categories mobile-hide">CATEGORIES</h3>
+                                 <div class="line hide" style="height: 1px;width: 100%;background: #c4c4c4;margin-bottom: 10px;"></div>
                             </div>
-                        <div class="line" style="height: 1px;width: 300px;background: #c4c4c4;margin-bottom: 10px;"></div>
+                        <div class="line mobile-hide" style="height: 1px;width: 300px;background: #c4c4c4;margin-bottom: 10px;"></div>
                         <div class="flex dashboard">
                             <input type="checkbox" class="check" name='crop' {{ (old('crop'))=='on' ?"checked":null}}>
                             <p class="sponsor-crop dashboard">Crop</p>
-                            <P>0</P>
+                            <P class="quant">0</P>
                         </div>
                         <div class="flex dashboard">
                             <input type="checkbox" name="cattle" {{ (old('cattle'))=='on' ?"checked":null}}>
                             <p class="sponsor-crop dashboard">Cattles</p>
-                            <P>0</P>
+                            <P class="quant">0</P>
                         </div>
                         <div class="flex dashboard">
                             <input type="checkbox" class="poultry" {{ (old('poultry'))=='on' ?"checked":null}}>
                             <p class="sponsor-crop dashboard">Poultry</p>
-                            <P>0</P>
+                            <P class="quant">0</P>
                         </div>
                         <div class="flex dashboard">
                             <input type="checkbox" name="livestock" {{ (old('livestock'))=='on' ?"checked":null}}>
-                            <p class="sponsor-crop dashboard">Livestock</p>
-                            <P>0</P>
+                            <p class="sponsor-crop dashboard live">Livestock</p>
+                            <P class="quant">0</P>
                         </div>
                     </form>
+                    <div class="mobile-category">
+                    <h3 class="sponsor-categories">CATEGORIES</h3>
+                    <div class="line" style="height: 1px;width: 100%;background: #c4c4c4;margin-bottom: 10px;"></div>
+                    </div>
                     </div>
 </div>
                     <div class="farmer-section" style="cursor:pointer">
@@ -91,10 +110,10 @@
                     </div>
                 </div>
             
-                <div class="sponsor-data dashboard">
+                <div class="sponsor-data dashboard marketplace">
                     
                     @foreach($products as $product)
-                    <div class="grid dashboard" style="height:575px">
+                    <div class="grid dashboard">
                         <p class="label">{{$product->label->name}}</p>
                         <img src="img/" alt="image" class="marketplace-image">
                         <h1>{{$product->name}}</h1>
@@ -114,7 +133,7 @@
                     </div>
                     @endforeach
             
-                    <div class="grid dashboard" style="height:575px">
+                    <div class="grid dashboard">
                         <p class="label">New</p>
                         <img src="img/unsplash_leOh1CzRZVQ.png" alt="image" class="marketplace-image">
                         <h1>Fish Farm</h1>
@@ -133,7 +152,7 @@
                     </div>
             
             
-                    <div class="grid dashboard" style="height:575px">
+                    <div class="grid dashboard">
                         <p class="label">New</p>
                         <img src="img/unsplash_eOktYr3tAMo.png" alt="image" class="marketplace-image">
                         <h1>Fish Farm</h1>
@@ -149,7 +168,7 @@
                       
                     </div>
             
-                    <div class="grid dashboard" style="height:575px">
+                    <div class="grid dashboard">
                         <p class="label sold-out">Sold Out</p>
                         <img src="./img/unsplash_eOktYr3tAMo.png" alt="image" class="marketplace-image">
                         <h1>Meat Breeding</h1>
@@ -166,7 +185,7 @@
                            <button  class="add-card">Add to cart</button>
                         </div>
                     </div>
-                    <div class="grid dashboard" style="height:575px">
+                    <div class="grid dashboard">
                         <p class="label sold-out">Sold Out</p>
                         <img src="img/unsplash_yFU8qIDo9s4.png" alt="image" class="marketplace-image">
                         <h1>Fish Farm</h1>
@@ -182,7 +201,7 @@
                         
                     </div>
             
-                    <div class="grid dashboard" style="height:575px">
+                    <div class="grid dashboard">
                         <p class="label out-of-stock">Out Of Stock</p>
                         <img src="img/unsplash_yFU8qIDo9s4.png" alt="image" class="marketplace-image">
                         <h1>Fish Farm</h1>
