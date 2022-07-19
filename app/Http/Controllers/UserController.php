@@ -55,9 +55,9 @@ class UserController extends Controller
         $total_return=0;
         $active=0;
         $total_invest=0;
-        $active_invest=$user->investments->where('delivered',0);
+        $active_invest=$user->investments->where('delivered',0)->where('cleared_to_wallet',0);
         foreach($active_invest as $invest){
-            if($invest->order->payment==null){
+            if($invest->order->payment==null || boolval($invest->product_id)){
                 continue;
             }
             $per = Farm_return_type::where('id',$invest->farm_return_type_id)->first();
@@ -96,9 +96,13 @@ class UserController extends Controller
 
         $user = Auth::user();
 
-        // $transactions = $user->wallet()->walletTransactions()->paginate(20);
-
-        return view('wallet',['user'=>$user]);
+        $totalspend=0;
+        foreach($user->investments as $investment){
+        if($investment->order->payment && $investment->order->payment->status_code==200){
+                $totalspend+=$investment->amount;
+            }
+         }
+        return view('wallet',['user'=>$user,'totalspend'=>$totalspend]);
     }
 
 //Moving Farm investment Return/payment to wallet
