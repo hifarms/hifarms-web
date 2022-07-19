@@ -8,6 +8,13 @@
     <title>Admin Dashboard</title>
 </head>
 <body>
+    <div class="added-successfully">
+        Added Successfully!!!
+    </div>
+    <div class="network-error">
+        Error!! 
+        <br> Something went wrong.
+    </div>
     <header>
         <div class="dashboard-header">
             <div class="header-img">
@@ -67,22 +74,24 @@
         <div class="first-side-bar">
             <img src="img/side-bar.svg" alt="side-bar">
         </div>
-        <div class="second-side-bar">
+        <div class="second-side-bar admin">
             <a href="adminDashboard.html"> <img src="img/Dashboard.svg" alt="dashboard" class="current"></a>
             <a href="adminMarketplace.html"><img src="img/marketplace.svg" alt="marketplace"></a>
             <a href="adminMyFarm.html"><img src="img/livestock-dashboard.svg" alt="livestock"></a>
             <a href="adminInvest.html"><img src="img/invest.svg" alt="marketplace"></a>
             <a href="adminInvestReturns.html"><img src="img/history.svg" alt="history"></a>
             <a href="adminWallet.html"><img src="img/wallet.svg" alt="wallet"></a>
+            <a href="adminBlog.html"><img src="img/blog-pin.png" alt="blog-pin> </a>
         </div>
-        <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;margin-bottom: 10px;">
-         <a href="adminSettings.html"><img src="img/settings.png" style="margin-bottom: 30px;" alt="settings"></a>
+        <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;margin-bottom: 0px;">
+         <a href="adminSettings.html"><img src="img/settings.png" alt="settings"></a>
             <img src="img/log out.svg" alt="log-out">
         </div>
     </div>
     <div class="dashboard-container">
         <h1>Dashboard.</h1>
        <div class="general-information">
+           
            <div class="info-1 diff">
                <div class="info-images">
                    <img src="img/admin-views.svg" alt="views">
@@ -98,7 +107,7 @@
             </div>
             <h5>Total Products</h5>
             <h2>1,234</h2>
-            <p>+Add new products</p>
+            <p class="add-new-product">+Add new products</p>
         </div>
         <div class="info-3">
             <div class="info-images">
@@ -116,11 +125,20 @@
             <h2>456</h2>
             <p>Start from Jan 1, 2022</p>
         </div>
+       </div>    
+        <div class="entry-search admin-search">   
+        <div class="input-search">
+           <input type="text" placeholder="search for">
+           <img src="img/Vector (8).png" style="cursor: pointer;" alt="search-icon">
        </div>
-
+       </div>
        <!---Double Side-->
+
        <div class="admin-outer-container">
-       <div class="product-table">
+        
+        <div class="scroll-table-prdct-table">
+       <div class="product-table dash">
+           
            <div class="product-names">
                <div>No</div>
                <div>Product Name</div>
@@ -187,8 +205,62 @@
             
            </div>
        </div>
+       </div>
        <img src="img/views-sells.png" alt="chart" class="admin-view-sell">
     </div>
     </div>
+        <!--Add Item Modal Begins-->
+        <div class="admin-add-item">
+            <div class="admin-add-item-container">
+                <div class="close-add-item">x</div>
+                <h1 style="margin-top: 4px;margin-bottom: 15px;">Add Item</h1>
+                <label class="class-name">Name</label> <br>
+                <input type="text"placeholder="Enter item name" class="name">
+                <div class="category-percentage-flex">
+                    <div class="category" style="width:55%; margin-right: 20px;">
+                        <label>Status</label> <br> 
+                        <select class="category-select add-item">
+                            <option>Select Status</option>
+                            <option>Out of Stock</option>
+                            <option>Sold Out</option>
+                            <option>New</option>
+                        </select>
+                    </div>
+                    <div class="percentage">
+                        <label>Percentage Sold(%)</label>  <br>
+                        <select>
+                            <option>10%</option>
+                            <option>40%</option>
+                            <option>60%</option>
+                            <option>80%</option>
+                            <option>100%</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="price-image-flex">
+                    <div class="price">
+                        <label>Item Price(₦)</label> <br>
+                         <input type="text" placeholder="Enter Price...">
+                    </div>
+                    <div class="image">
+                        <label style="margin-left: 20px;">Image</label> <br>
+                        <input type="file" class="category-select">
+                    </div>
+                </div>
+                <label class="admin-location">Location</label> <br>
+                <select class="admin-location-input">
+                    <option>Select Location</option>
+                    <option>Sokoto</option>
+                    <option>Kebbi</option>
+                    <option>Zamfara</option>
+                </select> <br>
+                <div class="button-admin-container">
+                    <button class="add-item-submit admin-dash-submit"><span class="span-class">Submit</span>  <img class="loader" src="img/loader-hifarm.gif" alt="#"> </button>
+                </div>
+            </div>
+        </div>
+        <!--Add Item Modal ends-->
+        <div class="overlay"></div>
+    <script src="js/adminDashboard.js"></script>
 </body>
 </html>

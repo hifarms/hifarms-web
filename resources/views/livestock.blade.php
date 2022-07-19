@@ -78,7 +78,7 @@
             <a href="wallet"><img src="img/wallet.svg" alt="wallet"> </a>
         </div>
         <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;margin-bottom: 10px;">
-            <a href="adminSettings.html"><img src="img/settings.png" style="margin-bottom: 30px;" alt="settings"></a>
+            <a href="userSettings.html"><img src="img/settings.png" style="margin-bottom: 30px;" alt="settings"></a>
             <img src="img/log out.svg" alt="log-out">
         </div>
     </div>

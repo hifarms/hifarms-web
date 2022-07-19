@@ -84,6 +84,25 @@ Route::post('/move-to-wallet', 'WalletController@moveToWallet')->name('dashboard
 
 Route::post('/terminate-to-wallet', 'WalletController@terminateToWallet')->name('dashboard');
 
+
+Route::get('/adminDashboard', 'AdminDashboard@adminDashboard');
+
+Route::get('/adminInvest', 'AdminDashboard@adminInvest');
+
+Route::get('/adminInvestReturns', 'AdminDashboard@adminInvestReturns');
+
+Route::get('/adminMarketplace', 'AdminDashboard@adminMarketplace');
+
+Route::get('/adminMyFarm', 'AdminDashboard@adminMyFarm');
+
+Route::get('/adminProfile', 'AdminDashboard@adminProfile');
+
+Route::get('/adminWallet', 'AdminDashboard@adminWallet');
+
+Route::get('/adminSettings', 'AdminDashboard@adminSettings');
+
+
+
 Route::get('/marketplace', 'ProductController@marketplace')->name('dashboard');
 Route::post('/add-sell-product', 'ProductController@store')->name('sell-product');
 

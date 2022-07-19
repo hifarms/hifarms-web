@@ -8,6 +8,9 @@
     <title>Profile</title>
 </head>
 <body>
+<div class="added-successfully">
+        Profile Updated!!
+    </div>
     <header>
       <div class="dashboard-header">
         <div class="header-img">
@@ -82,22 +85,24 @@
     </div> 
     <div class="dashboard-container profile">
         <h1>My Profile.</h1>
-        <p>Hello {{ explode(' ',$user->fullname)[0]}}</p>
+        <p style="margin-top: -38px;margin-bottom: 10px;">Hello {{ explode(' ',$user->fullname)[0]}}</p>
         <div class="profile-hero">
             <img src="img/Image icon.png" alt="profile-image">
             <p>{{ $user->fullname }}</p>
-            <button>Upload Image</button>
+            <input type="file" hidden class="file">
+            <button class="upload-img">Upload Image</button>
         </div>
         <div class="profile-details">
             <div class="contact">Contact: <span>{{$user->phone}}</span></div>
             <div class="gender">Gender: <span>{{$user->gender}}</span></div>
             <div class="email">Email: <span>{{$user->email}}</span></div>
             <div class="soo">State of Origin: <span>{{$user->State}}</span></div>
+            <div class="email">Bank Name: </div>
+            <div class="soo">Account Number:</div>
             <div class="occupation">Occupation: <span>{{$user->occupation}}</span></div>
             <div class="address">Residence Address: <span>{{$user->address}}</span></div>
         </div>
         <div class="buttons-profile">
-            <button>Update Profile</button>
             <button class="edit-profile">Edit Profile</button>
         </div>
     </div>
@@ -120,6 +125,16 @@
                     <input class="category-select contact-input" placeholder="Enter your email">    
                 </div>
             </div>
+            <div class="category-percentage-flex" style="justify-content:left;">
+                <div class="percentage">
+                    <label>Bank Name</label>  <br>
+                    <input type="text" class="contact-input" placeholder="Enter your contact">
+                </div>
+                <div class="category">
+                    <label>Account Number</label> <br> 
+                    <input class="category-select contact-input" placeholder="Enter your email">    
+                </div>
+            </div>
             <div class="category-percentage-flex" style="margin-bottom: 10px;justify-content:left;">
                 <div class="percentage">
                     <label>Occupation</label>  <br>
@@ -138,7 +153,7 @@
             <input type="text"  class="admin-location-input" placeholder="Enter residential address">
              <br>
             <div class="button-admin-container">
-                <button class="add-item-submit">Update</button>
+            <button class="add-item-submit adminfu admin-main-submit"><span style="padding-left:39px ;padding-right: 40px;" class="add-main-dash">Update</span>  <img class="loader loader-add-main" src="img/loader-hifarm.gif" alt="#"> </button>
             </div>
         </div>
     </div>

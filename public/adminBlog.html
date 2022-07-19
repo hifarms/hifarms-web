@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="table.css">
+    <title>Admin Blog</title>
+</head>
+<body>
+    <div class="moved-to-draft">
+        Moved To Drafts!
+    </div>
+    <div class="added-successfully">
+        Blog Published!
+    </div>
+    <div class="deleted-successfully">
+        Deleted Successfully!!!
+    </div>
+    <div class="moved-successfully">
+        Moved To Trash!!!
+    </div>
+    <div class="network-error">
+        Error!! 
+        <br> Something went wrong.
+    </div>
+    <div class="edited-successfully">
+        Edited Successfully!!!
+    </div>
+    <header>
+        <div class="dashboard-header">
+            <div class="header-img">
+                <img src="img/logo.png" alt="logo" width="113">
+            </div>
+            <div class="header-icons">
+                <div class="input-search">
+                    <input type="text" placeholder="search for">
+                    <img src="img/Vector (8).png" alt="search-icon">
+                </div>
+                <div class="notifs">
+                    <img src="img/Notifications.png" alt="notifications" class="notifications">
+                    <div class="notification-modal">
+                        <div class="notif-head">
+                            <div class="ntf">
+                                <p>Notifications</p>
+                                <div class="line"></div>
+                            </div>
+                            <button>Mark all as read</button>
+                        </div>
+                        <div class="notif-1">
+                            <p>New products arrival at Hi Marketplace.</p>
+                             <p>12mins ago</p>
+                        </div>
+                        <div class="notif-2">
+                            <p>Let's get started Hafiz.</p>
+                             <p>3hrs ago</p>
+                        </div>
+                        <div class="notif-3">
+                            <p>Welcome to Hi Farm.</p>
+                             <p>3hrs ago</p>
+                        </div>
+                    </div>
+                </div>
+                 <div class="guides">
+                    <img src="img/Guides.png" alt="guides" width="32">
+                      <div class="guide-download">
+                        <h2>Help & Guide</h2>
+                        <div class="line"></div>
+                        <p>Help & Guide
+                            Click Here to download 
+                            Hi Farms instruction 
+                            Manual.</p>
+                      </div>
+                 </div>
+                <div class="profile-inclusive">
+                    <img src="img/Profile.png" alt="profile" class="profile-header">
+                    <div class="my-profile-log-out">
+                        <button><a href="adminProfile.html">My Profile</a></button>
+                        <button><a href="logout">Log Out</a></button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="side-bar">
+        <div class="first-side-bar">
+            <img src="img/side-bar.svg" alt="side-bar">
+        </div>
+        <div class="second-side-bar admin" style="margin-top: 27px;">
+            <a href="adminDashboard.html"> <img src="img/Dashboard (1).svg" alt="dashboard"></a>
+            <a href="adminMarketplace.html"><img src="img/marketplace.svg" alt="marketplace"></a>
+            <a href="adminMyFarm.html"><img src="img/livestock-dashboard.svg" alt="livestock"></a>
+            <a href="adminInvest.html"><img src="img/invest.svg" alt="marketplace"></a>
+            <a href="adminInvestReturns.html"><img src="img/history.svg" alt="history"> </a>
+            <a href="adminWallet.html"><img src="img/wallet.svg" alt="wallet"></a>
+            <a href="adminBlog.html"><img src="img/blog_clicked.png" alt="blog-pin" class="current"> </a>
+        </div>
+        <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;margin-bottom: 10px;">
+            <a href="adminSettings.html"><img src="img/settings.png" style="margin-bottom: 30px;" alt="settings"></a>
+            <img src="img/log out.svg" alt="log-out">
+        </div>
+    </div>
+    <div class="dashboard-container blog">
+        <h1>Blog Post.</h1>
+        <p class="blob">Create, edit, and manage the posts here. </p>
+        <div class="blog-container-admin">
+            <button class="add-new-blog top">Add new post</button>
+            <div class="published-draft-trash-search">
+               <div class="first">
+                   <p class="settings-heading currently">Published (0)</p>
+                   <p class="settings-heading">Drafts (0)</p>
+                   <p class="settings-heading">Trash (0)</p>
+               </div>
+               <div class="input-search">
+                <input type="text" placeholder="search for">
+                <img src="img/Vector (8).png" alt="search-icon">
+            </div>
+
+              
+            </div>
+
+            <div class="drafted-blogs" style="display: none;">
+
+                <div class="if-no-published-blog">
+                    <img src="img/Draft.png" alt="svg">
+                    <p>No Post Found.</p>
+                    <button class="add-new-blog">Add new post</button>
+                </div>
+               
+            </div>
+
+            <div class="trashed-blogs" style="display: none;">
+                
+                <div class="if-no-published-blog">
+                    <img src="img/Bin.png" alt="svg">
+                    <p>No Post Found.</p>
+                    <button class="add-new-blog">Add new post</button>
+                </div>
+              
+            </div>
+
+
+
+            <div class="published-blogs">
+                <!--
+                <div class="if-no-published-blog">
+                    <img src="img/blog-cow.png" alt="svg">
+                    <p>No Post Found.</p>
+                    <button class="add-new-blog">Add new post</button>
+                </div>
+                -->
+                        <div class="blog-flex-grid">
+                            <div class="blog-content">
+                                <h4><span class="category-blog">Agric Sciences</span><span class="blog-date" style="font-weight: 300;">• Jul 12th 2022</span></h4>
+                                <a href='#'><h1 style="padding-top: 0px;padding-bottom: 0px;">Best Way To Do Eco Agriculture</h1></a>
+                               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, beatae dolorum minima mollitia laboriosam rerum autem soluta quibusdam expedita explicabo reprehenderit atque blanditiis porro repellat harum, qui reiciendis facere. Cum commodi iste quaerat nobis illum, molestias modi recusandae sapiente deserunt quas facilis eaque velit soluta labore quibusdam porro quam asperiores quos reprehenderit et perspiciatis officiis? Distinctio reiciendis consequatur minus fugit?.</p>
+                            </div>
+                            <img src='img/unsplash_0ZX8_HDWHN4.png'alt="image" class="blog-img" style="height: 300px;">
+                            <div class="last-sect">
+                                <img src="img/blog-edit.png" class="blog-edit" style="width: 35px;height: 35px;object-fit: contain;" alt="blog-edit">
+                                <img src="img/blog-delete.png" class="blog-delete" style="width: 35px;height: 35px;object-fit: contain;" alt="blog-delete">
+                                <img src="img/blog-draft.png" class="blog-draft" style="width: 35px;height: 35px;object-fit: contain;" alt="blog-draft">
+                            </div>
+                        </div> 
+
+                        <div class="blog-flex-grid">
+                            <div class="blog-content">
+                                <h4><span class="category-blog">Agric Sciences</span><span class="blog-date" style="font-weight: 300;">• Jul 12th 2022</span></h4>
+                                <a href='#'><h1 style="padding-top: 0px;padding-bottom: 0px;">Best Way To Do Eco Agriculture</h1></a>
+                               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, beatae dolorum minima mollitia laboriosam rerum autem soluta quibusdam expedita explicabo reprehenderit atque blanditiis porro repellat harum, qui reiciendis facere. Cum commodi iste quaerat nobis illum, molestias modi recusandae sapiente deserunt quas facilis eaque velit soluta labore quibusdam porro quam asperiores quos reprehenderit et perspiciatis officiis? Distinctio reiciendis consequatur minus fugit?.</p>
+                            </div>
+                            <img src='img/unsplash_0ZX8_HDWHN4.png'alt="image" class="blog-img" style="height: 300px;">
+                            <div class="last-sect">
+                                <img src="img/blog-edit.png" class="blog-edit" style="width: 35px;height: 35px;object-fit: contain;" alt="blog-edit">
+                                <img src="img/blog-delete.png" class="blog-delete" style="width: 35px;height: 35px;object-fit: contain;" alt="blog-delete">
+                                <img src="img/blog-draft.png" class="blog-draft" style="width: 35px;height: 35px;object-fit: contain;" alt="blog-draft">
+                            </div>
+                        </div>
+
+                        <div class="blog-flex-grid">
+                            <div class="blog-content">
+                                <h4><span class="category-blog">Agric Sciences</span><span class="blog-date" style="font-weight: 300;">• Jul 12th 2022</span></h4>
+                                <a href='#'><h1 style="padding-top: 0px;padding-bottom: 0px;">Best Way To Do Eco Agriculture</h1></a>
+                               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, beatae dolorum minima mollitia laboriosam rerum autem soluta quibusdam expedita explicabo reprehenderit atque blanditiis porro repellat harum, qui reiciendis facere. Cum commodi iste quaerat nobis illum, molestias modi recusandae sapiente deserunt quas facilis eaque velit soluta labore quibusdam porro quam asperiores quos reprehenderit et perspiciatis officiis? Distinctio reiciendis consequatur minus fugit?.</p>
+                            </div>
+                            <img src='img/unsplash_0ZX8_HDWHN4.png'alt="image" class="blog-img" style="height: 300px;">
+                            <div class="last-sect">
+                                <img src="img/blog-edit.png" class="blog-edit" style="width: 35px;height: 35px;object-fit: contain;" alt="blog-edit">
+                                <img src="img/blog-delete.png" class="blog-delete" style="width: 35px;height: 35px;object-fit: contain;" alt="blog-delete">
+                                <img src="img/blog-draft.png" class="blog-draft" style="width: 35px;height: 35px;object-fit: contain;" alt="blog-draft">
+                            </div>
+                        </div>
+            </div>
+
+
+
+        </div>
+<!--Add new blog post modal starts-->
+        <div class="add-blog-post-modal admin-add-item">
+            <div class="blog-post-modal">
+                <div class="head-and-back">
+                  <div>Add New Post</div>
+                  <img class="close-modal" style="cursor: pointer;" src="img/back-blog.svg" alt="#">
+                </div>
+                <div class="blog-category">
+                    <label>Category:</label>
+                    <select>
+                        <option>AgriTech</option>
+                        <option>Agric Science</option>
+                        <option>Updates</option>
+                        <option>Success Stories</option>
+                        <option>Out Breaks</option>
+                        <option>Others</option>
+                    </select>
+                </div>
+                <div class="topic-date">
+                    <div class="topic">
+                        <label>Topic:</label>
+                        <input type="text" placeholder="Input topic here">
+                    </div>
+                    <div class="date">
+                        <label>Date:</label>
+                        <input type="text" placeholder="Input date here">
+                    </div>
+                </div>
+                <div class="text">
+                    <textarea name="" id="" cols="30" rows="12"  placeholder="Write blog post..."></textarea>
+                </div>
+                <div class="add-pic-submit">
+                    <input type="file" name="" id="">
+                    <div class="button-admin-container">
+                        <button class="add-item-submit admin-dash-submit"><span class="span-class">Submit</span>  <img class="loader" src="img/loader-hifarm.gif" alt="#"> </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="overlay"></div>
+    <!--Add new blog post modal ends-->
+
+    <!--Edit blog post modal starts-->
+    <div class="add-blog-post-modal admin-add-item edit-modal">
+        <div class="blog-post-modal">
+            <div class="head-and-back">
+              <div>Edit Post</div>
+              <img class="close-blogedit-modal" style="cursor: pointer;" src="img/back-blog.svg" alt="#">
+            </div>
+            <div class="blog-category">
+                <label>Category:</label>
+                <select>
+                    <option>AgriTech</option>
+                    <option>Agric Science</option>
+                    <option>Updates</option>
+                    <option>Success Stories</option>
+                    <option>Out Breaks</option>
+                    <option>Others</option>
+                </select>
+            </div>
+            <div class="topic-date">
+                <div class="topic">
+                    <label>Topic:</label>
+                    <input type="text" placeholder="Input topic here">
+                </div>
+                <div class="date">
+                    <label>Date:</label>
+                    <input type="text" placeholder="Input date here">
+                </div>
+            </div>
+            <div class="text">
+                <textarea name="" id="" cols="30" rows="12"  placeholder="Write blog post..."></textarea>
+            </div>
+            <div class="add-pic-submit">
+                <input type="file" name="" id="">
+                <div class="button-admin-container">
+                    <button class="add-item-submit admin-dash-submit"><span class="edit-want-to-sell-span" style="padding-left: 47px;
+                        padding-right: 46px;">Save</span>  <img class="loader loader-edit" src="img/loader-hifarm.gif" alt="#"> </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="overlay"></div>
+<!--Edit blog post modal ends-->
+
+   
+    <!--Delete Blog starts-->
+    <div class="delete-modal i-want-to-sell-delete">
+        <div class="delete-modal-container">
+            <div class="close-delete-modal i-want-to-delete">x</div>
+            <h1 style="margin-bottom: 20px;margin-top: 30px;text-align: center;">Are you sure?🙁</h1>
+            <div class="yes-no-delete-modal">
+                <button class="yes-delete-modal main-delete">Yes</button>
+                <button class="no no-delete-modal">No</button>
+            </div>
+        </div>
+    </div>
+    <div class="overlay"></div>
+ <!--Delete Blog ends-->
+
+
+
+        <script src="js/adminBlog.js"></script>
+    </body>
+</html>

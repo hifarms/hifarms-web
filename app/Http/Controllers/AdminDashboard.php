@@ -38,4 +38,44 @@ class AdminDashboard extends Controller
         //job to handle email processing HandleEmail(subscribe,$request->content)
 
     }
+	
+	public function AdminDashboard()
+    {
+        return view('admin.adminDashboard');
+    }
+
+    public function AdminInvest()
+    {
+        return view('admin.adminInvest');
+    }
+
+    public function AdminInvestReturns()
+    {
+        return view('admin.adminInvestReturns');
+    }
+
+    public function AdminMarketplace()
+    {
+        return view('admin.adminMarketplace');
+    }
+
+    public function AdminmyFarm()
+    {
+        return view('admin.adminMyFarm');
+    }
+
+    public function AdminProfile()
+    {
+        return view('admin.adminProfile');
+    }
+
+    public function AdminWallet()
+    {
+        return view('admin.adminWallet');
+    }
+
+    public function AdminSettings()
+    {
+        return view('admin.adminSettings');
+    }
 }

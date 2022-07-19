@@ -10,6 +10,12 @@
     <title>Marketplace</title>
 </head>
 <body>
+<div class="added-successfully">
+        Added to Cart!!
+    </div>
+    <div class="added-successfully sell-successfully">
+        Added Successfully!!
+    </div>
     <header>
         <div class="dashboard-header">
             <div class="header-img">
@@ -78,7 +84,7 @@
              <a href="wallet"><img src="img/wallet.svg" alt="wallet"> </a>
         </div>
         <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;margin-bottom: 10px;">
-            <a href="adminSettings.html"><img src="img/settings.png" style="margin-bottom: 30px;" alt="settings"></a>
+            <a href="userSettings.html"><img src="img/settings.png" style="margin-bottom: 30px;" alt="settings"></a>
             <img src="img/log out.svg" alt="log-out">
         </div>
     </div>
@@ -87,7 +93,7 @@
         <div class="sponsor-container">
             
             <div class="sponsors-flex dashboard">
-                <p class="filter-heading dashboard">CATEGORIES</p>
+                <p class="filter-heading dashboard">FILTER BY PRICE</p>
                 <p class="showing-result">Showing 1-42</p>
                 <select class="sponsor-option dashboard">
                     <option value="all">Sort By</option>
@@ -172,7 +178,7 @@
                 <div class="sponsor-data dashboard">
                     
                     @foreach($products as $product)
-                    <div class="grid dashboard">
+                    <div class="grid dashboard" style="height:575px">
                         <p class="label">{{$product->label->name}}</p>
                         <img src="{{$product->image}}" alt="image" class="marketplace-image">
                         <h1>{{$product->name}}</h1>
@@ -187,12 +193,12 @@
                         <h3 class="h3-dashboard">₦ {{$product->price}}</h3>
 
                         <div class="purchase-div dashboard" style="justify-content: right;">
-                            <button class="purchaseBtn" id="{{$product->id}}">Purchase</button>
+                            <button class="purchaseBtn add-card" id="{{$product->id}}">Add to cart</button>
                         </div>
                     </div>
                     @endforeach
             
-                    <div class="grid dashboard">
+                    <div class="grid dashboard" style="height:575px">
                         <p class="label">New</p>
                         <img src="img/unsplash_leOh1CzRZVQ.png" alt="image" class="marketplace-image">
                         <h1>Fish Farm</h1>
@@ -206,12 +212,12 @@
                         </div>
                         <h3 class="h3-dashboard">₦ 10,000</h3>
                         <div class="purchase-div dashboard" style="justify-content: right;">
-                            <button>Purchase</button>
+                            <button class="add-card">Add to cart</button>
                         </div>
                     </div>
             
             
-                    <div class="grid dashboard">
+                    <div class="grid dashboard" style="height:575px">
                         <p class="label">New</p>
                         <img src="img/unsplash_eOktYr3tAMo.png" alt="image" class="marketplace-image">
                         <h1>Fish Farm</h1>
@@ -224,12 +230,10 @@
                             <p>74% sold</p>
                         </div>
                         <h3 class="h3-dashboard">₦ 10,000</h3>
-                        <div class="purchase-div dashboard" style="justify-content: right;">
-                            <button>Purchase</button>
-                        </div>
+                      
                     </div>
             
-                    <div class="grid dashboard">
+                    <div class="grid dashboard" style="height:575px">
                         <p class="label sold-out">Sold Out</p>
                         <img src="img/unsplash_eOktYr3tAMo.png" alt="image" class="marketplace-image">
                         <h1>Meat Breeding</h1>
@@ -243,12 +247,10 @@
                         </div>
                         <h3 class="h3-dashboard">₦ 10,000</h3>
                         <div class="purchase-div dashboard" style="justify-content: right;">
-                           <button>Purchase</button>
+                           <button  class="add-card">Add to cart</button>
                         </div>
                     </div>
-            
-            
-                    <div class="grid dashboard">
+                    <div class="grid dashboard" style="height:575px">
                         <p class="label sold-out">Sold Out</p>
                         <img src="img/unsplash_yFU8qIDo9s4.png" alt="image" class="marketplace-image">
                         <h1>Fish Farm</h1>
@@ -261,12 +263,10 @@
                             <p>74% sold</p>
                         </div>
                         <h3 class="h3-dashboard">₦ 10,000</h3>
-                        <div class="purchase-div dashboard" style="justify-content: right;">
-                            <button>Purchase</button>
-                        </div>
+                        
                     </div>
             
-                    <div class="grid dashboard">
+                    <div class="grid dashboard" style="height:575px">
                         <p class="label out-of-stock">Out Of Stock</p>
                         <img src="img/unsplash_yFU8qIDo9s4.png" alt="image" class="marketplace-image">
                         <h1>Fish Farm</h1>
@@ -279,9 +279,7 @@
                             <p>74% sold</p>
                         </div>
                         <h3 class="h3-dashboard">₦ 10,000</h3>
-                        <div class="purchase-div dashboard" style="justify-content: right;">
-                            <button>Purchase</button>
-                        </div>
+                       
                     </div>
                 </div>
             </div>
@@ -380,7 +378,9 @@
 24hrs. And further details will be notified to you. A re-negotiation 
 clause also applies.</p>
                 </div>
-                <button>Proceed to Sell</button>
+                <div class="button-admin-container"  style="margin-top: 0px;">
+                    <button class="add-item-submit admin-dash-submit"><span style="padding-left:48px ;padding-right: 49px;" class="span-class">Sell</span>  <img class="loader loader-span" src="img/loader-hifarm.gif" alt="#"> </button>
+                </div>
             </div>
     </div>
 </form>
