@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Investment</title>
+    <meta name="_token" content="{{ csrf_token() }}" />
+    <script src="{{asset('js/jquery.min.js')}}"></script>
 </head>
 <body>
     <header>
@@ -124,62 +126,83 @@
                 <th style="padding-top:5px;padding-bottom:5px;padding-left:10px;padding-right:10px;">ROI (%)</th>
                 <th style="padding-top:10px;padding-bottom:10px;padding-left:20px;padding-right:20px;">Annual Return <br> 
                  on Investment (₦)</th>
-                <th style="padding-top:10px;padding-bottom:10px;padding-left:10px;padding-right:10px;">Withdrawal
                 <br>(₦)</th>
                 <th style="padding-top:10px;padding-bottom:10px;padding-left:10px;padding-right:10px;">Total (₦)</th>
+                <th style="padding-top:10px;padding-bottom:10px;padding-left:10px;padding-right:10px;">Status</th>
+                <th style="padding-top:10px;padding-bottom:10px;padding-left:10px;padding-right:10px;">Action</th>
+
               </tr>
+              @php($counter=0)
+              @foreach(auth()->user()->investments as $investment)
+              @if($investment->order->payment && $investment->order->payment->status_code==200 && boolval($investment->farm_id))
   <tr>
-     <th style="padding-top:10px;padding-bottom:10px;padding-left:20px;padding-right:20px;color:rgba(64, 74, 61, 1);">1</th>
-                <th style="padding-top:0px;padding-bottom:0px;color:rgba(64, 74, 61, 1);padding-left:10px;padding-right:10px;">LSF/01/001/001</th>
-                <th style="padding-top:0px;padding-bottom:0px;color:rgba(64, 74, 61, 1);padding-left:0px;padding-right:50px;">Class A</th>
-                <th style="padding-top:0px;padding-bottom:0px;color:rgba(64, 74, 61, 1);padding-left:12px;padding-right:12px;">6/20/2022</th>
-                <th style="padding-top:0px;padding-bottom:0px;color:rgba(64, 74, 61, 1);padding-left:0px;padding-right:7px;">500,000</th>
-                <th style="padding-top:5px;padding-bottom:5px;padding-left:10px;color:rgba(64, 74, 61, 1);padding-right:10px;">20%</th>
-                <th style="padding-top:10px;padding-bottom:10px;color:rgba(64, 74, 61, 1);padding-left:20px;padding-right:20px;">100,000</th>
-                <th style="padding-top:10px;padding-bottom:10px;color:rgba(64, 74, 61, 1);padding-left:10px;padding-right:10px;">50,000</th>
-                <th style="padding-top:10px;padding-bottom:10px;color:rgba(64, 74, 61, 1);padding-left:10px;padding-right:10px;">506,000</th>
-              </tr>
-  </tr>
-  <tr>
-  <tr>
-     <th style="padding-top:10px;padding-bottom:10px;padding-left:20px;padding-right:20px;color:rgba(64, 74, 61, 1);">2</th>
-                <th style="padding-top:0px;padding-bottom:0px;color:rgba(64, 74, 61, 1);padding-left:10px;padding-right:10px;">LSF/01/001/001</th>
-                <th style="padding-top:0px;padding-bottom:0px;color:rgba(64, 74, 61, 1);padding-left:0px;padding-right:50px;">Class A</th>
-                <th style="padding-top:0px;padding-bottom:0px;color:rgba(64, 74, 61, 1);padding-left:12px;padding-right:12px;">6/20/2022</th>
-                <th style="padding-top:0px;padding-bottom:0px;color:rgba(64, 74, 61, 1);padding-left:0px;padding-right:7px;">500,000</th>
-                <th style="padding-top:5px;padding-bottom:5px;padding-left:10px;color:rgba(64, 74, 61, 1);padding-right:10px;">20%</th>
-                <th style="padding-top:10px;padding-bottom:10px;color:rgba(64, 74, 61, 1);padding-left:20px;padding-right:20px;">100,000</th>
-                <th style="padding-top:10px;padding-bottom:10px;color:rgba(64, 74, 61, 1);padding-left:10px;padding-right:10px;">50,000</th>
-                <th style="padding-top:10px;padding-bottom:10px;color:rgba(64, 74, 61, 1);padding-left:10px;padding-right:10px;">506,000</th>
+     <th style="padding-top:10px;padding-bottom:10px;padding-left:20px;padding-right:20px;color:rgba(64, 74, 61, 1);"> {{++$counter }}</th>
+                <th style="padding-top:0px;padding-bottom:0px;color:rgba(64, 74, 61, 1);padding-left:10px;padding-right:10px;">{{$investment->id}}</th>
+                <th style="padding-top:0px;padding-bottom:0px;color:rgba(64, 74, 61, 1);padding-left:0px;padding-right:50px;">{{$investment->returntype->name}}</th>
+                <th style="padding-top:0px;padding-bottom:0px;color:rgba(64, 74, 61, 1);padding-left:12px;padding-right:12px;">{{explode(' ',$investment->created_at)[0]}}</th>
+                <th style="padding-top:0px;padding-bottom:0px;color:rgba(64, 74, 61, 1);padding-left:0px;padding-right:7px;">{{$investment->amount}}</th>
+                <th style="padding-top:5px;padding-bottom:5px;padding-left:10px;color:rgba(64, 74, 61, 1);padding-right:10px;">{{$investment->returntype->percentage}}</th>
+                <th style="padding-top:10px;padding-bottom:10px;color:rgba(64, 74, 61, 1);padding-left:20px;padding-right:20px;">{{($investment->returntype->percentage/100)*$investment->amount}}</th>
+
+                <th style="padding-top:10px;padding-bottom:10px;color:rgba(64, 74, 61, 1);padding-left:10px;padding-right:10px;">{{$investment->amount + ($investment->returntype->percentage/100)*$investment->amount}}</th>
+                <th style="padding-top:10px;padding-bottom:10px;color:rgba(64, 74, 61, 1);padding-left:10px;padding-right:10px;">@if(boolval($investment->delivered) && !boolval($investment->cleared_to_wallet)) <div>Return ready</div> @elseif(boolval($investment->delivered) && boolval($investment->cleared_to_wallet))  <div>Cashout</div> @elseif(!boolval($investment->delivered) && !boolval($investment->cleared_to_wallet)) <div>Ongoing</div> @elseif(!boolval($investment->delivered) && boolval($investment->cleared_to_wallet)) <div>Terminated</div> @endif</th>
+                <th style="padding-top:10px;padding-bottom:10px;color:rgba(64, 74, 61, 1);padding-left:10px;padding-right:10px;">@if(boolval($investment->delivered))<button class="move-to-wallet" id="{{$investment->id}}" {{boolval($investment->cleared_to_wallet)? "disabled":null}}>Move to Wallet</button> @else <button class="terminate-to-wallet" id="{{$investment->id}}" {{boolval($investment->cleared_to_wallet) && !boolval($investment->delivered) ? "disabled":null}}>Terminate</button> @endif</th>
+
               </tr>
   </tr>
-  <tr>
-     <th style="padding-top:10px;padding-bottom:10px;padding-left:20px;padding-right:20px;color:rgba(64, 74, 61, 1);"></th>
-                <th style="padding-top:0px;padding-bottom:0px;color:rgba(64, 74, 61, 1);padding-left:10px;padding-right:10px;"> Total</th>
-                <th style="padding-top:0px;padding-bottom:0px;color:rgba(64, 74, 61, 1);padding-left:0px;padding-right:50px;"></th>
-                <th style="padding-top:0px;padding-bottom:0px;color:rgba(64, 74, 61, 1);padding-left:12px;padding-right:12px;"></th>
-                <th style="padding-top:0px;padding-bottom:0px;color:rgba(64, 74, 61, 1);padding-left:0px;padding-right:7px;">750,000</th>
-                <th style="padding-top:5px;padding-bottom:5px;padding-left:10px;color:rgba(64, 74, 61, 1);padding-right:10px;"></th>
-                <th style="padding-top:10px;padding-bottom:10px;color:rgba(64, 74, 61, 1);padding-left:20px;padding-right:20px;">100,000</th>
-                <th style="padding-top:10px;padding-bottom:10px;color:rgba(64, 74, 61, 1);padding-left:10px;padding-right:10px;">50,000</th>
-                <th style="padding-top:10px;padding-bottom:10px;color:rgba(64, 74, 61, 1);padding-left:10px;padding-right:10px;">506,000</th>
-              </tr>
-  </tr>
-  </tr>
+
+  @endif
+@endforeach
 </table>
 </div>
-            @foreach(auth()->user()->investments as $investment)
-                @if($investment->order->payment && $investment->order->payment->status_code==200)
-                <span>
-                    {{$investment->id}}
-                </span>-----<span>{{$investment->amount}}</span><br>
-                @endif
-            @endforeach
             <div class="buttons">
                 <button id="csv"><img src="img/csv.svg" width="120"></button>
                 <button id="pdf"><img src="img/pdf.svg" width="120"></button>
             </div>
         </div>
     </div>
+<script>
+     $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+        
+    $('.move-to-wallet').on('click',function(){
+        let  id= this.id;
+         jQuery.ajax({
+                 url: `http://127.0.0.1:8000/move-to-wallet`,
+                 method: "post",
+                 data:{
+                     id:id
+                 },
+                 success: function (data) {
+                  alert(data.success)
+                  this.disabled = true;
+                 },
+                 error: function (e) {
+                    console.log(e);
+                 },
+             });
+         })
+
+         $('.terminate-to-wallet').on('click',function(){
+        let  id= this.id;
+         jQuery.ajax({
+                 url: `http://127.0.0.1:8000/terminate-to-wallet`,
+                 method: "post",
+                 data:{
+                     id:id
+                 },
+                 success: function (data) {
+                  alert(data.success)
+                  this.disabled = true;
+                 },
+                 error: function (e) {
+                    console.log(e);
+                 },
+             });
+         })
+</script>
 </body>
 </html>
