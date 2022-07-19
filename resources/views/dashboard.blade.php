@@ -117,7 +117,7 @@
     <div class="dashboard-container dash">
         <h1>Dashboard.</h1>
         <div class="dashboard-flex">
-        <div class="first">
+        <div class="first h">
         <a href="/marketplace">
             <div class="marketplace-flex">
                 <div class="top-marketplace-flex">
