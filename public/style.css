@@ -7,6 +7,146 @@
     font-family: 'Quicksand', Arial, Helvetica, sans-serif;
 }
 
+.dashboard-hamburger{
+  position: fixed;
+  z-index: 5000;
+  background: #8bc53e;
+  width: 55vw;
+  top: 4.6%;
+  height: 96vh;
+  left: -100%;
+  transition: all 0.4s ease-in-out;
+}
+
+.side-ar{
+  margin-top: 40px;
+  background: #8AC043;
+  padding: 10px;
+}
+
+.dash-hamb-img-name h2{
+  color: #fff;
+  font-weight: lighter;
+  font-size: 20px;
+}
+
+.profile-header.ham{
+  margin-top: 10px;
+   width: 80px;
+   height: 80px;
+   object-fit: cover;
+}
+
+.dash-hamb-img-name{
+    display: flex;
+    justify-content: left;
+    margin-left: 7px;
+    margin-top: 20px;
+    align-items: center;
+    padding: 0px;
+}
+
+.input-search.ham{
+  width: 85%;
+    margin-left: 20px;
+    margin-top: 15px;
+}
+
+.side-ar h3{
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 10px;
+  margin-left: 27px;
+}
+
+.third-se-bar a img{
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+}
+
+.side-ar .second-se-bar{
+  display: flex;
+  flex-direction: column;
+}
+
+.third-se-bar{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 6%;
+}
+
+.dashboard-hamburger .third-se-bar a{
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+
+.third-se-bar a{
+  display: flex;
+}
+
+.side-ar .second-se-bar a img{
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+}
+
+.dashboard-hamburger .second-se-bar{
+  display: flex;
+}
+
+.dashboard-hamburger .second-se-bar p{
+  font-size: 15px;
+  color: #fff;
+  margin-left: 10px;
+}
+
+.dashboard-hamburger .third-se-bar p{
+  font-size: 15px;
+  color: #fff;
+  margin-left: 10px;
+}
+
+.dashboard-hamburger .third-se-bar{
+  padding: 10px;
+  width: 100%;
+  background: #8AC043;
+}
+
+.dashboard-hamburger .second-se-bar a{
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+
+.guide-dash{
+  position: absolute;
+  bottom: 0%;
+  width: 100%;
+  padding: 15px;
+  background: #fff;
+}
+
+.guide-dash img{
+  margin-right: 15px;
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
+.guide-dash{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: inherit;
+}
+
 .hamburger-modal{
   display: none;
 }
@@ -1494,6 +1634,9 @@ header{
   width: 100%;
 }
 .hamburger{
+  display: none;
+}
+.hamburger1{
   display: none;
 }
 #right-icon{
@@ -5317,8 +5460,23 @@ input:checked + .slider:before {
 }
 
 .dashboard-flex{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  margin-left: 50px;
+  /*display: grid;
+  grid-template-columns: 1fr 1fr; */
+}
+
+.dashboard-flex .first{
+  display: flex;
+  justify-content: flex-start;
+}
+
+.dashboard-flex .second{
+  display: flex;
+  justify-content: flex-start;
+}
+
+.dashboard-flex .weather{
+  margin-left: 110px;
 }
 
 .marketplace-flex{  
@@ -5443,7 +5601,7 @@ input:checked + .slider:before {
 
 .marketplace-flex.invest-your-farm{
   margin-top: 50px;
-  margin-left: 20;
+  margin-left: 105px;
 }
 
 .sponsors-flex.dashboard{
@@ -7042,7 +7200,103 @@ table, td, th {
 .sponsor-data .grid .sponsor-inner-flex p{
   font-size: 13px;
 }
-
+.side-bar{
+  display: none;
+}
+.header-icons .input-search{
+  display: none;
+}
+.dashboard-header .notifs{
+  display: none;
+}
+.dashboard-header .guides{
+  display: none;
+}
+.profile-header{
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+}
+.dashbrd-header{
+  padding-top: 3px;
+  padding-bottom: 0px;
+}
+.my-profile-log-out{
+  top: 40px;
+  right: 80%;
+}
+.my-profile-log-out button {
+  font-size: 9px;
+  width: 60px;
+  padding-top: 4px;
+  padding-left: unset;
+  padding-right: unset;
+  padding-bottom: 4px;
+}
+.dashboard-header{
+  justify-content: unset;
+}
+.dashboard-header .hamburger1{
+  margin-left: 26px;
+  width: 16px;
+}
+.dashboard-header .logo1x{
+  margin-left: 12px;
+  margin-top: 5px;
+  width: 60px;
+  margin-right: 250px;
+}
+.dashboard-container.dash{
+ padding-left: 0px;
+}
+.dashboard-container.dash h1{
+  text-align: center;
+ }
+.header-icons{
+  width: 0%;
+}
+.dashboard-flex{
+  margin-left: -10px;
+}
+.dashboard-flex .weather{
+  display: flex;
+  margin-left: 0px;
+  flex-direction: column;
+}
+.weather-2{
+  margin-left: 50px;
+}
+.dashboard-flex .top-marketplace-flex img {
+  width: 33px;
+}
+.dashboard-flex .top-marketplace-flex {
+  padding: 20px;
+}
+.marketplace-body p{
+  font-size: 28px;
+}
+.referral{
+  width: 350px;
+  margin-left: 41px;
+  padding: 20px;
+}
+.referral p{
+  font-size: 15px;
+}
+.marketplace-flex {
+  width: 345px;
+  margin-top: 40px;
+  margin-left: 40px;
+}
+.dashboard-flex .second{
+  flex-direction: column;
+}
+.marketplace-flex.invest-your-farm {
+  margin-left: 40px;
+}
+.dashboard-flex .first{
+  flex-direction: column-reverse;
+}
 .sponsor-data .grid.dashboard {
   margin-bottom: 20px;
 }
@@ -7562,6 +7816,9 @@ table, td, th {
     margin-right: -20px;
     width: 17.5px;
     cursor: pointer;
+  }
+  .hamburger1{
+    display: block;
   }
   .hamburger-modal{
      position: absolute;
