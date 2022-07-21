@@ -100,6 +100,13 @@
             <div class="sponsor-grid dashboard">
                 <div class="sponsor-option">
                     <div class="sponsor-checkbox dashboard">
+                    <div class="filter">
+                            <form>
+                                <input type="range" min="0" max="80000" step="0.1" value="{{old('range')==null? 0 :old('range')}}" name='range' class="rate">
+                                <input type="submit" class="button-filter" value='FILTER'>
+                                <p class="filter-price">Price: ₦ 0 - ₦ 100</p>
+                                 <h3 class="sponsor-categories">CATEGORIES</h3>
+                            </div>
                         <div class="line" style="height: 1px;width: 300px;background: #c4c4c4;margin-bottom: 10px;"></div>
                         <div class="flex dashboard">
                             <input type="checkbox" class="check">
