@@ -8,6 +8,9 @@
     <title>Wallet</title>
 </head>
 <body>
+    <div class="added-successfully">
+        Withdrawal Processed!
+    </div>
     <header>
         <div class="dashboard-header">
             <div class="header-img">
@@ -76,7 +79,7 @@
             <a href="wallet"><img src="img/wallet-active.svg" alt="wallet" class="current"></a>
         </div>
         <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;margin-bottom: 10px;">
-            <a href="adminSettings.html"><img src="img/settings.png" style="margin-bottom: 30px;" alt="settings"></a>
+            <a href="userSettings.html"><img src="img/settings.png" style="margin-bottom: 30px;" alt="settings"></a>
             <img src="img/log out.svg" alt="log-out">
         </div>
     </div>
@@ -86,7 +89,7 @@
             <div class="spending">
                 <div class="spend-1">
                     <p>My Spendings</p>
-                    <p>₦ 125, 450.60</p>
+                    <p>₦ {{$totalspend}}</p>
                 </div>
                 <img src="img/analye.png" alt="chart" class="analyze">
                 <img src="img/options.png" >
@@ -98,6 +101,7 @@
                 </div>
                 <div class="wallet-ledge">
                     <p>Available Balance</p>
+                    <button class="wallet-ledge-btn">Withdraw</button>
                     <p>₦ {{$user->wallet->balance}}</p>
                 </div>
             </div>
@@ -116,43 +120,46 @@
                 <div class="scroll-table">
                 <div class="transaction-history-flex">
                     <div class="transact-history-option">
-                        <div>User ID</div>
+                        <div>ID</div>
                         <div>Order ID</div>
                         <div>Status</div>
                         <div>Project Type</div>
                         <div>Amount</div>
                     </div>
+                    @foreach($user->investments as $investment)
                     <div class="transaction-records">
-                        <div>Hi-001</div>
-                        <div>#023</div>
+                        <div>Hi-{{$investment->id}}</div>
+                        <div>#{{$investment->order_id}}</div>
+                        @if($investment->order->payment && $investment->order->payment->status_code==200)
                         <div style="color: #53AF46;">Paid</div>
-                        <div>Purchase</div>
-                        <div>₦ 225,000</div>
-                    </div>
-                    <div class="transaction-records">
-                        <div>Hi-001</div>
-                        <div>#023</div>
+                        @else
                         <div style="color: #1E88E5;">Pending</div>
-                        <div>Purchase</div>
-                        <div>₦ 550,000</div>
+                        @endif
+                        <div>{{$investment->product_id?"Purchase":"Investment"}}</div>
+                        <div>₦ {{$investment->amount}}</div>
                     </div>
-                    <div class="transaction-records">
-                        <div>Hi-001</div>
-                        <div>#023</div>
-                        <div style="color: #53AF46;">Paid</div>
-                        <div>Investment</div>
-                        <div>₦ 25,000</div>
-                    </div>
-                    <div class="transaction-records">
-                        <div>Hi-001</div>
-                        <div>#023</div>
-                        <div style="color: #53AF46;">Paid</div>
-                        <div>Purchase</div>
-                        <div>₦ 25,000</div>
-                    </div>
+                    @endforeach
+                     
                 </div>
              </div>
         </div>
     </div>
+
+     <!--Add status starts-->
+              <div class="delete-modal add-status-modal">
+            <div class="delete-modal-container">
+                <div class="close-delete-modal close-status">x</div>
+                <h1 style="margin-left:-18px;font-size: 23px;text-align: center;margin-bottom:30px;margin-top: 55px;">Withdrawal Request</h1>
+                 <label style="color:#000;font-size: 20px;">Amount:</label>
+                <input type="text" placeholder="Enter here..." class="category-value" style="font-size:18px;border: 1px solid #cccccc;margin-left: 8px;padding: 15px;width: 70%;">
+              
+                <div class="button-admin-container"  style="margin-top: 20px;">
+                    <button class="add-item-submit admin-dash-submit"><span style="padding-left:46px ;padding-right: 46px;" class="span-class">Send</span>  <img class="loader loader-span" src="img/loader-hifarm.gif" alt="#"> </button>
+                </div>
+            </div>
+            </div>
+        <div class="overlay"></div>
+     <!--Add status ends-->
+     <script src="js/userWallet.js"></script>
 </body>
 </html>

@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <meta name="_token" content="{{ csrf_token() }}" />
+    <script src="{{asset('js/jquery.min.js')}}"></script>
     <title>Livestock</title>
 </head>
 <body>
@@ -76,7 +78,7 @@
             <a href="wallet"><img src="img/wallet.svg" alt="wallet"> </a>
         </div>
         <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;margin-bottom: 10px;">
-            <a href="adminSettings.html"><img src="img/settings.png" style="margin-bottom: 30px;" alt="settings"></a>
+            <a href="userSettings.html"><img src="img/settings.png" style="margin-bottom: 30px;" alt="settings"></a>
             <img src="img/log out.svg" alt="log-out">
         </div>
     </div>
@@ -172,127 +174,62 @@
 <div class="admin-add-item livestock">
     <div class="admin-add-item-container">
         <div class="close-add-item">x</div>
-        <h1 style="margin-top: 4px;margin-bottom: 20px;font-size:24px">ADD A LIVESTOCK FARM</h1>
+        <h1 style="margin-top: 4px;margin-bottom: 20px;font-size:24px">COST BENFIT ANALYSIS</h1>
         <div class="product-name-category">
             <div class="product-name-dash">
                 <div class="tooltip-flex">
                 <label>Farm Type</label>
-                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
+                <div class="tooltip">? <span class="tooltiptext">Farm type</span></div>
                 </div> <br>
-                <select>
-                     <option>Poultry Farm</option>
+                <select id="type" class="type">
+                     <option value="1">Broiler Chicken</option>
                  </select>
             </div>
             <div class="product-category-dash" style="margin-bottom:3px">
             <div class="tooltip-flex">
-                <label>Farm Produce</label>
-                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
+                <label>Budget</label>
+                <div class="tooltip">? <span class="tooltiptext">Amount you want to start the farm</span></div>
                 </div> <br>
-                 <select>
-                     <option>Broiler Chicken</option>
-                 </select>
+                <input type="number" id="amount" placeholder="Enter amount Budgeted" style="height: 30px">
             </div>
         </div>
-        <div class="qty-item-image" style="margin-bottom: 15px">
-             <div class="item-price">
-             <div class="tooltip-flex">
-                <label>Working Cost(₦)</label>
-                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
-                </div> <br>
-            <input type="text" placeholder="Enter item price"> 
-             </div>
-             <div class="qty">
-            <div class="tooltip-flex">
-                <label>Qty Required</label>
-                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
-                </div> <br>
-            <input type="number" min='0' placeholder="Quantity">
-            </div>
-             <div class="img-dash">
-             <div class="tooltip-flex">
-                <label>Unit Price(₦)</label>
-                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
-                </div> <br>
-            <input type="number" min="0">
-             </div>
-            
-        </div>
-
-
-        <div class="acc-name-number" style="margin-bottom: 15px">
-            <div class="bank-name">
-            <div class="tooltip-flex">
-                <label>Measures</label>
-                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
-                </div> <br>
-            <select>
-                <option>Chicks</option>
-            </select>
-            </div>
-            <div class="acc-name">
-            <div class="tooltip-flex">
-            <label style="padding-left: 20px;" for="">Variable Cost(₦)</label>
-                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
-                </div> <br>
-            
-            <input type="text" placeholder="Enter variable cost">
-            </div>
-            <div class="acc-number">
-            <div class="tooltip-flex">
-                <label style="color:rgba(64, 74, 61, 0.5)">Defect Liability(%)</label>
-                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
-                </div> <br>
-            <input type="text" style="color:rgba(64, 74, 61, 0.5)" value="10" disabled placeholder="Enter your account number">
-            </div>
-        </div>
-        <div class="acc-name-number" style="margin-bottom: 10px">
-        <div class="acc-name">
-            <div class="tooltip-flex">
-            <label for="">Variable Cost(₦)</label>
-                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
-                </div> <br>
-            
-            <input type="text" style="margin-left:unset;" placeholder="Enter variable cost">
-            </div>
-            <div class="acc-name" style="margin-left: -40px">
-            <div class="tooltip-flex">
-            <label style="padding-left: 20px;" for="">Fixed Assets(₦)</label>
-                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
-                </div> <br>
-            
-            <input type="text" placeholder="Enter fixed assets">
-            </div>
-            <div class="acc-number">
-            <div class="tooltip-flex">
-                <label>Gross Profit(₦)</label>
-                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
-                </div> <br>
-            <input type="text" placeholder="Gross profits">
-            </div>
-        </div>
-        <div class="location-dash">
-        <div class="gross-flex">
-        <div class="acc-number" style="margin-right:20px">
-            <div class="tooltip-flex">
-            <label style="color:rgba(64, 74, 61, 0.5)">Tax @(7.50)</label>
-                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
-                </div> <br>
-                <input type="text" style="color:rgba(64, 74, 61, 0.5)" value="7.5" disabled >
-            </div>
-            <div class="acc-number">
-            <div class="tooltip-flex">
-                <label>Net Profit(₦)</label>
-                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
-                </div> <br>
-            <input type="text" placeholder="Net profits">
-            </div>
-            </div>
-        </div>
-        <div class="warning-button">
+        <p style="text-align:center; padding:2px;">Total Sales(₦) <span id="sales">0.00</span></p>
+        <p style="text-align:center;padding:2px;">Gross Profit(₦) <span id="cross">0.00</span></p>
+       <p style="text-align:center;padding:2px;">Net Profit(₦) <span id="net">0.00</span></p>
+        <div class="warning-button compute">
             <button>Compute</button>
         </div>
+
 </div>
 </div>
 <script src="js/livestock.js"></script>
+<script>
+    $.ajaxSetup({
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+      }
+  });
+  
+  $('.compute').on('click',function(){
+     let  amount= $('#amount').val();
+     let type= $('#type').val();
+    if (amount=="" || amount==undefined) {
+        alert("Enter Amount ")
+        return;
+    } 
+      jQuery.ajax({
+              url: `http://127.0.0.1:8000/costbenefit/profit?amount=${amount}&type=${type}`,
+              method: "get",
+              success: function (data) {
+                $('#sales').text(Number(data.sales.toFixed(2)).toLocaleString())
+                $('#net').text(Number(data.net.toFixed(2)).toLocaleString())
+                $('#cross').text(Number(data.cross.toFixed(2)).toLocaleString())
+              },
+              error: function (e) {
+                 console.log(e);
+              },
+          });
+      })
+</script>
 </body>
 </html>

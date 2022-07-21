@@ -1,7 +1,7 @@
 //Declaring Variables
 const submitButton = document.querySelector(".span-class");
 const editButton = document.querySelector('.edit-want-to-sell-span')
-const addNewBlog = document.querySelector('.add-new-blog');
+const addNewBlog = document.querySelectorAll('.add-new-blog');
 const allBlogEdit = document.querySelectorAll('.blog-edit');
 const allBlogdelete = document.querySelectorAll('.blog-delete');
 const allBlogDraft = document.querySelectorAll('.blog-draft');
@@ -9,30 +9,48 @@ const settingsOption = document.querySelectorAll('.settings-heading');
 const publishedBlogs = document.querySelector('.published-blogs');
 const DraftedBlogs  = document.querySelector('.drafted-blogs');
 const TrashedBlogs = document.querySelector('.trashed-blogs');
-let currentClass = document.querySelector('.currently');
  
 
 //Functions
+addNewBlog.forEach((button)=>{
+    button.addEventListener('click', ()=>{
+        let addItemModal = document.querySelector('.admin-add-item');
+        let overlayEffect = document.querySelector('.overlay');
+         
+        overlayEffect.style.display = 'block';
+        addItemModal.style.display = 'block';
+    
+        const closeItem = document.querySelector('.close-modal');
+    
+        closeItem.addEventListener('click', ()=>{
+          overlayEffect.style.display = 'none';
+          addItemModal.style.display = 'none';
+        })
+    })
+})
+
 settingsOption.forEach((setting)=>{
     setting.addEventListener('click', (e)=>{
-        if(e.target.innerText[0] === 'P'){
-            currentClass.classList.remove('current')
-            e.target.classList.add('current')
+        if(e.target.innerText[0] === 'P'){4
+            let currentClass = document.querySelector('.currently');
+            currentClass.classList.remove('currently')
+            e.target.classList.add('currently')
             
            TrashedBlogs.style.display = 'none';
            DraftedBlogs.style.display = 'none';
             publishedBlogs.style.display = 'block';
         } else if(e.target.innerText[0] === 'D'){
-            currentClass.classList.remove('current')
-            e.target.classList.add('current')
+            let currentClass = document.querySelector('.currently');
+            currentClass.classList.remove('currently')
+            e.target.classList.add('currently')
             
            TrashedBlogs.style.display = 'none';
            DraftedBlogs.style.display = 'block';
             publishedBlogs.style.display = 'none';
         } else if(e.target.innerText[0] === 'T'){
-            
-        currentClass.classList.remove('current');
-            e.target.classList.add('current');
+        let currentClass = document.querySelector('.currently');
+        currentClass.classList.remove('currently');
+            e.target.classList.add('currently');
  
            TrashedBlogs.style.display = 'block';
            DraftedBlogs.style.display = 'none';
@@ -148,22 +166,6 @@ allBlogdelete.forEach((item)=>{
     })
 })
 
-const showModal = ()=>{
-    let addItemModal = document.querySelector('.admin-add-item');
-    let overlayEffect = document.querySelector('.overlay');
-     
-    overlayEffect.style.display = 'block';
-    addItemModal.style.display = 'block';
-
-    const closeItem = document.querySelector('.close-modal');
-
-    closeItem.addEventListener('click', ()=>{
-      overlayEffect.style.display = 'none';
-      addItemModal.style.display = 'none';
-    })
-}
-
-
 const addEditLoader = (e)=>{
     e.preventDefault();
 
@@ -233,4 +235,4 @@ const addLoader = ()=>{
 
  submitButton.addEventListener('click', addLoader);
  editButton.addEventListener('click', addEditLoader);
- addNewBlog.addEventListener('click', showModal);
+ //addNewBlog.addEventListener('click', showModal);

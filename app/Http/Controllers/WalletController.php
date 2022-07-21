@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use App\Payment;
+use App\Order_item;
 use App\WalletTransaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Date;
@@ -50,6 +51,48 @@ class WalletController extends Controller
         $order->save();
 
         redirect()->back()->with('success','Order successfully placed');
+    }
+
+    public function moveToWallet(Request $request){
+        $id = $request->id;
+        $user = auth()->user();
+        $investment = Order_item::where('id',$id)->first();
+
+        if($investment->order->user_id != $user->id || !boolval($investment->delivered) || boolval($investment->cleared_to_wallet)){
+            return response()->json(['error'=>'Invalid Request'], 410);
+        }
+
+        //moving fund to wallet
+        $amount =$investment->amount + ($investment->returntype->percentage/100)*$investment->amount;
+        $investment->cleared_to_wallet=1;
+        $investment->save();
+
+       $wallet= $user->wallet;
+       $wallet->balance += $amount;
+       $wallet->save();
+        return response()->json(['success'=>'Moved to wallet successfully'], 200);
+
+    }
+
+    public function terminateToWallet(Request $request){
+        $id = $request->id;
+        $user = auth()->user();
+        $investment = Order_item::where('id',$id)->first();
+
+        if($investment->order->user_id != $user->id || boolval($investment->cleared_to_wallet)){
+            return response()->json(['error'=>'Invalid Request'], 410);
+        }
+
+        //moving fund to wallet
+        $amount = $investment->amount;
+        $investment->cleared_to_wallet=1;
+        $investment->save();
+
+        $wallet= $user->wallet;
+        $wallet->balance += $amount;
+        $wallet->save();
+        return response()->json(['success'=>'Terminated succcessfully'], 200);
+
     }
 
 }

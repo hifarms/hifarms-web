@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\costInput;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -75,6 +76,31 @@ class FarmController extends Controller
     
         File::delete($tempurl);
         return redirect()->back()->with('success', 'Delete Success');
+
+       }
+
+       public function costBenefitProfit(Request $request){
+            if($request->type=="1"){
+            $chicks=costInput::where('cost_farm_id',$request->type)->where('variable_name','chicks')->first();
+            $chickenProfit=0;
+            $manureProfit=0;
+            $numberchick=($chicks->percentage/100)*$request->amount/$chicks->unit_price;
+            
+            $chicken=costInput::where('cost_farm_id',$request->type)->where('variable_name','chickens')->first();
+            $chickenProfit=$numberchick*$chicken->unit_price;
+
+            $manure=costInput::where('cost_farm_id',$request->type)->where('variable_name','manure')->first();
+            
+            $manureProfit=(1/100)*$numberchick*$manure->unit_price;
+
+            $profit=$chickenProfit+$manureProfit;
+            $defet=(10/100)*$profit;
+            $sales = $profit-$defet;
+            $crossProfit=$sales-$request->amount;
+            $netProfitdefect=(7.50/100)*$crossProfit;
+            $netProfit = $crossProfit-$netProfitdefect;
+            return response()->json(['net'=>$netProfit,'cross'=>$crossProfit,'sales'=>$sales], 200);
+        }
 
        }
 }

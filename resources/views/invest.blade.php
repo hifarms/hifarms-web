@@ -10,6 +10,9 @@
     <title>Invest</title>
 </head>
 <body>
+<div class="added-successfully">
+        Processed!!
+    </div>
     <header>
         <div class="dashboard-header">
             <div class="header-img">
@@ -78,7 +81,7 @@
             <a href="wallet"><img src="img/wallet.svg" alt="wallet"></a>
         </div>
         <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;margin-bottom: 10px;">
-            <a href="adminSettings.html"><img src="img/settings.png" style="margin-bottom: 30px;" alt="settings"></a>
+            <a href="userSettings.html"><img src="img/settings.png" style="margin-bottom: 30px;" alt="settings"></a>
             <img src="img/log out.svg" alt="log-out">
         </div>
     </div>
@@ -86,7 +89,7 @@
         <h1>Invest In A Project.</h1>
         <div class="sponsor-container">
             <div class="sponsors-flex dashboard">
-                <p class="filter-heading dashboard">CATEGORIES</p>
+                <p class="filter-heading dashboard">FILTER BY PRICE</p>
                 <p class="showing-result">Showing 1-42</p>
                 <select class="sponsor-option dashboard">
                     <option value="all">Sort By</option>
@@ -97,6 +100,13 @@
             <div class="sponsor-grid dashboard">
                 <div class="sponsor-option">
                     <div class="sponsor-checkbox dashboard">
+                    <div class="filter">
+                            <form>
+                                <input type="range" min="0" max="80000" step="0.1" value="{{old('range')==null? 0 :old('range')}}" name='range' class="rate">
+                                <input type="submit" class="button-filter" value='FILTER'>
+                                <p class="filter-price">Price: ₦ 0 - ₦ 100</p>
+                                 <h3 class="sponsor-categories">CATEGORIES</h3>
+                            </div>
                         <div class="line" style="height: 1px;width: 300px;background: #c4c4c4;margin-bottom: 10px;"></div>
                         <div class="flex dashboard">
                             <input type="checkbox" class="check">
@@ -155,6 +165,52 @@
             </div>
             </div>
     </div>
+
+       <!--Add User to manage platform starts-->
+       <div class="admin-add-item change-password admin-add-user invest-modal">
+        <div class="admin-add-item-container">
+            <div class="close-add-item add-user-close" style="padding-top: unset;">x</div>
+            <h1 style="font-size:21px;margin-bottom: 20px;display: flex;justify-content: center;margin-top: 8px;">Invest In a Project</h1>
+             <div class="profile-id">
+                 <div class="profile-idj">
+                     <label style="font-weight:unset;">Profile Number:</label> <br>
+                     <input type="text" disabled value="ADKR018394747">
+                 </div>
+                 <div class="invest-id">
+                     <label style="font-weight:unset;">Investment ID:</label> <br>
+                     <input type="text" value="LSF/01/001/001" disabled>
+                 </div>
+             </div>
+            <div class="type-date">
+                <div class="invest-type">
+                    <label style="font-weight:unset;">Investment Type:</label> <br>
+                    <select>
+                        <option>Class A Investment</option>
+                        <option>Class B Investment</option>
+                        <option>Class C Investment</option>
+                    </select>
+                </div>
+                <div class="date-id">
+                    <label style="font-weight:unset;">Date:</label>
+                    <div class="date-flex">
+                     <input type="number">
+                     <input type="number">
+                     <input type="number">
+                    </div>
+                </div>
+            </div>
+            <div class="amount-invest">
+                <label style="font-weight:unset;">Amount Invested(₦)</label>
+                <input type="text">
+            </div>
+            <div class="button-admin-container"  style="margin-top: 0px;">
+                    <button class="add-item-submit admin-dash-submit"><span style="padding-left:36px ;padding-right: 36px;" class="span-class">Proceed</span>  <img class="loader loader-span" src="img/loader-hifarm.gif" alt="#"> </button>
+            </div>
+        </div>
+    </div>
+    <div class="overlay"></div>
+      <!--Add User to manage platform ends-->
+     <script src="js/userInvest.js"></script>
     <script src="js/marketplace.js"></script>
     <script src="https://js.paystack.co/v1/inline.js"></script>
 

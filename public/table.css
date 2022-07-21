@@ -17,3 +17,7 @@
 .form-control.input-sm{
     display: none;
 }
+
+#datatables{
+    margin-left: 10px;
+}

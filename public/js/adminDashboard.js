@@ -49,6 +49,10 @@ const addLoader = ()=>{
    submitButton.style.display = 'none'
    loader.style.display = 'block';
 
+   document.body.scrollTop = 0;
+   document.documentElement.scrollTop = 0;
+
+
    setTimeout(()=>{
       let addItemModal = document.querySelector('.admin-add-item');
       let overlayEffect = document.querySelector('.overlay');
