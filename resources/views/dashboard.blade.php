@@ -48,6 +48,10 @@
                 <img src="img/logo.png" class="logo1x" alt="logo" width="113">
             </div>
             <div class="header-icons">
+            <div class="cart-whatsapp cart-whatsapp-dash">
+                    <a href='{{url('/cart')}}'><img src="{{asset('img/Group 51.png')}}" alt="cart" class="cart"></a>
+                       <span class="cart-counter"></span>
+                </div>
                 <div class="input-search">
                     <input type="text" placeholder="search for">
                     <img src="img/Vector (8).png" alt="search-icon">
@@ -134,7 +138,7 @@
             </div>
             </a>
             <div class="weather">
-                <div class="weather-2">
+                <div class="weather-2 dashboard">
                     <div class="flex-1">
                         <p>Weather</p>
                         <img src="img/clouds.png" alt="clouds">

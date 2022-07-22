@@ -10,12 +10,50 @@
     <title>Livestock</title>
 </head>
 <body>
-    <header>
+           <!--Dashboard Hamburger Starts-->
+           <div class="dashboard-hamburger livestock">
+        <div class="dash-hamb-img-name">
+        <img src="img/dashboard-hamburger-profile.png" alt="profile" class="profile-header ham">
+        <h2>Welcome, <br>
+            Hafiz
+        </h2>
+        </div>
+        <div class="input-search ham">
+            <input type="text" placeholder="search for">
+            <img src="img/Vector (8).png" alt="search-icon">
+        </div>
+        <div class="side-ar">
+        <h3>General</h3>
+        <div class="second-se-bar">
+            <a href="dashboard"> <img src="img/Dashboard (1).svg" alt="dashboard" > <p>Dashboard</p></a>
+            <a href="marketplace"><img  src="img/marketplaces-current.svg" alt="marketplace" class="current"> <p>Marketplace</p></a>
+            <a href="user-farms"><img src="img/livestock-dashboard.svg" alt="livestock"> <p>Manage my farm</p></a>
+            <a href="farm-invest"><img src="img/invest.svg" alt="marketplace"> <p>Invest In a Project</p></a>
+            <a href="investment"><img src="img/history.svg" alt="history"> <p>ROI</p></a>
+            <a href="wallet kun"><img src="img/wallet.svg" alt="wallet"> <p>Wallet</p></a>
+        </div>
+    </div>
+    <div class="third-se-bar">
+            <a href="userSettings.html"><img src="img/settings.png" alt="settings"> <p>Settings</p></a>
+            <a href=""><img src="img/log out.svg" alt="settings"> <p>Logout</p></a>
+    </div>
+    <div class="guide-dash">
+        <img src="img/Notifications.png" alt="notifications" class="notifications">
+        <img src="img/Guides.png" alt="guides" width="32">
+    </div>
+      </div>
+    <!--Dashboard Hamburger Ends-->
+    <header class="dashbrd-header">
         <div class="dashboard-header">
+        <img src="img/hamburger.svg" alt="#" id="hamburger" class="hamburger1">
             <div class="header-img">
-                <img src="img/logo.png" alt="logo" width="113">
+                <img src="img/logo.png" class="logo1x" alt="logo" width="113">
             </div>
             <div class="header-icons">
+            <div class="cart-whatsapp cart-whatsapp-dash">
+                    <a href='{{url('/cart')}}'><img src="{{asset('img/Group 51.png')}}" alt="cart" class="cart"></a>
+                       <span class="cart-counter"></span>
+                </div>
                 <div class="input-search">
                     <input type="text" placeholder="search for">
                     <img src="img/Vector (8).png" alt="search-icon">
@@ -86,30 +124,33 @@
       <h1>My Farm</h1>
       <div class="my-farm-1">
         <img src="img/Farmer Icon (1).svg" alt="farm-icon" width="130" class="farm-icon">
+    <div class="displ">
         <div class="weatherflex">
             <div class="weather-2">
                 <div class="flex-1">
                     <p>Weather</p>
                     <img src="img/clouds.png" alt="clouds">
-                    <img src="img/temprature.png" alt="celsius">
+                    <img src="img/temprature.png" alt="celsius"  class="celsius-1">
                 </div>
                 <div class="flex-2">
-                    <img src="img/options.png" alt="">
+                    <img src="img/options.png" alt="" class="optin">
                 </div>
             </div>
             <div class="weather-2">
                 <div class="flex-1">
                     <p>Humidity</p>
                     <img src="img/clouds.png" alt="clouds">
-                    <img src="img/16º.svg" alt="celsius">
+                    <img src="img/16º.svg" alt="celsius" class="celsius">
                 </div>
                 <div class="flex-2">
-                    <img src="img/options.png" alt="">
+                    <img src="img/options.png" class="optin" alt="">
                 </div>
             </div>
         </div>
           <img src="img/Farm chart.svg" alt="farm-chart" class="farm-chart">
       </div>
+</div>
+
         <div class="dashboard-flex livestock">
        <div class="marketplace-flex manage-your-farm livestock">
                 <div class="top-marketplace-flex">
@@ -174,7 +215,7 @@
 <div class="admin-add-item livestock">
     <div class="admin-add-item-container">
         <div class="close-add-item">x</div>
-        <h1 style="margin-top: 4px;margin-bottom: 20px;font-size:24px">COST BENFIT ANALYSIS</h1>
+        <h1 style="margin-top: 4px;margin-bottom: 20px;" class="cst-bnft">COST BENEFIT ANALYSIS</h1>
         <div class="product-name-category">
             <div class="product-name-dash">
                 <div class="tooltip-flex">
@@ -231,5 +272,6 @@
           });
       })
 </script>
+<script src="js/dashboardHamburger.js"></script>
 </body>
 </html>

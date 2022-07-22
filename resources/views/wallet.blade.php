@@ -8,15 +8,53 @@
     <title>Wallet</title>
 </head>
 <body>
+      <!--Dashboard Hamburger Starts-->
+      <div class="dashboard-hamburger">
+        <div class="dash-hamb-img-name">
+        <img src="img/dashboard-hamburger-profile.png" alt="profile" class="profile-header ham">
+        <h2>Welcome, <br>
+            Hafiz
+        </h2>
+        </div>
+        <div class="input-search ham">
+            <input type="text" placeholder="search for">
+            <img src="img/Vector (8).png" alt="search-icon">
+        </div>
+        <div class="side-ar">
+        <h3>General</h3>
+        <div class="second-se-bar">
+            <a href="dashboard"> <img src="img/Dashboard (1).svg" alt="dashboard" > <p>Dashboard</p></a>
+            <a href="marketplace"><img  src="img/marketplace.svg"  alt="marketplace"> <p>Marketplace</p></a>
+            <a href="user-farms"><img src="img/livestock-dashboard.svg" alt="livestock"> <p>Manage my farm</p></a>
+            <a href="farm-invest"><img src="img/invest.svg" alt="marketplace"> <p>Invest In a Project</p></a>
+            <a href="investment"><img src="img/history.svg" alt="history"> <p>ROI</p></a>
+            <a href="wallet kun"><img src="img/wallet-active.svg" class="current" alt="wallet"> <p>Wallet</p></a>
+        </div>
+    </div>
+    <div class="third-se-bar">
+            <a href="userSettings.html"><img src="img/settings.png" alt="settings"> <p>Settings</p></a>
+            <a href=""><img src="img/log out.svg" alt="settings"> <p>Logout</p></a>
+    </div>
+    <div class="guide-dash">
+        <img src="img/Notifications.png" alt="notifications" class="notifications">
+        <img src="img/Guides.png" alt="guides" width="32">
+    </div>
+      </div>
+    <!--Dashboard Hamburger Ends-->
     <div class="added-successfully">
         Withdrawal Processed!
     </div>
-    <header>
+    <header class="dashbrd-header">
         <div class="dashboard-header">
+        <img src="img/hamburger.svg" alt="#" id="hamburger" class="hamburger1">
             <div class="header-img">
-                <img src="img/logo.png" alt="logo" width="113">
+                <img src="img/logo.png" class="logo1x" alt="logo" width="113">
             </div>
             <div class="header-icons">
+            <div class="cart-whatsapp cart-whatsapp-dash">
+                    <a href='{{url('/cart')}}'><img src="{{asset('img/Group 51.png')}}" alt="cart" class="cart"></a>
+                       <span class="cart-counter"></span>
+                </div>
                 <div class="input-search">
                     <input type="text" placeholder="search for">
                     <img src="img/Vector (8).png" alt="search-icon">
@@ -83,8 +121,8 @@
             <img src="img/log out.svg" alt="log-out">
         </div>
     </div>
-    <div class="dashboard-container">
-        <h1>My Wallet.</h1>
+    <div class="dashboard-container sponsor mrkt-plc">
+        <h1 class="h1">My Wallet.</h1>
         <div class="wallet-flex">
             <div class="spending">
                 <div class="spend-1">
@@ -161,5 +199,6 @@
         <div class="overlay"></div>
      <!--Add status ends-->
      <script src="js/userWallet.js"></script>
+     <script src="js/dashboardHamburger.js"></script>
 </body>
 </html>

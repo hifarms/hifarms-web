@@ -77,7 +77,7 @@
                        <div class="i-want-to-sell">
                         <img src="img/Farmer Icon.svg" alt="farmer">
                         <p>I want to sell</p>
-                        <img src="img/Chevron.svg" alt="chevron" class="chevron" style="cursor: pointer;">
+                        <img src="img/Chevron.svg" alt="chevron" class="chevron" width="1px" style="cursor: pointer;">
                         </div>
                         <div class="add-product-modal">
                             <div class="product-quantity">

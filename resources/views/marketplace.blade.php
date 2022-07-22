@@ -10,18 +10,56 @@
     <title>Marketplace</title>
 </head>
 <body>
+       <!--Dashboard Hamburger Starts-->
+       <div class="dashboard-hamburger">
+        <div class="dash-hamb-img-name">
+        <img src="img/dashboard-hamburger-profile.png" alt="profile" class="profile-header ham">
+        <h2>Welcome, <br>
+            Hafiz
+        </h2>
+        </div>
+        <div class="input-search ham">
+            <input type="text" placeholder="search for">
+            <img src="img/Vector (8).png" alt="search-icon">
+        </div>
+        <div class="side-ar">
+        <h3>General</h3>
+        <div class="second-se-bar">
+            <a href="dashboard"> <img src="img/Dashboard (1).svg" alt="dashboard" > <p>Dashboard</p></a>
+            <a href="marketplace"><img  src="img/marketplaces-current.svg" alt="marketplace" class="current"> <p>Marketplace</p></a>
+            <a href="user-farms"><img src="img/livestock-dashboard.svg" alt="livestock"> <p>Manage my farm</p></a>
+            <a href="farm-invest"><img src="img/invest.svg" alt="marketplace"> <p>Invest In a Project</p></a>
+            <a href="investment"><img src="img/history.svg" alt="history"> <p>ROI</p></a>
+            <a href="wallet kun"><img src="img/wallet.svg" alt="wallet"> <p>Wallet</p></a>
+        </div>
+    </div>
+    <div class="third-se-bar">
+            <a href="userSettings.html"><img src="img/settings.png" alt="settings"> <p>Settings</p></a>
+            <a href=""><img src="img/log out.svg" alt="settings"> <p>Logout</p></a>
+    </div>
+    <div class="guide-dash">
+        <img src="img/Notifications.png" alt="notifications" class="notifications">
+        <img src="img/Guides.png" alt="guides" width="32">
+    </div>
+      </div>
+    <!--Dashboard Hamburger Ends-->
 <div class="added-successfully">
         Added to Cart!!
     </div>
     <div class="added-successfully sell-successfully">
         Added Successfully!!
     </div>
-    <header>
+    <header class="dashbrd-header">
         <div class="dashboard-header">
+        <img src="img/hamburger.svg" alt="#" id="hamburger" class="hamburger1">
             <div class="header-img">
-                <img src="img/logo.png" alt="logo" width="113">
+                <img src="img/logo.png" alt="logo"  class="logo1x" width="113">
             </div>
             <div class="header-icons">
+            <div class="cart-whatsapp cart-whatsapp-dash">
+                    <a href='{{url('/cart')}}'><img src="{{asset('img/Group 51.png')}}" alt="cart" class="cart"></a>
+                       <span class="cart-counter"></span>
+                </div>
                 <div class="input-search">
                     <input type="text" placeholder="search for">
                     <img src="img/Vector (8).png" alt="search-icon">
@@ -88,8 +126,9 @@
             <img src="img/log out.svg" alt="log-out">
         </div>
     </div>
-    <div class="dashboard-container">
-        <h1>Hi Farms Marketplace.</h1>
+
+    <div class="dashboard-container sponsor mrkt-plc">
+        <h1 class="h1">Hi Farms Marketplace.</h1>
         <div class="sponsor-container">
             
             <div class="sponsors-flex dashboard">
@@ -103,46 +142,63 @@
             </div>
             <div class="sponsor-grid dashboard">
                 <div class="sponsor-option">
+<div class="spd">                    
                     <div class="sponsor-checkbox dashboard">
+                       
+                    <div class="sponsors-flex dashboard show-this">
+                        <p class="showing-result">Showing 1-42</p>
+                        <select class="sponsor-option dashboard">
+                            <option value="all">Sort By</option>
+                            <option value="new">Newest</option>
+                            <option value="old">Oldest</option>
+                        </select>
+                    </div>
 
                     <div class="filter">
                             <form>
+                                <div class="mobile-category">
+                                <h2 class="filter-mobile">Filter By Price</h2>
+                                 <div class="line" style="height: 1px;width: 100%;background: #c4c4c4;margin-bottom: 10px;"></div>
+                                </div>
                                 <input type="range" min="0" max="80000" step="0.1" value="{{old('range')==null? 0 :old('range')}}" name='range' class="rate">
                                 <input type="submit" class="button-filter" value='FILTER'>
                                 <p class="filter-price">Price: ₦ 0 - ₦ 100</p>
-                                 <h3 class="sponsor-categories">CATEGORIES</h3>
+                                 <h3 class="sponsor-categories mobile-hide">CATEGORIES</h3>
+                                 <div class="line hide" style="height: 1px;width: 100%;background: #c4c4c4;margin-bottom: 10px;"></div>
                             </div>
-                        <div class="line" style="height: 1px;width: 300px;background: #c4c4c4;margin-bottom: 10px;"></div>
+                        <div class="line mobile-hide" style="height: 1px;width: 300px;background: #c4c4c4;margin-bottom: 10px;"></div>
                         <div class="flex dashboard">
                             <input type="checkbox" class="check" name='crop' {{ (old('crop'))=='on' ?"checked":null}}>
                             <p class="sponsor-crop dashboard">Crop</p>
-                            <P>0</P>
+                            <P class="quant">0</P>
                         </div>
                         <div class="flex dashboard">
                             <input type="checkbox" name="cattle" {{ (old('cattle'))=='on' ?"checked":null}}>
                             <p class="sponsor-crop dashboard">Cattles</p>
-                            <P>0</P>
+                            <P class="quant">0</P>
                         </div>
                         <div class="flex dashboard">
                             <input type="checkbox" class="poultry" {{ (old('poultry'))=='on' ?"checked":null}}>
                             <p class="sponsor-crop dashboard">Poultry</p>
-                            <P>0</P>
+                            <P class="quant">0</P>
                         </div>
                         <div class="flex dashboard">
                             <input type="checkbox" name="livestock" {{ (old('livestock'))=='on' ?"checked":null}}>
-                            <p class="sponsor-crop dashboard">Livestock</p>
-                            <P>0</P>
+                            <p class="sponsor-crop dashboard live">Livestock</p>
+                            <P class="quant">0</P>
                         </div>
                     </form>
+                    <div class="mobile-category">
+                    <h3 class="sponsor-categories">CATEGORIES</h3>
+                    <div class="line" style="height: 1px;width: 100%;background: #c4c4c4;margin-bottom: 10px;"></div>
                     </div>
-
-
+                    </div>
+</div>
                     <div class="farmer-section" style="cursor:pointer">
-                       <h3>Farmer</h3>
                        <div class="i-want-to-sell">
                         <img src="img/Farmer Icon.svg" alt="farmer">
-                        <p>I want to sell</p>
-                        <img src="img/Chevron.svg" alt="chevron" class="chevron" style="cursor: pointer;">
+                        <p>I want to sell.</p>
+                        <img src="img/Chevron.svg" alt="chevron" width="1px" class="chevron" style="cursor: pointer;">
                         </div>
                         <div class="add-product-modal">
                             <div class="product-quantity">
@@ -175,30 +231,11 @@
                     </div>
                 </div>
             
-                <div class="sponsor-data dashboard">
+                <div class="sponsor-data dashboard marketplace">
                     
-                    @foreach($products as $product)
-                    <div class="grid dashboard" style="height:575px">
-                        <p class="label">{{$product->label->name}}</p>
-                        <img src="{{$product->image}}" alt="image" class="marketplace-image">
-                        <h1>{{$product->name}}</h1>
-                        <div class="sponsor-inner-flex">
-                            <img src="img/location.svg" alt="">
-                            <p>{{$product->location}}</p>
-                        </div>
-                        <div class="sponsor-inner-flex">
-                            <img src="img/sponsor-cart.svg" alt="">
-                            <p>74% sold</p>
-                        </div>
-                        <h3 class="h3-dashboard">₦ {{$product->price}}</h3>
-
-                        <div class="purchase-div dashboard" style="justify-content: right;">
-                            <button class="purchaseBtn add-card" id="{{$product->id}}">Add to cart</button>
-                        </div>
-                    </div>
-                    @endforeach
+             
             
-                    <div class="grid dashboard" style="height:575px">
+                    <div class="grid dashboard">
                         <p class="label">New</p>
                         <img src="img/unsplash_leOh1CzRZVQ.png" alt="image" class="marketplace-image">
                         <h1>Fish Farm</h1>
@@ -217,7 +254,7 @@
                     </div>
             
             
-                    <div class="grid dashboard" style="height:575px">
+                    <div class="grid dashboard">
                         <p class="label">New</p>
                         <img src="img/unsplash_eOktYr3tAMo.png" alt="image" class="marketplace-image">
                         <h1>Fish Farm</h1>
@@ -233,9 +270,9 @@
                       
                     </div>
             
-                    <div class="grid dashboard" style="height:575px">
+                    <div class="grid dashboard">
                         <p class="label sold-out">Sold Out</p>
-                        <img src="img/unsplash_eOktYr3tAMo.png" alt="image" class="marketplace-image">
+                        <img src="./img/unsplash_eOktYr3tAMo.png" alt="image" class="marketplace-image">
                         <h1>Meat Breeding</h1>
                         <div class="sponsor-inner-flex">
                             <img src="img/location.svg" alt="">
@@ -250,7 +287,7 @@
                            <button  class="add-card">Add to cart</button>
                         </div>
                     </div>
-                    <div class="grid dashboard" style="height:575px">
+                    <div class="grid dashboard">
                         <p class="label sold-out">Sold Out</p>
                         <img src="img/unsplash_yFU8qIDo9s4.png" alt="image" class="marketplace-image">
                         <h1>Fish Farm</h1>
@@ -266,7 +303,7 @@
                         
                     </div>
             
-                    <div class="grid dashboard" style="height:575px">
+                    <div class="grid dashboard">
                         <p class="label out-of-stock">Out Of Stock</p>
                         <img src="img/unsplash_yFU8qIDo9s4.png" alt="image" class="marketplace-image">
                         <h1>Fish Farm</h1>
@@ -285,12 +322,14 @@
             </div>
             </div>
     </div>
+
+
     <div class="overlay"></div>
     <form method="post" action="/add-sell-product" enctype="multipart/form-data">
     <div class="admin-add-item">
         <div class="admin-add-item-container">
             <div class="close-add-item">x</div>
-            <h1 style="margin-top: 4px;margin-bottom: 15px;font-size:30px">Sell Product</h1>
+            <h1 style="margin-top: 4px;margin-bottom: 15px;">Sell Product</h1>
             <div class="product-name-category" style="margin-bottom: 10px">
                 <div class="product-name-dash">
                     <div class="tooltip-flex">
@@ -320,7 +359,7 @@
                 <input type="number" min='0' placeholder="Quantity" name="unit">
                 </div>
                  <div class="item-price">
-                 <div class="tooltip-flex" style="margin-left:-70px">
+                 <div class="tooltip-flex">
                     <label>Item Price</label>
                     <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
                     </div> <br>
@@ -413,5 +452,6 @@ clause also applies.</p>
        
         })
     </script>
+      <script src="js/dashboardHamburger.js"></script>
 </body>
 </html>
