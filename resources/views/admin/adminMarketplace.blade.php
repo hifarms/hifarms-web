@@ -150,7 +150,7 @@ Admin Marketplace
                             <img src="img/sponsor-cart.svg" alt="">
                             <p class="percentage-sold">74% sold</p>
                         </div>
-                        <h3 class="h3-dashboard">₦ 10,000</h3>
+                        <h3 class="add-hover">₦ 10,000</h3>
                         <div class="purchase-div dashboard">
                             <img src="img/admin-delete.png"  class="delete-admin" alt="delete" width="20" style="cursor: pointer;">
                            <button>Purchase</button>

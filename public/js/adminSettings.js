@@ -6,7 +6,7 @@ const togglePassword = document.querySelectorAll('.toggle-password');
 const changePassword = document.querySelector('.pass');
 const manageUsers = document.querySelector('.display-manage');
 const generalSettings = document.querySelector('.display-general');
-const statistics = document.querySelector('.display-stats');7
+const statistics = document.querySelector('.display-stats');
 const inbox = document.querySelector('.inbox')
 
 const toggle = () =>{
