@@ -5,21 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <meta name="_token" content="{{ csrf_token() }}" />
     <title>Livestock</title>
 </head>
 <body>
-    <div class="added-successfully">
-        Added Successfully!!!
-    </div>
-    <div class="edited-successfully">
-        Edited Successfully!!!
-    </div>
-    <header>
+           <!--Dashboard Hamburger Starts-->
+         
+    <!--Dashboard Hamburger Ends-->
+    <header class="dashbrd-header">
         <div class="dashboard-header">
+        <img src="img/hamburger.svg" alt="#" id="hamburger" class="hamburger1">
             <div class="header-img">
-                <img src="img/logo.png" alt="logo" width="113">
+                <img src="img/logo.png" class="logo1x" alt="logo" width="113">
             </div>
             <div class="header-icons">
+            <div class="cart-whatsapp cart-whatsapp-dash">
+                    <a href='{{url('/cart')}}'><img src="{{asset('img/Group 51.png')}}" alt="cart" class="cart"></a>
+                       <span class="cart-counter"></span>
+                </div>
                 <div class="input-search">
                     <input type="text" placeholder="search for">
                     <img src="img/Vector (8).png" alt="search-icon">
@@ -73,17 +76,16 @@
         <div class="first-side-bar">
             <img src="img/side-bar.svg" alt="side-bar">
         </div>
-        <div class="second-side-bar admin">
-            <a href="adminDashboard.html"> <img src="img/Dashboard (1).svg" alt="dashboard"></a>
-            <a href="adminMarketplace.html"><img src="img/marketplace.svg" alt="marketplace"></a>
-            <a href="adminMyFarm.html"><img src="img/livestock-current.svg" alt="livestock" class="current"> </a>
-            <a href="adminInvest.html"><img src="img/invest.svg" alt="marketplace"></a>
-            <a href="adminInvestReturns.html"> <img src="img/history.svg" alt="history"> </a>
-            <a href="adminWallet.html"><img src="img/wallet.svg" alt="wallet"> </a>
-            <a href="adminBlog.html"><img src="img/blog-pin.png" alt="blog-pin> </a>
+        <div class="second-side-bar">
+            <a href="dashboard"> <img src="img/Dashboard (1).svg" alt="dashboard"></a>
+            <a href="marketplace"><img src="img/marketplace.svg" alt="marketplace"></a>
+            <a href="user-farms"><img src="img/livestock-current.svg" alt="livestock" class="current"> </a>
+            <a href="farm-invest"><img src="img/invest.svg" alt="marketplace"></a>
+            <a href="investment"> <img src="img/history.svg" alt="history"> </a>
+            <a href="wallet"><img src="img/wallet.svg" alt="wallet"> </a>
         </div>
-        <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;">
-            <a href="adminSettings.html"><img src="img/settings.png" alt="settings"></a>
+        <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;margin-bottom: 10px;">
+            <a href="userSettings.html"><img src="img/settings.png" style="margin-bottom: 30px;" alt="settings"></a>
             <img src="img/log out.svg" alt="log-out">
         </div>
     </div>
@@ -91,30 +93,33 @@
       <h1>My Farm</h1>
       <div class="my-farm-1">
         <img src="img/Farmer Icon (1).svg" alt="farm-icon" width="130" class="farm-icon">
+    <div class="displ">
         <div class="weatherflex">
             <div class="weather-2">
                 <div class="flex-1">
                     <p>Weather</p>
                     <img src="img/clouds.png" alt="clouds">
-                    <img src="img/temprature.png" alt="celsius">
+                    <img src="img/temprature.png" alt="celsius"  class="celsius-1">
                 </div>
                 <div class="flex-2">
-                    <img src="img/options.png" alt="">
+                    <img src="img/options.png" alt="" class="optin">
                 </div>
             </div>
             <div class="weather-2">
                 <div class="flex-1">
                     <p>Humidity</p>
                     <img src="img/clouds.png" alt="clouds">
-                    <img src="img/16º.svg" alt="celsius">
+                    <img src="img/16º.svg" alt="celsius" class="celsius">
                 </div>
                 <div class="flex-2">
-                    <img src="img/options.png" alt="">
+                    <img src="img/options.png" class="optin" alt="">
                 </div>
             </div>
         </div>
           <img src="img/Farm chart.svg" alt="farm-chart" class="farm-chart">
       </div>
+</div>
+
         <div class="dashboard-flex livestock">
        <div class="marketplace-flex manage-your-farm livestock">
                 <div class="top-marketplace-flex">
@@ -125,7 +130,7 @@
                     <p>Livestock Farming</p>
                   </div>
                 <div class="views-numbers">
-                    <p>0</p>
+                    <p>{{$livestock}}</p>
                     <!--Icon to show when an existing user sign in to the dashboard-->
                     <img src="img/play-button.svg" style="cursor:pointer" class="eye-icon" alt="eye-icon" width="23">
                     <!--Icon to show when a new user sign in to the dashboard-->
@@ -141,7 +146,7 @@
                     <p>Crops Farming</p>
                   </div>
                 <div class="views-numbers">
-                    <p>0</p>
+                    <p>{{ $crop}}</p>
                     <img src="img/play-button.svg" alt="eye-icon" width="23">
                 </div>
             </div>  
@@ -179,128 +184,36 @@
 <div class="admin-add-item livestock">
     <div class="admin-add-item-container">
         <div class="close-add-item">x</div>
-        <h1 style="margin-top: 4px;margin-bottom: 20px;font-size:24px">ADD A LIVESTOCK FARM</h1>
+        <h1 style="margin-top: 4px;margin-bottom: 20px;" class="cst-bnft">COST BENEFIT ANALYSIS</h1>
         <div class="product-name-category">
             <div class="product-name-dash">
                 <div class="tooltip-flex">
                 <label>Farm Type</label>
-                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
+                <div class="tooltip">? <span class="tooltiptext">Farm type</span></div>
                 </div> <br>
-                <select>
-                     <option>Poultry Farm</option>
+                <select id="type" class="type">
+                     <option value="1">Broiler Chicken</option>
                  </select>
             </div>
             <div class="product-category-dash" style="margin-bottom:3px">
             <div class="tooltip-flex">
-                <label>Farm Produce</label>
-                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
+                <label>Budget</label>
+                <div class="tooltip">? <span class="tooltiptext">Amount you want to start the farm</span></div>
                 </div> <br>
-                 <select>
-                     <option>Broiler Chicken</option>
-                 </select>
+                <input type="number" id="amount" placeholder="Enter amount Budgeted" style="height: 30px">
             </div>
         </div>
-        <div class="qty-item-image" style="margin-bottom: 15px">
-             <div class="item-price">
-             <div class="tooltip-flex">
-                <label>Working Cost(₦)</label>
-                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
-                </div> <br>
-            <input type="text" placeholder="Enter item price"> 
-             </div>
-             <div class="qty">
-            <div class="tooltip-flex">
-                <label>Qty Required</label>
-                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
-                </div> <br>
-            <input type="number" min='0' placeholder="Quantity">
-            </div>
-             <div class="img-dash">
-             <div class="tooltip-flex">
-                <label>Unit Price(₦)</label>
-                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
-                </div> <br>
-            <input type="number" min="0">
-             </div>
-            
+        <p style="text-align:center; padding:2px;">Total Sales(₦) <span id="sales">0.00</span></p>
+        <p style="text-align:center;padding:2px;">Gross Profit(₦) <span id="cross">0.00</span></p>
+       <p style="text-align:center;padding:2px;">Net Profit(₦) <span id="net">0.00</span></p>
+        <div class="warning-button compute">
+            <button>Compute</button>
         </div>
 
-
-        <div class="acc-name-number" style="margin-bottom: 15px">
-            <div class="bank-name">
-            <div class="tooltip-flex">
-                <label>Measures</label>
-                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
-                </div> <br>
-            <select>
-                <option>Chicks</option>
-            </select>
-            </div>
-            <div class="acc-name">
-            <div class="tooltip-flex">
-            <label style="padding-left: 20px;" for="">Variable Cost(₦)</label>
-                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
-                </div> <br>
-            
-            <input type="text" placeholder="Enter variable cost">
-            </div>
-            <div class="acc-number">
-            <div class="tooltip-flex">
-                <label style="color:rgba(64, 74, 61, 0.5)">Defect Liability(%)</label>
-                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
-                </div> <br>
-            <input type="text" style="color:rgba(64, 74, 61, 0.5)" value="10" disabled placeholder="Enter your account number">
-            </div>
-        </div>
-        <div class="acc-name-number" style="margin-bottom: 10px">
-        <div class="acc-name">
-            <div class="tooltip-flex">
-            <label for="">Variable Cost(₦)</label>
-                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
-                </div> <br>
-            
-            <input type="text" style="margin-left:unset;" placeholder="Enter variable cost">
-            </div>
-            <div class="acc-name" style="margin-left: -40px">
-            <div class="tooltip-flex">
-            <label style="padding-left: 20px;" for="">Fixed Assets(₦)</label>
-                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
-                </div> <br>
-            
-            <input type="text" placeholder="Enter fixed assets">
-            </div>
-            <div class="acc-number">
-            <div class="tooltip-flex">
-                <label>Gross Profit(₦)</label>
-                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
-                </div> <br>
-            <input type="text" placeholder="Gross profits">
-            </div>
-        </div>
-        <div class="location-dash">
-        <div class="gross-flex">
-        <div class="acc-number" style="margin-right:20px">
-            <div class="tooltip-flex">
-            <label style="color:rgba(64, 74, 61, 0.5)">Tax @(7.50)</label>
-                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
-                </div> <br>
-                <input type="text" style="color:rgba(64, 74, 61, 0.5)" value="7.5" disabled >
-            </div>
-            <div class="acc-number">
-            <div class="tooltip-flex">
-                <label>Net Profit(₦)</label>
-                <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
-                </div> <br>
-            <input type="text" placeholder="Net profits">
-            </div>
-            </div>
-        </div>
-            <div class="button-admin-container"  style="margin-top: 30px;">
-                <button class="add-item-submit admin-dash-submit"><span style="padding-left:33px ;padding-right: 33px;" class="edit-want-to-sell-span">Compute</span>  <img class="loader loader-edit" src="img/loader-hifarm.gif" alt="#"> </button>
-            </div>
 </div>
 </div>
 <script src="js/livestock.js"></script>
 <script src="js/adminMyFarm.js"></script>
+<script src="js/dashboardHamburger.js"></script>
 </body>
 </html>

@@ -11,6 +11,18 @@
   padding-top: unset;
 }
 
+.line.mobile-hide{
+  display: block;
+}
+
+.line.line.mobile-hide{
+  display: block;
+}
+
+.sponsor-categories.mobile-hide{
+  display: block;
+}
+
 .dashboard-container.profile .use-pro{
   margin-top: -38px;
   margin-bottom: 10px;
@@ -8659,11 +8671,36 @@ font-size: 20px;
   width: 280px;
   margin-top: 15px;
 }
-.sponsor-grid.dashboard.admin{
-  flex-direction: column-reverse;
+.sponsor-grid.dashboard.admin {
+    flex-direction: column;
 }
 .i-want-to-sell .sell{
   display: block!important;
+}
+.sponsor-data.dashboard.admn-mrkt .grid.dashboard{
+  margin-bottom: 20px;
+  width: 180px;
+}
+.sponsor-data.dashboard.admn-mrkt{
+  margin-left: -1px;
+}
+.grid.dashboard.add-new-product{
+ height: 395px!important;
+}
+.admin-add-pic{
+  margin-top: 30px!important;
+    padding-left: unset; 
+    padding-right: unset;
+}
+.sponsor-data .grid.dashboard.add-new-product img{
+  width: 140px;
+}
+.edit-add-item{
+  width: 350px;
+}
+.mbl{
+  font-size: 18px!important;
+  margin-top: 15px!important;
 }
 
 
