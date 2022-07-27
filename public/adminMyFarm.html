@@ -9,8 +9,41 @@
     <title>Livestock</title>
 </head>
 <body>
-           <!--Dashboard Hamburger Starts-->
-         
+    <!--Dashboard Hamburger Starts-->
+                <!--Dashboard Hamburger Starts-->
+      <div class="dashboard-hamburger">
+        <div class="dash-hamb-img-name">
+        <img src="img/dashboard-hamburger-profile.png" alt="profile" class="profile-header ham">
+        <h2>Welcome, <br>
+            Hafiz
+        </h2>
+        </div>
+        <div class="input-search ham">
+            <input type="text" placeholder="search for">
+            <img src="img/Vector (8).png" alt="search-icon">
+        </div>
+        <div class="side-ar">
+        <h3>General</h3>
+        <div class="second-se-bar">
+            <a href="adminDashboard.html"> <img src="img/Dashboard.svg" alt="dashboard" class="current"> <p>Dashboard</p></a>
+            <a href="adminMarketplace.html"><img src="img/marketplace.svg" alt="marketplace"> <p>Marketplace</p></a>
+            <a href="adminMyFarm.html"><img src="img/livestock-dashboard.svg" alt="livestock"> <p>Manage my farm</p></a>
+            <a href="adminInvest.html"><img src="img/invest.svg" alt="marketplace"> <p>Invest In a Project</p></a>
+            <a href="adminInvestReturns.html"><img src="img/history.svg" alt="history"> <p>ROI</p></a>
+            <a href="adminWallet.html"><img src="img/wallet.svg" alt="wallet"> <p>Wallet</p></a>
+            <a href="adminBlog.html"><img src="img/blog-pin.png" alt="blog-pin"> <p>Blog</p></a>
+        </div>
+    </div>
+    <div class="third-se-bar">
+            <a href="adminSettings.html"><img src="img/settings.png" alt="settings"> <p>Settings</p></a>
+            <a href=""><img src="img/log out.svg" alt="settings"> <p>Logout</p></a>
+    </div>
+    <div class="guide-dash">
+        <img src="img/Notifications.png" alt="notifications" class="notifications">
+        <img src="img/Guides.png" alt="guides" width="32">
+    </div>
+      </div>
+    <!--Dashboard Hamburger Ends-->
     <!--Dashboard Hamburger Ends-->
     <header class="dashbrd-header">
         <div class="dashboard-header">
@@ -20,7 +53,7 @@
             </div>
             <div class="header-icons">
             <div class="cart-whatsapp cart-whatsapp-dash">
-                    <a href='{{url('/cart')}}'><img src="{{asset('img/Group 51.png')}}" alt="cart" class="cart"></a>
+                    <a href='{{url('/cart')}}'><img src='img/Group 51.png' alt="cart" class="cart"></a>
                        <span class="cart-counter"></span>
                 </div>
                 <div class="input-search">
@@ -130,7 +163,7 @@
                     <p>Livestock Farming</p>
                   </div>
                 <div class="views-numbers">
-                    <p>{{$livestock}}</p>
+                    <p>0</p>
                     <!--Icon to show when an existing user sign in to the dashboard-->
                     <img src="img/play-button.svg" style="cursor:pointer" class="eye-icon" alt="eye-icon" width="23">
                     <!--Icon to show when a new user sign in to the dashboard-->
@@ -146,7 +179,7 @@
                     <p>Crops Farming</p>
                   </div>
                 <div class="views-numbers">
-                    <p>{{ $crop}}</p>
+                    <p>0</p>
                     <img src="img/play-button.svg" alt="eye-icon" width="23">
                 </div>
             </div>  
