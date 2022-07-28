@@ -8922,6 +8922,23 @@ font-size: 20px;
 .add-blog-post-modal .text textarea {
   width: 100%;
 }
+.users-list .user .user-part img {
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+}
+.users-list .user .user-part p{
+  font-size: 12px;
+}
+.users-list .user .delete-edit-user img {
+  width: 15px;
+  height: 15px;
+}
+.general-ser.manage {
+  width: 369px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
 
 
 }
