@@ -7354,6 +7354,28 @@ table, td, th {
   color: #fff;
   border-radius: 6px;
 }
+.deleted-successfully-2{
+  position: absolute;
+  padding: 12px;
+  text-align: center;
+  background-color: rgba(139, 197, 62, 0.7);
+  top: 44px;
+  font-size: 10px;
+  right: 15px;
+  color: #fff;
+  border-radius: 6px;
+}
+.deleted-successfully{
+  position: absolute;
+  padding: 12px;
+  text-align: center;
+  background-color: rgba(139, 197, 62, 0.7);
+  top: 44px;
+  font-size: 10px;
+  right: 15px;
+  color: #fff;
+  border-radius: 6px;
+}
 .moved-successfully {
   position: absolute;
   padding: 12px;
@@ -7366,6 +7388,61 @@ table, td, th {
   border-radius: 6px;
 }
 .added-successfully {
+  position: absolute;
+  padding: 12px;
+  text-align: center;
+  background-color: rgba(139, 197, 62, 0.7);
+  top: 44px;
+  font-size: 10px;
+  right: 15px;
+  color: #fff;
+  border-radius: 6px;
+}
+.mail-sent{
+  position: absolute;
+  padding: 12px;
+  text-align: center;
+  background-color: rgba(139, 197, 62, 0.7);
+  top: 44px;
+  font-size: 10px;
+  right: 15px;
+  color: #fff;
+  border-radius: 6px;
+}
+.settings.save-successful{
+  position: absolute;
+  padding: 12px;
+  text-align: center;
+  background-color: rgba(139, 197, 62, 0.7);
+  top: 44px;
+  font-size: 10px;
+  right: 15px;
+  color: #fff;
+  border-radius: 6px;
+}
+.added-successfully-2{
+  position: absolute;
+  padding: 12px;
+  text-align: center;
+  background-color: rgba(139, 197, 62, 0.7);
+  top: 44px;
+  font-size: 10px;
+  right: 15px;
+  color: #fff;
+  border-radius: 6px;
+}
+.settings.added-successfully{
+  position: absolute;
+  padding: 12px;
+  text-align: center;
+  background-color: rgba(139, 197, 62, 0.7);
+  top: 44px;
+  font-size: 10px;
+  right: 15px;
+  color: #fff;
+  border-radius: 6px;
+}
+.priv-added{
   position: absolute;
   padding: 12px;
   text-align: center;
@@ -8939,7 +9016,56 @@ font-size: 20px;
   padding-left: 15px;
   padding-right: 15px;
 }
-
+.users-list .line-add-user span{
+  font-size: 25px;
+}
+.users-list .line-add-user div{
+  font-size: 12px;
+}
+.save-changes button{
+  margin-right: 60px;
+}
+.second-box{
+  padding-left: unset;
+}
+.stats-opt{
+  margin-right: 30px!important;
+}
+.general-information.stats {
+  margin-top: 80px;
+  margin-right: 15px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+.general-ser.inbox{
+  width: 378px;
+}
+.all-mark button {
+  padding: 10px;
+  width: 40%;
+}
+.messages-catalog .message-inner p{
+  font-size: 14px;
+}
+.messages-catalog {
+  padding-top: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.messages-catalog .message-inner span{
+  font-size: 12px;
+}
+.p-amn{
+  padding-top: 10px!important;
+  padding-bottom: 10px!important;
+}
+.entry-search.admin-search.ad-dsh{
+  display: none!important;
+}
+.admin-view-sell{
+  padding-top: 50px;
+}
 
 }
 
