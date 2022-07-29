@@ -54,6 +54,7 @@ class FarmController extends Controller
             $path = $file->store('/images/farm','public');
             $farm->image = 'storage/'.$path;
         }
+        
         $farm->save();
 
         return redirect()->back()->with(['success'=>'Farm created successfully']);
@@ -63,7 +64,6 @@ class FarmController extends Controller
     public function destroy(Farm $farm){
 
         $this->authorize('view', $farm);
-
         // saving image url
         $tempurl=$farm->image;
         //delete farm
@@ -80,6 +80,7 @@ class FarmController extends Controller
        }
 
        public function costBenefitProfit(Request $request){
+
             if($request->type=="1"){
             $chicks=costInput::where('cost_farm_id',$request->type)->where('variable_name','chicks')->first();
             $chickenProfit=0;

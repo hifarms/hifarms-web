@@ -27,11 +27,13 @@ class CreateUsersTable extends Migration
             $table->string('occupation')->nullable();
             $table->string('activated')->nullable();
             $table->boolean('status')->default(0);
+            $table->boolean('is_verified')->default(0);
             $table->string('country')->nullable();
             $table->string('refer_by_id')->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->foreignId('role_id')->default(1)->constrained();
+            $table->foreignId('bank_id')->nullable()->constrained();
             $table->string('google_id')->nullable();
             $table->string('facebook_id')->nullable();
             $table->rememberToken();

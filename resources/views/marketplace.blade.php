@@ -34,7 +34,7 @@
         </div>
     </div>
     <div class="third-se-bar">
-            <a href="userSettings.html"><img src="img/settings.png" alt="settings"> <p>Settings</p></a>
+            <a href="user-settings"><img src="img/settings.png" alt="settings"> <p>Settings</p></a>
             <a href=""><img src="img/log out.svg" alt="settings"> <p>Logout</p></a>
     </div>
     <div class="guide-dash">
@@ -122,7 +122,7 @@
              <a href="wallet"><img src="img/wallet.svg" alt="wallet"> </a>
         </div>
         <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;margin-bottom: 10px;">
-            <a href="userSettings.html"><img src="img/settings.png" style="margin-bottom: 30px;" alt="settings"></a>
+            <a href="user-settings"><img src="img/settings.png" style="margin-bottom: 30px;" alt="settings"></a>
             <img src="img/log out.svg" alt="log-out">
         </div>
     </div>
@@ -130,11 +130,11 @@
     <div class="dashboard-container sponsor mrkt-plc">
         <h1 class="h1">Hi Farms Marketplace.</h1>
         <div class="sponsor-container">
-            
+            <form>
             <div class="sponsors-flex dashboard">
                 <p class="filter-heading dashboard">FILTER BY PRICE</p>
-                <p class="showing-result">Showing 1-42</p>
-                <select class="sponsor-option dashboard">
+                <p class="showing-result">Showing {{$products->currentPage()}}-{{$products->lastPage()}}</p>
+                <select class="sponsor-option dashboard sort" name="sort">
                     <option value="all">Sort By</option>
                     <option value="new">Newest</option>
                     <option value="old">Oldest</option>
@@ -146,8 +146,8 @@
                     <div class="sponsor-checkbox dashboard">
                        
                     <div class="sponsors-flex dashboard show-this">
-                        <p class="showing-result">Showing 1-42</p>
-                        <select class="sponsor-option dashboard">
+                        <p class="showing-result">Showing 1-{{$products->lastPage()}}</p>
+                        <select class="sponsor-option dashboard " name="">
                             <option value="all">Sort By</option>
                             <option value="new">Newest</option>
                             <option value="old">Oldest</option>
@@ -155,14 +155,14 @@
                     </div>
 
                     <div class="filter">
-                            <form>
+                           
                                 <div class="mobile-category">
                                 <h2 class="filter-mobile">Filter By Price</h2>
                                  <div class="line" style="height: 1px;width: 100%;background: #c4c4c4;margin-bottom: 10px;"></div>
                                 </div>
-                                <input type="range" min="0" max="80000" step="0.1" value="{{old('range')==null? 0 :old('range')}}" name='range' class="rate">
+                                <input type="range" min="0" max="50000" step="0.1" value="{{old('range')==null? 0 :old('range')}}" name='range' class="rate">
                                 <input type="submit" class="button-filter" value='FILTER'>
-                                <p class="filter-price">Price: ₦ 0 - ₦ 100</p>
+                                <p class="filter-price">Price: ₦ 0 - ₦ 50,000</p>
                                  <h3 class="sponsor-categories mobile-hide">CATEGORIES</h3>
                                  <div class="line hide" style="height: 1px;width: 100%;background: #c4c4c4;margin-bottom: 10px;"></div>
                             </div>
@@ -178,7 +178,7 @@
                             <P class="quant">0</P>
                         </div>
                         <div class="flex dashboard">
-                            <input type="checkbox" class="poultry" {{ (old('poultry'))=='on' ?"checked":null}}>
+                            <input type="checkbox" class="poultry" name="poultry" {{ (old('poultry'))=='on' ?"checked":null}}>
                             <p class="sponsor-crop dashboard">Poultry</p>
                             <P class="quant">0</P>
                         </div>
@@ -234,91 +234,32 @@
                 <div class="sponsor-data dashboard marketplace">
                     
              
-            
+                    @foreach($products as $product)
                     <div class="grid dashboard">
-                        <p class="label">New</p>
-                        <img src="img/unsplash_leOh1CzRZVQ.png" alt="image" class="marketplace-image">
-                        <h1>Fish Farm</h1>
+                        <p class="label {{$product->label->color}}">{{$product->label->name}}</p>
+                        <img src="{{url($product->image)}}" alt="image" class="marketplace-image">
+                        <h1>{{$product->name}}</h1>
                         <div class="sponsor-inner-flex">
-                            <img src="img/location.svg" alt="">
-                            <p>Birnin Kebbi, Central Market</p>
+                            <img src={{url("img/location.svg")}} alt="">
+                            <p>{{$product->location}}</p>
                         </div>
                         <div class="sponsor-inner-flex">
                             <img src="img/sponsor-cart.svg" alt="">
                             <p>74% sold</p>
                         </div>
-                        <h3 class="h3-dashboard">₦ 10,000</h3>
+                        <h3 class="h3-dashboard">₦ {{$product->price}}</h3>
+                        @if($product->label->name=="New")
                         <div class="purchase-div dashboard" style="justify-content: right;">
-                            <button class="add-card">Add to cart</button>
+                            <button class="purchaseBtn add-card" id="{{$product->id}}">Add to cart</button>
                         </div>
+                        @endif
                     </div>
-            
-            
-                    <div class="grid dashboard">
-                        <p class="label">New</p>
-                        <img src="img/unsplash_eOktYr3tAMo.png" alt="image" class="marketplace-image">
-                        <h1>Fish Farm</h1>
-                        <div class="sponsor-inner-flex">
-                            <img src="img/location.svg" alt="">
-                            <p>Birnin Kebbi, Central Market</p>
-                        </div>
-                        <div class="sponsor-inner-flex">
-                            <img src="img/sponsor-cart.svg" alt="">
-                            <p>74% sold</p>
-                        </div>
-                        <h3 class="h3-dashboard">₦ 10,000</h3>
-                      
-                    </div>
-            
-                    <div class="grid dashboard">
-                        <p class="label sold-out">Sold Out</p>
-                        <img src="./img/unsplash_eOktYr3tAMo.png" alt="image" class="marketplace-image">
-                        <h1>Meat Breeding</h1>
-                        <div class="sponsor-inner-flex">
-                            <img src="img/location.svg" alt="">
-                            <p>Birnin Kebbi, Central Market</p>
-                        </div>
-                        <div class="sponsor-inner-flex">
-                            <img src="img/sponsor-cart.svg" alt="">
-                            <p>74% sold</p>
-                        </div>
-                        <h3 class="h3-dashboard">₦ 10,000</h3>
-                        <div class="purchase-div dashboard" style="justify-content: right;">
-                           <button  class="add-card">Add to cart</button>
-                        </div>
-                    </div>
-                    <div class="grid dashboard">
-                        <p class="label sold-out">Sold Out</p>
-                        <img src="img/unsplash_yFU8qIDo9s4.png" alt="image" class="marketplace-image">
-                        <h1>Fish Farm</h1>
-                        <div class="sponsor-inner-flex">
-                            <img src="img/location.svg" alt="">
-                            <p>Birnin Kebbi, Central Market</p>
-                        </div>
-                        <div class="sponsor-inner-flex">
-                            <img src="img/sponsor-cart.svg" alt="">
-                            <p>74% sold</p>
-                        </div>
-                        <h3 class="h3-dashboard">₦ 10,000</h3>
-                        
-                    </div>
-            
-                    <div class="grid dashboard">
-                        <p class="label out-of-stock">Out Of Stock</p>
-                        <img src="img/unsplash_yFU8qIDo9s4.png" alt="image" class="marketplace-image">
-                        <h1>Fish Farm</h1>
-                        <div class="sponsor-inner-flex">
-                            <img src="img/location.svg" alt="">
-                            <p>Birnin Kebbi, Central Market</p>
-                        </div>
-                        <div class="sponsor-inner-flex">
-                            <img src="img/sponsor-cart.svg" alt="">
-                            <p>74% sold</p>
-                        </div>
-                        <h3 class="h3-dashboard">₦ 10,000</h3>
-                       
-                    </div>
+                    @endforeach
+                    {{-- <div>
+                        {{$products->links()}}
+                    </div> --}}
                 </div>
+                
             </div>
             </div>
     </div>
@@ -374,32 +315,7 @@
                  </div>
                 
             </div>
-            <div class="acc-name-number" style="margin-bottom: 10px">
-                <div class="bank-name">
-                <div class="tooltip-flex">
-                    <label>Bank Name</label>
-                    <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
-                    </div> <br>
-                <select name="bank-name">
-                    <option name="access">Access Bank</option>
-                </select>
-                </div>
-                <div class="acc-name">
-                <div class="tooltip-flex">
-                <label style="padding-left: 20px;" for="">Acc. Name</label>
-                    <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
-                    </div> <br>
-                
-                <input type="text"name="accName" placeholder="Enter your account name">
-                </div>
-                <div class="acc-number">
-                <div class="tooltip-flex">
-                    <label>Acc. Name</label>
-                    <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
-                    </div> <br>
-                <input type="text" name="accNumber" placeholder="Enter your account number">
-                </div>
-            </div>
+
             <div class="location-dash">
             <div class="tooltip-flex">
                     <label>Location</label>
@@ -418,7 +334,7 @@
 clause also applies.</p>
                 </div>
                 <div class="button-admin-container"  style="margin-top: 0px;">
-                    <button class="add-item-submit admin-dash-submit"><span style="padding-left:48px ;padding-right: 49px;" class="span-class">Sell</span>  <img class="loader loader-span" src="img/loader-hifarm.gif" alt="#"> </button>
+                    <button type="submit" class="add-item-submit admin-dash-submit"><span style="padding-left:48px ;padding-right: 49px;" class="span-class">Sell</span>  <img class="loader loader-span" src="img/loader-hifarm.gif" alt="#"> </button>
                 </div>
             </div>
     </div>
@@ -434,7 +350,8 @@ clause also applies.</p>
             }
         });
 
-        $('.purchaseBtn').on('click',function(){
+        $('.purchaseBtn').on('click',function(e){
+            e.preventDefault();
             jQuery.ajax({
                     url: "http://127.0.0.1:8000/addcart/product",
                     method: "post",
@@ -443,15 +360,19 @@ clause also applies.</p>
                         unit:1
                     },
                     success: function (data) {
-                        console.log(data)
+                        alert(data.success)
+                        getCartNum()
                     },
                     error: function (e) {
-                       console.log(e);
+                        alert(e.responseJSON.error)
                     },
                 });
        
         })
+        $('.sort').on('change',()=>{
+        $('form')[0].submit()
+    })
     </script>
-      <script src="js/dashboardHamburger.js"></script>
+    <script src="js/dashboardHamburger.js"></script>
 </body>
 </html>

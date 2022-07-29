@@ -32,7 +32,7 @@ class CartItemController extends Controller
     public function checkInCart(Request $request,$id){
         $tempid =  $request->cookie('carts');
 
-        $bool=Cart_item::where('temp_id',$tempid)->where('farm_id',$id)->first();
+        $bool=Cart_item::where('temp_id',$tempid)->where('farm_id',$id)->orWhere('product_id',$id)->first();
         if($bool){
             return response()->json(['status'=>true], 200);
         }
@@ -43,12 +43,12 @@ class CartItemController extends Controller
 
         //get temp_id from cookie
         $tempid =  $request->cookie('carts');
-      
+        $user =auth()->user();
         //market place cart
-        $martCartItems=Cart_item::where('temp_id',$tempid)->orWhere('user_id','==',1)->get();
+        $martCartItems=Cart_item::where('temp_id',$tempid)->orWhere('user_id','==',$user->id)->get();
 
         //farm investment cart
-        $farmCartItems=Cart_item::where('temp_id',$tempid)->orWhere('user_id','=',1)->get();
+        $farmCartItems=Cart_item::where('temp_id',$tempid)->orWhere('user_id','=',$user->id)->get();
 
         return view('cart',['mart'=>$martCartItems,'farms'=>$farmCartItems]);
     }
@@ -69,10 +69,8 @@ class CartItemController extends Controller
         $tempid = $request->cookie('carts');
         $cookie = cookie('carts',$tempid, 60*300);
         if(!$tempid){
-
             // generating ramdom Str
             $tempid= Str::random(20);
-
             $cookie = cookie('carts',$tempid, 60*300);
         }
 
@@ -85,7 +83,7 @@ class CartItemController extends Controller
         //check if cart item is already in cart
         $Item=Cart_item::where('product_id',$request->id)->where('temp_id',$tempid)->first();
         if($Item){
-            return response()->json(['error'=>'Item is already in the cart'],401);
+            return response()->json(['error'=>'Item is already in the cart'],403);
         }
 
             $product= Product::where('id',$request->id)->firstOrFail();
@@ -99,14 +97,14 @@ class CartItemController extends Controller
                 $cart->save();
                 // storing temp id in cookies
 
-                return response()->json($cart, 200)->cookie($cookie);
+                return response()->json(['success'=>'Added to Cart'], 200)->cookie($cookie);
         }
         
         // adding Farm investments to cart
         else if($type=='investment'){
             $Item=Cart_item::where('farm_id',$request->id)->where('temp_id',$tempid)->first();
             if($Item){
-                return response()->json(['error'=>'Item is already in the cart'],401);
+                return response()->json(['error'=>'Item is already in the cart'],403);
             }
                $farm= Farm::where('id',$request->id)->firstOrFail();
                 $cart = new Cart_item();
@@ -118,7 +116,7 @@ class CartItemController extends Controller
                 $cart->temp_id = $tempid;
                 $cart->save();
 
-                return response()->json($cart, 201)->cookie($cookie);
+                return response()->json(['success'=>'Added to Cart'], 201)->cookie($cookie);
         }
         else{
                 abort(404);

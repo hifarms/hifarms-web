@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Wallet</title>
+    <meta name="_token" content="{{ csrf_token() }}" />
+    <script src="{{asset('js/jquery.min.js')}}"></script>
 </head>
 <body>
       <!--Dashboard Hamburger Starts-->
@@ -32,7 +34,7 @@
         </div>
     </div>
     <div class="third-se-bar">
-            <a href="userSettings.html"><img src="img/settings.png" alt="settings"> <p>Settings</p></a>
+            <a href="user-settings"><img src="img/settings.png" alt="settings"> <p>Settings</p></a>
             <a href=""><img src="img/log out.svg" alt="settings"> <p>Logout</p></a>
     </div>
     <div class="guide-dash">
@@ -117,7 +119,7 @@
             <a href="wallet"><img src="img/wallet-active.svg" alt="wallet" class="current"></a>
         </div>
         <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;margin-bottom: 10px;">
-            <a href="userSettings.html"><img src="img/settings.png" style="margin-bottom: 30px;" alt="settings"></a>
+            <a href="user-settings"><img src="img/settings.png" style="margin-bottom: 30px;" alt="settings"></a>
             <img src="img/log out.svg" alt="log-out">
         </div>
     </div>
@@ -189,10 +191,10 @@
                 <div class="close-delete-modal close-status">x</div>
                 <h1 style="margin-left:-18px;font-size: 23px;text-align: center;margin-bottom:30px;margin-top: 55px;">Withdrawal Request</h1>
                  <label style="color:#000;font-size: 20px;">Amount:</label>
-                <input type="text" placeholder="Enter here..." class="category-value" style="font-size:18px;border: 1px solid #cccccc;margin-left: 8px;padding: 15px;width: 70%;">
+                <input type="text" class="i-amount" name="amount" placeholder="Enter here..." class="category-value" style="font-size:18px;border: 1px solid #cccccc;margin-left: 8px;padding: 15px;width: 70%;">
               
                 <div class="button-admin-container"  style="margin-top: 20px;">
-                    <button class="add-item-submit admin-dash-submit"><span style="padding-left:46px ;padding-right: 46px;" class="span-class">Send</span>  <img class="loader loader-span" src="img/loader-hifarm.gif" alt="#"> </button>
+                    <button class="add-item-submit admin-dash-submit send-request"><span style="padding-left:46px ;padding-right: 46px;" class="span-class">Send</span>  <img class="loader loader-span" src="img/loader-hifarm.gif" alt="#"> </button>
                 </div>
             </div>
             </div>
@@ -200,5 +202,30 @@
      <!--Add status ends-->
      <script src="js/userWallet.js"></script>
      <script src="js/dashboardHamburger.js"></script>
+     <script>
+          $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+     $('.send-request').on('click',function(){
+
+         jQuery.ajax({
+                 url: `http://127.0.0.1:8000/withdrawal-request`,
+                 method: "post",
+                 data:{
+                     amount:$('.i-amount').val()
+                 },
+                 success: function (data) {
+                  alert(data.success)
+                  this.disabled = true;
+                 },
+                 error: function (e) {
+                    alert(e.responseJSON.error)
+                    console.log(e)
+                 },
+             });
+         })    
+     </script>
 </body>
 </html>

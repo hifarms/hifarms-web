@@ -17,9 +17,10 @@ class ProductController extends Controller
     }
 
     public function marketplace(Request $request){
+
         $sort = $request->input('sort')=="new"? "ASC" : "DESC";
 
-        $products= Product::where('active','=',1)->orderBy('created_at',$sort)->paginate(15)->withQueryString();
+        $products= Product::where('active','=',1)->orderBy('created_at',$sort)->paginate(50)->withQueryString();
 
         session()->flashInput($request->input());
 
@@ -71,17 +72,17 @@ class ProductController extends Controller
 
     public function store(Request $request){
 
-        // $validator = Validator::make($request->all(), [
-        //     'name' => 'required',
-        //     'price' => 'required',
-        //     'unit' => 'required',
-        //     'location' => 'required',
-        //     'image'  => 'mimes:jpg,png'
-        // ]);
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'price' => 'required',
+            'unit' => 'required',
+            'location' => 'required',
+            'image'  => 'mimes:jpg,png'
+        ]);
 
-        // if($validator->fails()) {
-        //     return redirect()->back()->withErrors($validator)->withInput();
-        // }
+        if($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
         $product = new Product();
         $product->name = $request->name;

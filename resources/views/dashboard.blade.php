@@ -28,11 +28,11 @@
             <a href="user-farms"><img src="img/livestock-dashboard.svg" alt="livestock"> <p>Manage my farm</p></a>
             <a href="farm-invest"><img src="img/invest.svg" alt="marketplace"> <p>Invest In a Project</p></a>
             <a href="investment"><img src="img/history.svg" alt="history"> <p>ROI</p></a>
-            <a href="wallet kun"><img src="img/wallet.svg" alt="wallet"> <p>Wallet</p></a>
+            <a href="wallet"><img src="img/wallet.svg" alt="wallet"> <p>Wallet</p></a>
         </div>
     </div>
     <div class="third-se-bar">
-            <a href="userSettings.html"><img src="img/settings.png" alt="settings"> <p>Settings</p></a>
+            <a href="user-settings"><img src="img/settings.png" alt="settings"> <p>Settings</p></a>
             <a href=""><img src="img/log out.svg" alt="settings"> <p>Logout</p></a>
     </div>
     <div class="guide-dash">
@@ -111,10 +111,10 @@
             <a href="user-farms"><img src="img/livestock-dashboard.svg" alt="livestock"></a>
             <a href="farm-invest"><img src="img/invest.svg" alt="marketplace"></a>
             <a href="investment"><img src="img/history.svg" alt="history"></a>
-            <a href="wallet kun"><img src="img/wallet.svg" alt="wallet"></a>
+            <a href="wallet"><img src="img/wallet.svg" alt="wallet"></a>
         </div>
         <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;margin-bottom: 10px;">
-            <a href="userSettings.html"><img src="img/settings.png" style="margin-bottom: 30px;" alt="settings"></a>
+            <a href="user-settings"><img src="img/settings.png" style="margin-bottom: 30px;" alt="settings"></a>
             <img src="img/log out.svg" alt="log-out">
         </div>
     </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Bank;
 use App\Farm;
 use App\User;
 use App\Order;
@@ -9,6 +10,8 @@ use App\Product;
 use App\Farm_return_type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -55,7 +58,7 @@ class UserController extends Controller
         $total_return=0;
         $active=0;
         $total_invest=0;
-        $active_invest=$user->investments->where('delivered',0)->where('cleared_to_wallet',0);
+        $active_invest=$user->investments;
         foreach($active_invest as $invest){
             if($invest->order->payment==null || boolval($invest->product_id)){
                 continue;
@@ -76,7 +79,46 @@ class UserController extends Controller
 
    public function Profile(){
     $user = auth()->user();
-       return view('profile',['user'=>$user]);
+       return view('profile',['user'=>$user,]);
+   }
+
+   public function settings(){
+  
+       return view('userSettings');
+   }
+
+   public function changePassword(Request $request){
+   // Validation
+   $this->validate($request, [
+    
+    'old' => 'required',
+    'new' => 'required',
+    ]);
+
+    $user = Auth::user();
+    if(!Hash::check($request->old, $user->password)){
+      return response()->json(['error'=>'Password doesn\'t match'], 401);
+    }
+    $new =Hash::make($request->new);
+    $user->password = $new;
+    $user->save();
+    return response()->json(['success'=>'Password changed succesfully'], 200);
+}
+   public function updateProfile(Request $request){
+
+       $user = auth()->user();
+       $user->fullname = $request->fullname;
+       $user->occupation = $request->occupation;
+       $user->phone = $request->contact;
+       $user->address = $request->address;
+       $user->state = $request->state;
+       $userbank = $user->bank;
+       $userbank->bank_acc_name = $request->acc_name;
+       $userbank->bank_name = $request->bank_name;
+       $userbank->bank_acc_no =$request->acc_no;
+       $userbank->save();
+       $user->save();
+       return response()->json(['success'=>'Profile Updated Successfully'], 200);
    }
 
      //Userdasboard/Maketpalace/orders PAGE
@@ -176,4 +218,27 @@ class UserController extends Controller
 
     }
 
+
+    public function changeProfilePic(Request $request){
+
+    $validator =  $this->validate($request, [
+        'image'  => 'mimes:jpg,png,jpeg'
+    ]);
+
+    if ($request->hasFile('image'))
+        {
+            $user = Auth::user();
+            // try{
+            $file  = $request->file('image');
+            $path = $file->store('/images/user','public');
+            File::delete($user->avatar);
+            $user->avatar = 'storage/'.$path;
+            $user->save();
+            return response()->json(['success'=>'Profile  Updated successfully'], 200);
+            // }
+            // catch(){
+            //     return response()->json(['error'=>'Failed To Updated'], 402);
+            // }
+        }
+    }
 }

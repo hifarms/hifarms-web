@@ -9,6 +9,9 @@ body {
 .octicon {
  margin-right:.25em;
 }
+.fade{
+    opacity: 0.4;
+}
 
 .table-bordered>thead>tr>td {
  border-bottom-width: 1px;

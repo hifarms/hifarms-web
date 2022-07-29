@@ -1,14 +1,18 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Bank;
 use App\User;
 use App\Wallet;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Mail\UserRegistration;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Validator;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -22,6 +26,11 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt(['email' => $request['email'], 'password' => $request['password'], 'role_id' => '1', 'status' =>'1'])) {
+
+            if(!boolval(auth()->user()->status)){
+                Auth::logout();
+                return redirect()->back()->with('warning_message','Your Account is Suspended');
+            }
 
             // return redirect()->back()->with('success_message','Login Sucess');
             return redirect('/dashboard');
@@ -44,10 +53,13 @@ class AuthController extends Controller
         ]);
 
         $link = Str::random(30);
-
-        
-        // Save Record into user DB
         $user = new User();
+        $wallet = new Wallet();
+        $bank = new Bank();
+        DB::transaction(function () use($request,$user,$wallet,$link,$bank){
+            
+// Save Record into user DB
+       
         $user->email = $request->input('email');
         $user->fullname = $request->input('fullname');
         $user->username = $request->input('username');
@@ -58,26 +70,27 @@ class AuthController extends Controller
         $user->save();
         
         //Save Record into profile DB
-        $wallet = new Wallet();
+       
         $wallet->user_id = $user->id;
         $wallet->ledger_balance = 0;
         $wallet->balance = 0;
         $wallet->save();
 
         $user->wallet_id = $wallet->id;
+
+        $bank->user_id =$user->id;
+        $bank->save();
+        $user->bank_id = $bank->id;
         $user->save();
+        });
+        
 
         Auth::login($user);
 
         $user = Auth::user();
 
-        $user->activated = $link;
-
-        //Mail::to($user->email)->send(new UserRegistration($user));
-
-        //\Session::flash('Success_message', 'You have successfully registered');
-
-        return redirect()->back()->with('Success_message', 'You have successfully registered');
+        // Mail::to($user->email)->send(new UserRegistration($user,$link));
+        return redirect()->back()->with('Success_message', 'You have successfully registered, Email Has Been Sent To You For Verification.');
     }
 
     // Logout Function
@@ -96,12 +109,23 @@ class AuthController extends Controller
 
             \Session::flash('success_message','Activation Successfully');
 
-         return redirect()->route('activatesuccess');
+         return redirect()->route('activatesuccess')->with('Success_message', 'Activation Successfully');;
     }
 
     public function signUpForm(){
 
         return view('signup');
+    }
+
+    public function verifyEmail(Request $request){
+
+        $user = User::where('activated','=',$request->input('token'))->firstOrFail();
+        if(!$user){
+            return view('signin')->with('Error','Failed To Verify Email');
+        }
+        $user->is_verified = 1;
+        $user->save();
+        return view('signin')->with('Success_message','Your Email Is VeriFied');
     }
 
     public function signInForm(){

@@ -56,7 +56,7 @@ class OrderController extends Controller
         }
         $order->total_amount = $total;
         $order->save();
-        $orderData= Order::with('user')->where('id',$order->id)->first();
+        $orderData= Order::with('user')->where('id',$order->id)->firstorFail();
         return response()->json($orderData, 200);
 
 
@@ -69,6 +69,7 @@ class OrderController extends Controller
     }
 
     public function singleCheckout(Request $request,Farm $farm){
+      
       $order = new Order();
       $order->user_id = Auth::user()->id;
       $order->save();
@@ -109,7 +110,7 @@ class OrderController extends Controller
           CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
           CURLOPT_CUSTOMREQUEST => "GET",
           CURLOPT_HTTPHEADER => array(
-            "Authorization: Bearer sk_test_4a81d0d2b632d9f3422a154cb4d8052b5decd2b8",
+            "Authorization: Bearer ".env("PAYSTACK_SECRET_KEY"),
             "Cache-Control: no-cache",
           ),
         ));
