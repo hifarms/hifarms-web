@@ -7,22 +7,18 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class UserRegistration extends Mailable
+class ContactMail extends Mailable
 {
     use Queueable, SerializesModels;
-
-    public $user;
-    public $token;
-
+    public $contact;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($user,$token)
+    public function __construct($contact)
     {
-       $this->user = $user;
-       $this->$token = $token;
+        $this->contact = $contact;
     }
 
     /**
@@ -32,7 +28,6 @@ class UserRegistration extends Mailable
      */
     public function build()
     {
-        return $this->subject('User Verification')->view('emails.verification');
+        return $this->subject()->view('emails.contact');
     }
 }
- 

@@ -34,7 +34,7 @@
         </div>
     </div>
     <div class="third-se-bar">
-            <a href="userSettings.html"><img src="img/settings.png" alt="settings"> <p>Settings</p></a>
+            <a href="user-settings"><img src="img/settings.png" alt="settings"> <p>Settings</p></a>
             <a href=""><img src="img/log out.svg" alt="settings"> <p>Logout</p></a>
     </div>
     <div class="guide-dash">
@@ -116,7 +116,7 @@
             <a href="wallet"><img src="img/wallet.svg" alt="wallet"> </a>
         </div>
         <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;margin-bottom: 10px;">
-            <a href="userSettings.html"><img src="img/settings.png" style="margin-bottom: 30px;" alt="settings"></a>
+            <a href="user-settings"><img src="img/settings.png" style="margin-bottom: 30px;" alt="settings"></a>
             <img src="img/log out.svg" alt="log-out">
         </div>
     </div>

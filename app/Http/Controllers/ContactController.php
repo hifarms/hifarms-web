@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Contact;
 use Mail;
+use App\Contact;
+use App\Mail\ContactMail;
 use App\Mail\SendContact;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class PostController extends Controller
+class ContactController extends Controller
 {
      // Send Contact
      public function sendphrase(Request $request)
@@ -19,23 +20,19 @@ class PostController extends Controller
 			 'email' => 'required',
 			 'subject' => 'required',
 			 'message' => 'required',
-			 
          ]);
  
          // Send contact to Email
-         $contact = new Contact();
-         $contact->fullname = $request->input('fullname');
-		 $contact->email = $request->input('email');
-		 $contact->subject = $request->input('subject');
-		 $contact->message = $request->input('message');
+         $contact = [
+         'fullname' => $request->input('fullname'),
+		 'email' => $request->input('email'),
+		 'subject'=> $request->input('subject'),
+		 'message' => $request->input('message')
+         ];
+         $email = env("MAIL_USERNAME");
 
-         $this->email = ['me@gmail.com'];
-
-         Mail::to($this->email)->send(new SendContact($contact));
- 
-         \Session::flash('Success_message', 'Message Sent Successfuly. We will get Back to you Shortly');
- 
-         return back();
+        //  Mail::to($email)->send(new ContactMail($contact));
+         return redirect()->back()->with('Success_message', 'Message Sent Successfuly. We will get Back to you Shortly');
      }
  
 }

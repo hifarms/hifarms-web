@@ -42,6 +42,12 @@ Route::get('/about', function () {
     return view('about');
 });
 
+Route::get('/contact', function () {
+    return view('contact');
+});
+
+Route::post('/send-phase', 'ContactController@sendPhrase');
+
 Route::get('/services/sponsor', 'Farminvestment@index');
 
 Route::get('services/sponsor/{farm}', 'Farminvestment@show');
@@ -68,6 +74,13 @@ Route::get('/checkout', 'OrderController@checkout')->name('checkout');
 
 Route::get('/profile', 'UserController@profile')->name('profile');
 
+Route::post('/update-profile', 'UserController@updateProfile')->name('updateprofile');
+
+Route::get('/user-settings', 'UserController@settings')->name('settings');
+
+Route::post('/change-password', 'UserController@ChangePassword')->name('pass');
+
+
 Route::get('/dashboard', 'UserController@dashboard')->name('dashboard');
 
 Route::get('/user-farms', 'UserController@farmIndex')->name('dashboard');
@@ -84,6 +97,9 @@ Route::post('/move-to-wallet', 'WalletController@moveToWallet')->name('dashboard
 
 Route::post('/terminate-to-wallet', 'WalletController@terminateToWallet')->name('dashboard');
 
+Route::post('/withdrawal-request', 'WalletController@withdrawRequest')->name('dashboard');
+
+Route::post('/update-profile-pic', 'UserController@changeProfilePic')->name('change-profile');
 
 Route::get('/adminDashboard', 'AdminDashboard@adminDashboard');
 
@@ -101,6 +117,7 @@ Route::get('/adminWallet', 'AdminDashboard@adminWallet');
 
 Route::get('/adminSettings', 'AdminDashboard@adminSettings');
 
+Route::get('/verify-email', 'AuthController@verifyEmail');
 
 
 Route::get('/marketplace', 'ProductController@marketplace')->name('dashboard');

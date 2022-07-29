@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Settings</title>
+    <meta name="_token" content="{{ csrf_token() }}" />
+    <script src="{{asset('js/jquery.min.js')}}"></script>
 </head>
 <body>
       <!--Dashboard Hamburger Starts-->
@@ -32,7 +34,7 @@
         </div>
     </div>
     <div class="third-se-bar">
-            <a href="userSettings.html"><img src="img/settings.png" alt="settings"> <p>Settings</p></a>
+            <a href="user-settings"><img src="img/settings.png" alt="settings"> <p>Settings</p></a>
             <a href=""><img src="img/log out.svg" alt="settings"> <p>Logout</p></a>
     </div>
     <div class="guide-dash">
@@ -136,7 +138,7 @@
             <a href="wallet"><img src="img/wallet.svg" alt="wallet"></a>
         </div>
         <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;margin-bottom: 10px;">
-            <a href="userSettings.html"><img src="img/settings-clicked.png" class="current" style="margin-bottom: 30px;" alt="settings"></a>
+            <a href="user-settings"><img src="img/settings-clicked.png" class="current" style="margin-bottom: 30px;" alt="settings"></a>
             <img src="img/log out.svg" alt="log-out">
         </div>
     </div>
@@ -176,15 +178,15 @@
            <div class="general-ser">
            <div class="head">General Settings</div>
            <form class="general-settings-form">
-               <label>Full Name:</label>
+               {{-- <label>Full Name:</label>
                <input type="text"> <br>
                <label>Email:</label>
                <input type="text"> <br>
                <label>Phone Number:</label>
                <select>
                    <option>+234</option>
-               </select>
-               <input type="text"> <br>
+               </select> --}}
+               {{-- <input type="text"> <br> --}}
                <label>Password:</label>
                <button class="pass">Change Password</button> <br>
                <div class="lb-auth">
@@ -216,31 +218,50 @@
             <div class="old-password-flex">
                 <label>Old Password:</label>
                 <div class="password-visible">
-                   <input type="password" style="margin-left: 15px;" class="pass-val">
+                   <input type="password" name="old" style="margin-left: 15px;" class="pass-val old">
                    <img src="img/invisible.png" alt="" class="toggle-password">
                 </div>
             </div> <br>
             <div class="old-password-flex">
                 <label>New Password:</label>
                 <div class="password-visible">
-                   <input type="password" style="margin-left: 15px;" class="pass-val">
+                   <input type="password" name="new" style="margin-left: 15px;" class="pass-val new">
                    <img src="img/invisible.png" alt="" class="toggle-password">
                 </div>
             </div> <br>
-            <div class="old-password-flex">
-                <label>Old Password:</label>
-                <div class="password-visible">
-                   <input type="password" style="margin-left: 15px;" class="pass-val">
-                   <img src="img/invisible.png" alt="" class="toggle-password">
-                </div>
-            </div> <br>
+            
             <div class="button-admin-container">
-                <button class="add-item-submit admin-dash-submit"><span style="padding-left:47px ;padding-right: 46px;" class="edit-want-to-sell-span">Save</span>  <img class="loader loader-edit" src="img/loader-hifarm.gif" alt="#"> </button>
+                <button class="add-item-submit admin-dash-submit ch"><span style="padding-left:47px ;padding-right: 46px;" class="edit-want-to-sell-span">Save</span>  <img class="loader loader-edit" src="img/loader-hifarm.gif" alt="#"> </button>
             </div>
         </div>
     </div>
       <!--Change Password Modal ends-->
 <div class="overlay"></div>
+<script>
+    $.ajaxSetup({
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+      }
+  });
+
+ 
+  $('.ch').on('click',function(){
+      jQuery.ajax({
+              url: "http://127.0.0.1:8000/change-password",
+              method: "post",
+              data: {
+                  old:$('.old').val(),
+                  new:$('.new').val(),
+              },
+              success: function (data) {
+                alert(data.success)
+              },
+              error: function (e) {
+                 console.log(e);
+              },
+          });
+      })
+</script>
 <script src="js/adminSettings.js"></script>
 <script src="js/dashboardHamburger.js"></script>
 </body>

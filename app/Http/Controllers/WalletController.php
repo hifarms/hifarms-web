@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use App\Payment;
+use App\withdraw;
 use App\Order_item;
 use App\WalletTransaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Date;
 
 class WalletController extends Controller
@@ -56,13 +58,13 @@ class WalletController extends Controller
     public function moveToWallet(Request $request){
         $id = $request->id;
         $user = auth()->user();
-        $investment = Order_item::where('id',$id)->first();
+        $investment = Order_item::where('id',$id)->firstOrFail();
 
         if($investment->order->user_id != $user->id || !boolval($investment->delivered) || boolval($investment->cleared_to_wallet)){
             return response()->json(['error'=>'Invalid Request'], 410);
         }
-
-        //moving fund to wallet
+        DB::transaction(function () use($investment,$user) {
+         //moving fund to wallet
         $amount =$investment->amount + ($investment->returntype->percentage/100)*$investment->amount;
         $investment->cleared_to_wallet=1;
         $investment->save();
@@ -70,20 +72,29 @@ class WalletController extends Controller
        $wallet= $user->wallet;
        $wallet->balance += $amount;
        $wallet->save();
+        });
+       
         return response()->json(['success'=>'Moved to wallet successfully'], 200);
 
     }
 
     public function terminateToWallet(Request $request){
+
         $id = $request->id;
         $user = auth()->user();
-        $investment = Order_item::where('id',$id)->first();
+        $investment = Order_item::where('id',$id)->firstOrFail();
+
+        if($investment->delivered==1 && $investment->move_to_wallet=1){
+            
+            return response()->json(['error'=>'Already moved to wallet'], 410);
+
+        }
 
         if($investment->order->user_id != $user->id || boolval($investment->cleared_to_wallet)){
             return response()->json(['error'=>'Invalid Request'], 410);
         }
-
-        //moving fund to wallet
+        DB::transaction(function () use( $investment,$user) {
+             //moving fund to wallet
         $amount = $investment->amount;
         $investment->cleared_to_wallet=1;
         $investment->save();
@@ -91,7 +102,30 @@ class WalletController extends Controller
         $wallet= $user->wallet;
         $wallet->balance += $amount;
         $wallet->save();
+        });
+       
         return response()->json(['success'=>'Terminated succcessfully'], 200);
+
+    }
+
+    public function withdrawRequest(Request $request){
+        
+        $amount = $request->amount;
+        $user = auth()->user();
+        if($user->wallet->balance <= intval($amount)){
+            return response()->json(['error'=>'you dont have such amount'], 410);
+        }
+
+        //sending request 
+        
+        $withdraw = new withdraw();
+        $withdraw->user_id = $user->id;
+        $withdraw->amount = $amount;
+        $withdraw->withdraw_status_id = 1;
+        $withdraw->save();
+
+       
+        return response()->json(['success'=>'Request is sent successfully'], 200);
 
     }
 
