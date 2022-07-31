@@ -6,11 +6,15 @@
     box-sizing: border-box;
     font-family: 'Quicksand', Arial, Helvetica, sans-serif;
     -webkit-user-select: none;
--khtml-user-select: none;
--moz-user-select: none;
--ms-user-select: none;
--o-user-select: none;
-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+     user-select: none;
+}
+
+.cart-unit{
+  margin-left: 32px!important;
 }
 
 .whole-cont{
@@ -1682,7 +1686,7 @@ header{
 
 .what-drives-us-content div{
   width: 180px;
-  height: 15px;
+  height: 3px;
   background: #49a760;
   margin-bottom: 30px;
 }
@@ -1784,7 +1788,7 @@ header{
 .purpose-content .line{
   width: 150px;
   margin-left: -50px;
-  height: 15px;
+  height: 3px;
   margin-top: 8px;
   margin-bottom: 15px;
   background: #49a760;
@@ -1840,7 +1844,7 @@ header{
 .land-hectre .hectre-line{
   width: 140px;
   float: right;
-  height: 15px;
+  height: 3px;
   background: #49a760;
 }
 
@@ -8281,7 +8285,7 @@ table, td, th {
   }
   .hamburger-modal{
      position: fixed;
-    top: -100%;
+    top: -155%;
     z-index: 10;
      background: rgba(160, 212, 104, 0.65);
      display: flex;
