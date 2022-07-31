@@ -5,6 +5,12 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Quicksand', Arial, Helvetica, sans-serif;
+    -webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+-o-user-select: none;
+user-select: none;
 }
 
 .whole-cont{
@@ -1568,7 +1574,7 @@ header{
 .about-history .history-about{
   width: 140px;
   float: right;
-  height: 15px;
+  height: 3px;
   background: #49a760;
   margin-bottom: 10px;
 }
@@ -2733,7 +2739,6 @@ header{
 
 .tools-image .tractor-image .pararaph h3{
   font-size: 30px;
-  margin-bottom: 20;
 }
 
 .tools-image .tractor-image .pararaph p{
@@ -7023,6 +7028,9 @@ table, td, th {
   font-size: 14px;
   padding: 0px;
 }
+.tooltip-flex {
+  margin-left: unset!important;
+}
 .cart-container .cart-content .add-to-cart {
   margin-left: 15px;
   color: #6E7A89;
@@ -8134,7 +8142,7 @@ table, td, th {
     padding-bottom: 20;
   }
   .nutrition-grid .nutrition-content {
-    padding-left: 20;
+    padding-left: unset;
   }
   .nutrition-grid .nutrition-content h3 {
     text-align: center;
@@ -9088,6 +9096,9 @@ font-size: 20px;
   width: 145px;
   object-fit: cover;
 }
+.sponsor-data.dashboard.admn-invst {
+  margin-left: unset;
+}
 
 }
 
@@ -9232,6 +9243,64 @@ font-size: 20px;
 .i-amount{
   width: 90%!important;
   margin-top: 10px;
+}
+.dashboard-container.returns{
+   height: unset;
+}
+.reset-admin h2 {
+  margin-right: 20px;
+}
+.setting-options div {
+  color: #545E66;
+  font-size: 12px;
+  cursor: pointer;
+  padding-bottom: 5px;
+}
+.general-settings-form {
+  width: 320px;
+}
+.general-ser label {
+  font-size: 13px;
+}
+.general-ser .pass {
+  font-size: 14px;
+}
+.save-changes button {
+  margin-right: 20px;
+  margin-top: 10px;
+}
+.admin-add-item {
+  width: 320px;
+}
+.sponsor-data.dashboard.admn-mrkt .grid.dashboard {
+  margin-bottom: 20px;
+  width: 168px;
+}
+.add-category button {
+  font-size: 12px;
+}
+.tooltip-flex {
+  margin-left: unset!important;
+}
+.sponsor-data .grid.dashboard {
+  margin-bottom: 35px;
+  background: #ffffff;
+  padding: 14px;
+}
+.src-blog {
+  width: 40px;
+}
+.blog-category select {
+  width: 150px;
+}
+.riv-adm{
+  margin-top: 40px!important;
+}
+.third-box {
+  margin-right: 20px;
+}
+.second-box {
+  font-size: 16px;
 }
 
 
