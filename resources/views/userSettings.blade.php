@@ -6,8 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Settings</title>
+    <meta name="_token" content="{{ csrf_token() }}" />
+    <script src="{{asset('js/jquery.min.js')}}"></script>
 </head>
 <body>
+      <!--Dashboard Hamburger Starts-->
+      <div class="dashboard-hamburger">
+        <div class="dash-hamb-img-name">
+        <img src="img/dashboard-hamburger-profile.png" alt="profile" class="profile-header ham">
+        <h2>Welcome, <br>
+            Hafiz
+        </h2>
+        </div>
+        <div class="input-search ham">
+            <input type="text" placeholder="search for">
+            <img src="img/Vector (8).png" alt="search-icon">
+        </div>
+        <div class="side-ar">
+        <h3>General</h3>
+        <div class="second-se-bar">
+            <a href="dashboard"> <img src="img/Dashboard (1).svg" alt="dashboard" > <p>Dashboard</p></a>
+            <a href="marketplace"><img  src="img/marketplace.svg"  alt="marketplace"> <p>Marketplace</p></a>
+            <a href="user-farms"><img src="img/livestock-dashboard.svg" alt="livestock"> <p>Manage my farm</p></a>
+            <a href="farm-invest"><img src="img/invest.svg" alt="marketplace"> <p>Invest In a Project</p></a>
+            <a href="investment"><img src="img/history.svg" alt="history"> <p>ROI</p></a>
+            <a href="wallet kun"><img src="img/wallet-active.svg" class="current" alt="wallet"> <p>Wallet</p></a>
+        </div>
+    </div>
+    <div class="third-se-bar">
+            <a href="user-settings"><img src="img/settings.png" alt="settings"> <p>Settings</p></a>
+            <a href=""><img src="img/log out.svg" alt="settings"> <p>Logout</p></a>
+    </div>
+    <div class="guide-dash">
+        <img src="img/Notifications.png" alt="notifications" class="notifications">
+        <img src="img/Guides.png" alt="guides" width="32">
+    </div>
+      </div>
+    <!--Dashboard Hamburger Ends-->
     <div class="mail-sent">
         <img src="img/mail-sent.png" alt="mail" style="margin-right: 10px;">
         <div>Mail Sent!!!</div>
@@ -30,12 +65,17 @@
     <div class="deleted-successfully-2" style="z-index: 3000;">
         Deleted Successfully!!!
     </div>
-    <header>
+    <header class="dashbrd-header">
         <div class="dashboard-header">
+            <img src="img/hamburger.svg" alt="#" id="hamburger" class="hamburger1">
             <div class="header-img">
-                <img src="img/logo.png" alt="logo" width="113">
+                <img src="img/logo.png" class="logo1x" alt="logo" width="113">
             </div>
             <div class="header-icons">
+                <div class="cart-whatsapp cart-whatsapp-dash">
+                    <a href='{{url('/cart')}}'><img src='img/Group 51.png' alt="cart" class="cart"></a>
+                       <span class="cart-counter"></span>
+                </div>
                 <div class="input-search">
                     <input type="text" placeholder="search for">
                     <img src="img/Vector (8).png" alt="search-icon">
@@ -98,7 +138,7 @@
             <a href="wallet"><img src="img/wallet.svg" alt="wallet"></a>
         </div>
         <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;margin-bottom: 10px;">
-            <a href="userSettings.html"><img src="img/settings-clicked.png" class="current" style="margin-bottom: 30px;" alt="settings"></a>
+            <a href="user-settings"><img src="img/settings-clicked.png" class="current" style="margin-bottom: 30px;" alt="settings"></a>
             <img src="img/log out.svg" alt="log-out">
         </div>
     </div>
@@ -138,15 +178,15 @@
            <div class="general-ser">
            <div class="head">General Settings</div>
            <form class="general-settings-form">
-               <label>Full Name:</label>
+               {{-- <label>Full Name:</label>
                <input type="text"> <br>
                <label>Email:</label>
                <input type="text"> <br>
                <label>Phone Number:</label>
                <select>
                    <option>+234</option>
-               </select>
-               <input type="text"> <br>
+               </select> --}}
+               {{-- <input type="text"> <br> --}}
                <label>Password:</label>
                <button class="pass">Change Password</button> <br>
                <div class="lb-auth">
@@ -178,31 +218,51 @@
             <div class="old-password-flex">
                 <label>Old Password:</label>
                 <div class="password-visible">
-                   <input type="password" style="margin-left: 15px;" class="pass-val">
+                   <input type="password" name="old" style="margin-left: 15px;" class="pass-val old">
                    <img src="img/invisible.png" alt="" class="toggle-password">
                 </div>
             </div> <br>
             <div class="old-password-flex">
                 <label>New Password:</label>
                 <div class="password-visible">
-                   <input type="password" style="margin-left: 15px;" class="pass-val">
+                   <input type="password" name="new" style="margin-left: 15px;" class="pass-val new">
                    <img src="img/invisible.png" alt="" class="toggle-password">
                 </div>
             </div> <br>
-            <div class="old-password-flex">
-                <label>Old Password:</label>
-                <div class="password-visible">
-                   <input type="password" style="margin-left: 15px;" class="pass-val">
-                   <img src="img/invisible.png" alt="" class="toggle-password">
-                </div>
-            </div> <br>
+            
             <div class="button-admin-container">
-                <button class="add-item-submit admin-dash-submit"><span style="padding-left:47px ;padding-right: 46px;" class="edit-want-to-sell-span">Save</span>  <img class="loader loader-edit" src="img/loader-hifarm.gif" alt="#"> </button>
+                <button class="add-item-submit admin-dash-submit ch"><span style="padding-left:47px ;padding-right: 46px;" class="edit-want-to-sell-span">Save</span>  <img class="loader loader-edit" src="img/loader-hifarm.gif" alt="#"> </button>
             </div>
         </div>
     </div>
       <!--Change Password Modal ends-->
 <div class="overlay"></div>
+<script>
+    $.ajaxSetup({
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+      }
+  });
+
+ 
+  $('.ch').on('click',function(){
+      jQuery.ajax({
+              url: "http://127.0.0.1:8000/change-password",
+              method: "post",
+              data: {
+                  old:$('.old').val(),
+                  new:$('.new').val(),
+              },
+              success: function (data) {
+                alert(data.success)
+              },
+              error: function (e) {
+                 console.log(e);
+              },
+          });
+      })
+</script>
 <script src="js/adminSettings.js"></script>
+<script src="js/dashboardHamburger.js"></script>
 </body>
 </html>

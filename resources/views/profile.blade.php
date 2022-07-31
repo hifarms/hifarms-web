@@ -6,17 +6,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Profile</title>
+    <meta name="_token" content="{{ csrf_token() }}" />
+    <script src="{{asset('js/jquery.min.js')}}"></script>
 </head>
 <body>
+      <!--Dashboard Hamburger Starts-->
+      <div class="dashboard-hamburger">
+        <div class="dash-hamb-img-name">
+        <img src="img/dashboard-hamburger-profile.png" alt="profile" class="profile-header ham">
+        <h2>Welcome, <br>
+            Hafiz
+        </h2>
+        </div>
+        <div class="input-search ham">
+            <input type="text" placeholder="search for">
+            <img src="img/Vector (8).png" alt="search-icon">
+        </div>
+        <div class="side-ar">
+        <h3>General</h3>
+        <div class="second-se-bar">
+            <a href="dashboard"> <img src="img/Dashboard (1).svg" alt="dashboard" > <p>Dashboard</p></a>
+            <a href="marketplace"><img  src="img/marketplace.svg"  alt="marketplace"> <p>Marketplace</p></a>
+            <a href="user-farms"><img src="img/livestock-dashboard.svg" alt="livestock"> <p>Manage my farm</p></a>
+            <a href="farm-invest"><img src="img/invest.svg" alt="marketplace"> <p>Invest In a Project</p></a>
+            <a href="investment"><img src="img/history.svg" alt="history"> <p>ROI</p></a>
+            <a href="wallet kun"><img src="img/wallet-active.svg" class="current" alt="wallet"> <p>Wallet</p></a>
+        </div>
+    </div>
+    <div class="third-se-bar">
+            <a href="user-settings"><img src="img/settings.png" alt="settings"> <p>Settings</p></a>
+            <a href=""><img src="img/log out.svg" alt="settings"> <p>Logout</p></a>
+    </div>
+    <div class="guide-dash">
+        <img src="img/Notifications.png" alt="notifications" class="notifications">
+        <img src="img/Guides.png" alt="guides" width="32">
+    </div>
+      </div>
+    <!--Dashboard Hamburger Ends-->
 <div class="added-successfully">
         Profile Updated!!
     </div>
-    <header>
+    <header class="dashbrd-header">
       <div class="dashboard-header">
+      <img src="img/hamburger.svg" alt="#" id="hamburger" class="hamburger1">
         <div class="header-img">
-            <img src="img/logo.png" alt="logo" width="113">
+            <img src="img/logo.png" class="logo1x" alt="logo" width="113">
         </div>
         <div class="header-icons">
+        <div class="cart-whatsapp cart-whatsapp-dash">
+                    <a href='{{url('/cart')}}'><img src="{{asset('img/Group 51.png')}}" alt="cart" class="cart"></a>
+                       <span class="cart-counter"></span>
+        </div>
             <div class="input-search">
                 <input type="text" placeholder="search for">
                 <img src="img/Vector (8).png" alt="search-icon">
@@ -57,7 +97,7 @@
                   </div>
              </div>
             <div class="profile-inclusive">
-                <img src="img/Profile.png" alt="profile" class="profile-header">
+                <img src="{{auth()->user()->avatar}}" style="width:42px;height:42px;border-radius:50%;" alt="profile" class="profile-header">
                 <div class="my-profile-log-out">
                     <button><a href="profile">My Profile</a></button>
                     <button><a href="logout">Log Out</a></button>
@@ -85,20 +125,21 @@
     </div> 
     <div class="dashboard-container profile">
         <h1>My Profile.</h1>
-        <p style="margin-top: -38px;margin-bottom: 10px;">Hello {{ explode(' ',$user->fullname)[0]}}</p>
+        <p class="use-pro">Hello {{ explode(' ',$user->fullname)[0]}}</p>
         <div class="profile-hero">
-            <img src="img/Image icon.png" alt="profile-image">
+            <img src="{{$user->avatar}}" id="changed-image" alt="profile-image">
             <p>{{ $user->fullname }}</p>
-            <input type="file" hidden class="file">
+            <input type="file" hidden class="file add-photos">
             <button class="upload-img">Upload Image</button>
         </div>
         <div class="profile-details">
             <div class="contact">Contact: <span>{{$user->phone}}</span></div>
             <div class="gender">Gender: <span>{{$user->gender}}</span></div>
             <div class="email">Email: <span>{{$user->email}}</span></div>
-            <div class="soo">State of Origin: <span>{{$user->State}}</span></div>
-            <div class="email">Bank Name: </div>
-            <div class="soo">Account Number:</div>
+            <div class="soo">State of Origin: <span>{{$user->state}}</span></div>
+            <div class="email">Bank Name:  <span>{{$user->bank->bank_name}} </div>
+            <div class="soo">Account Name:  <span>{{$user->bank->bank_acc_name}}</div>
+            <div class="soo">Account Number:  <span>{{$user->bank->bank_acc_no}}</div>
             <div class="occupation">Occupation: <span>{{$user->occupation}}</span></div>
             <div class="address">Residence Address: <span>{{$user->address}}</span></div>
         </div>
@@ -106,54 +147,59 @@
             <button class="edit-profile">Edit Profile</button>
         </div>
     </div>
-
+   
     
        <!--edit profile Modal Begins-->
        <div class="admin-add-item edit-profile-modal">
         <div class="admin-add-item-container">
             <div class="close-add-item">x</div>
             <h1 style="text-transform: unset;margin-bottom: 10px;">Edit Profile</h1>
-            <label class="class-name">full Name</label> <br>
-            <input type="text"placeholder="Enter your name" class="name">
+            <label class='class-name' name="fullname" >Full Name</label> <br>
+            <input type="text" class="name ffullname" value="{{$user->fullname}}" placeholder="Enter your name" >
             <div class="category-percentage-flex" style="justify-content:left;">
                 <div class="percentage">
                     <label>Contact</label>  <br>
-                    <input type="text" class="contact-input" placeholder="Enter your contact">
+                    <input type="text"  value="{{$user->phone}}" name="contact-address"  class="contact-input fcontact" placeholder="Enter your contact">
                 </div>
                 <div class="category">
                     <label>Email</label> <br> 
-                    <input class="category-select contact-input" placeholder="Enter your email">    
+                    <input class="category-select contact-input" name="email" value="{{$user->email}}" placeholder="Enter your email" disabled>    
                 </div>
             </div>
             <div class="category-percentage-flex" style="justify-content:left;">
                 <div class="percentage">
                     <label>Bank Name</label>  <br>
-                    <input type="text" class="contact-input" placeholder="Enter your contact">
+                    <input type="text" class="contact-input fbank-name" name="bank-name" value="{{$user->bank->bank_name}}" placeholder="Enter your contact">
                 </div>
+                <div class="percentage">
+                    <label>Bank Account Name</label>  <br>
+                    <input type="text" class="contact-input facc-name" name="acc-name" value="{{$user->bank->bank_acc_name}}" placeholder="Enter your contact">
+                </div>
+                <br>
                 <div class="category">
                     <label>Account Number</label> <br> 
-                    <input class="category-select contact-input" placeholder="Enter your email">    
+                    <input class="category-select contact-input facc-no" name="acc-no" value="{{$user->bank->bank_acc_no}}" placeholder="Enter your email">    
                 </div>
             </div>
-            <div class="category-percentage-flex" style="margin-bottom: 10px;justify-content:left;">
+            <div class="category-percentage-fle" style="margin-bottom: 10px;justify-content:left;">
                 <div class="percentage">
                     <label>Occupation</label>  <br>
-                    <input type="text" class="contact-input" placeholder="Enter your occupation">
+                    <input type="text" name="occupation" class="contact-input foccupation" value="{{$user->occupation}}" placeholder="Enter your occupation">
                 </div>
                 <div class="category">
                     <label>State Of Origin</label> <br> 
-                    <select style="width: 313%";>
-                        <option>Sokoto</option>
-                        <option>Kebbi</option>
-                        <option>Zamfara</option>
+                    <select class="this-select fstate" name="state">
+                        <option value="sokoto">Sokoto</option>
+                        <option value="kebbi">Kebbi</option>
+                        <option id="zamfara">Zamfara</option>
                     </select>  
                 </div>
             </div>
             <label class="admin-location">Residential Address</label> <br>
-            <input type="text"  class="admin-location-input" placeholder="Enter residential address">
+            <input type="text" name="address"  class="admin-location-input faddress" value="{{$user->address}}" placeholder="Enter residential address">
              <br>
             <div class="button-admin-container">
-            <button class="add-item-submit adminfu admin-main-submit"><span style="padding-left:39px ;padding-right: 40px;" class="add-main-dash">Update</span>  <img class="loader loader-add-main" src="img/loader-hifarm.gif" alt="#"> </button>
+            <button class="add-item-submit adminfu admin-main-submit update-profile"><span style="padding-left:39px ;padding-right: 40px;" class="add-main-dash">Update</span>  <img class="loader loader-add-main" src="img/loader-hifarm.gif" alt="#"> </button>
             </div>
         </div>
     </div>
@@ -161,5 +207,66 @@
     <div class="overlay"></div>
 
     <script src="js/userProfile.js"></script>
+    <script>
+        $.ajaxSetup({
+           headers: {
+               'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+           }
+       });
+
+       $('.update-profile').on('click',function(){
+           jQuery.ajax({
+                   url: "http://127.0.0.1:8000/update-profile",
+                   method: "post",
+                   data: {
+                       fullname:$('.ffullname').val(),
+                       occupation:$('.foccupation').val(),
+                       state:$('.fstate').val(),
+                       acc_name:$('.facc-name').val(),
+                       acc_no:$('.facc-no').val(),
+                       bank_name:$('.fbank-name').val(),
+                       address:$('.faddress').val(),
+                       contact:$('.fcontact').val(),
+                   },
+                   success: function (data) {
+                       alert(data.success)
+                       location.reload()
+                   },
+                   error: function (data) {
+                      console.log(data.error);
+                   },
+               });
+      
+       })
+const imageFile = document.querySelector('.add-photos');
+
+imageFile.addEventListener("change", function(){
+  const reader = new FileReader();
+  reader.addEventListener('load', ()=>{
+    uploadedImage = reader.result;
+    let image = document.querySelector('#changed-image');
+    image.setAttribute('src', uploadedImage);
+  })
+  reader.readAsDataURL(this.files[0]);
+  let formdata = new FormData()
+    formdata.append('image',imageFile.files[0])
+    jQuery.ajax({
+      url: `http://127.0.0.1:8000/update-profile-pic`,
+      method: 'post',
+      cache:false,
+      contentType: false,
+      processData: false,
+      data:formdata,
+      success: function(data){
+       alert(data.success);
+      },
+      error: function(e){
+          console.log(e);
+      }
+    
+    });
+})
+   </script>
+    <script src="js/dashboardHamburger.js"></script>
 </body>
 </html>

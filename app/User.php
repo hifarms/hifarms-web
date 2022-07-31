@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Bank;
 use App\Role;
 use App\Order;
 use App\Wallet;
@@ -44,6 +45,11 @@ class User extends Authenticatable
     public function carts(){
 
         return $this->hasMany(Cart_item::class);
+    }
+
+    public function bank(){
+
+        return $this->belongsTo(Bank::class);
     }
 
     public function role(){

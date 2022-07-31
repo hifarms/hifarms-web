@@ -8,6 +8,40 @@
     <title> Admin Marketplace</title>
 </head>
 <body>
+       <!--Dashboard Hamburger Starts-->
+       <div class="dashboard-hamburger">
+        <div class="dash-hamb-img-name">
+        <img src="img/dashboard-hamburger-profile.png" alt="profile" class="profile-header ham">
+        <h2>Welcome, <br>
+            Hafiz
+        </h2>
+        </div>
+        <div class="input-search ham">
+            <input type="text" placeholder="search for">
+            <img src="img/Vector (8).png" alt="search-icon">
+        </div>
+        <div class="side-ar">
+        <h3>General</h3>
+        <div class="second-se-bar">
+            <a href="adminDashboard.html"> <img src="img/Dashboard.svg" alt="dashboard" class="current"> <p>Dashboard</p></a>
+            <a href="adminMarketplace.html"><img src="img/marketplace.svg" alt="marketplace"> <p>Marketplace</p></a>
+            <a href="adminMyFarm.html"><img src="img/livestock-dashboard.svg" alt="livestock"> <p>Manage my farm</p></a>
+            <a href="adminInvest.html"><img src="img/invest.svg" alt="marketplace"> <p>Invest In a Project</p></a>
+            <a href="adminInvestReturns.html"><img src="img/history.svg" alt="history"> <p>ROI</p></a>
+            <a href="adminWallet.html"><img src="img/wallet.svg" alt="wallet"> <p>Wallet</p></a>
+            <a href="adminBlog.html"><img src="img/blog-pin.png" alt="blog-pin"> <p>Blog</p></a>
+        </div>
+    </div>
+    <div class="third-se-bar">
+            <a href="adminSettings.html"><img src="img/settings.png" alt="settings"> <p>Settings</p></a>
+            <a href=""><img src="img/log out.svg" alt="settings"> <p>Logout</p></a>
+    </div>
+    <div class="guide-dash">
+        <img src="img/Notifications.png" alt="notifications" class="notifications">
+        <img src="img/Guides.png" alt="guides" width="32">
+    </div>
+      </div>
+    <!--Dashboard Hamburger Ends-->
     <div class="added-successfully category-added">
         Added Successfully!!!
     </div>
@@ -27,12 +61,17 @@
     <div class="deleted-successfully">
         Deleted Successfully!!!
     </div>
-    <header>
+    <header class="dashbrd-header">
         <div class="dashboard-header">
+            <img src="img/hamburger.svg" alt="#" id="hamburger" class="hamburger1">
             <div class="header-img">
-                <img src="img/logo.png" alt="logo" width="113">
+                <img src="img/logo.png" class="logo1x" alt="logo" width="113">
             </div>
             <div class="header-icons">
+                <div class="cart-whatsapp cart-whatsapp-dash">
+                    <a href='{{url('/cart')}}'><img src="img/Group 51.png" alt="cart" class="cart"></a>
+                       <span class="cart-counter"></span>
+                </div>
                 <div class="input-search">
                     <input type="text" placeholder="search for">
                     <img src="img/Vector (8).png" alt="search-icon">
@@ -100,7 +139,7 @@
             <img src="img/log out.svg" alt="log-out">
         </div>
     </div>
-    <div class="dashboard-container">
+    <div class="dashboard-container admn-mrkt">
         <h1>Hi Farms Marketplace.</h1>
         <div class="sponsor-container">
             
@@ -113,52 +152,74 @@
                     <option value="old">Oldest</option>
                 </select>
             </div>
-            <div class="sponsor-grid dashboard">
-                <div class="sponsor-option">
+            <div class="sponsor-grid dashboard admin">
+               <div class="sponsor-option">
                     <div class="sponsor-checkbox dashboard">
+                        <div class="sponsors-flex dashboard show-this">
+                            <p class="showing-result">Showing 1-42</p>
+                            <select class="sponsor-option dashboard">
+                                <option value="all">Sort By</option>
+                                <option value="new">Newest</option>
+                                <option value="old">Oldest</option>
+                            </select>
+                        </div>
                         <div class="filter">
                             <form>
+                                <div class="mobile-category">
+                                    <h2 class="filter-mobile">Filter By Price</h2>
+                                     <div class="line" style="height: 1px;width: 100%;background: #c4c4c4;margin-bottom: 10px;"></div>
+                                    </div>
                                 <input type="range" min="0" max="80000" step="0.1" value="{{old('range')==null? 0 :old('range')}}" name='range' class="rate">
                                 <input type="submit" class="button-filter" value='FILTER'>
                                 <p class="filter-price">Price: ₦ 0 - ₦ 100</p>
-                                 <h3 class="sponsor-categories">CATEGORIES</h3>
+                                 <h3 class="sponsor-categories mobile-hide">CATEGORIES</h3>
                             </div>
-                        <div class="line" style="height: 1px;width: 300px;background: #c4c4c4;margin-bottom: 10px;"></div>
+                        <div class="line mobile-hide" style="height: 1px;width: 300px;background: #c4c4c4;margin-bottom: 10px;"></div>
                         <div id="flex-dashboard-container">
+                            <div class="mobile-category">
+                                <h3 class="sponsor-categories">CATEGORIES</h3>
+                                <div class="line" style="height: 1px;width: 100%;background: #c4c4c4;margin-bottom: 10px;"></div>
+                                </div>
                         <div class="flex dashboard">
                             <input type="checkbox" class="check" name='crop'>
                             <p class="sponsor-crop dashboard">Crop</p>
-                            <P>0</P>
+                            <P class="quant">0</P>
                         </div>
                         <div class="flex dashboard">
                             <input type="checkbox" name="cattle">
                             <p class="sponsor-crop dashboard">Cattles</p>
-                            <P>0</P>
+                            <P class="quant">0</P>
                         </div>
                         <div class="flex dashboard">
                             <input type="checkbox" class="poultry">
                             <p class="sponsor-crop dashboard">Poultry</p>
-                            <P>0</P>
+                            <P class="quant">0</P>
                         </div>
                         <div class="flex dashboard">
                             <input type="checkbox" name="livestock">
                             <p class="sponsor-crop dashboard">Livestock</p>
-                            <P>0</P>
+                            <P class="quant">0</P>
                         </div>
-                </div>
-                       <div class="add-category">
-                          <p>Add Status</p>
-                          <button class="add-status-btn">Add Status</button>
-                        </div>
-                        <div class="add-category">
-                            <p>Add Category</p>
-                            <button class="add-category-btn">Add Category</button>
+                    </form>
+                </div>  
+
+
+                      <div class="add-sell-reverse">
+                        <div class="stats-cate">
+                            <div class="add-category">
+                                <p>Add Status</p>
+                                <button class="add-status-btn">Add Status</button>
+                              </div>
+                              <div class="add-category">
+                                  <p>Add Category</p>
+                                  <button class="add-category-btn">Add Category</button>
+                              </div>
                         </div>
                         <div class="add-category">
                             <p>Farmer</p>
-                            <div class="i-want-to-sell">
+                            <div class="i-want-to-sell diff">
                                 <img src="img/admin-farmer-icon.svg" alt="icon">
-                                <p>I want to sell</p>
+                                <p class="sell">I want to sell</p>
                                 <div class="misc">
                                     <img src="img/admin-edit-marketplace.svg" alt="icon" class="edit-hover">
                                     <img src="img/admin-add-market.svg" alt="icon" class="add-hover">
@@ -167,9 +228,10 @@
                             </div>
                         </div>
                     </div>
+                    </div>
                 </div>
             
-                <div class="sponsor-data dashboard">
+                <div class="sponsor-data dashboard admn-mrkt">
                     <div class="grid dashboard">
                         <div class="label-edit">
                             <img src="img/edit-fade.png" alt="edit-icon" class="edit-icon" width="28">
@@ -442,7 +504,7 @@
        <div class="admin-add-item want-to-sell-admin">
            <div class="admin-add-item-container">
                <div class="close-add-item sell-item-class">x</div>
-               <h1 style="margin-top: 4px;margin-bottom: 15px;font-size:30px">Sell New Product</h1>
+               <h1 class="mbl" style="margin-top: 4px;margin-bottom: 15px;font-size:30px">Sell New Product</h1>
                <div class="product-name-category" style="margin-bottom: 10px">
                    <div class="product-name-dash">
                        <div class="tooltip-flex">
@@ -553,7 +615,7 @@
             </div>
         <div class="overlay"></div>
      <!--Add status ends-->
-
+    <script src="js/dashboardHamburger.js"></script>
     <script src="js/adminMarketplace.js"></script>
 </body>
 </html>

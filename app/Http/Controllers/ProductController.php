@@ -17,9 +17,10 @@ class ProductController extends Controller
     }
 
     public function marketplace(Request $request){
+
         $sort = $request->input('sort')=="new"? "ASC" : "DESC";
 
-        $products= Product::where('active','=',1)->orderBy('created_at',$sort)->paginate(15)->withQueryString();
+        $products= Product::where('active','=',1)->orderBy('created_at',$sort)->paginate(50)->withQueryString();
 
         session()->flashInput($request->input());
 

@@ -13,7 +13,7 @@ const hamburger = document.querySelector('.hamburger1');
         openHamburger =  false
     } else{
         let hamburgerModal = document.querySelector('.dashboard-hamburger');
-        hamburgerModal.style.left = '-100%';
+        hamburgerModal.style.left = '-115%';
         hamburgerModal.style.transition = '0.6s all ease-in-out'
         setTimeout(()=>{
             hamburger.src = 'img/hamburger.svg'

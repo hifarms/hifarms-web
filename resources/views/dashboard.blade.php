@@ -28,11 +28,11 @@
             <a href="user-farms"><img src="img/livestock-dashboard.svg" alt="livestock"> <p>Manage my farm</p></a>
             <a href="farm-invest"><img src="img/invest.svg" alt="marketplace"> <p>Invest In a Project</p></a>
             <a href="investment"><img src="img/history.svg" alt="history"> <p>ROI</p></a>
-            <a href="wallet kun"><img src="img/wallet.svg" alt="wallet"> <p>Wallet</p></a>
+            <a href="wallet"><img src="img/wallet.svg" alt="wallet"> <p>Wallet</p></a>
         </div>
     </div>
     <div class="third-se-bar">
-            <a href="userSettings.html"><img src="img/settings.png" alt="settings"> <p>Settings</p></a>
+            <a href="user-settings"><img src="img/settings.png" alt="settings"> <p>Settings</p></a>
             <a href=""><img src="img/log out.svg" alt="settings"> <p>Logout</p></a>
     </div>
     <div class="guide-dash">
@@ -48,6 +48,10 @@
                 <img src="img/logo.png" class="logo1x" alt="logo" width="113">
             </div>
             <div class="header-icons">
+            <div class="cart-whatsapp cart-whatsapp-dash">
+                    <a href='{{url('/cart')}}'><img src="{{asset('img/Group 51.png')}}" alt="cart" class="cart"></a>
+                       <span class="cart-counter"></span>
+                </div>
                 <div class="input-search">
                     <input type="text" placeholder="search for">
                     <img src="img/Vector (8).png" alt="search-icon">
@@ -107,10 +111,10 @@
             <a href="user-farms"><img src="img/livestock-dashboard.svg" alt="livestock"></a>
             <a href="farm-invest"><img src="img/invest.svg" alt="marketplace"></a>
             <a href="investment"><img src="img/history.svg" alt="history"></a>
-            <a href="wallet kun"><img src="img/wallet.svg" alt="wallet"></a>
+            <a href="wallet"><img src="img/wallet.svg" alt="wallet"></a>
         </div>
         <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;margin-bottom: 10px;">
-            <a href="userSettings.html"><img src="img/settings.png" style="margin-bottom: 30px;" alt="settings"></a>
+            <a href="user-settings"><img src="img/settings.png" style="margin-bottom: 30px;" alt="settings"></a>
             <img src="img/log out.svg" alt="log-out">
         </div>
     </div>
@@ -134,7 +138,7 @@
             </div>
             </a>
             <div class="weather">
-                <div class="weather-2">
+                <div class="weather-2 dashboard">
                     <div class="flex-1">
                         <p>Weather</p>
                         <img src="img/clouds.png" alt="clouds">

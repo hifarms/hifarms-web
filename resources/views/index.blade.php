@@ -2,6 +2,7 @@
 
 @section('content')
   <!--Home Page starts here-->
+  <div class="whole-cont">
     <div class="showcase-home-image">
         <div class="showcase-home-content">
             <h1>hi Farms</h1>
@@ -222,6 +223,7 @@
     </div>
     <div class="farm-location">
         <img src="img/Farm location.png" alt="map">
+    </div>
     </div>
   <!--Home page end-->
 

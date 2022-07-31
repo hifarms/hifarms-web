@@ -6,7 +6,10 @@ const changePassword = document.querySelector('.pass');
 const manageUsers = document.querySelector('.display-manage');
 const generalSettings = document.querySelector('.display-general');
 const statistics = document.querySelector('.display-stats');
+<<<<<<< HEAD
 7
+=======
+>>>>>>> b90a65175454720ebd6f6d79846c71d2b83fdefa
 const inbox = document.querySelector('.inbox')
 
 const toggle = () => {

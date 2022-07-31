@@ -46,7 +46,7 @@ const addLoader = (e)=>{
   
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
-
+  e.submit()
   setTimeout(()=>{
      let addItemModal = document.querySelector('.admin-add-item');
      let overlayEffect = document.querySelector('.overlay');
