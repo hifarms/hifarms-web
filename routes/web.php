@@ -118,11 +118,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'before' => 'admin'],
 
     Route::get('/adminWallet', 'AdminDashboard@adminWallet');
 
-<<<<<<< HEAD
-    Route::get('/adminBlog', 'AdminDashboard@adminBlog');
-=======
 Route::get('/verify-email', 'AuthController@verifyEmail');
->>>>>>> b90a65175454720ebd6f6d79846c71d2b83fdefa
 
     Route::get('/adminSettings', 'AdminDashboard@adminSettings');
 
