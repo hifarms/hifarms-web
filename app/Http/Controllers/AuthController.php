@@ -25,7 +25,7 @@ class AuthController extends Controller
             'password' => 'required|min:4',
         ]);
 
-        if (Auth::attempt(['email' => $request['email'], 'password' => $request['password'], 'role_id' => '1', 'status' =>'1'])) {
+        if (Auth::attempt(['email' => $request['email'], 'password' => $request['password'], 'role_id' => '1'])) {
 
             if(!boolval(auth()->user()->status)){
                 Auth::logout();
@@ -33,7 +33,7 @@ class AuthController extends Controller
             }
 
             // return redirect()->back()->with('success_message','Login Sucess');
-            return redirect('/dashboard');
+            return redirect()->intended(route('admindashboard'));
         }
 
         // \Session::flash('warning_message', 'These credentials do not match our records.');
@@ -181,5 +181,17 @@ class AuthController extends Controller
         }
 
         Auth::login($table);
+    }
+
+    
+    public function deleteuser($id)
+    {
+        // Delete User
+        $user = User::where('id', $id)->first();
+        $user->delete();
+
+        \Session::flash('Success_message', 'You Have Successfully Deleted User');
+
+        return back();
     }
 }

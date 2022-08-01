@@ -54,7 +54,7 @@ Route::get('services/sponsor/{farm}', 'Farminvestment@show');
 
 Route::get('/blog', 'BlogPostController@getPost');
 
-Route::get('/blog/{slug}/', 'BlogPostController@show');
+Route::get('/blog/{slug}/', 'BlogPostController@show')->name('showblog');
 
 Route::get('/cart', 'CartItemController@getCart');
 
@@ -101,27 +101,46 @@ Route::post('/withdrawal-request', 'WalletController@withdrawRequest')->name('da
 
 Route::post('/update-profile-pic', 'UserController@changeProfilePic')->name('change-profile');
 
-Route::get('/adminDashboard', 'AdminDashboard@adminDashboard');
+//admin route
+Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'before' => 'admin'], function () {
 
-Route::get('/adminInvest', 'AdminDashboard@adminInvest');
+    Route::get('/adminDashboard', 'AdminDashboard@adminDashboard')->name('admindashboard');
 
-Route::get('/adminInvestReturns', 'AdminDashboard@adminInvestReturns');
+    Route::get('/adminInvest', 'AdminDashboard@adminInvest');
 
-Route::get('/adminMarketplace', 'AdminDashboard@adminMarketplace');
+    Route::get('/adminInvestReturns', 'AdminDashboard@adminInvestReturns');
 
-Route::get('/adminMyFarm', 'AdminDashboard@adminMyFarm');
+    Route::get('/adminMarketplace', 'AdminDashboard@adminMarketplace');
 
-Route::get('/adminProfile', 'AdminDashboard@adminProfile');
+    Route::get('/adminMyFarm', 'AdminDashboard@adminMyFarm');
 
-Route::get('/adminWallet', 'AdminDashboard@adminWallet');
+    Route::get('/adminProfile', 'AdminDashboard@adminProfile');
 
-Route::get('/adminSettings', 'AdminDashboard@adminSettings');
+    Route::get('/adminWallet', 'AdminDashboard@adminWallet');
 
+<<<<<<< HEAD
+    Route::get('/adminBlog', 'AdminDashboard@adminBlog');
+=======
 Route::get('/verify-email', 'AuthController@verifyEmail');
+>>>>>>> b90a65175454720ebd6f6d79846c71d2b83fdefa
 
+    Route::get('/adminSettings', 'AdminDashboard@adminSettings');
 
-Route::get('/marketplace', 'ProductController@marketplace')->name('dashboard');
-Route::post('/add-sell-product', 'ProductController@store')->name('sell-product');
+    Route::get('/marketplace', 'ProductController@marketplace')->name('dashboard');
+
+    Route::post('/add-sell-product', 'ProductController@store')->name('sell-product');
+
+    Route::get('/delete-product/{product}', 'ProductController@destroy')->name('deleteproduct');
+
+    Route::post('/post-category', 'CategoryController@create')->name('postcategory');
+    
+    Route::post('/post-blog', 'BlogPostController@store')->name('postblog');
+
+    Route::get('/delete-blog/{post}', 'BlogPostController@destroy')->name('deleteblog');
+
+    Route::post('/update-blog/{post}', 'BlogPostController@update')->name('updateblog');
+
+});
 
 
 Route::post('/forget-password', 'ResetPasswordController@submitForgetPasswordForm')->name('forget.password.post');
@@ -133,6 +152,8 @@ Route::post('/signin', "AuthController@signin")->name('signin');
 Route::get('/signup', "AuthController@signupForm")->name('signUpForm');
 
 Route::get('/signin',  "AuthController@signinForm")->name('signInForm');
+
+Route::get('/delete/{id}',  "AuthController@deleteuser")->name('deleteuser');
 
 Route::get('/single-checkout/{farm}', 'OrderController@singleCheckout')->name('single-checkout');
 Route::get('/paystack/callback', 'OrderController@verifyTransaction')->name('verify');
