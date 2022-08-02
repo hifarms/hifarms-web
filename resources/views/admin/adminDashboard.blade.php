@@ -36,7 +36,7 @@ Admin dashboard
                 <img src="../img/admin-cart.png" alt="stats">
             </div>
             <h5>Total Sales</h5>
-            <h2>0</h2>
+            <h2>{{ $orders }}</h2>
             <p>Start from Jan 1, 2022</p>
         </div>
     </div>
@@ -57,7 +57,7 @@ Admin dashboard
                 <div class="product-list">
                     <div>{{ $number }}</div>
                     <div class="product-list-grid">
-                        <img src="../img/unsplash_CCxWLAx0qmk.png" alt="onions">
+                        <img src="{{ url($prods->image) }}" alt="onions">
                         <p>{{ $prods->name }}</p>
                     </div>
                     <div class="admin-active">@if($prods->active = 1) Actvive @endif</div>
