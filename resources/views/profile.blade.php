@@ -127,7 +127,7 @@
         <h1>My Profile.</h1>
         <p class="use-pro">Hello {{ explode(' ',$user->fullname)[0]}}</p>
         <div class="profile-hero">
-            <img src="{{$user->avatar}}" id="changed-image" alt="profile-image">
+            <img src="{{$user->avatar}}" id="changed-image" class="profile-image" alt="profile-image">
             <p>{{ $user->fullname }}</p>
             <input type="file" hidden class="file add-photos">
             <button class="upload-img">Upload Image</button>

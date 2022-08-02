@@ -44,7 +44,7 @@
     </div>
     <div class="nutrition-home-page">
         <div class="nutrition-grid">
-            <img src="img/Rectangle 17.png" alt="image" width="400" height="570">
+            <img src="img/Rectangle 17.jpg" alt="image" width="400" height="570">
             <div class="nutrition-content">
                 <h3>ABOUT HI FARMS</h3>
                 <h1>Find your potential with good nutrition</h1>
