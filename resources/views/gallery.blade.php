@@ -12,22 +12,22 @@
 </div>
 <!-- Images used to open the lightbox -->
 <div class="row">
-    <div class="column">
+    <div class="column" data-aos="zoom-out">
       <img src="img/Rectangle 23.png" onclick="openModal();currentSlide(1)" class="hover-shadow">
     </div>
-    <div class="column">
+    <div class="column" data-aos="zoom-out">
       <img src="img/grassfield@4x 1.png" onclick="openModal();currentSlide(2)" class="hover-shadow">
     </div>
-    <div class="column">
+    <div class="column" data-aos="zoom-out">
       <img src="img/unsplash_Bbq3H7eGids.png" onclick="openModal();currentSlide(3)" class="hover-shadow">
     </div>
-    <div class="column">
+    <div class="column" data-aos="zoom-out">
       <img src="img/unsplash_fQ9X2rPEwq8.png" onclick="openModal();currentSlide(4)" class="hover-shadow">
     </div>
-    <div class="column">
+    <div class="column" data-aos="zoom-out">
         <img src="img/unsplash_CAA5XShS_No.png" onclick="openModal();currentSlide(4)" class="hover-shadow">
       </div>
-      <div class="column">
+      <div class="column" data-aos="zoom-out">
         <img src="img/unsplash_s0lkbvtN9K8.png" onclick="openModal();currentSlide(4)" class="hover-shadow">
       </div>
   </div>

@@ -3,7 +3,7 @@
 @section('content')
   <!--Home Page starts here-->
   <div class="whole-cont">
-    <div class="showcase-home-image">
+    <div class="showcase-home-image" data-aos="fade-up">
         <div class="showcase-home-content">
             <h1>hi Farms</h1>
             <p class="sub-1" style="font-weight: 500;">...nourishing humanity</p>
@@ -24,7 +24,7 @@
     </div>
     <div class="homepage-services">
         <img src="img/Flower.svg" alt="flower" class="flower-services" width="300">
-        <div class="images-grid">
+        <div class="images-grid" data-aos="fade-left">
             <div class="grid">
                 <img src="img/Group.svg" alt="vector">
                 <h1>Fresh Vegetable</h1>
@@ -42,13 +42,13 @@
             </div>
         </div>
     </div>
-    <div class="nutrition-home-page">
+    <div class="nutrition-home-page" data-aos='fade-down'>
         <div class="nutrition-grid">
             <img src="img/Rectangle 17.jpg" alt="image" width="400" height="570">
-            <div class="nutrition-content">
+            <div class="nutrition-content" data-aos="zoom-in">
                 <h3>ABOUT HI FARMS</h3>
                 <h1>Find your potential with good nutrition</h1>
-                <p>Established in 2018, Hi Farms is related to HIB Group. HiFarms specializes in creation and management of biosystems. We run a farming system with simultaneous activities involving crop and animal all year round. <br><br>
+                <p  data-aos="fade-left">Established in 2018, Hi Farms is related to HIB Group. HiFarms specializes in creation and management of biosystems. We run a farming system with simultaneous activities involving crop and animal all year round. <br><br>
 
                     We collaborate with local populations, engaging them in provincial agricultural operations and projects by creating job opportunities during the projects. <br><br>
                     
@@ -61,7 +61,7 @@
                             <p>Tons of harvest</p>
                         </div>
                 </div>
-                <div class="tractor-image">
+                <div class="tractor-image"  data-aos="zoom-in">
                     <img src="img/tractor.svg" alt="" class="tractor2">
                     <div class="pararaph">
                         <h3>128</h3>
@@ -69,15 +69,15 @@
                     </div>
                 </div>
             </div>
-                <div class="button-container">
+                <div class="button-container"  data-aos="zoom-out">
                     <button class="sb-2">Read More</button>
                     <button class="sb-3">Read More</button>
                 </div>          
             </div>
         </div>
     </div>
-    <div class="services-homepage">
-        <div class="services-menu">
+    <div class="services-homepage" data-aos="fade-right">
+        <div class="services-menu" data-aos="slide-up">
             <h3>WHAT WE DO</h3>
             <h1>Our Services</h1>
             <div class="homepage-service-grid">
@@ -104,7 +104,7 @@
             <button>View More</button>
         </div>
     </div>
-    <div class="special-offers">
+    <div class="special-offers" data-aos="fade-left">
         <h1>Special Offers</h1>
         <div class="offers-flex">
             <div class="flex">
@@ -129,6 +129,7 @@
             </div>
         </div>
     </div>
+    <!--comment-out
     <div class="gallery">
         <p>Gallery</p>
         <h1>Pictures of Farm Site</h1>
@@ -140,11 +141,11 @@
             <img src="img/unsplash_CAA5XShS_No.png" alt="">
             <img src="img/unsplash_s0lkbvtN9K8.png" alt="">
         </div>
-    </div>
+    </div>-->
     <div class="quality-service">
         <div class="quality-service-flex">
-            <img src="img/Picture 1.png" alt="image">
-            <div class="quality-service-content">
+            <img src="img/Picture 1.png" alt="image" data-aos="fade-right">
+            <div class="quality-service-content" data-aos="fade-left">
                 <h1>Providing Quality Services And Products</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada scelerisque ipsum, et cursus magna Donec mollis efficitur mauris, vehicula convallis metus tincidunt sit amet. Aenean magna sapien, semper ac rutrum a mass.</p>
                 <button>Read More</button>
@@ -152,19 +153,19 @@
         </div>
     </div>
     <div class="management-homepage">
-        <p>Our Team</p>
+        <p data-aos="fade-up">Our Team</p>
         <h1>Management Deck</h1>
         <img src="img/left arrow.svg" alt="" class="left-arrow">
         <img src="img/right arrow.svg" alt="" class="right-arrow">
         <div class="management-flex">
-            <img src="img/Hafiz Bello 1.png" alt="">
-            <p class="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada scelerisque ipsum, et cursus magna Donec mollis efficitur mauris, vehicula convallis metus tincidunt sit amet.</p>
-            <h1>Hafiz Ibrahim Bello</h1>
-            <p class="title">Managing Director</p>
+            <img src="img/Hafiz Bello 1.png" alt="ceo-image">
+            <p class="content"  data-aos="fade-right">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada scelerisque ipsum, et cursus magna Donec mollis efficitur mauris, vehicula convallis metus tincidunt sit amet.</p>
+            <h1  data-aos="flip-down">Hafiz Ibrahim Bello</h1>
+            <p class="title" data-aos="fade-up">Managing Director</p>
         </div>
-    </div>
-    <div class="harvest-info">
-        <div class="harvest-flex">
+    </div> 
+    <div class="harvest-info" >
+        <div class="harvest-flex" data-aos="fade-down">
             <div class="flex">
                 <img src="img/bees.svg" alt="">
                 <h1>748</h1>
@@ -188,9 +189,9 @@
         </div>
     </div>
     <div class="blog-homepage">
-        <p>BLOG</p>
+        <p data-aos="fade-up">BLOG</p>
         <h1>Latest News</h1>
-        <div class="blog-container">
+        <div class="blog-container" data-aos="fade-down">
             <div class="blog-grid">
                 <div class="grid-blog">
                     <img src="img/unsplash_0ZX8_HDWHN4.png" alt="blog-img">

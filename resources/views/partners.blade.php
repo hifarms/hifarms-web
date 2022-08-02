@@ -12,21 +12,21 @@
    </div>
    <div class="blog-container partners">
        <div class="blog-grid">
-           <div class="grid-blog">
+           <div class="grid-blog" data-aos="zoom-out">
                <img src="img/atcost.png" alt="blog-img">
                <h1>ATCOST FARM LTD</h1>
                <P>Lagos, Ikorodu Street</P>
                <P class="last-p"> Lagos State, Nigeria</P>
            </div>
 
-           <div class="grid-blog">
+           <div class="grid-blog" data-aos="zoom-out">
             <img src="img/farmcost.png" alt="blog-img">
             <h1>FARM STORES LTD</h1>
             <P>Kalgo Road, Jega</P>
             <P class="last-p">Kebbi State, Nigeria</P>
         </div>
 
-        <div class="grid-blog">
+        <div class="grid-blog" data-aos="zoom-out">
             <img src="img/pikefarm.png" alt="blog-img">
             <h1>PIKE PLACE FISH MARKET</h1>
             <P>Argungu, Sokoto Road</P>
@@ -38,7 +38,7 @@
    
    <div class="our-partners powered">
     <h1>POWERED BY</h1>
-    <div class="partners-container">
+    <div class="partners-container" data-aos="fade-up">
         <img src="img/PB 1.png" alt="providus-bank">
         <img src="img/partner 2 1.png" alt="CBN">
     </div>
