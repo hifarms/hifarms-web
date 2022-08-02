@@ -8,8 +8,10 @@ use App\Category;
 use App\Product;
 use App\User;
 use App\Wallet;
-use App\Withdraws;
+use App\Withdraw;
 use App\Farm;
+use App\Message;
+use App\order_item;
 use Illuminate\Http\Request;
 
 class AdminDashboard extends Controller
@@ -51,6 +53,7 @@ class AdminDashboard extends Controller
     {
         $data['users'] = User::where('status', 1)->count();
         $data['products'] = Product::count();
+        $data['orders'] = order_item::count();
         $data['product'] = Product::paginate(7);
         return view('admin.adminDashboard', $data);
     }
@@ -77,20 +80,23 @@ class AdminDashboard extends Controller
 
     public function AdminmyFarm()
     {
-        return view('admin.adminMyFarm');
+        $data['crops'] = Farm::where('farm_type_id', 1)->count();
+        $data['livestock'] = Farm::where('farm_type_id', 2)->count();
+        return view('admin.adminMyFarm', $data);
     }
 
     public function AdminProfile()
     {
-        return view('admin.adminProfile');
+        $data['user'] = auth()->user();
+        return view('admin.adminProfile', $data);
     }
 
     public function AdminWallet()
     {
         $data['ledgerbalance'] = Wallet::sum('ledger_balance');
         $data['balance'] = Wallet::sum('balance');
-        // $data['amount'] = Withdraws::sum('amount');
-        // $data['withdraws'] = Withdraws::all();
+        $data['amount'] = Withdraw::sum('amount');
+        $data['withdraws'] = Withdraw::all();
         return view('admin.adminWallet', $data);
     }
 
@@ -108,6 +114,8 @@ class AdminDashboard extends Controller
         $data['user'] = User::where('role_id', 1)->get();
         $data['users'] = User::where('status', 1)->count();
         $data['products'] = Product::count();
+        $data['orders'] = order_item::count();
+        $data['messages'] = Message::paginate(9);
         return view('admin.adminSettings', $data);
     }
 }

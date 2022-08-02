@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BlogPostController;
+use App\Http\Controllers\MessageController;
 
 
 
@@ -122,6 +123,8 @@ Route::get('/verify-email', 'AuthController@verifyEmail');
 
     Route::get('/adminSettings', 'AdminDashboard@adminSettings');
 
+    Route::post('/send-message', 'MessageController@sendmessage');
+
     Route::get('/marketplace', 'ProductController@marketplace')->name('dashboard');
 
     Route::post('/add-sell-product', 'ProductController@store')->name('sell-product');
@@ -129,13 +132,18 @@ Route::get('/verify-email', 'AuthController@verifyEmail');
     Route::get('/delete-product/{product}', 'ProductController@destroy')->name('deleteproduct');
 
     Route::post('/post-category', 'CategoryController@create')->name('postcategory');
-    
+
     Route::post('/post-blog', 'BlogPostController@store')->name('postblog');
 
     Route::get('/delete-blog/{post}', 'BlogPostController@destroy')->name('deleteblog');
 
     Route::post('/update-blog/{post}', 'BlogPostController@update')->name('updateblog');
 
+    Route::post('/withdrawal-request', 'WalletController@withdrawRequest')->name('adminwithdraw');
+
+    Route::post('/update-profile-pic', 'UserController@changeProfilePic')->name('change-profile');
+
+    Route::post('/update-profile', 'UserController@updateProfile')->name('updateprofile');
 });
 
 
@@ -168,7 +176,3 @@ Route::get('signin/google/callback', [App\Http\Controllers\AuthController::class
 //facebook Login
 Route::get('signin/facebook', [App\Http\Controllers\AuthController::class, 'redirectToFacebook'])->name('signin.facebook');
 Route::get('signin/facebook/callback', [App\Http\Controllers\AuthController::class, 'handleFacebokCallback']);
-
-
-
-

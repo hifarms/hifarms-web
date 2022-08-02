@@ -1,31 +1,8 @@
-@extends('layout.masterAdmin')
+@extends('layout.masterAdmin1')
 @section('title')
-Admin Invest
+Admin Settings
 @endsection
 @section('content')
-<div class="mail-sent">
-    <img src="img/mail-sent.png" alt="mail" style="margin-right: 10px;">
-    <div>Mail Sent!!!</div>
-</div>
-<div class="priv-added">
-    Set Privileges!
-</div>
-<div class="settings added-successfully">
-    Password Changed!
-</div>
-<div class="added-successfully-2">
-    Added Successfully!
-</div>
-<div class="settings save-successful">
-    Changes Saved!
-</div>
-<div class="deleted-successfully" style="z-index: 3000;">
-    Deleted Successfully!!!
-</div>
-<div class="deleted-successfully-2" style="z-index: 3000;">
-    Deleted Successfully!!!
-</div>
-
 <div class="dashboard-container admin-setting">
     <div class="settings-header">
         <div class="settings-inner">
@@ -35,11 +12,11 @@ Admin Invest
                 <div class="round-switch-name">
                     <div class="switch-button">
                         <label class="switch">
-                            <input type="checkbox" id="admin-chekbox">
+                            <input type="checkbox" checked id="admin-chekbox">
                             <span class="slider round"></span>
                         </label>
                     </div>
-                    <h2 class="disable">Disabled</h2>
+                    <h2 class="disable" style="color: #8bc53e;">Active</h2>
                 </div>
                 <div class="reset-admin">
                     <img src="../img/admin-reset-off.png" alt="reset" class="reset-img">
@@ -85,7 +62,6 @@ Admin Invest
                             <h2>Disabled</h2>
                         </div> <br>
                     </div>
-
                     <div class="save-changes">
                         <button>Save Changes</button>
                     </div>
@@ -113,11 +89,14 @@ Admin Invest
                         </div>
                     </div>
                     @endforeach
+                    <div class="line-add-user"><span>+</span>
+                        <div>Add account</div>
+                    </div>
                 </div>
 
                 <form class="general-settings-form">
                     <div class="save-changes">
-                        <button>Delete All</button>
+                        <button class="delete-all">Delete All</button>
                     </div>
                 </form>
             </div>
@@ -135,18 +114,13 @@ Admin Invest
                     <button>Mark all as read</button>
                 </div>
                 <div class="messages-catalog">
+                    @foreach($messages as $message)
                     <div class="message-inner">
-                        <p>New request on products to be sold.</p>
-                        <span>12mins ago</span>
+                        <small>{{ $message->user->email }}</small>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <small> {{ $message->message_body }}</small>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <small> {{ date('F d, Y', strtotime($message->created_at)) }}</small>
                     </div>
-                    <div class="message-inner">
-                        <p>Let’s get started Admin.</p>
-                        <span>3hr ago</span>
-                    </div>
-                    <div class="message-inner">
-                        <p>Welcome Admin you are now live!</p>
-                        <span>6hr ago</span>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="save-changes">
                     <button class="send-msg">Send a Message</button>
@@ -199,7 +173,7 @@ Admin Invest
                             <img src="../img/admin-cart.png" alt="stats">
                         </div>
                         <h5>Total Sales</h5>
-                        <h2>0</h2>
+                        <h2>{{ $orders }}</h2>
                         <p>Start from Jan 1, 2022</p>
                     </div>
                     <div class="info-4">
@@ -239,25 +213,25 @@ Admin Invest
             <label>Old Password:</label>
             <div class="password-visible">
                 <input type="password" style="margin-left: 15px;" class="pass-val">
-                <img src="img/invisible.png" alt="" class="toggle-password">
+                <img src="../img/invisible.png" alt="" class="toggle-password">
             </div>
         </div> <br>
         <div class="old-password-flex">
             <label>New Password:</label>
             <div class="password-visible">
                 <input type="password" style="margin-left: 15px;" class="pass-val">
-                <img src="img/invisible.png" alt="" class="toggle-password">
+                <img src="../img/invisible.png" alt="" class="toggle-password">
             </div>
         </div> <br>
         <div class="old-password-flex">
             <label>Old Password:</label>
             <div class="password-visible">
                 <input type="password" style="margin-left: 15px;" class="pass-val">
-                <img src="img/invisible.png" alt="" class="toggle-password">
+                <img src="../img/invisible.png" alt="" class="toggle-password">
             </div>
         </div> <br>
         <div class="button-admin-container">
-            <button class="add-item-submit admin-dash-submit"><span style="padding-left:47px ;padding-right: 46px;" class="edit-want-to-sell-span">Save</span> <img class="loader loader-edit" src="img/loader-hifarm.gif" alt="#"> </button>
+            <button class="add-item-submit admin-dash-submit"><span style="padding-left:47px ;padding-right: 46px;" class="edit-want-to-sell-span">Save</span> <img class="loader loader-edit" src="../img/loader-hifarm.gif" alt="#"> </button>
         </div>
     </div>
 </div>
@@ -342,11 +316,11 @@ Admin Invest
             <label>Password:</label>
             <div class="password-visible user">
                 <input type="password" class="pass-val">
-                <img src="img/invisible.png" alt="" class="toggle-password">
+                <img src="../img/invisible.png" alt="" class="toggle-password">
             </div>
         </div> <br>
         <div class="button-admin-container">
-            <button class="add-item-submit admin-dash-submit"><span style="padding-left:47px ;padding-right: 46px;" class="edit-want-to-edit-span">Save</span> <img class="loader loader-user-edit" src="img/loader-hifarm.gif" alt="#"> </button>
+            <button class="add-item-submit admin-dash-submit"><span style="padding-left:47px ;padding-right: 46px;" class="edit-want-to-edit-span">Save</span> <img class="loader loader-user-edit" src="../img/loader-hifarm.gif" alt="#"> </button>
         </div>
     </div>
 </div>
@@ -369,11 +343,11 @@ Admin Invest
             <label>Password:</label>
             <div class="password-visible user">
                 <input type="password" class="pass-val">
-                <img src="img/invisible.png" alt="" class="toggle-password">
+                <img src="../img/invisible.png" alt="" class="toggle-password">
             </div>
         </div> <br>
         <div class="button-admin-container">
-            <button class="add-item-submit admin-dash-submit"><span style="padding-left:47px ;padding-right: 46px;" class="edit-want-to-add-span">Save</span> <img class="loader loader-add" src="img/loader-hifarm.gif" alt="#"> </button>
+            <button class="add-item-submit admin-dash-submit"><span style="padding-left:47px ;padding-right: 46px;" class="edit-want-to-add-span">Save</span> <img class="loader loader-add" src="../img/loader-hifarm.gif" alt="#"> </button>
         </div>
     </div>
 </div>
@@ -413,30 +387,38 @@ Admin Invest
     <div class="blog-post-modal">
         <div class="head-and-back">
             <div>New Message</div>
-            <img class="close-modal" style="cursor: pointer;" src="img/back-blog.svg" alt="#">
+            <img class="close-modal" style="cursor: pointer;" src="../img/back-blog.svg" alt="#">
         </div>
-        <div class="blog-category">
-            <label>From:</label>
-            <input type="text" value="hafiz@hifarms.ng" disabled style="
+        <form method="POST" action="{{ url('admin/send-message') }}">
+        @csrf
+            <div class="blog-category">
+                <label>From:</label>
+                <input type="text" value=" {{ Auth::user()->email }}" disabled style="
                  padding: 10px;
                  margin-left: 10px;
                  width: 200px;
                  border: 1px solid #ebe8e8;
                  border-radius: 10px;
               ">
-        </div>
-        <div class="topic-date">
-            <div class="topic">
-                <label>To:</label>
-                <input type="text" placeholder="Input user mails here...">
             </div>
-        </div>
-        <div class="text">
-            <textarea name="" id="" cols="30" rows="12" placeholder="Write message here..."></textarea>
-        </div>
-        <div class="add-pic-submit">
-            <img src="img/Direct.png" class="sent" alt="#" style="cursor: pointer;" width="70">
-        </div>
+            <div class="topic-date">
+                <div class="topic">
+                    <label>To:</label>
+                    <select name="recipient_id" style="width: 700px;height:30px;">
+                        <option selected disabled>Select Recipient</option>
+                        @foreach($user as $use)
+                        <option value="{{ $use->id }}">{{ $use->email }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <div class="text">
+                <textarea name="message_body" id="" cols="30" rows="12" placeholder="Write message here..."></textarea>
+            </div>
+            <div class="button-admin-container">
+                <button type="submit" class="add-item-submit">Send Message</button>
+            </div>
+        </form>
     </div>
 </div>
 <div class="overlay"></div>

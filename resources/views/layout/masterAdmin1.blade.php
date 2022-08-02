@@ -10,17 +10,44 @@
 </head>
 
 <body>
-    <header>
+
+    <!--Dashboard Hamburger Ends-->
+    <div class="mail-sent">
+        <img src="../img/mail-sent.png" alt="mail" style="margin-right: 10px;">
+        <div>Mail Sent!!!</div>
+    </div>
+    <div class="priv-added">
+        Set Privileges!
+    </div>
+    <div class="settings added-successfully">
+        Password Changed!
+    </div>
+    <div class="added-successfully-2">
+        Added Successfully!
+    </div>
+    <div class="settings save-successful">
+        Changes Saved!
+    </div>
+    <div class="deleted-successfully" style="z-index: 3000;">
+        Deleted Successfully!!!
+    </div>
+    <div class="deleted-successfully-2" style="z-index: 3000;">
+        Deleted Successfully!!!
+    </div>
+    <header class="dashbrd-header">
         <div class="dashboard-header">
+            <img src="../img/hamburger.svg" alt="#" id="hamburger" class="hamburger1">
             <div class="header-img">
-                <img src="../img/logo.png" alt="logo" width="113">
+                <img src="../img/logo.png" class="logo1x" alt="logo" width="113">
             </div>
             <div class="header-icons">
+                <div class="cart-whatsapp cart-whatsapp-dash">
+                    <a href='{{url('/cart')}}'><img src="../img/Group 51.png" alt="cart" class="cart"></a>
+                    <span class="cart-counter"></span>
+                </div>
                 <div class="input-search">
-                    <form method="GET" role="search">
-                        <input type="text" placeholder="search for">
-                        <img src="../img/Vector (8).png" alt="search-icon">
-                    </form>
+                    <input type="text" placeholder="search for">
+                    <img src="../img/Vector (8).png" alt="search-icon">
                 </div>
                 <div class="notifs">
                     <img src="../img/Notifications.png" alt="notifications" class="notifications">
@@ -51,10 +78,8 @@
                     <div class="guide-download">
                         <h2>Help & Guide</h2>
                         <div class="line"></div>
-                        <p>Help & Guide
-                            Click Here to download
-                            Hi Farms instruction
-                            Manual.</p>
+                        <p>Help & Guide Click Here to download Hi Farms instruction Manual.
+                        </p>
                     </div>
                 </div>
                 <div class="profile-inclusive">
@@ -69,7 +94,7 @@
     </header>
     <div class="side-bar">
         <div class="first-side-bar">
-            <img src="../img/side-bar.svg" alt="side-bar">
+            <img src="../img/side-bar.svg" alt="side-bar" style="margin-bottom: 30px;">
         </div>
         <div class="second-side-bar">
             <a href="{{ url('admin/adminDashboard')}}"> <img src="../img/Dashboard.svg" alt="dashboard" title="dashboard" class="{{ request()->is('admin/adminDashboard*') ? 'current' : '' }}"></a>
@@ -84,10 +109,8 @@
             <a href="{{ url('admin/adminSettings')}}"><img src="../img/settings.png" class="{{ request()->is('admin/adminSettings*') ? 'current' : '' }}" style=" border-radius: 50%; margin-bottom: 30px;" alt="settings" title="settings"></a>
             <a href="{{ url('logout') }}"><img src="../img/log out.svg" alt="log-out" title="log-out"></a>
         </div>
-
     </div>
     @yield('content')
-
 </body>
 
 </html>
