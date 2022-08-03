@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\BlogPost;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class BlogPostController extends Controller
 {
@@ -46,9 +49,9 @@ class BlogPostController extends Controller
 
 
         $post = new BlogPost();
-        $post->title= $request->title();
-        $post->content = $request->content;
-        $post->slug= Str::slug($request->title).'-'.rand(1000);
+        $post->title = $request->input('title');
+        $post->blog_category_id = $request->input('blog_category_id');
+        $post->content = $request->input('content');
       
         if ($request->hasFile('image'))
         {
@@ -57,8 +60,9 @@ class BlogPostController extends Controller
             $post->image_cover = 'storage/'.$path;
         }
 
-
         $post->save();
+
+        return redirect()->back()->with('Success_message', 'Blog Posted Successfully');
     }
 
     public function edit(Request $request,BlogPost $post){
@@ -66,7 +70,7 @@ class BlogPostController extends Controller
         return view('blog.edit',['post'=>$post]);
     }
 
-    public function update(Request $request,BlogPost $blog){
+    public function update(Request $request,BlogPost $post){
 
         $validator = Validator::make($request->all(), [
             'title' => 'required|string',

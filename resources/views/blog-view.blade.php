@@ -16,7 +16,7 @@
        <h1>{{$post->title}}</h1>
 
        <div class="blog-page-flex">
-           <img src={{url($post->image_cover)}} alt="blog-image">
+           <img src="{{url($post->image_cover)}}" alt="blog-image">
            <div class="social-icons">
             <p style="color: #A0D468;">Share Post</p>
             <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">

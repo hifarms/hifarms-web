@@ -29,7 +29,7 @@
                   <div class="services-hover">
                       <a href="{{url('/services')}}"><span>Services</span></a>
                       <div class="service-hover">
-                          <a href="{{url('/services/sponsor')}}"><span>Sponsors</span></a>
+                          <a href="{{url('/services/sponsor')}}"><span>Marketplace</span></a>
       
                         </div>
                   </div>
@@ -57,7 +57,11 @@
         <div class="hamburger-modal">
             <a href="/">Home</a>
             <a href="/about">About</a>
+            <a href="/partners">Our Partners</a>
+            <a href="/faq">FaQs</a>
+            <a href="/gallery">Gallery</a>
             <a href="/services">Services</a>
+            <a href="/sponsors">Marketplace</a>
             <a href="/blog">Blog</a>
             <a href="/signup">Register</a>
             <a href="/signin">Login</a>

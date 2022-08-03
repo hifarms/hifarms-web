@@ -128,7 +128,7 @@
         <div class="wallet-flex">
             <div class="spending">
                 <div class="spend-1">
-                    <p>My Spendings</p>
+                    <p class='spends'>My Spendings</p>
                     <p>₦ {{$totalspend}}</p>
                 </div>
                 <img src="img/analye.png" alt="chart" class="analyze">

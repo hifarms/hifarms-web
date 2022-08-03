@@ -71,6 +71,11 @@ class User extends Authenticatable
 
         return $this->belongsTo(Wallet::class);
     }
+
+    public function message()
+    {
+        return $this->hasMany('App\Message');
+    }
     
     public function isAdmin(){
 

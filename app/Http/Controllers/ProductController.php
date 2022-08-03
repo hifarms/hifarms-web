@@ -94,7 +94,6 @@ class ProductController extends Controller
         $product->unit = $request->unit;
         $product->description= $request->description || "Null";
         $product->active= 1;
-        $product->label_id= 1;
         $request->product_type? $product->product_type_id = $request->product_type: null;
         if ($request->hasFile('image')){
             $file  = $request->file('image');
@@ -151,7 +150,6 @@ class ProductController extends Controller
 
     public function destroy(Product $product){
 
-        $this->authorize('view', $product);
 
         // saving image url
         $tempurl=$product->image;
@@ -159,7 +157,7 @@ class ProductController extends Controller
         $deleted = $product->delete();
 
         //check if delete is success
-        if(!$delete){
+        if(!$deleted){
             return redirect()->back()->with('error', 'Delete Failed');
         }
 

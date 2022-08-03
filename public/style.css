@@ -5,6 +5,20 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Quicksand', Arial, Helvetica, sans-serif;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+     user-select: none;
+}
+
+.cart-unit{
+  margin-left: 32px!important;
+}
+
+.whole-cont{
+  overflow: hidden!important;
 }
 
 .close-add-item.add-user-close{
@@ -1564,7 +1578,7 @@ header{
 .about-history .history-about{
   width: 140px;
   float: right;
-  height: 15px;
+  height: 3px;
   background: #49a760;
   margin-bottom: 10px;
 }
@@ -1672,7 +1686,7 @@ header{
 
 .what-drives-us-content div{
   width: 180px;
-  height: 15px;
+  height: 3px;
   background: #49a760;
   margin-bottom: 30px;
 }
@@ -1774,7 +1788,7 @@ header{
 .purpose-content .line{
   width: 150px;
   margin-left: -50px;
-  height: 15px;
+  height: 3px;
   margin-top: 8px;
   margin-bottom: 15px;
   background: #49a760;
@@ -1830,7 +1844,7 @@ header{
 .land-hectre .hectre-line{
   width: 140px;
   float: right;
-  height: 15px;
+  height: 3px;
   background: #49a760;
 }
 
@@ -2729,7 +2743,6 @@ header{
 
 .tools-image .tractor-image .pararaph h3{
   font-size: 30px;
-  margin-bottom: 20;
 }
 
 .tools-image .tractor-image .pararaph p{
@@ -7015,6 +7028,22 @@ table, td, th {
 /*sponsors page starts */
 /*sponsort page end*/
 @media (max-width: 700px){
+ .cart-container p{
+  font-size: 14px;
+  padding: 0px;
+}
+.tooltip-flex {
+  margin-left: unset!important;
+}
+.cart-container .cart-content .add-to-cart {
+  margin-left: 15px;
+  color: #6E7A89;
+ }
+ .cart-container .cart-content .rate {
+  width: 110px;
+  color: #6E7A89;
+  margin-left: 8px;
+}
  .logo4x{
     width: 70px;
     margin-right: 120px;
@@ -8088,7 +8117,7 @@ table, td, th {
   }
   .services-menu{
     width: 300px;
-    bottom: 8%;
+    bottom: 1%;
     left: 9%;
     padding: 20px;
   }
@@ -8117,7 +8146,7 @@ table, td, th {
     padding-bottom: 20;
   }
   .nutrition-grid .nutrition-content {
-    padding-left: 20;
+    padding-left: unset;
   }
   .nutrition-grid .nutrition-content h3 {
     text-align: center;
@@ -8255,14 +8284,14 @@ table, td, th {
     display: block;
   }
   .hamburger-modal{
-     position: absolute;
-    top: -100%;
+     position: fixed;
+    top: -155%;
     z-index: 10;
      background: rgba(160, 212, 104, 0.65);
      display: flex;
      justify-content: left;
      flex-direction: column;
-     padding-top: 28px;
+     padding-top: 23px;
      padding-bottom: 8px;
      width: 100%;
   }
@@ -8271,9 +8300,9 @@ table, td, th {
     font-size: 14px;
     border-radius: 5px;
     background: rgba(64, 74, 61, 0.5);
-    margin-top: 15px;
+    margin-top: 7px;
     color: #ffffff;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
   }
   .hamburger-modal a:hover{
      background: #ffffff;
@@ -9066,19 +9095,222 @@ font-size: 20px;
 .admin-view-sell{
   padding-top: 50px;
 }
+.marketplace-image.invest {
+  height: 130px;
+  width: 145px;
+  object-fit: cover;
+}
+.sponsor-data.dashboard.admn-invst {
+  margin-left: unset;
+}
 
 }
 
 
-@media(max-width: 380px){
+@media(max-width: 395px){
   .showcase-home-image .image-container img{
     width: 160px;
   }
   .showcase-home-image .image-container{
     left: 285px;
   }
+  .dashboard-header .logo1x{
+     margin-right: 210px;
+  }
+  .weather-2.dashboard {
+    margin-left: 27px;
+  }
+  .referral {
+    width: 330px;
+    margin-left: 26px;
+    padding: 20px;
+  }
+  .marketplace-flex {
+    width: 335px;
+    margin-top: 40px;
+    margin-left: 20px;
+  }
+  .marketplace-body p {
+    font-size: 25px;
+  }
+  .marketplace-flex.invest-your-farm {
+    margin-left: 21px;
+  }
+  .dashboard-hamburger {
+    position: fixed;
+    z-index: 5000;
+    background: #8bc53e;
+    width: 70vw;
+    top: 5.2%;
+    height: 96vh;
+    left: -100%;
+    transition: all 0.4s ease-in-out;
+}
+.filter input[type=range] {
+  width: 66%;
+}
+.dashboard-container.sponsor .sponsor-data.dashboard {
+  margin-left: -25px;
+}
+.sponsor-data.dashboard.marketplace .grid.dashboard {
+  height: 388px;
+  padding: 13px;
+}
+.dashboard-container.sponsor .sponsor-data.dashboard {
+  margin-left: -26px;
+}
+.farm-icon {
+  /* margin-right: 10px; */
+  width: 90px;
+  margin-left: 15px;
+  margin-right: 20px;
+  height: 100px;
+}
+.weatherflex {
+  margin-left: -15px;
+}
+.my-farm-1 .weatherflex .weather-2:nth-child(1) {
+  width: 229px;
+}
+.farm-chart{
+  margin-left: -130px;
+}
+.my-farm-1 .weatherflex .weather-2 {
+  width: 229px;
+}
+.marketplace-flex.manage-your-farm.livestock {
+  width: 90%;
+}
+.marketplace-flex.invest-your-farm.livestock{
+  width: 90%;
+}
+.marketplace-image.invest {
+  height: 130px;
+  width: 135px;
+  object-fit: cover;
+}
+.sponsor-data.dashboard.marketplace{
+  margin-left: -20px!important;
+}
+.investment-returns {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  ALIGN-ITEMS: center;
+}
+.investment-returns .total-investment {
+  width: 340px;
+}
+.investment-returns .total-returns {
+  margin-bottom: 20px;
+  width: 340px;
+  height: 120px;
+}
+.investment-returns .active-projects {
+  margin-bottom: 20px;
+  width: 340px;
+  height: 120px;
+}
+.investment-table .profile-investment {
+  margin-right: -11px;
+}
+.investment-table .profile-investment label {
+  color: #404a3d;
+  font-size: 14px;
+}
+
+.investment-table .buttons {
+  position: absolute;
+  bottom: -6px;
+  right: -2px;
+}
+.investment-table .profile-investment input {
+  margin-top: 10px;
+  padding: 4px;
+  color: rgba(64, 74, 61, 0.5);
+}
+.investment-table .buttons button {
+  width: 150px;
+}
+.investment-table.dashboard{
+  top: 5.4%;
+}
+.spends{
+  font-size: 15px;
+}
+.dashboard-container .spending .spend-1 {
+  height: 30vh;
+}
+.delete-modal {
+  width: 340px;
+}
+.i-amount{
+  width: 90%!important;
+  margin-top: 10px;
+}
+.dashboard-container.returns{
+   height: unset;
+}
+.reset-admin h2 {
+  margin-right: 20px;
+}
+.setting-options div {
+  color: #545E66;
+  font-size: 12px;
+  cursor: pointer;
+  padding-bottom: 5px;
+}
+.general-settings-form {
+  width: 320px;
+}
+.general-ser label {
+  font-size: 13px;
+}
+.general-ser .pass {
+  font-size: 14px;
+}
+.save-changes button {
+  margin-right: 20px;
+  margin-top: 10px;
+}
+.admin-add-item {
+  width: 320px;
+}
+.sponsor-data.dashboard.admn-mrkt .grid.dashboard {
+  margin-bottom: 20px;
+  width: 168px;
+}
+.add-category button {
+  font-size: 12px;
+}
+.tooltip-flex {
+  margin-left: unset!important;
+}
+.sponsor-data .grid.dashboard {
+  margin-bottom: 35px;
+  background: #ffffff;
+  padding: 14px;
+}
+.src-blog {
+  width: 40px;
+}
+.blog-category select {
+  width: 150px;
+}
+.riv-adm{
+  margin-top: 40px!important;
+}
+.third-box {
+  margin-right: 20px;
+}
+.second-box {
+  font-size: 16px;
+}
+
+
 
 }
+
 
 @media(max-width: 280px){
   .showcase-home-image .image-container{

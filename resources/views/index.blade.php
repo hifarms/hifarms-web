@@ -2,6 +2,7 @@
 
 @section('content')
   <!--Home Page starts here-->
+  <div class="whole-cont">
     <div class="showcase-home-image">
         <div class="showcase-home-content">
             <h1>hi Farms</h1>
@@ -43,7 +44,7 @@
     </div>
     <div class="nutrition-home-page">
         <div class="nutrition-grid">
-            <img src="img/Rectangle 17.png" alt="image" width="400" height="570">
+            <img src="img/Rectangle 17.jpg" alt="image" width="400" height="570">
             <div class="nutrition-content">
                 <h3>ABOUT HI FARMS</h3>
                 <h1>Find your potential with good nutrition</h1>
@@ -222,6 +223,7 @@
     </div>
     <div class="farm-location">
         <img src="img/Farm location.png" alt="map">
+    </div>
     </div>
   <!--Home page end-->
 
