@@ -168,7 +168,7 @@
                     success: function(data) {
                         console.log(data)
                         var handler = PaystackPop.setup({
-                            key: 'pk_test_d31a3ad9815642087a323749cd60597aad8f7a73',
+                            key: 'pk_live_4ef7ffbc0049edf8a87fa1620218a10e09c9809e',
                             email: data.user.email,
                             amount: data.total_amount * 100,
                             metadata: {
@@ -206,7 +206,7 @@
                 },
                 error: function(e) {
                     if(e.status==401){
-                    alert("Login To CheckOut Cart")
+                    alert("Login/Register To CheckOut Cart")
                     window.location.replace('/signin');
                 }
 

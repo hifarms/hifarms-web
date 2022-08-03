@@ -110,7 +110,7 @@ class OrderController extends Controller
           CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
           CURLOPT_CUSTOMREQUEST => "GET",
           CURLOPT_HTTPHEADER => array(
-            "Authorization: Bearer ".env("PAYSTACK_SECRET_KEY"),
+            "Authorization: Bearer sk_live_d348a363b8d4f7b2b020aead86e18534817240aa",
             "Cache-Control: no-cache",
           ),
         ));
