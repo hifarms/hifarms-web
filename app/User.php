@@ -6,6 +6,7 @@ use App\Bank;
 use App\Role;
 use App\Order;
 use App\Wallet;
+use App\Message;
 use App\Cart_item;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -45,6 +46,11 @@ class User extends Authenticatable
     public function carts(){
 
         return $this->hasMany(Cart_item::class);
+    }
+
+    public function messages(){
+
+        return $this->hasMany(Message::class);
     }
 
     public function bank(){

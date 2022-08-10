@@ -21,22 +21,24 @@
              <h2>Contact.</h2>
              <h3>Get in touch</h3>
              <p>LEAVE US A MESSAGE</p>
-             <form>
-            
+             <span class="" style="margin-top:-40px;margin-bottom:20px;color:rgb(54, 231, 63)">{{Session('success_message')}}
+            </span>
+             <form method="post" action="{{route('contact')}}">
+            @csrf
                <div class="input-email-contact-flex">
                    <div class="name">
                     <label>Name:</label> <br>
-                    <input type="text" placeholder="Input your name here"> 
+                    <input type="text" name="fullname" placeholder="Input your name here" required> 
                    </div>
                    <div class="email">
                     <label>Email:</label> <br>
-                    <input type="email" placeholder="Input your email here">
+                    <input type="email" name="email" placeholder="Input your email here" required>
                    </div>
                </div>
                <label>Subject:</label>  <br>
-               <input type="text" class="contact-subject" placeholder="Input your subject here"> <br>
+               <input type="text" class="contact-subject" name="subject" placeholder="Input your subject here" required> <br>
                <label>Message:</label> <br>
-               <textarea cols="30" rows="10" placeholder="Input your message here"></textarea>
+               <textarea cols="30" rows="10" name="message" placeholder="Input your message here" required></textarea>
                <div class="send-message">
                    <button>Send Message</button>
                </div>

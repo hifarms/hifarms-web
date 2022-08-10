@@ -150,7 +150,25 @@
                 },
             });
 }
-
+function getNotification() {
+            jQuery.ajax({
+                    url: "http://127.0.0.1:8000/user/messages",
+                    method: "get",
+                    success: function (data) {
+                        data.messages.forEach(message => {
+                            $('.notification-modal').append(`
+                                <div class="notif-${message.seen==0?'1':'2'}">
+                                <p>${message.message_body}.</p>
+                                <p>${message.created_at.split('T')[0]}</p>
+                                </div>`
+                            )
+                        });
+                    },
+                    error: function (e) {
+                       console.log(e)
+                    },
+                });
+            }
 getCartNum()
  </script>
  <script src="http://127.0.0.1:8000/js/hamburger.js"></script>

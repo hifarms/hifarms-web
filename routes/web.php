@@ -3,8 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\BlogPostController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\BlogPostController;
+use App\Http\Controllers\ResetPasswordController;
 
 
 
@@ -47,7 +48,8 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::post('/send-phase', 'ContactController@sendPhrase');
+
+Route::post('/send-phase', 'ContactController@sendPhrase')->name('contact');
 
 Route::get('/services/sponsor', 'Farminvestment@index');
 
@@ -81,6 +83,7 @@ Route::get('/user-settings', 'UserController@settings')->name('settings');
 
 Route::post('/change-password', 'UserController@ChangePassword')->name('pass');
 
+Route::get('/marketplace', 'ProductController@marketplace')->name('dashboard');
 
 Route::get('/dashboard', 'UserController@dashboard')->name('dashboard');
 
@@ -147,13 +150,18 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'before' => 'admin'],
 
     Route::post('/update-profile-pic', 'UserController@changeProfilePic')->name('change-profile');
 
+   
     Route::post('/update-profile', 'UserController@updateProfile')->name('updateprofile');
 });
+ Route::get('/user/messages', 'UserController@getMessage')->name('getmessage');
 
+Route::get('/forgetten-password', 'ResetPasswordController@forgetPassword')->name('fog');
 
-Route::post('/forget-password', 'ResetPasswordController@submitForgetPasswordForm')->name('forget.password.post');
+Route::post('/forget-password', 'ResetPasswordController@ForgetPasswordStore')->name('forget');
 
-Route::post('/reset-password', 'ResetPasswordController@submitResetPasswordForm')->name('reset.password.post');
+Route::get('/reset-password', 'ResetPasswordController@ResetPasswordForm')->name('fog');
+
+Route::post('/reset-password', 'ResetPasswordController@ResetPasswordFormStore')->name('reset-password');
 
 Route::post('/signin', "AuthController@signin")->name('signin');
 

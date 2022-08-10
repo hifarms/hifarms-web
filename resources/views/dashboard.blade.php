@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="{{asset('js/jquery.min.js')}}"></script>
     <title>Dashboard</title>
 </head>
 <body>
@@ -66,7 +67,7 @@
                             </div>
                             <button>Mark all as read</button>
                         </div>
-                        <div class="notif-1">
+                        {{-- <div class="notif-1">
                             <p>New products arrival at Hi Marketplace.</p>
                              <p>12mins ago</p>
                         </div>
@@ -77,7 +78,7 @@
                         <div class="notif-3">
                             <p>Welcome to Hi Farm.</p>
                              <p>3hrs ago</p>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                  <div class="guides">
@@ -92,7 +93,7 @@
                       </div>
                  </div>
                 <div class="profile-inclusive">
-                    <img src="img/Profile.png" alt="profile" class="profile-header">
+                    <img src="{{auth()->user()->avatar}}" style="width:50px;height:50px;border-radius:50%;" alt="profile" class="profile-header">
                     <div class="my-profile-log-out">
                         <button><a href="profile">My Profile</a></button>
                         <button><a href="logout">Log Out</a></button>
@@ -192,6 +193,28 @@
         </div>
         </a>
     </div>
+    <script>
+               function getNotification() {
+            jQuery.ajax({
+                    url: "http://127.0.0.1:8000/user/messages",
+                    method: "get",
+                    success: function (data) {
+                        data.messages.forEach(message => {
+                            $('.notification-modal').append(`
+                                <div class="notif-${message.seen==0?'1':'2'}">
+                                <p>${message.message_body}.</p>
+                                <p>${message.created_at.split('T')[0]}</p>
+                                </div>`
+                            )
+                        });
+                    },
+                    error: function (e) {
+                       console.log(e)
+                    },
+                });
+            }
+    getNotification();
+    </script>
     <script src="js/dashboardHamburger.js"></script>
     <script src="js/userDashboard.js"></script>
 </body>

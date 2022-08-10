@@ -18,6 +18,7 @@ class CreateMessagesTable extends Migration
             $table->integer('sender_id')->unsigned();
             $table->integer('recipient_id')->unsigned();
             $table->longText('message_body');
+            $table->boolean('seen')->default(0);
             $table->timestamps();
         });
     }
