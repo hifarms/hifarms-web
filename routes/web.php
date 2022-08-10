@@ -122,6 +122,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'before' => 'admin'],
 
     Route::get('/adminWallet', 'AdminDashboard@adminWallet');
 
+Route::get('/verify-email', 'AuthController@verifyEmail');
+
       Route::get('/adminBlog', 'AdminDashboard@adminBlog');
 
     Route::get('/verify-email', 'AuthController@verifyEmail');

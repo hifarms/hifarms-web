@@ -13,11 +13,11 @@
     </div>
 
     <!--Contact and Map flex-->
-     <div class="contact-map">
+     <div class="contact-map" data-aos="fade-left">
          <div class="map" id="map">
           
          </div>
-         <div class="contact-form">
+         <div class="contact-form" data-aos="fade-right">
              <h2>Contact.</h2>
              <h3>Get in touch</h3>
              <p>LEAVE US A MESSAGE</p>
@@ -48,12 +48,12 @@
      <!--Contact and Map ends-->
 
      <!--Quick support starts-->
-     <div class="quick-support">
+     <div class="quick-support" data-aos="fade-up">
         <h3>Quick <br> Support.</h3>
         <h5>You can also get all contact information</h5>
 
         <div class="quick-support-flex">
-            <div class="quick-1">
+            <div class="quick-1" data-aos="zoom-out">
                 <img src="img/location-contact.png" alt="location-icon">
                 <h5>Visit Us</h5>
                 <p>The Farm is located at 
@@ -61,12 +61,12 @@
                     along Birnin Kebbi/Kalgo road, Kebbi State
                 </p>
             </div>
-            <div class="quick-2">
+            <div class="quick-2" data-aos="zoom-out">
                 <img src="img/call-contact.png" alt="contact-icon">
                 <h5>Call Us</h5>
                 <p>+2348034068234</p>
             </div>
-            <div class="quick-3">
+            <div class="quick-3" data-aos="zoom-out">
                 <img src="img/msg-contact.png" alt="mail-icon">
                 <h5>Email Us</h5>
                 <p>info@hifarmsltd.ng</p>
@@ -76,7 +76,7 @@
      <!--Quick support ends-->
 
      <!---Social media Icons starts-->
-        <div class="connect-with-us">
+        <div class="connect-with-us" data-aos="slide-up">
             <h2>Connect With Us</h2>
             <div class="social-media-container">
                 <img src="img/ig.svg" alt="Instagram" width="40">
@@ -87,7 +87,7 @@
      <!---Social media Icons ends-->
 
      <!--Newsletter starts-->
-     <div class="faq-last-image contact">
+     <div class="faq-last-image contact" data-aos="fade-down">
         <div class="faq-flex-2">
           <div class="faq-last-content">
               <h1><b>STAY</b></h1>

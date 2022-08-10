@@ -6,10 +6,7 @@ const changePassword = document.querySelector('.pass');
 const manageUsers = document.querySelector('.display-manage');
 const generalSettings = document.querySelector('.display-general');
 const statistics = document.querySelector('.display-stats');
-
 const inbox = document.querySelector('.inbox')
-
-const toggle = () => {
     if (toggleSwitch.checked === true) {
         let disable = document.querySelector('.disable');
         disable.textContent = 'Active';
