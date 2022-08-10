@@ -6,6 +6,7 @@ use App\Bank;
 use App\Farm;
 use App\User;
 use App\Order;
+use App\Message;
 use App\Product;
 use App\Farm_return_type;
 use Illuminate\Http\Request;
@@ -241,4 +242,9 @@ class UserController extends Controller
             // }
         }
     }
+
+   public function getMessage(Request $request){
+   $messages= Message::where('recipient_id',auth()->user()->id)->get();
+   return response()->json(['messages'=>$messages], 200);
+}
 }

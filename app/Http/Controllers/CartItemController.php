@@ -45,10 +45,10 @@ class CartItemController extends Controller
         $tempid =  $request->cookie('carts');
         $user =auth()->user();
         //market place cart
-        $martCartItems=Cart_item::where('temp_id',$tempid)->orWhere('user_id','==',$user->id)->get();
+        $martCartItems=Cart_item::where('temp_id',$tempid)->get();
 
         //farm investment cart
-        $farmCartItems=Cart_item::where('temp_id',$tempid)->orWhere('user_id','=',$user->id)->get();
+        $farmCartItems=Cart_item::where('temp_id',$tempid)->get();
 
         return view('cart',['mart'=>$martCartItems,'farms'=>$farmCartItems]);
     }
