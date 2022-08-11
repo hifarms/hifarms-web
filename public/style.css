@@ -489,6 +489,17 @@ header{
   max-width: 1200px;
 }
 
+.container .sign-up-large.forgot-password-showcase{
+   width: 160px;
+   padding-left: 20px;
+   padding-right: 20px;
+   font-size: 15px;
+}
+
+.google-fb-btn.sign-in-google.forgot-password-showcase{
+   margin-top: 0px;
+}
+
 .container .sign-up-large{
   width: 131px;
   height: 44.2px;
@@ -552,7 +563,6 @@ header{
 }
 
 .container .google-fb-btn{
-  margin-left: 20;
   margin-top: 20px;
   display: flex;
   align-items: center;
