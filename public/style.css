@@ -4352,7 +4352,13 @@ input:checked + .slider:before {
   padding-bottom: 10px;
 }
 
-.setting-options .current{
+.current{
+  color: #8bc53e;
+  border-bottom: 2px solid #8bc53e;
+  transition: all 0.2s ease-in-out;  
+}
+
+.yurrent{
   color: #8bc53e;
   border-bottom: 2px solid #8bc53e;
   transition: all 0.2s ease-in-out;  
@@ -4362,12 +4368,6 @@ input:checked + .slider:before {
   color: #8bc53e;
   border-bottom: 2px solid #8bc53e;
   transition: all 0.2s ease-in-out; 
-}
-
-.setting-options .current-stats{
-  color: #8bc53e;
-  border-bottom: 2px solid #8bc53e;
-  transition: all 0.2s ease-in-out;  
 }
 
 .setting-options div:hover{
@@ -9113,6 +9113,27 @@ font-size: 20px;
 .sponsor-data.dashboard.admn-invst {
   margin-left: unset;
 }
+.admin-with{
+   position: unset!important;
+}
+.admin-with-user{
+  margin-left: unset!important;
+}
+.admin-with-amount{
+  margin-left: unset!important;
+}
+.transaction-records.admin-with-list select{
+  width: 50px!important;
+  padding: unset!important;
+}
+.transaction-records.admin-with-list div{
+  margin-right: unset!important;
+  margin-left: unset!important;
+  font-size: 10px;
+}
+.transaction-records.admin-with-list img{
+  width: 15px;
+}
 
 }
 
@@ -9315,6 +9336,10 @@ font-size: 20px;
 }
 .second-box {
   font-size: 16px;
+}
+
+.admin-with{
+  left: 200px!important;
 }
 
 

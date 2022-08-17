@@ -32,7 +32,6 @@ addNewBlog.forEach((button) => {
 settingsOption.forEach((setting) => {
     setting.addEventListener('click', (e) => {
         if (e.target.innerText[0] === 'P') {
-            4
             let currentClass = document.querySelector('.currently');
             currentClass.classList.remove('currently')
             e.target.classList.add('currently')
