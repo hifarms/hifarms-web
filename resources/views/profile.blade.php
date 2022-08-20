@@ -97,7 +97,7 @@
                   </div>
              </div>
             <div class="profile-inclusive">
-                <img src="{{auth()->user()->avatar}}" style="width:42px;height:42px;border-radius:50%;" alt="profile" class="profile-header">
+                <img src="{{auth()->user()->avatar}}" style="width:50px;height:50px;border-radius:50%;"  alt="profile" class="profile-header">
                 <div class="my-profile-log-out">
                     <button><a href="profile">My Profile</a></button>
                     <button><a href="logout">Log Out</a></button>

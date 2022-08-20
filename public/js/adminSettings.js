@@ -8,8 +8,8 @@ const generalSettings = document.querySelector('.display-general');
 const statistics = document.querySelector('.display-stats');
 const inbox = document.querySelector('.inbox')
 
-const toggle = () => {
-    if (toggleSwitch.checked === true) {
+const toggle = ()=>{
+        if (toggleSwitch.checked === true) {
         let disable = document.querySelector('.disable');
         disable.textContent = 'Active';
         disable.style.color = '#8BC53E'
@@ -18,7 +18,9 @@ const toggle = () => {
         disable.textContent = 'Disabled';
         disable.style.color = '#DAD6D6'
     }
+
 }
+
 
 toggleSwitch.addEventListener('click', toggle)
 
@@ -49,37 +51,37 @@ reset.addEventListener('click', resetSettings)
 settingsOption.forEach((setting) => {
     setting.addEventListener('click', (e) => {
 
-        if (e.target.innerText === 'General Settings') {
-            let currentClass = document.querySelector('.current');
-            currentClass.classList.remove('current')
-            e.target.classList.add('current')
+        if (e.target.innerText[0] === 'G') {
+            let currentClass = document.querySelector('.yurrent');
+            currentClass.classList.remove('yurrent')
+            e.target.classList.add('yurrent')
 
+            generalSettings.style.display = 'block';
             statistics.style.display = 'none';
             manageUsers.style.display = 'none';
             inbox.style.display = 'none'
-            generalSettings.style.display = 'block';
-        } else if (e.target.innerText === 'Manage Users') {
-            let currentClass = document.querySelector('.current');
-            currentClass.classList.remove('current')
-            e.target.classList.add('current')
+        } else if (e.target.innerText[0] === 'M') {
+            let currentClass = document.querySelector('.yurrent');
+            currentClass.classList.remove('yurrent')
+            e.target.classList.add('yurrent')
 
             statistics.style.display = 'none';
             manageUsers.style.display = 'block';
             inbox.style.display = 'none'
             generalSettings.style.display = 'none';
-        } else if (e.target.innerText === 'Statistics') {
-            let currentClass = document.querySelector('.current');
-            currentClass.classList.remove('current');
-            e.target.classList.add('current');
+        } else if (e.target.innerText[0] === 'S') {
+            let currentClass = document.querySelector('.yurrent');
+            currentClass.classList.remove('yurrent');
+            e.target.classList.add('yurrent');
 
             statistics.style.display = 'block';
             manageUsers.style.display = 'none';
             inbox.style.display = 'none'
             generalSettings.style.display = 'none';
-        } else if (e.target.innerText === 'Inbox') {
-            let currentClass = document.querySelector('.current');
-            currentClass.classList.remove('current');
-            e.target.classList.add('current');
+        } else if (e.target.innerText[0] === 'I') {
+            let currentClass = document.querySelector('.yurrent');
+            currentClass.classList.remove('yurrent');
+            e.target.classList.add('yurrent');
 
             statistics.style.display = 'none';
             manageUsers.style.display = 'none';
