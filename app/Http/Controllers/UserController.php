@@ -118,7 +118,9 @@ class UserController extends Controller
        $userbank->bank_acc_no =$request->acc_no;
        $userbank->save();
        $user->save();
-       return response()->json(['success'=>'Profile Updated Successfully'], 200);
+       \Session::flash('warning_message', 'These credentials do not match our records.');
+
+       return redirect()->back();
    }
 
      //Userdasboard/Maketpalace/orders PAGE

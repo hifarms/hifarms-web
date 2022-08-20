@@ -86,14 +86,14 @@ class ProductController extends Controller
 
         $product = new Product();
         $product->name = $request->name;
-        $product->unit = $request->unit;
         $product->user_id = Auth::user()->id;
         $product->location = $request->location;
-        // $product->category_id = $request->category;
+        $product->category_id = $request->category_id;
         $product->price = $request->price;
         $product->unit = $request->unit;
         $product->description= $request->description || "Null";
         $product->active= 1;
+        $product->label_id = 1;
         $request->product_type? $product->product_type_id = $request->product_type: null;
         if ($request->hasFile('image')){
             $file  = $request->file('image');

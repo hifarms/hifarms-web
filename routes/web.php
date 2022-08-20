@@ -119,9 +119,11 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'before' => 'admin'],
 
     Route::get('/adminWallet', 'AdminDashboard@adminWallet');
 
-Route::get('/verify-email', 'AuthController@verifyEmail');
+    Route::get('/adminWithraw', 'AdminDashboard@adminWithdraw');
 
-      Route::get('/adminBlog', 'AdminDashboard@adminBlog');
+    Route::get('/verify-email', 'AuthController@verifyEmail');
+
+    Route::get('/adminBlog', 'AdminDashboard@adminBlog');
 
     Route::get('/verify-email', 'AuthController@verifyEmail');
 
@@ -137,7 +139,13 @@ Route::get('/verify-email', 'AuthController@verifyEmail');
 
     Route::get('/delete-product/{product}', 'ProductController@destroy')->name('deleteproduct');
 
+    Route::post('/add-farm', 'FarmController@create')->name('sell-farm');
+
+    Route::get('/delete-farm/{farm}', 'FarmController@destroy')->name('deletefarm');
+
     Route::post('/post-category', 'CategoryController@create')->name('postcategory');
+
+    Route::post('/post-label', 'CategoryController@createlabel')->name('postlabel');
 
     Route::post('/post-blog', 'BlogPostController@store')->name('postblog');
 
