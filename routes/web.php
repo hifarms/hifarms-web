@@ -105,8 +105,9 @@ Route::post('/withdrawal-request', 'WalletController@withdrawRequest')->name('da
 
 Route::post('/update-profile-pic', 'UserController@changeProfilePic')->name('change-profile');
 
+Route::get('/verify-email', 'AuthController@verifyEmail');
 //admin route
-Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'before' => 'admin'], function () {
+Route::group(['middleware' => 'auth.admin', 'prefix' => 'admin', 'before' => 'admin'], function () {
 
     Route::get('/adminDashboard', 'AdminDashboard@adminDashboard')->name('admindashboard');
 
@@ -122,13 +123,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'before' => 'admin'],
 
     Route::get('/adminWallet', 'AdminDashboard@adminWallet');
 
-Route::get('/verify-email', 'AuthController@verifyEmail');
-
-      Route::get('/adminBlog', 'AdminDashboard@adminBlog');
-
-    Route::get('/verify-email', 'AuthController@verifyEmail');
-
-    Route::get('/verify-email', 'AuthController@verifyEmail');
+    Route::get('/adminBlog', 'AdminDashboard@adminBlog');
 
     Route::get('/adminSettings', 'AdminDashboard@adminSettings');
 
@@ -152,7 +147,6 @@ Route::get('/verify-email', 'AuthController@verifyEmail');
 
     Route::post('/update-profile-pic', 'UserController@changeProfilePic')->name('change-profile');
 
-   
     Route::post('/update-profile', 'UserController@updateProfile')->name('updateprofile');
 });
  Route::get('/user/messages', 'UserController@getMessage')->name('getmessage');

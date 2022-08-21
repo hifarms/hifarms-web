@@ -16,7 +16,7 @@ const inbox = document.querySelector('.inbox')
         disable.textContent = 'Disabled';
         disable.style.color = '#DAD6D6'
     }
-}
+
 
 toggleSwitch.addEventListener('click', toggle)
 

@@ -31,7 +31,7 @@ class ContactController extends Controller
          ];
          $email = env("MAIL_USERNAME");
 
-        //  Mail::to($email)->send(new ContactMail($contact));
+        Mail::to($email)->send(new ContactMail($contact));
          return redirect()->back()->with('success_message', 'Message Sent Successfuly. We will get Back to you Shortly');
      }
  

@@ -9,7 +9,8 @@
 <body>
     <div>
         <h1>Reset Message</h1>
-        <a href="https://www.hifarms.ng?reset-password={{$token}}">click here to reset</a>
+        <a href="{{url('reset-password?token='.$token)}}">click here to reset</a>
+ 
         <br>OR <p>copy and paste this in your browser https://www.hifarms.ng?reset-password={{$token}}</p>
     </div>
 </body>

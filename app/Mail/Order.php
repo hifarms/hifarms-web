@@ -2,27 +2,24 @@
 
 namespace App\Mail;
 
+use App\Order as Orderr;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class UserRegistration extends Mailable
+class Order extends Mailable
 {
     use Queueable, SerializesModels;
-
-    public $user;
-    public $token;
-
+    public $order;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($user,$token)
+    public function __construct(Orderr $order)
     {
-       $this->user = $user;
-       $this->token = $token;
+        $this->order = $order;
     }
 
     /**
@@ -32,7 +29,6 @@ class UserRegistration extends Mailable
      */
     public function build()
     {
-        return $this->subject('User Verification')->view('emails.verification');
+        return $this->view('emails.order');
     }
 }
- 
