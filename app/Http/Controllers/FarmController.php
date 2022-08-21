@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\costInput;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use App\Farm;
 
 class FarmController extends Controller
 {   
@@ -34,6 +37,8 @@ class FarmController extends Controller
             'name' => 'required',
             'category_id' => 'required',
             'farm_type_id' => 'required',
+            'c_units' => 'required',
+            'unit_price' => 'required',
             'location' => 'required',
             'image'  => 'mimes:jpg,png'
         ]);
@@ -44,9 +49,12 @@ class FarmController extends Controller
 
         $farm = new Farm();
         $farm->name = $request->name;
-        $farm->ccategory_id = $request->category_id;
+        $farm->category_id = $request->category_id;
         $farm->location = $request->location;
+        $farm->c_units = $request->c_units;
+        $farm->unit_price = $request->unit_price;
         $farm->farm_type_id = $request->farm_type_id;
+        $farm->description= $request->description || "Null";
         
         if ($request->hasFile('image'))
         {
@@ -63,14 +71,13 @@ class FarmController extends Controller
     
     public function destroy(Farm $farm){
 
-        $this->authorize('view', $farm);
         // saving image url
         $tempurl=$farm->image;
         //delete farm
         $deleted = $farm->delete();
     
         //check if delete is success
-        if(!$delete){
+        if(!$deleted){
             return redirect()->back()->with('error', 'Delete Failed');
         }
     

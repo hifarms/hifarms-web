@@ -4,7 +4,7 @@
   <!--Registration form starts here-->
   <div class="container">
       <div class="sign-in-cont">
-         <div class="sign-up-large">Forgot Password</div>
+         <div class="sign-up-large forgot-password-showcase">Forgot Password</div>
       </div>
       <img src="img/Flower.svg" alt="flower" class="flower">
       <p>Don't have an account yet? <span><a href="/signup">Sign up</a></span> </p>
@@ -20,7 +20,7 @@
           @error('email')<span class="full-name-msg">{{$message}}</span>@enderror
           <input type="text" placeholder="Please Insert Your Email" name="email">
          
-          <div class="google-fb-btn sign-in-google">
+          <div class="google-fb-btn sign-in-google forgot-password-showcase">
            <button>Submit</button>
            </div>
         </form>

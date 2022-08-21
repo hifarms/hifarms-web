@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use App\Category;
+use App\label;
 
 class CategoryController extends Controller
 {   
     
 
-    public function create(){
+    public function create(Request $request){
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|min:3',
@@ -18,7 +21,7 @@ class CategoryController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
         $category = new Category();
-        $category->name = $request->name();
+        $category->name = $request->name;
         $category->save();
 
         return redirect()->back()->with(['success'=>'Created Successfully']);
@@ -34,6 +37,23 @@ class CategoryController extends Controller
         }
 
         return redirect()->back()->with(['success'=>'Delete Successfully']);
+
+    }
+
+    public function createlabel(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|min:3',
+        ]);
+
+        if($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        $label = new label();
+        $label->name = $request->name;
+        $label->save();
+
+        return redirect()->back()->with(['success'=>'Created Successfully']);
 
     }
 }

@@ -7,7 +7,9 @@ const manageUsers = document.querySelector('.display-manage');
 const generalSettings = document.querySelector('.display-general');
 const statistics = document.querySelector('.display-stats');
 const inbox = document.querySelector('.inbox')
-    if (toggleSwitch.checked === true) {
+
+const toggle = ()=>{
+        if (toggleSwitch.checked === true) {
         let disable = document.querySelector('.disable');
         disable.textContent = 'Active';
         disable.style.color = '#8BC53E'
@@ -17,6 +19,8 @@ const inbox = document.querySelector('.inbox')
         disable.style.color = '#DAD6D6'
     }
 
+}
+
 
 toggleSwitch.addEventListener('click', toggle)
 
@@ -25,7 +29,7 @@ let resetBoolean = true;
 const resetSettings = () => {
     if (resetBoolean) {
         let resetImage = document.querySelector('.reset-img');
-        resetImage.src = "img/admin-reset.png";
+        resetImage.src = "../img/admin-reset.png";
 
         let resetText = document.querySelector('.res-h2');
         resetText.style.color = '#E53802';
@@ -33,7 +37,7 @@ const resetSettings = () => {
         resetBoolean = false
     } else {
         let resetImage = document.querySelector('.reset-img');
-        resetImage.src = "img/admin-reset-off.png";
+        resetImage.src = "../img/admin-reset-off.png";
 
         let resetText = document.querySelector('.res-h2');
         resetText.style.color = '#DAD6D6';
@@ -47,37 +51,37 @@ reset.addEventListener('click', resetSettings)
 settingsOption.forEach((setting) => {
     setting.addEventListener('click', (e) => {
 
-        if (e.target.innerText === 'General Settings') {
-            let currentClass = document.querySelector('.current');
-            currentClass.classList.remove('current')
-            e.target.classList.add('current')
+        if (e.target.innerText[0] === 'G') {
+            let currentClass = document.querySelector('.yurrent');
+            currentClass.classList.remove('yurrent')
+            e.target.classList.add('yurrent')
 
+            generalSettings.style.display = 'block';
             statistics.style.display = 'none';
             manageUsers.style.display = 'none';
             inbox.style.display = 'none'
-            generalSettings.style.display = 'block';
-        } else if (e.target.innerText === 'Manage Users') {
-            let currentClass = document.querySelector('.current');
-            currentClass.classList.remove('current')
-            e.target.classList.add('current')
+        } else if (e.target.innerText[0] === 'M') {
+            let currentClass = document.querySelector('.yurrent');
+            currentClass.classList.remove('yurrent')
+            e.target.classList.add('yurrent')
 
             statistics.style.display = 'none';
             manageUsers.style.display = 'block';
             inbox.style.display = 'none'
             generalSettings.style.display = 'none';
-        } else if (e.target.innerText === 'Statistics') {
-            let currentClass = document.querySelector('.current');
-            currentClass.classList.remove('current');
-            e.target.classList.add('current');
+        } else if (e.target.innerText[0] === 'S') {
+            let currentClass = document.querySelector('.yurrent');
+            currentClass.classList.remove('yurrent');
+            e.target.classList.add('yurrent');
 
             statistics.style.display = 'block';
             manageUsers.style.display = 'none';
             inbox.style.display = 'none'
             generalSettings.style.display = 'none';
-        } else if (e.target.innerText === 'Inbox') {
-            let currentClass = document.querySelector('.current');
-            currentClass.classList.remove('current');
-            e.target.classList.add('current');
+        } else if (e.target.innerText[0] === 'I') {
+            let currentClass = document.querySelector('.yurrent');
+            currentClass.classList.remove('yurrent');
+            e.target.classList.add('yurrent');
 
             statistics.style.display = 'none';
             manageUsers.style.display = 'none';
@@ -91,14 +95,14 @@ togglePassword.forEach((icon) => {
     let isToggled = false;
     icon.addEventListener('click', () => {
         if (!isToggled) {
-            icon.src = 'img/visible.png';
+            icon.src = '../img/visible.png';
 
             let input = icon.parentElement.querySelector('.pass-val')
             input.type = 'text';
 
             isToggled = true;
         } else if (isToggled == true) {
-            icon.src = 'img/invisible.png';
+            icon.src = '../img/invisible.png';
 
             let input = icon.parentElement.querySelector('.pass-val')
             input.type = 'password';
@@ -207,10 +211,10 @@ const editUserSetting = document.querySelectorAll('.edit-setting');
 
 editUserSetting.forEach((editUser) => {
     editUser.addEventListener('mouseover', () => {
-        editUser.src = 'img/edit-clicked-admin.png'
+        editUser.src = '../img/edit-clicked-admin.png'
     })
     editUser.addEventListener('mouseout', () => {
-        editUser.src = 'img/user-list-edit.png'
+        editUser.src = '../img/user-list-edit.png'
     })
     editUser.addEventListener('click', (e) => {
         e.preventDefault()
@@ -362,10 +366,10 @@ editUserSetting.forEach((editUser) => {
 
     openPriv.forEach((open) => {
         open.addEventListener('mouseover', () => {
-            open.src = 'img/priv-clicked.png'
+            open.src = '../img/priv-clicked.png'
         })
         open.addEventListener('mouseout', () => {
-            open.src = 'img/Priviledges.png'
+            open.src = '../img/Priviledges.png'
         })
         open.addEventListener('click', () => {
             let overlayEffect = document.querySelector('.overlay');
@@ -460,10 +464,10 @@ editUserSetting.forEach((editUser) => {
 const allDelete = document.querySelectorAll('.delete-setting');
 allDelete.forEach((btn) => {
     btn.addEventListener('mouseover', () => {
-        btn.src = 'img/delete-clicked.png'
+        btn.src = '../img/delete-clicked.png'
     })
     btn.addEventListener('mouseout', () => {
-        btn.src = 'img/user-list-delete.png'
+        btn.src = '../img/user-list-delete.png'
     })
 
     btn.addEventListener('click', (e) => {

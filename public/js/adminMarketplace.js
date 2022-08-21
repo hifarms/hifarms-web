@@ -84,10 +84,10 @@ addItem.addEventListener('click', () => {
 
 deleteItem.forEach((item) => {
     item.addEventListener('mouseover', () => {
-        item.src = 'img/admin-delete.png'
+        item.src = '../img/admin-delete.png'
     })
     item.addEventListener('mouseout', () => {
-        item.src = 'img/delete-edit.png'
+        item.src = '../img/delete-edit.png'
     })
     item.addEventListener('click', (e) => {
         let deleteModal = document.querySelector('.delete-modal');
@@ -149,10 +149,10 @@ deleteItem.forEach((item) => {
 //Edit Modal
 editIcon.forEach((edit) => {
     edit.addEventListener('mouseover', () => {
-        edit.src = 'img/edit-admin-dashboard.png'
+        edit.src = '../img/edit-admin-dashboard.png'
     })
     edit.addEventListener('mouseout', () => {
-        edit.src = 'img/edit-fade.png'
+        edit.src = '../img/edit-fade.png'
     })
     edit.addEventListener('click', () => {
 
@@ -207,7 +207,7 @@ editIcon.forEach((edit) => {
         <option>Zamfara</option>
     </select> <br>
     <div class="button-admin-container"  style="margin-top: 30px;">
-    <button class="add-item-submit admin-dash-submit"><span style="padding-left:38px ;padding-right: 39px;" class="edit-want-to-sell-span">Update</span>  <img class="loader loader-main-edit" src="../img/loader-hifarm.gif" alt="#"> </button>
+    <button class="add-item-submit admin-dash-submit"><span style="padding-left:38px ;padding-right: 39px;" class="edit-want-to-sell-span">Update</span>  <img class="loader loader-main-edit" src="../../img/loader-hifarm.gif" alt="#"> </button>
     </div>
 </div>
     `;
@@ -322,27 +322,27 @@ const addHover = document.querySelector('.add-hover');
 const deleteHover = document.querySelector('.delete-hover');
 
 editHover.addEventListener('mouseover', () => {
-    editHover.src = 'img/edit-clicked.svg'
+    editHover.src = '../img/edit-clicked.svg'
 })
 
 editHover.addEventListener('mouseout', () => {
-    editHover.src = 'img/admin-edit-marketplace.svg'
+    editHover.src = '../img/admin-edit-marketplace.svg'
 })
 
 addHover.addEventListener('mouseover', () => {
-    addHover.src = 'img/add-clicked.svg'
+    addHover.src = '../img/add-clicked.svg'
 })
 
 addHover.addEventListener('mouseout', () => {
-    addHover.src = 'img/admin-add-market.svg'
+    addHover.src = '../img/admin-add-market.svg'
 })
 
 deleteHover.addEventListener('mouseover', () => {
-    deleteHover.src = 'img/H.svg';
+    deleteHover.src = '../img/H.svg';
 })
 
 deleteHover.addEventListener('mouseout', () => {
-    deleteHover.src = 'img/D.svg';
+    deleteHover.src = '../img/D.svg';
 })
 
 const addLoader = (e) => {

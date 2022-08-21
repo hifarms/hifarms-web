@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Admin Wallet</title>
+    <title>Admin Withdrawal Page</title>
 </head>
 
 <body>
@@ -141,7 +141,7 @@
         </div>
     </div>
     <div class="dashboard-container sponsor mrkt-plc">
-        <h1 class="h1" style="position: relative;">My Wallet.  <span class="admin-with" style="position:absolute; top: 30px; left: 135px; font-size:14px!important;font-weight: lighter!important;text-decoration: underline;"><a href="adminWithdrawalPage.html">Withdrawals</a></span></h1>
+        <h1 class="h1" style="position: relative;">Withdrawals.  <span class="admin-with" style="position:absolute; top: 30px; left: 170px; font-size:14px!important;font-weight: lighter!important;text-decoration: underline;"><a href="adminWallet.html">My Wallet</a></span></h1>
         <div class="wallet-flex">
             <div class="spending">
                 <div class="spend-1">
@@ -174,43 +174,56 @@
             </div>
         </div>
         <div class="transaction-history">
-            <p>Transaction history</p>
+            <p>Withdrawal history</p>
             <div class="scroll-table">
                 <div class="transaction-history-flex">
                     <div class="transact-history-option">
-                        <div>User ID</div>
-                        <div>Order ID</div>
+                        <div>WID</div>
+                        <div class="admin-with-user" style="margin-left:-25px;">User ID</div>
+                        <div class="admin-with-amount" style="margin-left:-12px;">Amount</div>
+                        <div>Date</div>
                         <div>Status</div>
-                        <div>Project Type</div>
-                        <div>Amount</div>
+                        <div style="margin-right: 40px">Action</div>
+                        <div></div>
                     </div>
-                    <div class="transaction-records">
-                        <div>Hi-001</div>
-                        <div>#023</div>
-                        <div style="color: #53AF46;">Paid</div>
-                        <div>Purchase</div>
-                        <div>₦ 225,000</div>
+                    <div class="transaction-records admin-with-list">
+                        <div><strong>W001</strong></div>
+                        <div><strong>#001</strong></div>
+                        <div><strong>₦ 25,000</strong></div>
+                        <div style="margin-left:-10px;"><strong>11-01-2022</strong></div>
+                        <div style="color: #53AF46;margin-right: 16px;"><strong>Paid</strong></div>
+                        <div><select style="padding: 7px;border-radius: 6px;">
+                            <option value=""><strong>Paid</strong></option>
+                            <option value=""><strong>Processing</strong></option>
+                            <option value=""><strong>Hold</strong></option>
+                        </select></div>
+                        <div><img src="img/admin-withdrawal-eye.png" alt="eye-icon" class="eye-icon" style="cursor: pointer;"></div>
                     </div>
-                    <div class="transaction-records">
-                        <div>Hi-001</div>
-                        <div>#023</div>
-                        <div style="color: #1E88E5;">Pending</div>
-                        <div>Purchase</div>
-                        <div>₦ 550,000</div>
+                    <div class="transaction-records admin-with-list">
+                        <div><strong>W001</strong></div>
+                        <div><strong>#001</strong></div>
+                        <div><strong>₦ 5,000</strong></div>
+                        <div><strong>11-01-2022</strong></div>
+                        <div style="color: #1E88E5;"><strong>Pending</strong></div>
+                        <div><select style="padding: 7px;border-radius: 6px;">
+                            <option value=""><strong>Paid</strong></option>
+                            <option value=""><strong>Processing</strong></option>
+                            <option value=""><strong>Hold</strong></option>
+                        </select></div>
+                        <div><img src="img/admin-withdrawal-eye.png" alt="eye-icon" class="eye-icon"  style="cursor: pointer;"></div>
                     </div>
-                    <div class="transaction-records">
-                        <div>Hi-001</div>
-                        <div>#023</div>
-                        <div style="color: #53AF46;">Paid</div>
-                        <div>Investment</div>
-                        <div>₦ 25,000</div>
-                    </div>
-                    <div class="transaction-records">
-                        <div>Hi-001</div>
-                        <div>#023</div>
-                        <div style="color: #53AF46;">Paid</div>
-                        <div>Purchase</div>
-                        <div>₦ 25,000</div>
+                    <div class="transaction-records admin-with-list">
+                        <div><strong>W001</strong></div>
+                        <div><strong>#001</strong></div>
+                        <div><strong>₦ 225,000</strong></div>
+                        <div><strong>11-01-2022</strong></div>
+                        <div style="color: red;"><strong>On Hold</strong></div>
+                        <div><select style="padding: 7px;border-radius: 6px;">
+                            <option value=""><strong>Paid</strong></option>
+                            <option value=""><strong>Processing</strong></option>
+                            <option value=""><strong>Hold</strong></option>
+                        </select></div>
+                        <div><img src="img/admin-withdrawal-eye.png" alt="eye-icon" class="eye-icon" style="cursor: pointer;"></div> 
                     </div>
                 </div>
             </div>
@@ -232,8 +245,28 @@
     </div>
     <div class="overlay"></div>
     <!--Add status ends-->
+
+        <!--Admin withdrawal info-->
+        <div class="delete-modal add-status-modal eye-modal">
+            <div class="delete-modal-container">
+                <div class="close-delete-modal close-status eye-modal-close">x</div>
+                <h1 style="font-size: 20px;margin-top: 10px;margin-bottom: 40px;">Account Details #W001</h1>
+                <div class="inner-admin-withdraw-modal" style="margin-left: 20px;">
+                     <label style="font-size:17px;margin-bottom: -10px;display: block;"> <strong>Account Name:</strong></label> <br>
+                     <input style="border:1px solid rgb(214, 210, 210);margin-top: 1px;font-size: 16px;margin-bottom: 10px;padding: 13px;width: 90%;" type="text" value="Mubarak Aliyu" disabled>
+                     <label style="font-size:17px;margin-bottom: -10px;display: block;"> <strong>Account Number:</strong></label> <br>
+                     <input style="border:1px solid rgb(214, 210, 210);margin-top: 1px;font-size: 16px;margin-bottom: 10px;padding: 13px;width: 90%;" type="text" value="392612234" disabled>
+                     <label style="font-size:17px;margin-bottom: -10px;display: block;"> <strong>Bank Name:</strong></label> <br>
+                     <input style="border:1px solid rgb(214, 210, 210);margin-top: 1px;font-size: 16px;margin-bottom: 10px;padding: 13px;width: 90%;" type="text" value="Access Bank" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="overlay"></div>
+        <!--Admin withdrawal info ends-->
     <script src="js/userWallet.js"></script>
     <script src="js/dashboardHamburger.js"></script>
+    <script src="js/adminWithdrawal.js"></script>
+
 </body>
 
 </html>
