@@ -33,11 +33,11 @@ class ResetPasswordController extends Controller
             'token' => $token
         ]);
 
-        // Mail::send('emails.forget-password-email', ['token' => $token], function($message) use($request){
-        //     $message->to($request->email);
-        //     $message->from(env('MAIL_FROM_ADDRESS'), env('APP_NAME'));
-        //     $message->subject('Reset Password');
-        // });
+        Mail::send('emails.forget-password-email', ['token' => $token], function($message) use($request){
+            $message->to($request->email);
+            $message->from(env('MAIL_FROM_ADDRESS'), env('APP_NAME'));
+            $message->subject('Reset Password');
+        });
 
         return redirect()->back()->with('success_message', 'Reset email link sent successfully, please check your inbox or spam');
 

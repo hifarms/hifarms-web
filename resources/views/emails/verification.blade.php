@@ -10,7 +10,7 @@
     <div>
         <h1>Verification Message</h1>
         <p>Please Click On Link Below To Verify Account</p>
-        <a href="https::www.hifarms.ng/verify-email?token={{$token}}"></a>
+        <a href="{{url('verify-email?token='.$token)}}">here</a>
     </div>
 </body>
 </html>

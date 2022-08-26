@@ -5,13 +5,17 @@ namespace App\Http\Controllers;
 use App\blogCategory;
 use App\BlogPost;
 use App\Category;
+use App\Label;
 use App\Product;
 use App\User;
 use App\Wallet;
 use App\Withdraw;
 use App\Farm;
+use App\Farm_type;
 use App\Message;
+use App\Order;
 use App\order_item;
+use App\Product_type;
 use Illuminate\Http\Request;
 
 class AdminDashboard extends Controller
@@ -55,13 +59,15 @@ class AdminDashboard extends Controller
         $data['products'] = Product::count();
         $data['orders'] = order_item::count();
         $data['product'] = Product::paginate(7);
+        $data['category'] = Category::get();
+        $data['label'] = Label::get();
         return view('admin.adminDashboard', $data);
     }
 
     public function AdminInvest()
     {
         $data['category'] = Category::get();
-        $data['products'] = Product::paginate(5);
+        $data['farmtype'] = Farm_type::get();
         $data['farmproduct'] = Farm::paginate(7);
         return view('admin.adminInvest', $data);
     }
@@ -74,7 +80,10 @@ class AdminDashboard extends Controller
     public function AdminMarketplace()
     {
         $data['category'] = Category::get();
-        $data['products'] = Product::paginate(5);
+        $data['producttype'] = Product_type::get();
+        $data['label'] = Label::get();
+        $data['products'] = Product::paginate(10);
+        $data['product'] = Product::first();
         return view('admin.adminMarketplace', $data);
     }
 
@@ -96,8 +105,17 @@ class AdminDashboard extends Controller
         $data['ledgerbalance'] = Wallet::sum('ledger_balance');
         $data['balance'] = Wallet::sum('balance');
         $data['amount'] = Withdraw::sum('amount');
-        $data['withdraws'] = Withdraw::all();
+        $data['orders'] = order::all();
         return view('admin.adminWallet', $data);
+    }
+
+    public function AdminWithdraw()
+    {
+        $data['ledgerbalance'] = Wallet::sum('ledger_balance');
+        $data['balance'] = Wallet::sum('balance');
+        $data['amount'] = Withdraw::sum('amount');
+        $data['withdraws'] = Withdraw::all();
+        return view('admin.adminWithraw', $data);
     }
 
     public function AdminBlog()
@@ -111,6 +129,7 @@ class AdminDashboard extends Controller
 
     public function AdminSettings()
     {
+        $data['user'] = User::where('role_id', 1)->get();
         $data['user'] = User::where('role_id', 1)->get();
         $data['users'] = User::where('status', 1)->count();
         $data['products'] = Product::count();

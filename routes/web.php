@@ -105,8 +105,9 @@ Route::post('/withdrawal-request', 'WalletController@withdrawRequest')->name('da
 
 Route::post('/update-profile-pic', 'UserController@changeProfilePic')->name('change-profile');
 
+Route::get('/verify-email', 'AuthController@verifyEmail');
 //admin route
-Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'before' => 'admin'], function () {
+Route::group(['middleware' => 'auth.admin', 'prefix' => 'admin', 'before' => 'admin'], function () {
 
     Route::get('/adminDashboard', 'AdminDashboard@adminDashboard')->name('admindashboard');
 
@@ -122,14 +123,15 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'before' => 'admin'],
 
     Route::get('/adminWallet', 'AdminDashboard@adminWallet');
 
-Route::get('/verify-email', 'AuthController@verifyEmail');
-
-      Route::get('/adminBlog', 'AdminDashboard@adminBlog');
-
-    Route::get('/verify-email', 'AuthController@verifyEmail');
+    Route::get('/adminBlog', 'AdminDashboard@adminBlog');
+    
+    Route::get('/adminWithraw', 'AdminDashboard@adminWithdraw');
 
     Route::get('/verify-email', 'AuthController@verifyEmail');
 
+    Route::get('/adminBlog', 'AdminDashboard@adminBlog');
+
+ 
     Route::get('/adminSettings', 'AdminDashboard@adminSettings');
 
     Route::post('/send-message', 'MessageController@sendmessage');
@@ -140,7 +142,13 @@ Route::get('/verify-email', 'AuthController@verifyEmail');
 
     Route::get('/delete-product/{product}', 'ProductController@destroy')->name('deleteproduct');
 
+    Route::post('/add-farm', 'FarmController@create')->name('sell-farm');
+
+    Route::get('/delete-farm/{farm}', 'FarmController@destroy')->name('deletefarm');
+
     Route::post('/post-category', 'CategoryController@create')->name('postcategory');
+
+    Route::post('/post-label', 'CategoryController@createlabel')->name('postlabel');
 
     Route::post('/post-blog', 'BlogPostController@store')->name('postblog');
 
@@ -152,7 +160,6 @@ Route::get('/verify-email', 'AuthController@verifyEmail');
 
     Route::post('/update-profile-pic', 'UserController@changeProfilePic')->name('change-profile');
 
-   
     Route::post('/update-profile', 'UserController@updateProfile')->name('updateprofile');
 });
  Route::get('/user/messages', 'UserController@getMessage')->name('getmessage');

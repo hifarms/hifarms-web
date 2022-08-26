@@ -29,7 +29,7 @@ let resetBoolean = true;
 const resetSettings = () => {
     if (resetBoolean) {
         let resetImage = document.querySelector('.reset-img');
-        resetImage.src = "img/admin-reset.png";
+        resetImage.src = "../img/admin-reset.png";
 
         let resetText = document.querySelector('.res-h2');
         resetText.style.color = '#E53802';
@@ -37,7 +37,7 @@ const resetSettings = () => {
         resetBoolean = false
     } else {
         let resetImage = document.querySelector('.reset-img');
-        resetImage.src = "img/admin-reset-off.png";
+        resetImage.src = "../img/admin-reset-off.png";
 
         let resetText = document.querySelector('.res-h2');
         resetText.style.color = '#DAD6D6';
@@ -95,14 +95,14 @@ togglePassword.forEach((icon) => {
     let isToggled = false;
     icon.addEventListener('click', () => {
         if (!isToggled) {
-            icon.src = 'img/visible.png';
+            icon.src = '../img/visible.png';
 
             let input = icon.parentElement.querySelector('.pass-val')
             input.type = 'text';
 
             isToggled = true;
         } else if (isToggled == true) {
-            icon.src = 'img/invisible.png';
+            icon.src = '../img/invisible.png';
 
             let input = icon.parentElement.querySelector('.pass-val')
             input.type = 'password';
@@ -211,10 +211,10 @@ const editUserSetting = document.querySelectorAll('.edit-setting');
 
 editUserSetting.forEach((editUser) => {
     editUser.addEventListener('mouseover', () => {
-        editUser.src = 'img/edit-clicked-admin.png'
+        editUser.src = '../img/edit-clicked-admin.png'
     })
     editUser.addEventListener('mouseout', () => {
-        editUser.src = 'img/user-list-edit.png'
+        editUser.src = '../img/user-list-edit.png'
     })
     editUser.addEventListener('click', (e) => {
         e.preventDefault()
@@ -366,10 +366,10 @@ editUserSetting.forEach((editUser) => {
 
     openPriv.forEach((open) => {
         open.addEventListener('mouseover', () => {
-            open.src = 'img/priv-clicked.png'
+            open.src = '../img/priv-clicked.png'
         })
         open.addEventListener('mouseout', () => {
-            open.src = 'img/Priviledges.png'
+            open.src = '../img/Priviledges.png'
         })
         open.addEventListener('click', () => {
             let overlayEffect = document.querySelector('.overlay');
@@ -464,10 +464,10 @@ editUserSetting.forEach((editUser) => {
 const allDelete = document.querySelectorAll('.delete-setting');
 allDelete.forEach((btn) => {
     btn.addEventListener('mouseover', () => {
-        btn.src = 'img/delete-clicked.png'
+        btn.src = '../img/delete-clicked.png'
     })
     btn.addEventListener('mouseout', () => {
-        btn.src = 'img/user-list-delete.png'
+        btn.src = '../img/user-list-delete.png'
     })
 
     btn.addEventListener('click', (e) => {

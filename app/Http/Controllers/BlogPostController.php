@@ -97,6 +97,7 @@ class BlogPostController extends Controller
    
     }
 
+
     public function destroy(BlogPost $post){
 
         $tempurl = $post->image_url;

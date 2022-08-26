@@ -245,7 +245,7 @@
   });
 
  
-  $('.ch').on('click',function(){
+  $('.ch').on('click',function(e){
       jQuery.ajax({
               url: "http://127.0.0.1:8000/change-password",
               method: "post",

@@ -42,10 +42,10 @@ addItem.addEventListener('click', () => {
 
 deleteItem.forEach((item) => {
     item.addEventListener('mouseover', () => {
-        item.src = 'img/admin-delete.png'
+        item.src = '../img/admin-delete.png'
     })
     item.addEventListener('mouseout', () => {
-        item.src = 'img/delete-edit.png'
+        item.src = '../img/delete-edit.png'
     })
     item.addEventListener('click', (e) => {
         let deleteModal = document.querySelector('.delete-modal');
@@ -108,10 +108,10 @@ deleteItem.forEach((item) => {
 //Edit Modal
 editIcon.forEach((edit) => {
     edit.addEventListener('mouseover', () => {
-        edit.src = 'img/edit-admin-dashboard.png'
+        edit.src = '../img/edit-admin-dashboard.png'
     })
     edit.addEventListener('mouseout', () => {
-        edit.src = 'img/edit-fade.png'
+        edit.src = '../img/edit-fade.png'
     })
     edit.addEventListener('click', () => {
 
@@ -167,7 +167,7 @@ editIcon.forEach((edit) => {
             <option>Zamfara</option>
         </select> <br>
         <div class="button-admin-container"  style="margin-top: 30px;">
-            <button class="add-item-submit admin-dash-submit"><span style="padding-left:39px ;padding-right: 39px;" class="edit-want-to-sell-span">Update</span>  <img class="loader loader-edit" src="../img/loader-hifarm.gif" alt="#"> </button>
+            <button class="add-item-submit admin-dash-submit"><span style="padding-left:39px ;padding-right: 39px;" class="edit-want-to-sell-span">Update</span>  <img class="loader loader-edit" src="../../img/loader-hifarm.gif" alt="#"> </button>
         </div>
     </div>
  </div>
