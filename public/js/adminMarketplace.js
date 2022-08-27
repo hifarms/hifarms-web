@@ -159,57 +159,54 @@ editIcon.forEach((edit) => {
         let itemName = edit.parentElement.parentElement.querySelector('h1');
         let itemPrice = edit.parentElement.parentElement.querySelector('.h3-dashboard');
         let itemLocation = edit.parentElement.parentElement.querySelector('.location');
-        let itemPercentage = edit.parentElement.parentElement.querySelector('.percentage-sold');
+        let itemPercentage = document.querySelector('.sc');
+        let location = document.querySelector('.lc');
+        let id = edit.parentElement.parentElement.querySelector('.id').value;
+        let qs = edit.parentElement.parentElement.querySelector('.qs').value;
 
         const editItemModal = document.querySelector('.edit-add-item')
         editItemModal.innerHTML = `
+        <form method="post" action="/admin/product-update/${id}" enctype="multipart/form-data">
     <div class="admin-add-item-container">
     <div class="close-edit-item">x</div>
     <h1>Edit Item</h1>
     <label class="class-name">Name</label> <br>
-    <input type="text"placeholder="Enter item name" value="${itemName.innerHTML}" class="name">
+    <input type="text"placeholder="Enter item name" name='name' value="${itemName.innerHTML}" class="name">
    <div class="category-percentage-flex">
                 <div class="category" style="width:55%; margin-right: 20px;">
-                    <label>Category</label> <br> 
-                    <select class="category-select add-item">
-                        <option>Out of Stock</option>
-                        <option>New</option>
-                        <option>Sold Out</option>
-                    </select>
+                    ${itemPercentage.innerHTML}
                 </div>
-                <div class="percentage">
-                    <label>Percentage Sold(%)</label>  <br>
-                    <select>
-                        <option>${itemPercentage.innerHTML}</option>
-                        <option>10%</option>
-                        <option>40%</option>
-                        <option>60%</option>
-                        <option>80%</option>
-                        <option>100%</option>
-                    </select>
+                <div class="qty-item-image" style="margin-bottom: 10px">
+                    <div class="qty">
+                        <div class="tooltip-flex">
+                            <label>Qty</label>
+                            <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
+                        </div> <br>
+                        <input type="number" min='0' value="${qs}" placeholder="Quantity" name="unit">
+                    </div>
                 </div>
             </div>
     <div class="price-image-flex">
         <div class="price">
             <label>Item Price(₦)</label> <br>
-             <input type="text" value="${itemPrice.innerHTML}" placeholder="Enter Price...">
+             <input type="text" name="price" value="${Number(itemPrice.innerHTML.substring(1).replace(',',''))}" placeholder="Enter Price...">
         </div>
         <div class="image">
             <label style="margin-left: 20px;">Image</label> <br>
-            <input type="file" class="category-select">
+            <input type="file"  class="category-select" name="image">
         </div>
     </div>
+    <input type='hidden'  value="${$('meta[name="_token"]').attr('content')}" name='_token' />
     <label class="admin-location">Location</label> <br>
-    <select class="admin-location-input">
-        <option>${itemLocation.innerHTML}</option>
-        <option>Sokoto</option>
-        <option>Kebbi</option>
-        <option>Zamfara</option>
-    </select> <br>
+    <select class="admin-location-input lc" name="location">
+    ${location.innerHTML}
+    </select>
+     <br>
     <div class="button-admin-container"  style="margin-top: 30px;">
     <button class="add-item-submit admin-dash-submit"><span style="padding-left:38px ;padding-right: 39px;" class="edit-want-to-sell-span">Update</span>  <img class="loader loader-main-edit" src="../../img/loader-hifarm.gif" alt="#"> </button>
     </div>
 </div>
+</form>
     `;
 
         let editMain = document.querySelector('.admin-dash-submit');
@@ -217,7 +214,7 @@ editIcon.forEach((edit) => {
 
         editMain.addEventListener('click', (e) => {
 
-            e.preventDefault();
+            
 
             let submitButton = document.querySelector('.edit-want-to-sell-span');
             let loader = document.querySelector('.loader-main-edit');

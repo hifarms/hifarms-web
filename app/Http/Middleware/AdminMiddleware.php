@@ -14,7 +14,10 @@ class AdminMiddleware
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {
+    {  
+        if(! auth()->check()){
+       return redirect('signin');
+         }
         if(! $request->user()->isAdmin()){
         abort(404);
          }

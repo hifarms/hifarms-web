@@ -152,26 +152,13 @@
                                  <div class="line hide" style="height: 1px;width: 100%;background: #c4c4c4;margin-bottom: 10px;"></div>
                             </div>
                         <div class="line mobile-hide" style="height: 1px;width: 300px;background: #c4c4c4;margin-bottom: 10px;"></div>
+                        @foreach($category as $cat)
                         <div class="flex dashboard">
-                            <input type="checkbox" class="check" name='crop' {{ (old('crop'))=='on' ?"checked":null}}>
-                            <p class="sponsor-crop dashboard">Crop</p>
+                            <input type="checkbox" class="check" name="category[]" value="{{$cat->id}}" name='{{ $cat->name }}' {{old('category')  && in_array($cat->id,old('category')) ? 'checked':null}}>
+                            <p class="sponsor-crop dashboard">{{ $cat->name }}</p>
                             <P class="quant">0</P>
                         </div>
-                        <div class="flex dashboard">
-                            <input type="checkbox" name="cattle" {{ (old('cattle'))=='on' ?"checked":null}}>
-                            <p class="sponsor-crop dashboard">Cattles</p>
-                            <P class="quant">0</P>
-                        </div>
-                        <div class="flex dashboard">
-                            <input type="checkbox" class="poultry" name="poultry" {{ (old('poultry'))=='on' ?"checked":null}}>
-                            <p class="sponsor-crop dashboard">Poultry</p>
-                            <P class="quant">0</P>
-                        </div>
-                        <div class="flex dashboard">
-                            <input type="checkbox" name="livestock" {{ (old('livestock'))=='on' ?"checked":null}}>
-                            <p class="sponsor-crop dashboard live">Livestock</p>
-                            <P class="quant">0</P>
-                        </div>
+                        @endforeach
                     </form>
                     <div class="mobile-category">
                     <h3 class="sponsor-categories">CATEGORIES</h3>
@@ -193,15 +180,15 @@
             </div>
             <div class="sponsor-inner-flex">
                 <img src={{url("img/graph.svg")}} alt="">
-                <p>{{$product->returns[0]->percentage}}%</p>
+                <p>{{$return->percentage}}% return</p>
             </div>
             <div class="sponsor-inner-flex">
                 <img src={{url("img/calendar.svg")}} alt="">
-                <p>{{$product->returns[0]->duration}}</p>
+                <p>{{$return->duration}}</p>
             </div>
             <div class="sponsor-inner-flex">
                 <img src={{url("img/sponsor-cart.svg")}} alt="">
-                <p>74% sold</p>
+                <p>{{round(($product->c_units/$product->i_units)*100)}}%</p>
             </div>
             <div class="purchase-div invest">
             <h3>₦ {{$product->unit_price}}</h3>

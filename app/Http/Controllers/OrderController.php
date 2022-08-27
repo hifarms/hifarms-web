@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Farm;
 use App\Order;
+use App\Message;
 use App\Payment;
 use App\Cart_item;
 use App\Order_item;
 use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\Label;
 use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
@@ -146,7 +148,44 @@ class OrderController extends Controller
         $order = Order::where('id',$response->data->metadata->custom_fields[0]->value)->first();
         $order->payment_id = $payment->id;
         $order->save();
-        return redirect('/investment');
+
+        foreach ($order->orderitems as $item) {
+          if($item->product_id){
+            $product = $item->product;
+            $product->unit_sold+=$item->units;
+            if($product->unit_sold==$product->unit){
+            $lb= Label::where('name','Sold Out')->first();
+                $product->label_id = $lb->id;
+            }
+            $product->save();
+            
+            $messages = new Message();
+            $messages->sender_id = 0;
+            $messages->recipient_id =$product->user_id;
+            $messages->message_body = "Your Product ID-".$product->id." has been purchase";
+            $messages->save();
+          }
+          if($item->farm){
+
+            $farm = $item->farm;
+            $farm->c_units+=$item->units;
+            if($farm->c_units==$farm->i_units){
+            $lb= Label::where('name','Sold Out')->first();
+                $farm->label_id = $lb->id;
+            }
+            $farm->save();
+          }
+
+        }
+        
+        $message = new Message();
+        $message->sender_id = 0;
+        $message->recipient_id =0;
+        $message->message_body = "New Order(ID".$order->id.") from User(UserId".$order->user_id.")";
+        $message->save();
+
+
+        return redirect('/wallet');
 
         
     }

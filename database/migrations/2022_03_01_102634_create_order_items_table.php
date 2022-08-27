@@ -19,11 +19,11 @@ class CreateOrderItemsTable extends Migration
             $table->unsignedFloat('amount');
             $table->boolean('delivered')->default(0);
             $table->boolean('cleared_to_wallet')->default(false); // indicate if user has moved his return to wallet
-            $table->foreignId('product_id')->nullable()->constrained();
+            $table->foreignId('product_id')->nullable()->constrained()->onDelete('cascade');
             $table->integer('withdraw')->nullable();
-            $table->foreignId('farm_id')->nullable()->constrained();
-            $table->foreignId('farm_return_type_id')->nullable()->constrained();
-            $table->foreignId('order_id')->nullable()->constrained();
+            $table->foreignId('farm_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('farm_return_type_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('order_id')->nullable()->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

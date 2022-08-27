@@ -21,7 +21,7 @@ class CreateCostInputsTable extends Migration
             $table->string('variable_name');
             $table->string('type');
             $table->boolean('fixed_asset');
-            $table->foreignId('cost_farm_id')->constrained();
+            $table->foreignId('cost_farm_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

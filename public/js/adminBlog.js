@@ -84,7 +84,9 @@ allBlogDraft.forEach((item) => {
 
 allBlogEdit.forEach((edit) => {
     edit.addEventListener('click', (e) => {
-        let card = e.target.parentElement.parentElement;
+        e.preventDefault()
+        let card = e.target.parentElement.parentElement.parentElement;
+        console.log(card)
 
         let editModal = document.querySelector('.edit-modal');
         let overlay = document.querySelector('.overlay');
@@ -167,7 +169,7 @@ allBlogdelete.forEach((item) => {
 })
 
 const addEditLoader = (e) => {
-    e.preventDefault();
+  
 
     let submitButton = document.querySelector('.edit-want-to-sell-span');
     let loader = document.querySelector('.loader-edit');

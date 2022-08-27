@@ -149,10 +149,12 @@
         <div class="search-show-entry">
             <div>Show Entries: <span class="ten">10</span></div>
             <div class="entry-search"> <p>Search</p>   
-                 <div class="input-search">
-                    <input type="text" placeholder="search for">
-                    <img src="img/Vector (8).png" alt="search-icon">
-                </div>
+                <form action="">
+                    <div class="input-search">
+                        <input type="text" placeholder="search for Transaction" value="{{old('search')}}" name="search">
+                        <button type="submit" class="btn"><img src="../img/Vector (8).png" alt="search-icon"></button>
+                    </div>
+                    </form>
             </div>
         </div>
         <div class="transaction-history">
@@ -166,7 +168,7 @@
                         <div>Project Type</div>
                         <div>Amount</div>
                     </div>
-                    @foreach($user->investments as $investment)
+                    @foreach($investments as $investment)
                     <div class="transaction-records">
                         <div>Hi-{{$investment->id}}</div>
                         <div>#{{$investment->order_id}}</div>

@@ -52,36 +52,36 @@ settingsOption.forEach((setting) => {
     setting.addEventListener('click', (e) => {
 
         if (e.target.innerText[0] === 'G') {
-            let currentClass = document.querySelector('.yurrent');
-            currentClass.classList.remove('yurrent')
-            e.target.classList.add('yurrent')
+            let currentClass = document.querySelector('.current');
+            currentClass.classList.remove('current')
+            e.target.classList.add('current')
 
             generalSettings.style.display = 'block';
             statistics.style.display = 'none';
             manageUsers.style.display = 'none';
             inbox.style.display = 'none'
         } else if (e.target.innerText[0] === 'M') {
-            let currentClass = document.querySelector('.yurrent');
-            currentClass.classList.remove('yurrent')
-            e.target.classList.add('yurrent')
+            let currentClass = document.querySelector('.current');
+            currentClass.classList.remove('current')
+            e.target.classList.add('current')
 
             statistics.style.display = 'none';
             manageUsers.style.display = 'block';
             inbox.style.display = 'none'
             generalSettings.style.display = 'none';
         } else if (e.target.innerText[0] === 'S') {
-            let currentClass = document.querySelector('.yurrent');
-            currentClass.classList.remove('yurrent');
-            e.target.classList.add('yurrent');
+            let currentClass = document.querySelector('.current');
+            currentClass.classList.remove('current');
+            e.target.classList.add('current');
 
             statistics.style.display = 'block';
             manageUsers.style.display = 'none';
             inbox.style.display = 'none'
             generalSettings.style.display = 'none';
         } else if (e.target.innerText[0] === 'I') {
-            let currentClass = document.querySelector('.yurrent');
-            currentClass.classList.remove('yurrent');
-            e.target.classList.add('yurrent');
+            let currentClass = document.querySelector('.current');
+            currentClass.classList.remove('current');
+            e.target.classList.add('current');
 
             statistics.style.display = 'none';
             manageUsers.style.display = 'none';

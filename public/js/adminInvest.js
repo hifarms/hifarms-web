@@ -7,23 +7,30 @@ const addedCart = document.querySelectorAll('.button-invest');
 const addLoaderBtn = document.querySelector('.add-admin-dash')
 
 //add event listeners
-addedCart.forEach((cart) => {
-    cart.addEventListener('click', (e) => {
-        e.preventDefault();
 
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
+const investBtn = document.querySelectorAll('.button-inves');
 
-        let addToCart = document.querySelector('.added-successfully');
-        addToCart.style.display = 'block';
 
-        setTimeout(() => {
-            //let addedClass = document.querySelector('.added-successfully');
-            addToCart.style.display = 'none'
-        }, 2500)
+addedCart.forEach((btn)=>{{
 
+    btn.addEventListener('click', (e)=>{
+        e.preventDefault()
+       let InvestModal = document.querySelector('.invest-modal');
+       let overlay = document.querySelector('.overlay');
+       InvestModal.style.display = 'block';
+       overlay.style.display = 'block';
+       document.querySelector('.investmentSelected').value = btn.id;
+       alert(btn.id)
+
+
+       let closeModal = document.querySelector('.add-user-close');
+       closeModal.addEventListener('click', ()=>{
+        InvestModal.style.display = 'none';
+        overlay.style.display = 'none';
+       })
     })
-})
+}});
+
 
 addItem.addEventListener('click', () => {
     let addItemModal = document.querySelector('.admin-add-item');
@@ -107,6 +114,7 @@ deleteItem.forEach((item) => {
 
 //Edit Modal
 editIcon.forEach((edit) => {
+    
     edit.addEventListener('mouseover', () => {
         edit.src = '../img/edit-admin-dashboard.png'
     })
@@ -114,71 +122,57 @@ editIcon.forEach((edit) => {
         edit.src = '../img/edit-fade.png'
     })
     edit.addEventListener('click', () => {
-
+        
         let itemName = edit.parentElement.parentElement.parentElement.querySelector('h1');
         let itemPrice = edit.parentElement.parentElement.parentElement.querySelector('.h3-dashboard');
-        let itemLocation = edit.parentElement.parentElement.parentElement.querySelector('.location');
-        let itemPercentage = edit.parentElement.parentElement.parentElement.querySelector('.percentage-sold');
+        let itemLocation = document.querySelector('.lc');
+        let qs = edit.parentElement.parentElement.parentElement.querySelector('.qs').value;
         const editItemModal = document.querySelector('.edit-add-item');
-
+        let category = document.querySelector('.cs');
         editItemModal.innerHTML = `
+        <form method="post" action="/admin/farm-update/${edit.id}" enctype="multipart/form-data">
     <div class="edit-item-i-want-to-sell">
     <div class="admin-add-item-container">
         <div class="close-edit-item close-edit-want-to-sell">x</div>
         <h1>Edit Item</h1>
         <label class="class-name">Name</label> <br>
-        <input type="text"placeholder="Enter item name" value="${itemName.innerHTML}" class="name">
+        <input type="text"placeholder="Enter item name" value="${itemName.innerHTML}" class="name" name="name">
        <div class="category-percentage-flex">
                     <div class="category" style="width:55%; margin-right: 20px;">
-                        <label>Status</label> <br> 
-                        <select class="category-select add-item">
-                            <option>Out of Stock</option>
-                            <option>Sold Out</option>
-                            <option>New</option>
-                        </select>
+                        ${category.innerHTML}
                     </div>
-                    <div class="percentage">
-                        <label>Percentage Sold(%)</label>  <br>
-                        <select>
-                        <option>${itemName.innerHTML}</option>
-                            <option>10%</option>
-                            <option>40%</option>
-                            <option>60%</option>
-                            <option>80%</option>
-                            <option>100%</option>
-                        </select>
-                    </div>
+                    <div class="price">
+                            <label>Quantity</label> <br>
+                            <input type="number" placeholder="Quantity" value="${qs}" name="i_units">
+                        </div>
                 </div>
         <div class="price-image-flex">
             <div class="price">
                 <label>Item Price(₦)</label> <br>
-                 <input type="text" value="${itemPrice.innerHTML}" placeholder="Enter Price...">
+                 <input type="text" name='unit_price' value="${Number(itemPrice.innerHTML.substring(1).replace(',',''))}" placeholder="Enter Price...">
             </div>
             <div class="image">
                 <label style="margin-left: 20px;">Image</label> <br>
-                <input type="file" class="category-select">
+                <input type="file" class="category-select" name='image'>
             </div>
         </div>
+        <input type='hidden'  value="${$('meta[name="_token"]').attr('content')}" name='_token' />
         <label class="admin-location">Location</label> <br>
-        <select class="admin-location-input">
-         <option>${itemLocation.innerHTML}</option>
-            <option>Sokoto</option>
-            <option>Kebbi</option>
-            <option>Zamfara</option>
+        <select class="admin-location-input" name="location">
+         ${itemLocation.innerHTML}
         </select> <br>
         <div class="button-admin-container"  style="margin-top: 30px;">
-            <button class="add-item-submit admin-dash-submit"><span style="padding-left:39px ;padding-right: 39px;" class="edit-want-to-sell-span">Update</span>  <img class="loader loader-edit" src="../../img/loader-hifarm.gif" alt="#"> </button>
+            <button type="submit" class="add-item-submit admin-dash-submit"><span style="padding-left:39px ;padding-right: 39px;" class="edit-want-to-sell-span">Update</span>  <img class="loader loader-edit" src="../../img/loader-hifarm.gif" alt="#"> </button>
         </div>
     </div>
  </div>
+ </form>
     `;
 
         let editMain = document.querySelector('.edit-want-to-sell-span');
 
 
         editMain.addEventListener('click', (e) => {
-
-            e.preventDefault();
 
             let submitButton = document.querySelector('.edit-want-to-sell-span');
             let loader = document.querySelector('.loader-edit');
@@ -188,7 +182,7 @@ editIcon.forEach((edit) => {
 
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;
-
+           
             setTimeout(() => {
                 let addItemModal = document.querySelector('.edit-add-item');
                 let overlayEffect = document.querySelector('.overlay');

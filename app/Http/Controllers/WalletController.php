@@ -112,7 +112,7 @@ class WalletController extends Controller
         
         $amount = $request->amount;
         $user = auth()->user();
-        if($user->wallet->balance <= intval($amount)){
+        if($user->wallet->balance <= intval($amount) || intval($amount)==0){
             return response()->json(['error'=>'you dont have such amount'], 410);
         }
 

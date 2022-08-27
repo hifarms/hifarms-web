@@ -36,8 +36,7 @@ class FarmController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'category_id' => 'required',
-            'farm_type_id' => 'required',
-            'c_units' => 'required',
+            'i_units' => 'required',
             'unit_price' => 'required',
             'location' => 'required',
             'image'  => 'mimes:jpg,png'
@@ -46,14 +45,14 @@ class FarmController extends Controller
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-
         $farm = new Farm();
         $farm->name = $request->name;
         $farm->category_id = $request->category_id;
         $farm->location = $request->location;
-        $farm->c_units = $request->c_units;
+        $farm->i_units = $request->i_units;
+        $farm->c_units = $request->i_units;
         $farm->unit_price = $request->unit_price;
-        $farm->farm_type_id = $request->farm_type_id;
+        $farm->active =true;
         $farm->description= $request->description || "Null";
         
         if ($request->hasFile('image'))
@@ -65,7 +64,7 @@ class FarmController extends Controller
         
         $farm->save();
 
-        return redirect()->back()->with(['success'=>'Farm created successfully']);
+        return redirect()->back()->with(['success_message'=>'Farm created successfully']);
 
     }
     
@@ -78,13 +77,50 @@ class FarmController extends Controller
     
         //check if delete is success
         if(!$deleted){
-            return redirect()->back()->with('error', 'Delete Failed');
+            return redirect()->back()->with('warning_message', 'Delete Failed');
         }
     
         File::delete($tempurl);
-        return redirect()->back()->with('success', 'Delete Success');
+        return redirect()->back()->with('success_message', 'Delete Success');
 
        }
+
+       public function update(Request $request,$id){
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'i_units' => 'required',
+            'unit_price' => 'required',
+            'image'  => 'mimes:jpg,png'
+        ]);
+
+        if($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+            $farm = Farm::where('id',$id)->firstOrFail();
+            $farm->name = $request->name;
+            if($request->category_id){
+                $farm->category_id = $request->category_id;
+            }
+            if($request->location){
+                $farm->location = $request->location;
+            }
+            $farm->i_units = $request->i_units;
+            $farm->unit_price = $request->unit_price;
+            
+            if ($request->hasFile('image'))
+            {
+                $file  = $request->file('image');
+                $path = $file->store('/images/farm','public');
+                File::delete($farm->image);
+                $farm->image = 'storage/'.$path;
+            }
+            
+            $farm->save();
+
+            return redirect()->back()->with(['success_message'=>'Farm Updated successfully']);
+        }
 
        public function costBenefitProfit(Request $request){
 

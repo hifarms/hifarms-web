@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Message;
 use App\Product;
+use App\Category;
 use App\Product_type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,9 +20,9 @@ class ProductController extends Controller
 
     public function marketplace(Request $request){
 
-        $sort = $request->input('sort')=="new"? "ASC" : "DESC";
+        $sort = $request->input('sort')=="new"? "DESC" : "ASC";
 
-        $products= Product::where('active','=',1)->orderBy('created_at',$sort)->paginate(50)->withQueryString();
+        $products= Product::where('active','=',1)->orderBy('created_at',$sort);
 
         session()->flashInput($request->input());
 
@@ -28,29 +30,15 @@ class ProductController extends Controller
             $products= $products->where('price',"<",$request->input('range'));
         }
 
+        if($request->input('category')){
+            $products= $products->whereIn('category_id',$request->input('category'));
+        }
 
-        $cat=[];
-        if($request->input('livestock')){
-            array_push($cat,1);
-        }
-        if($request->input('cattle')){
-            array_push($cat,2);
-        }
-        if($request->input('crop')){
-            array_push($cat,3);
-        }
-        if($request->input('poultry')){
-            array_push($cat,4);
-        }
-        // $category= explode(',',$request->input('category'))
-
-        $cat && $products=$products->whereIn('category_id',$cat);
-        //$price = explode('-',$request->input('price)//
-        // $products = Farm::where('active','=',1)->where('category_id',$rquest->input('category'))->get();        }
-
+        $products= $products->paginate(50)->withQueryString();
         $product_type=Product_type::all();
+        $category = Category::all();
 
-    return view('marketplace',['products'=>$products,'productType'=>$product_type]);
+    return view('marketplace',['products'=>$products,'productType'=>$product_type,'category'=>$category]);
 
 
    }
@@ -77,7 +65,8 @@ class ProductController extends Controller
             'price' => 'required',
             'unit' => 'required',
             'location' => 'required',
-            'image'  => 'mimes:jpg,png'
+            'category_id'=>'required',
+            'image'  => 'mimes:jpg,png,jpeg'
         ]);
 
         if($validator->fails()) {
@@ -92,7 +81,10 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->unit = $request->unit;
         $product->description= $request->description || "Null";
-        $product->active= 1;
+        $product->active= 0;
+        if(auth()->user()->isAdmin()){
+            $product->active= 1;
+        }
         $product->label_id = 1;
         $request->product_type? $product->product_type_id = $request->product_type: null;
         if ($request->hasFile('image')){
@@ -101,41 +93,58 @@ class ProductController extends Controller
             $product->image = 'storage/'.$path;
         }
         $product->save();
-
-        return redirect()->back()->with('status', 'Product Created!');
+        $message = auth()->user()->isAdmin()? "Product Created" : "Product Created-Wait for Approval";
+        return redirect()->back()->with('success_message', 'Product Created!');
     
    }
 
-    public function edit(Request $request,Product $product){
+    public function activate(Request $request,$id){
 
-        $this->authorize('view', $product);
+        $product = Product::where('id',$id)->firstOrFail();
 
-        return view('product.edit',['product'=>$product]);
+        if($product->active){
+            $product->active = false;
+            $message = 'DeActivation Successfully';
+        }
+        else{
+            $product->active = true;
+            $message = 'DeActivation Successfully';
+            $messages = new Message();
+            $messages->sender_id = 0;
+            $messages->recipient_id =0;
+            $messages->message_body = "Your Product ID-".$product->id."Is Activated";
+            $messages->save();
+        }
+
+        $product->save();
+
+        return redirect()->back()->with(['success_message'=>$message]);
 
    }
-    public function update(Request $request,Product $product){
+    public function update(Request $request,$id){
         
-        $this->authorize('view', $product);
+        
 
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'price' => 'required',
             'unit' => 'required',
-            'location' => 'required',
             'image'  => 'mimes:jpg,png'
         ]);
 
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-        
-        if($product->user_id != Auth::user()->id){
-            return redirect()->back()->with('error', 'UnAuthorized to Update Product');
-        }
-
+        $product = Product::where('id',$id)->firstOrFail();
+        $product->name = $request->name;
+        $product->price = $request->price;
         $product->unit = $request->unit;
-        $product->location = $request->location;
-        $product->description= $request->description;
+        if($request->category_id){
+            $product->category_id = $request->category_id;
+        }
+        if($request->location){
+            $product->location = $request->location;
+        }
         if ($request->hasFile('image'))
         {
             $file  = $request->file('image');
@@ -144,7 +153,7 @@ class ProductController extends Controller
             $product->image = 'storage/'.$path;
         }
         $product->save();
-        return redirect()->back()->with('status', 'Product Created!');
+        return redirect()->back()->with('success_message', 'Product Updated Success!');
 
    }
 
@@ -153,15 +162,16 @@ class ProductController extends Controller
 
         // saving image url
         $tempurl=$product->image;
+        
         //delete product
         $deleted = $product->delete();
 
         //check if delete is success
         if(!$deleted){
-            return redirect()->back()->with('error', 'Delete Failed');
+            return redirect()->back()->with('warning_message', 'Delete Failed');
         }
 
         File::delete($tempurl);
-        return redirect()->back()->with('success', 'Delete Success');
+        return redirect()->back()->with('success_message', 'Product Deleted Successfully');
     }
 }

@@ -7,7 +7,6 @@ investBtn.forEach((btn)=>{{
        let overlay = document.querySelector('.overlay');
        InvestModal.style.display = 'block';
        overlay.style.display = 'block';
-
        let closeModal = document.querySelector('.add-user-close');
        closeModal.addEventListener('click', ()=>{
         InvestModal.style.display = 'none';

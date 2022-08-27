@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Farm;
+use App\Product;
 use App\Farm_return_type;
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,6 +16,10 @@ class order_item extends Model
     public function farm(){
 
         return $this->belongsTo(Farm::class);
+    }
+    public function product(){
+
+        return $this->belongsTo(Product::class);
     }
     public function returntype(){
 

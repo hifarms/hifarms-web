@@ -20,9 +20,9 @@ class CreateWalletTransactionsTable extends Migration
             $table->unsignedFloat('amount_after')->default(0);
             $table->date('date');
             $table->string('description');
-            $table->foreignId('wallet_id')->constrained();
-            $table->foreignId('transaction_type_id')->constrained();
-            $table->foreignId('transaction_status_id')->constrained();
+            $table->foreignId('wallet_id')->constrained()->onDelete('cascade');
+            $table->foreignId('transaction_type_id')->constrained()->onDelete('cascade');
+            $table->foreignId('transaction_status_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

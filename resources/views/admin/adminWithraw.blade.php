@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style.css">
+    <meta name="_token" content="{{ csrf_token() }}" />
+    <script src="{{asset('js/jquery.min.js')}}"></script>
     <title>Admin Withdrawal Page</title>
 </head>
 
@@ -64,6 +66,17 @@
     <div class="added-successfully">
         Withdrawal Processed!
     </div>
+    @if(Session('success_message'))
+    <div class="added-successfully-blade">
+        {{Session('success_message')}}
+    </div>
+    @endif
+
+    @if(Session('warning_message'))
+    <div class="deleted-successfully-blade">
+        {{Session('warning_message')}}
+    </div>
+    @endif
     <header class="dashbrd-header">
         <div class="dashboard-header">
             <img src="../img/hamburger.svg" alt="#" id="hamburger" class="hamburger1">
@@ -89,19 +102,7 @@
                             </div>
                             <button>Mark all as read</button>
                         </div>
-                        <div class="notif-1">
-                            <p>New products arrival at Hi Marketplace.</p>
-                            <p>12mins ago</p>
-                        </div>
-                        <div class="notif-2">
-                            <p>Let's get started {{ Auth::user()->username }}.</p>
-                            <p>3hrs ago</p>
-                        </div>
-                        <div class="notif-3">
-                            <p>Welcome to Hi Farm.</p>
-                            <p>3hrs ago</p>
-                        </div>
-                    </div>
+                        
                 </div>
                 <div class="guides">
                     <img src="../../img/Guides.png" alt="guides" width="32">
@@ -167,10 +168,12 @@
             <div>Show Entries: <span class="ten">10</span></div>
             <div class="entry-search">
                 <p>Search</p>
-                <div class="input-search">
-                    <input type="text" placeholder="search for">
-                    <img src="../img/Vector (8).png" alt="search-icon">
-                </div>
+                <form action="">
+                    <div class="input-search">
+                        <input type="text" placeholder="search for withdraw by WID/UID" value="{{old('search')}}" name="search">
+                        <button type="submit" class="btn"><img src="../img/Vector (8).png" alt="search-icon"></button>
+                    </div>
+                </form>
             </div>
         </div>
         <div class="transaction-history">
@@ -186,30 +189,34 @@
                         <div style="margin-right: 40px">Action</div>
                         <div></div>
                     </div>
-                    <?php $number = 1; ?>
+                
                     @foreach($withdraws as $with)
                     <div class="transaction-records admin-with-list">
-                        <div><strong>{{ $number }}</strong></div>
+                        <div><strong>{{ $with->id }}</strong></div>
                         <div><strong>Hi-{{ $with->user_id }}</strong></div>
                         <div><strong>₦ {{ number_format($with->amount, 0,'.',',') }}</strong></div>
                         <div style="margin-left:-10px;"><strong>{{ date('F d, Y', strtotime($with->created_at)) }}</strong></div>
-                        @if($with->withdraw_status_id = 3)
+                        @if($with->withdraw_status_id == 3)
                         <div style="color: #53AF46;margin-right: 16px;"><strong>Paid</strong></div>
-                        @elseif($with->withdraw_status_id = 1)
+                        @elseif($with->withdraw_status_id == 1)
                         <div style="color: #1E88E5;margin-right: 16px;"><strong>Pending</strong></div>
-                        @elseif($with->withdraw_status_id = 2)
+                        @elseif($with->withdraw_status_id == 2)
                         <div style="color: #1E88E5;margin-right: 16px;"><strong>Processing</strong></div>
                         @endif
                         <div>
-                            <select style="padding: 7px;border-radius: 6px;">
-                                <option value=""><strong>Paid</strong></option>
-                                <option value=""><strong>Processing</strong></option>
-                                <option value=""><strong>Hold</strong></option>
+                            <form class="status-form" action="{{route('changeStatus')}}" method="post">
+                            @csrf
+                            <select class="w-option" style="padding: 7px;border-radius: 6px;" name="status">
+                                <option value="0"  selected disabled>change status</option>
+                                <option value="3"><strong>Paid</strong></option>
+                                <option value="2"><strong>Processing</strong></option>
+                                <option value="1"><strong>Pending</strong></option>
                             </select>
+                            <input type="hidden" name="id" value="{{$with->id}}">
+                        </form>
                         </div>
-                        <div><img src="../img/admin-withdrawal-eye.png" alt="eye-icon" class="eye-icon" style="cursor: pointer;"></div>
+                        <div><img id="{{$with->user->id}}" src="../img/admin-withdrawal-eye.png" alt="eye-icon" class="eye-icon" style="cursor: pointer;"></div>
                     </div>
-                    <?php $number++; ?>
                     @endforeach
                 </div>
             </div>
@@ -239,23 +246,88 @@
     <div class="delete-modal add-status-modal eye-modal">
         <div class="delete-modal-container">
             <div class="close-delete-modal close-status eye-modal-close">x</div>
-            <h1 style="font-size: 20px;margin-top: 10px;margin-bottom: 40px;">Account Details #W001</h1>
+            <h1 style="font-size: 20px;margin-top: 10px;margin-bottom: 40px;">Account Details <span id="wid-label"> #W001</span></h1>
             <div class="inner-admin-withdraw-modal" style="margin-left: 20px;">
                 <label style="font-size:17px;margin-bottom: -10px;display: block;"> <strong>Account Name:</strong></label> <br>
-                <input style="border:1px solid rgb(214, 210, 210);margin-top: 1px;font-size: 16px;margin-bottom: 10px;padding: 13px;width: 90%;" type="text" value="Mubarak Aliyu" disabled>
+                <input class="acc-name" style="border:1px solid rgb(214, 210, 210);margin-top: 1px;font-size: 16px;margin-bottom: 10px;padding: 13px;width: 90%;" type="text" value="Mubarak Aliyu" disabled>
                 <label style="font-size:17px;margin-bottom: -10px;display: block;"> <strong>Account Number:</strong></label> <br>
-                <input style="border:1px solid rgb(214, 210, 210);margin-top: 1px;font-size: 16px;margin-bottom: 10px;padding: 13px;width: 90%;" type="text" value="392612234" disabled>
+                <input class="acc-num" style="border:1px solid rgb(214, 210, 210);margin-top: 1px;font-size: 16px;margin-bottom: 10px;padding: 13px;width: 90%;" type="text" value="392612234" disabled>
                 <label style="font-size:17px;margin-bottom: -10px;display: block;"> <strong>Bank Name:</strong></label> <br>
-                <input style="border:1px solid rgb(214, 210, 210);margin-top: 1px;font-size: 16px;margin-bottom: 10px;padding: 13px;width: 90%;" type="text" value="Access Bank" disabled>
+                <input class="bank-name" style="border:1px solid rgb(214, 210, 210);margin-top: 1px;font-size: 16px;margin-bottom: 10px;padding: 13px;width: 90%;" type="text" value="Access Bank" disabled>
             </div>
         </div>
     </div>
     <div class="overlay"></div>
     <!--Admin withdrawal info ends-->
-    <script src="../js/userWallet.js"></script>
-    <script src="../js/dashboardHamburger.js"></script>
-    <script src="../js/adminWithdrawal.js"></script>
+   
 
 </body>
+ <script src="../js/userWallet.js"></script>
+    <script src="../js/dashboardHamburger.js"></script>
+    <script src="../js/adminWithdrawal.js"></script>
+<script>
 
+const eyeIcon = document.querySelectorAll('.eye-icon');
+//const sendButton = document.querySelector('.span-class');
+
+
+eyeIcon.forEach((eye)=>{
+    eye.addEventListener('click', (e)=>{
+        e.preventDefault();
+        jQuery.ajax({
+          url: "http://127.0.0.1:8000/admin/bank-details/"+eye.id,
+          method: "get",
+          success: function ({data}) {
+           document.querySelector('.acc-num').value=data.bank_acc_no;
+           document.querySelector('.acc-name').value=data.bank_acc_name;
+           document.querySelector('.bank-name').value=data.bank_name;
+          },
+          error: function (e) {
+             console.log(e)
+          },
+      });
+
+        //Display modal
+        let overlayEffect = document.querySelector('.overlay');
+        overlayEffect.style.display = 'block';
+    
+        let mdl = document.querySelector('.eye-modal');
+       
+        mdl.style.display = 'block';
+    
+            //Close Modal
+            let closeEditModal = document.querySelector('.eye-modal-close');
+            closeEditModal.addEventListener('click', ()=>{
+              overlayEffect.style.display = 'none';
+              mdl.style.display = 'none';
+            });   
+    })
+})
+
+$('.w-option').on('change',(e)=>{
+    e.target.parentElement.submit()
+})
+</script>
+<script>
+    function getNotification() {
+  jQuery.ajax({
+          url: "http://127.0.0.1:8000/user/messages",
+          method: "get",
+          success: function (data) {
+              data.messages.forEach(message => {
+                  $('.notification-modal').append(`
+                      <div class="notif-${message.seen==0?'1':'2'}">
+                      <p>${message.message_body}.</p>
+                      <p>${message.created_at.split('T')[0]}</p>
+                      </div>`
+                  )
+              });
+          },
+          error: function (e) {
+             console.log(e)
+          },
+      });
+  }
+getNotification();
+</script>
 </html>

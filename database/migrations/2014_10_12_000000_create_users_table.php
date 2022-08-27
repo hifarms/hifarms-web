@@ -32,8 +32,8 @@ class CreateUsersTable extends Migration
             $table->string('refer_by_id')->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->foreignId('role_id')->default(1)->constrained();
-            $table->foreignId('bank_id')->nullable()->constrained();
+            $table->foreignId('role_id')->default(1)->constrained()->onDelete('cascade');
+            $table->foreignId('bank_id')->nullable()->constrained()->onDelete('cascade');
             $table->string('google_id')->nullable();
             $table->string('facebook_id')->nullable();
             $table->rememberToken();

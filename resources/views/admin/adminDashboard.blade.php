@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style.css">
+    <meta name="_token" content="{{ csrf_token() }}" />
+    <script src="{{asset('js/jquery.min.js')}}"></script>
     <title>Admin Dashboard</title>
 </head>
 <body>
@@ -49,6 +51,17 @@
         Error!! 
         <br> Something went wrong.
     </div>
+    @if(Session('success_message'))
+    <div class="added-successfully-blade">
+        {{Session('success_message')}}
+    </div>
+    @endif
+
+    @if(Session('warning_message'))
+    <div class="deleted-successfully-blade">
+        {{Session('warning_message')}}
+    </div>
+    @endif
     <header class="dashbrd-header">
         <div class="dashboard-header">
             <img src="../img/hamburger.svg" alt="#" id="hamburger" class="hamburger1">
@@ -74,18 +87,7 @@
                             </div>
                             <button>Mark all as read</button>
                         </div>
-                        <div class="notif-1">
-                            <p>New products arrival at Hi Marketplace.</p>
-                             <p>12mins ago</p>
-                        </div>
-                        <div class="notif-2">
-                            <p>Let's get started {{ Auth::user()->username }}.</p>
-                             <p>3hrs ago</p>
-                        </div>
-                        <div class="notif-3">
-                            <p>Welcome to Hi Farm.</p>
-                             <p>3hrs ago</p>
-                        </div>
+                        
                     </div>
                 </div>
                  <div class="guides">
@@ -165,11 +167,15 @@
             <p>Start from Jan 1, 2022</p>
         </div>
        </div>    
-        <div class="entry-search admin-search ad-dsh">   
+        <div class="entry-search admin-search ad-dsh"> 
+            <form type="" > 
         <div class="input-search">
-           <input type="text" placeholder="search for">
-           <img src="../img/Vector (8).png" style="cursor: pointer;" alt="search-icon">
+            
+           <input type="text" placeholder="search for product" value="{{old('search')}}" name="search">
+           <button type="submit"><img src="../img/Vector (8).png" style="cursor: pointer;" alt="search-icon"></button>
+           
        </div>
+    </form>
        </div>
        <!---Double Side-->
 
@@ -183,23 +189,39 @@
                <div>Product Name</div>
                <div class="admin-status">Status</div>
                <div>Sold</div>
-               <div>View</div>
+               <div>Action</div>
            </div>
            <div class="views-sell-container"></div>
            <div class="product-list-container">
-		    <?php $number = 1; ?>
+		   
                 @foreach($product as $prods)
               <div class="product-list">
-                  <div>{{ $number }}</div>
+                  <div>{{ $prods->id }}</div>
                   <div class="product-list-grid">
                       <img src="{{ url($prods->image) }}" alt="onions">
                       <p>{{ $prods->name }}</p>
                   </div>
-                  <div class="admin-active">@if($prods->active = 1) Actvive @endif</div>
+                  <div class="admin-active">
+                    @if($prods->active == true)
+                     Activated 
+                     @else 
+                     
+                    Not Activated
+                    @endif</div>
                   <div class="admin-sold">{{ $prods->unit_sold }}</div>
-                  <div class="admin-view">{{ $prods->unit_view}}</div>
+                  <div class="admin-view">
+                    @if($prods->active == true)
+                    <form action="{{route('activate-product',$prods->id)}}">
+                    <button type="submit" id="" class="btn">Deactivate Now</button>
+                    </form>
+                    @else 
+                    <form action="{{route('activate-product',$prods->id)}}">
+                   <button type="submit" id="" class="btn">Activate Now</button>
+                    </form>
+                    @endif
+                  </div>
               </div>
-			  <?php $number++; ?>
+			
                 @endforeach
 
               
@@ -268,5 +290,27 @@
         <div class="overlay"></div>
     <script src="../js/dashboardHamburger.js"></script>
     <script src="../js/adminDashboard.js"></script>
+    <script>
+              function getNotification() {
+            jQuery.ajax({
+                    url: "http://127.0.0.1:8000/user/messages",
+                    method: "get",
+                    success: function (data) {
+                        data.messages.forEach(message => {
+                            $('.notification-modal').append(`
+                                <div class="notif-${message.seen==0?'1':'2'}">
+                                <p>${message.message_body}.</p>
+                                <p>${message.created_at.split('T')[0]}</p>
+                                </div>`
+                            )
+                        });
+                    },
+                    error: function (e) {
+                       console.log(e)
+                    },
+                });
+            }
+    getNotification();
+    </script>
 </body>
 </html>

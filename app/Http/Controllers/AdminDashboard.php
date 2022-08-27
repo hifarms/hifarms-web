@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\blogCategory;
+use App\Farm;
+use App\User;
+use App\Label;
+use App\Order;
+use App\Wallet;
+use App\Message;
+use App\Product;
 use App\BlogPost;
 use App\Category;
-use App\Label;
-use App\Product;
-use App\User;
-use App\Wallet;
-use App\Withdraw;
-use App\Farm;
+use App\withdraw;
 use App\Farm_type;
-use App\Message;
-use App\Order;
 use App\order_item;
+use App\blogCategory;
 use App\Product_type;
+use App\Farm_return_type;
 use Illuminate\Http\Request;
 
 class AdminDashboard extends Controller
@@ -53,36 +54,89 @@ class AdminDashboard extends Controller
 
     }
 	
-	public function AdminDashboard()
-    {
+	public function AdminDashboard(Request $request)
+    {   
+        
+
+        if($request->input('search')){
+            $products = Product::where('id','like','%'.$request->input('search').'%')->orWhere('name','like','%'.$request->input('search').'%')->paginate(20);
+            session()->flashInput($request->input());
+        }else{
+            $products = Product::paginate(7);
+        }
         $data['users'] = User::where('status', 1)->count();
         $data['products'] = Product::count();
         $data['orders'] = order_item::count();
-        $data['product'] = Product::paginate(7);
+        $data['product'] = $products;
         $data['category'] = Category::get();
         $data['label'] = Label::get();
         return view('admin.adminDashboard', $data);
     }
 
-    public function AdminInvest()
+    public function AdminInvest(Request $request)
     {
+        $sort = $request->input('sort')=="new"? "DESC" : "ASC";
+
+        $farms= Farm::where('active','=',1)->orderBy('created_at',$sort);
+
+        session()->flashInput($request->input());
+
+        if($request->input('range')){
+            $farms= $farms->where('unit_price',"<",$request->input('range'));
+        }
+
+        if($request->input('category')){
+            $farms= $farms->whereIn('category_id',$request->input('category'));
+        }
+
+        $farms= $farms->paginate(50)->withQueryString();
+        
         $data['category'] = Category::get();
         $data['farmtype'] = Farm_type::get();
-        $data['farmproduct'] = Farm::paginate(7);
+        $data['farmproduct'] = $farms;
         return view('admin.adminInvest', $data);
     }
 
     public function AdminInvestReturns()
     {
-        return view('admin.adminInvestReturns');
+        $totalreturn = 0;
+        $totalinvest = 0;
+        $active=0;
+        $activeinvest = order_item::get();
+        foreach ($activeinvest as $invest) {
+            if ($invest->order->payment == null || boolval($invest->product_id)) {
+                continue;
+            }
+            $data['per'] = Farm_return_type::where('id',$invest->farm_return_type_id)->first();
+            $rtn = ($data['per']->percentage / 100)*$invest->amount;
+            $totalinvest = $totalinvest + $invest->amount;
+            $totalreturn = $totalreturn + $rtn;
+            $active++;
+        }
+        return view('admin.adminInvestReturns', ['totalinvest'=>$totalinvest,'totalreturn'=>$totalreturn,'active'=>$active, 'activeinvest'=>$activeinvest]);
     }
 
-    public function AdminMarketplace()
+    public function AdminMarketplace(Request $request)
     {
+        $sort = $request->input('sort')=="new"? "DESC" : "ASC";
+
+        $products= Product::where('active','=',1)->orderBy('created_at',$sort);
+
+        session()->flashInput($request->input());
+
+        if($request->input('range')){
+            $products= $products->where('price',"<",$request->input('range'));
+        }
+
+        if($request->input('category')){
+            $products= $products->whereIn('category_id',$request->input('category'));
+        }
+
+        $products= $products->paginate(50)->withQueryString();
         $data['category'] = Category::get();
         $data['producttype'] = Product_type::get();
         $data['label'] = Label::get();
-        $data['products'] = Product::paginate(10);
+        $data['products'] = $products;
         $data['product'] = Product::first();
         return view('admin.adminMarketplace', $data);
     }
@@ -100,27 +154,46 @@ class AdminDashboard extends Controller
         return view('admin.adminProfile', $data);
     }
 
-    public function AdminWallet()
+    public function AdminWallet(Request $request)
     {
+        if($request->input('search')){
+            $orders = order::where('id','like','%'.$request->input('search').'%')->orWhere('user_id','like','%'.$request->input('search').'%')->paginate(50);
+            session()->flashInput($request->input());
+        }else{
+            $orders = order::paginate(50);
+        }
         $data['ledgerbalance'] = Wallet::sum('ledger_balance');
         $data['balance'] = Wallet::sum('balance');
         $data['amount'] = Withdraw::sum('amount');
-        $data['orders'] = order::all();
+        $data['orders'] = $orders;
         return view('admin.adminWallet', $data);
     }
 
-    public function AdminWithdraw()
-    {
+    public function AdminWithdraw(Request $request)
+    {   
+        if($request->input('search')){
+            $with = Withdraw::where('id','like','%'.$request->input('search').'%')->orWhere('user_id','like','%'.$request->input('search').'%')->paginate(50);
+            session()->flashInput($request->input());
+        }else{
+            $with = Withdraw::paginate(50);
+        }
         $data['ledgerbalance'] = Wallet::sum('ledger_balance');
         $data['balance'] = Wallet::sum('balance');
         $data['amount'] = Withdraw::sum('amount');
-        $data['withdraws'] = Withdraw::all();
+        $data['withdraws'] = $with;
         return view('admin.adminWithraw', $data);
     }
 
-    public function AdminBlog()
-    {
-        $data['posts'] = BlogPost::all();
+    public function AdminBlog(Request $request)
+    {   
+        if($request->input('search')){
+            $posts = BlogPost::where('id','like','%'.$request->input('search').'%')->orWhere('title','like','%'.$request->input('search').'%')->paginate(50);
+            session()->flashInput($request->input());
+        }else{
+            $posts = BlogPost::paginate(10);
+        }
+
+        $data['posts'] = $posts;
         $data['editposts'] = BlogPost::first();
         $data['allblog'] = BlogPost::count();
         $data['blogcategory'] = blogCategory::get();
@@ -136,5 +209,13 @@ class AdminDashboard extends Controller
         $data['orders'] = order_item::count();
         $data['messages'] = Message::paginate(9);
         return view('admin.adminSettings', $data);
+    }
+
+    public function changeStatus(Request $request)
+    {
+        $with= withdraw::where('id',$request->id)->firstOrFail();
+        $with->withdraw_status_id = $request->status;
+        $with->save();
+        return redirect()->back()->with(['success_message'=>"Status changed Succesfully"]);
     }
 }

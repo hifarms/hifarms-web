@@ -47,7 +47,6 @@ class BlogPostController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-
         $post = new BlogPost();
         $post->title = $request->input('title');
         $post->blog_category_id = $request->input('blog_category_id');
@@ -70,31 +69,37 @@ class BlogPostController extends Controller
         return view('blog.edit',['post'=>$post]);
     }
 
-    public function update(Request $request,BlogPost $post){
+    public function update(Request $request){
 
         $validator = Validator::make($request->all(), [
+            'id'=> 'required',
             'title' => 'required|string',
             'content' => 'required|string',
             'image'  => 'mimes:jpg,png'
         ]);
 
+       
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $post->title= $request->title();
+        $post = BlogPost::where('id',$request->id)->firstOrFail();
+        $post->title= $request->title;
         $post->content = $request->content;
+        $post->created_at = $request->date;
       
         if ($request->hasFile('image'))
         {
             $file  = $request->file('image');
             $path = $file->store('/images/blog','public');
+            File::delete($post->image_cover);
             $post->image_cover = 'storage/'.$path;
         }
 
 
         $post->save();
-   
+
+        return redirect()->back()->with(['success_message'=>'Post Updated Successfully']);
     }
 
 
@@ -106,7 +111,7 @@ class BlogPostController extends Controller
            return redirect()->back()->with(['error'=>'Delete Failed']);
         }
         File::delete($tempurl);
-        return redirect()->back()->with(['Success'=>'Delete Success']);
+        return redirect()->back()->with(['success_message'=>'Deleted Successfully']);
 
     }
 }

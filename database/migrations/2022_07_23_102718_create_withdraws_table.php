@@ -16,8 +16,8 @@ class CreateWithdrawsTable extends Migration
         Schema::create('withdraws', function (Blueprint $table) {
             $table->id();
             $table->integer('amount');
-            $table->foreignId('withdraw_status_id')->constrained();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('withdraw_status_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

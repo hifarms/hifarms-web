@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FarmInvestment;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\BlogPostController;
@@ -106,6 +107,8 @@ Route::post('/withdrawal-request', 'WalletController@withdrawRequest')->name('da
 Route::post('/update-profile-pic', 'UserController@changeProfilePic')->name('change-profile');
 
 Route::get('/verify-email', 'AuthController@verifyEmail');
+
+Route::post('/add-sell-product', 'ProductController@store')->name('sell-product');
 //admin route
 Route::group(['middleware' => 'auth.admin', 'prefix' => 'admin', 'before' => 'admin'], function () {
 
@@ -127,9 +130,13 @@ Route::group(['middleware' => 'auth.admin', 'prefix' => 'admin', 'before' => 'ad
     
     Route::get('/adminWithraw', 'AdminDashboard@adminWithdraw');
 
-    Route::get('/verify-email', 'AuthController@verifyEmail');
 
     Route::get('/adminBlog', 'AdminDashboard@adminBlog');
+
+
+    Route::get('/bank-details/{id}', 'UserController@getBank');
+
+    Route::post('/withdraw/change-status/', 'AdminDashboard@changeStatus')->name('changeStatus');
 
  
     Route::get('/adminSettings', 'AdminDashboard@adminSettings');
@@ -138,7 +145,17 @@ Route::group(['middleware' => 'auth.admin', 'prefix' => 'admin', 'before' => 'ad
 
     Route::get('/marketplace', 'ProductController@marketplace')->name('dashboard');
 
-    Route::post('/add-sell-product', 'ProductController@store')->name('sell-product');
+
+
+    Route::post('/product-update/{id}', 'ProductController@update')->name('update-product');
+
+    Route::get('/activate/{id}', 'ProductController@activate')->name('activate-product');
+
+    Route::post('/release-fund', 'FarmInvestment@release')->name('release-fund');
+
+    Route::post('/farm-update/{id}', 'FarmController@update')->name('update-farm');
+
+    Route::post('/blog-update', 'BlogPostController@update')->name('update-blog');
 
     Route::get('/delete-product/{product}', 'ProductController@destroy')->name('deleteproduct');
 

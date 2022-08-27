@@ -83,6 +83,13 @@ class UserController extends Controller
        return view('profile',['user'=>$user,]);
    }
 
+   public function getBank(Request $request,$id){
+    
+        $user = Bank::where('user_id',$id)->first();
+
+        return response()->json(['data'=>$user], 200);
+   }
+
    public function settings(){
   
        return view('userSettings');
@@ -119,9 +126,7 @@ class UserController extends Controller
        $userbank->bank_acc_no =$request->acc_no;
        $userbank->save();
        $user->save();
-       \Session::flash('warning_message', 'These credentials do not match our records.');
-
-       return redirect()->back();
+       return redirect()->back()->with(['success_message'=>'Updated Successfully']);
    }
 
      //Userdasboard/Maketpalace/orders PAGE
@@ -142,12 +147,21 @@ class UserController extends Controller
         $user = Auth::user();
 
         $totalspend=0;
-        foreach($user->investments as $investment){
+        $investments =$user->investments;
+
+        foreach($investments as $investment){
         if($investment->order->payment && $investment->order->payment->status_code==200){
                 $totalspend+=$investment->amount;
             }
          }
-        return view('wallet',['user'=>$user,'totalspend'=>$totalspend]);
+         
+         $investments =$user->investments();
+         if($request->input('search')){
+            session()->flashInput($request->input());
+          $investments = $investments->where('order_items.id',$request->input('search'));
+         }
+         $investments = $investments->paginate(10);
+        return view('wallet',['user'=>$user,'totalspend'=>$totalspend,'investments'=>$investments]);
     }
 
 //Moving Farm investment Return/payment to wallet
@@ -246,7 +260,14 @@ class UserController extends Controller
     }
 
    public function getMessage(Request $request){
-   $messages= Message::where('recipient_id',auth()->user()->id)->get();
+
+  
+   if(auth()->user()->isAdmin()){
+    $messages =Message::where('recipient_id',0)->get();
+   }
+   else{
+    $messages= Message::where('recipient_id',auth()->user()->id)->get();
+   }
    return response()->json(['messages'=>$messages], 200);
 }
 }

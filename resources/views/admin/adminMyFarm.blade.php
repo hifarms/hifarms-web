@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style.css">
     <meta name="_token" content="{{ csrf_token() }}" />
+    <script src="{{asset('js/jquery.min.js')}}"></script>
     <title>Livestock</title>
 </head>
 <body>
@@ -70,18 +71,7 @@
                             </div>
                             <button>Mark all as read</button>
                         </div>
-                        <div class="notif-1">
-                            <p>New products arrival at Hi Marketplace.</p>
-                             <p>12mins ago</p>
-                        </div>
-                        <div class="notif-2">
-                            <p>Let's get started {{ Auth::user()->username }}.</p>
-                             <p>3hrs ago</p>
-                        </div>
-                        <div class="notif-3">
-                            <p>Welcome to Hi Farm.</p>
-                             <p>3hrs ago</p>
-                        </div>
+                        
                     </div>
                 </div>
                  <div class="guides">
@@ -249,5 +239,27 @@
 <script src="js/livestock.js"></script>
 <script src="js/adminMyFarm.js"></script>
 <script src="js/dashboardHamburger.js"></script>
+<script>
+    function getNotification() {
+  jQuery.ajax({
+          url: "http://127.0.0.1:8000/user/messages",
+          method: "get",
+          success: function (data) {
+              data.messages.forEach(message => {
+                  $('.notification-modal').append(`
+                      <div class="notif-${message.seen==0?'1':'2'}">
+                      <p>${message.message_body}.</p>
+                      <p>${message.created_at.split('T')[0]}</p>
+                      </div>`
+                  )
+              });
+          },
+          error: function (e) {
+             console.log(e)
+          },
+      });
+  }
+getNotification();
+</script>
 </body>
 </html>

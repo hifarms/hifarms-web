@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style.css">
+    <meta name="_token" content="{{ csrf_token() }}" />
+    <script src="{{asset('js/jquery.min.js')}}"></script>
     <title>Admin Invest</title>
 </head>
 
@@ -78,6 +80,17 @@
     <div class="deleted-successfully">
         Deleted Successfully!!!
     </div>
+    @if(Session('success_message'))
+    <div class="added-successfully-blade">
+        {{Session('success_message')}}
+    </div>
+    @endif
+
+    @if(Session('warning_message'))
+    <div class="deleted-successfully-blade">
+        {{Session('warning_message')}}
+    </div>
+    @endif
     <header class="dashbrd-header">
         <div class="dashboard-header">
             <img src="../img/hamburger.svg" alt="#" id="hamburger" class="hamburger1">
@@ -103,18 +116,7 @@
                             </div>
                             <button>Mark all as read</button>
                         </div>
-                        <div class="notif-1">
-                            <p>New products arrival at Hi Marketplace.</p>
-                            <p>12mins ago</p>
-                        </div>
-                        <div class="notif-2">
-                            <p>Let's get started {{ Auth::user()->username }}.</p>
-                            <p>3hrs ago</p>
-                        </div>
-                        <div class="notif-3">
-                            <p>Welcome to Hi Farm.</p>
-                            <p>3hrs ago</p>
-                        </div>
+                        
                     </div>
                 </div>
                 <div class="guides">
@@ -159,17 +161,13 @@
     <div class="dashboard-container admn-invst">
         <h1>Invest In A Project.</h1>
         <div class="sponsor-container">
-
+            <form>
             <div class="sponsors-flex dashboard">
                 <p class="filter-heading dashboard">FILTER BY PRICE</p>
-                <p class="showing-result">{{ $farmproduct->links() }}</p>
-                <select class="sponsor-option dashboard">
+                <p class="showing-result">Showing {{$farmproduct->currentPage()}}-{{$farmproduct->lastPage()}}</p>
+                <select class="sponsor-option dashboard sort" name="sort">
                     <option value="all">Sort By</option>
-                    <form method="GET" role="search">
-                        <button type="submit">
-                            <option value="search" on>Newest</option>
-                        </button>
-                    </form>
+                    <option value="new">Newest</option>
                     <option value="old">Oldest</option>
                 </select>
             </div>
@@ -177,37 +175,34 @@
                 <div class="sponsor-option">
                     <div class="sponsor-checkbox dashboard">
                         <div class="sponsors-flex dashboard show-this">
-                            <p class="showing-result">{{ $farmproduct->links() }}</p>
+                            <p class="showing-result">Showing 1-42</p>
                             <select class="sponsor-option dashboard">
                                 <option value="all">Sort By</option>
-                                <form method="GET" role="search">
-                                    <button type="submit">
-                                        <option value="search" on>Newest</option>
-                                    </button>
-                                </form>
+                                <option value="new">Newest</option>
                                 <option value="old">Oldest</option>
                             </select>
                         </div>
                         <div class="filter">
-                            <form>
+                            
                                 <div class="mobile-category">
                                     <h2 class="filter-mobile">Filter By Price</h2>
                                     <div class="line" style="height: 1px;width: 100%;background: #c4c4c4;margin-bottom: 10px;"></div>
                                 </div>
                                 <input type="range" min="0" max="80000" step="0.1" value="{{old('range')==null? 0 :old('range')}}" name='range' class="rate">
                                 <input type="submit" class="button-filter" value='FILTER'>
-                                <p class="filter-price">Price: ₦ 0 - ₦ 100</p>
+                                <p class="filter-price">Price: ₦ 0 - ₦ 50,000</p>
                                 <h3 class="sponsor-categories mobile-hide">CATEGORIES</h3>
                         </div>
                         <div class="line mobile-hide" style="height: 1px;width: 300px;background: #c4c4c4;margin-bottom: 10px;"></div>
                         <div id="flex-dashboard-container">
-                            @foreach($category as $cat)
+                         
                             <div class="mobile-category">
                                 <h3 class="sponsor-categories">CATEGORIES</h3>
                                 <div class="line" style="height: 1px;width: 100%;background: #c4c4c4;margin-bottom: 10px;"></div>
                             </div>
+                               @foreach($category as $cat)
                             <div class="flex dashboard">
-                                <input type="checkbox" class="check" name='{{ $cat->name }}'>
+                                <input type="checkbox" class="check" name="category[]" value="{{$cat->id}}" name='{{ $cat->name }}' {{old('category')  && in_array($cat->id,old('category')) ? 'checked':null}}>
                                 <p class="sponsor-crop dashboard">{{ $cat->name }}</p>
                                 <P class="quant">0</P>
                             </div>
@@ -233,10 +228,10 @@
                         <div class="label-edit">
                             <div class="ed-del">
 
-                                <img src="../img/edit-fade.png" alt="edit-icon" style="margin-right: 15px;" class="edit-hover edit-icon" width="28">
+                                <img id="{{$prod->id}}" src="../img/edit-fade.png" alt="edit-icon" style="margin-right: 15px;" class="edit-hover edit-icon" width="28">
                                 <a href="{{ route('deletefarm', $prod->id) }}"><img src="../img/delete-edit.png" alt="delete" width="20" style="cursor: pointer;"></a>
                             </div>
-                            <p class="label">New</p>
+                            <p class="label {{$prod->label->color}}">{{$prod->label->name}}</p>
                         </div>
                         <img src="{{ url($prod->image) }}" alt="image" class="marketplace-image">
                         <h1>{{ $prod->name }}</h1>
@@ -246,11 +241,12 @@
                         </div>
                         <div class="sponsor-inner-flex">
                             <img src="../img/sponsor-cart.svg" alt="">
-                            <p class="percentage-sold">{{ $prod->c_units }}% sold</p>
+                            <p class="percentage-sold"> {{round(($prod->c_units/$prod->i_units)*100)}}% sold</p>
                         </div>
+                        <input type="hidden" name="unit" class="qs" value="{{$prod->i_units}}">
                         <div class="purchase-div dashboard invest">
                             <h3 class="h3-dashboard invest">₦{{ number_format($prod->unit_price, 0,'.',',') }}</h3>
-                            <button class="button-invest">Invest</button>
+                            <button class="button-invest" id="{{$prod->id}}">Release</button>
                         </div>
                     </div>
                     @endforeach
@@ -272,8 +268,8 @@
                     @csrf
                     <label class="class-name">Name</label> <br>
                     <input type="text" placeholder="Enter item name" class="name" name="name">
-                    <div class="category-percentage-flex">
-                        <div class="category" style="width:55%; margin-right: 20px;">
+                    <div class="category-percentage-flex ">
+                        <div class="category cs" style="width:55%; margin-right: 20px;">
                             <label>Category</label> <br>
                             <select class="category-select add-item" name="category_id">
                                 <option selected disabled>Select Category</option>
@@ -282,16 +278,9 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="percentage">
-                            <label>Percentage Sold(%)</label> <br>
-                            <select name="c_units">
-                                <option selected disabled>Choose Percentage</option>
-                                <option value="10">10%</option>
-                                <option value="40">40%</option>
-                                <option value="60">60%</option>
-                                <option value="80">80%</option>
-                                <option value="100">100%</option>
-                            </select>
+                        <div class="price">
+                            <label>Quantity</label> <br>
+                            <input type="number" placeholder="Quantity" name="i_units">
                         </div>
                     </div>
                     <div class="price-image-flex">
@@ -305,18 +294,9 @@
                         </div>
                     </div>
                     <div class="category-percentage-flex">
-                        <div class="category" style="width:55%; margin-right: 20px;">
-                            <label>Farm Type</label> <br>
-                            <select class="admin-location-input" name="farm_type_id">
-                                <option selected disabled>Select Farm Type</option>
-                                @foreach($farmtype as $farm)
-                                <option value="{{ $farm->id }}">{{ $farm->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="percentage">
+                        <div class="percentage ">
                             <label class="admin-location">Location</label> <br>
-                            <select class="admin-location-input" name="location">
+                            <select class="admin-location-input lc" name="location">
                                 <option selected disabled>Select Location</option>
                                 <option value="Sokoto">Sokoto</option>
                                 <option value="Kebbi">Kebbi</option>
@@ -329,6 +309,7 @@
                     <div class="button-admin-container">
                         <button style="height: 42px;" class="add-item-submit admin-dash-submit" type="submit"><span style="padding-left:40px ;padding-right: 40px;" class="add-admin-dash">Submit</span> <img class="loader loader-add" src="../img/loader-hifarm.gif" alt="#"> </button>
                     </div>
+                </form>
             </div>
         </div>
         <!--Add Item Modal ends-->
@@ -362,9 +343,70 @@
             </div>
         </div>
         <div class="overlay"></div>
+
+        <div class="admin-add-item change-password admin-add-user invest-modal">
+            <form method="post" action="{{route('release-fund')}}">
+            @csrf
+            <div class="admin-add-item-container">
+                <div class="close-add-item add-user-close" style="padding-top: unset;">x</div>
+                <h1 style="font-size:21px;margin-bottom: 20px;display: flex;justify-content: center;margin-top: 8px;">Realease Investment Fund</h1>
+                
+                <div class="type-date">
+                    <div class="invest-type">
+                        <label style="font-weight:unset;">Investment Type:</label> <br>
+                        <select name="type" class="finvestment">
+                            <option value="1">Class A Investment</option>
+                            <option value="2">Class B Investment</option>
+                            <option value="3">Class C Investment</option>
+                        </select>
+                    </div>
+    
+                </div>
+               
+                <input type="hidden" class="investmentSelected" value="" name="id">
+                <div class="button-admin-container"  style="margin-top: 0px;">
+                        <button class="add-item-submit admin-dash-submit investmentBtn" type="submit"><span style="padding-left:36px ;padding-right: 36px;" class="span-class">Proceed</span>  <img class="loader loader-span" src="img/loader-hifarm.gif" alt="#"> </button>
+                </div>
+            </form>
+            </div>
+        </div>
+        <div class="overlay"></div>
         <!--Add status ends-->
         <script src="../js/dashboardHamburger.js"></script>
         <script src="../js/adminInvest.js"></script>
+        <script>
+            $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+    });
+
+    $('.sort').on('change',()=>{
+    $('form')[0].submit()
+})
+        </script>
+         <script>
+            function getNotification() {
+          jQuery.ajax({
+                  url: "http://127.0.0.1:8000/user/messages",
+                  method: "get",
+                  success: function (data) {
+                      data.messages.forEach(message => {
+                          $('.notification-modal').append(`
+                              <div class="notif-${message.seen==0?'1':'2'}">
+                              <p>${message.message_body}.</p>
+                              <p>${message.created_at.split('T')[0]}</p>
+                              </div>`
+                          )
+                      });
+                  },
+                  error: function (e) {
+                     console.log(e)
+                  },
+              });
+          }
+  getNotification();
+  </script>
 </body>
 
 </html>

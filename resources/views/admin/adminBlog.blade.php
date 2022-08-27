@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../table.css">
+    <meta name="_token" content="{{ csrf_token() }}" />
+    <script src="{{asset('js/jquery.min.js')}}"></script>
     <title>Admin Blog</title>
 </head>
 <body>
@@ -62,6 +64,17 @@
     <div class="edited-successfully">
         Edited Successfully!!!
     </div>
+    @if(Session('success_message'))
+    <div class="added-successfully-blade">
+        {{Session('success_message')}}
+    </div>
+    @endif
+
+    @if(Session('warning_message'))
+    <div class="deleted-successfully-blade">
+        {{Session('warning_message')}}
+    </div>
+    @endif
     <header class="dashbrd-header">
         <div class="dashboard-header">
             <img src="../img/hamburger.svg" alt="#" id="hamburger" class="hamburger1">
@@ -86,18 +99,6 @@
                                 <div class="line"></div>
                             </div>
                             <button>Mark all as read</button>
-                        </div>
-                        <div class="notif-1">
-                            <p>New products arrival at Hi Marketplace.</p>
-                             <p>12mins ago</p>
-                        </div>
-                        <div class="notif-2">
-                            <p>Let's get started {{ Auth::user()->username }}.</p>
-                             <p>3hrs ago</p>
-                        </div>
-                        <div class="notif-3">
-                            <p>Welcome to Hi Farm.</p>
-                             <p>3hrs ago</p>
                         </div>
                     </div>
                 </div>
@@ -153,8 +154,12 @@
                    <p class="settings-heading">Trash (0)</p>
                </div>
                <div class="input-search">
-                <input type="text" placeholder="search for" class="src-blog">
-                <img src="../img/Vector (8).png" alt="search-icon">
+                <form action="">
+                    <div class="input-search">
+                        <input type="text" placeholder="search for Blog" value="{{old('search')}}" name="search">
+                        <button type="submit" class="btn"><img src="../img/Vector (8).png" alt="search-icon"></button>
+                    </div>
+                </form>
             </div>
 
               
@@ -195,13 +200,13 @@
                 <div class="blog-content">
                     <h4><span class="category-blog">{{$blog->blog_category->name}}</span><span class="blog-date" style="font-weight: 300;">• {{ date('F d, Y', strtotime($blog->created_at)) }}</span></h4>
                     <a href='#'>
-                        <h1 style="padding-top: 0px;padding-bottom: 0px;">{{ $blog->title }}</h1>
+                        <h1 style="padding-top: 0px;padding-bottom: 0px;" class="title_">{{ $blog->title }}</h1>
                     </a>
-                    <p>{!! $blog->content !!}</p>
+                    <p class="content_">{!! $blog->content !!}</p>
                 </div>
                 <img src="{{url($blog->image_cover)}}" alt="image" class="blog-img" style="height: 300px;">
                 <div class="last-sect">
-                    <a href=""><img src="../img/blog-edit.png" class="blog-edit" style="width: 35px;height: 35px;object-fit: contain;" alt="blog-edit"></a>
+                    <a href=""><img src="../img/blog-edit.png" class="blog-edit" id="{{$blog->id}}" style="width: 35px;height: 35px;object-fit: contain;" alt="blog-edit"></a>
                     <a href="{{ route('deleteblog', $blog->id) }}"><img src="../img/blog-delete.png" style="width: 35px;height: 35px;object-fit: contain;" alt="blog-delete"></a>
                     <img src="../img/blog-draft.png" class="blog-draft" style="width: 35px;height: 35px;object-fit: contain;" alt="blog-draft">
                 </div>
@@ -244,6 +249,7 @@
                 <div class="text">
                     <textarea name="content" id="" cols="30" rows="12"  placeholder="Write blog post..."></textarea>
                 </div>
+                <input type="hidden" value="" name="id" />
                 <div class="add-pic-submit">
                     <input type="file" name="image" id="">
                     <div class="button-admin-container">
@@ -258,12 +264,13 @@
 
     <!--Edit blog post modal starts-->
     <div class="add-blog-post-modal admin-add-item edit-modal">
+        
         <div class="blog-post-modal">
             <div class="head-and-back">
               <div>Edit Post</div>
               <img class="close-blogedit-modal" style="cursor: pointer;" src="../img/back-blog.svg" alt="#">
             </div>
-			<form method="POST" action="" enctype="multipart/form-data">
+			<form method="post" action="{{route('update-blog')}}" enctype="multipart/form-data">
                 @csrf
             <div class="blog-category">
                 <label>Category:</label>
@@ -277,23 +284,25 @@
             <div class="topic-date">
                 <div class="topic">
                     <label>Topic:</label>
-                    <input type="text" placeholder="Input topic here" name="title">
+                    <input type="text" class="e-title"  placeholder="Input topic here" name="title">
                 </div>
                 <div class="date">
                     <label>Date:</label>
-                    <input type="text" placeholder="Input date here">
+                    <input type="date" name="date" placeholder="Input date here">
                 </div>
             </div>
             <div class="text">
-                <textarea name="content" id="" cols="30" rows="12"  placeholder="Write blog post..."></textarea>
+                <textarea name="content"  class="e-content" cols="30" rows="12"  placeholder="Write blog post..."></textarea>
             </div>
+            <input class="hidden-input" type="hidden" name="id" value="">
             <div class="add-pic-submit">
                 <input type="file" name="image" id="">
                 <div class="button-admin-container">
-                    <button class="add-item-submit admin-dash-submit"><span class="edit-want-to-sell-span" style="padding-left: 47px;
+                    <button type="submit" class="add-item-submit admin-dash-submit"><span class="edit-want-to-sell-span" style="padding-left: 47px;
                         padding-right: 46px;">Save</span>  <img class="loader loader-edit" src="" alt="#"> </button>
                 </div>
             </div>
+        </form>
         </div>
     </div>
     <div class="overlay"></div>
@@ -317,5 +326,42 @@
 
          <script src="../js/dashboardHamburger.js"></script>
         <script src="../js/adminBlog.js"></script>
+        <script>
+    $('.blog-edit').on('click',(e)=>{
+        let hiddenInput = document.querySelector('.hidden-input');
+        hiddenInput.value= e.target.id
+
+        con = e.target.parentElement.parentElement.parentElement;
+        console.log(con)
+        title = con.querySelector('.title_');
+        content = con.querySelector('.content_');
+        document.querySelector(".e-title").value = title.innerHTML;
+        document.querySelector(".e-content").value = content.innerHTML;
+
+
+})
+        </script>
+         <script>
+            function getNotification() {
+          jQuery.ajax({
+                  url: "http://127.0.0.1:8000/user/messages",
+                  method: "get",
+                  success: function (data) {
+                      data.messages.forEach(message => {
+                          $('.notification-modal').append(`
+                              <div class="notif-${message.seen==0?'1':'2'}">
+                              <p>${message.message_body}.</p>
+                              <p>${message.created_at.split('T')[0]}</p>
+                              </div>`
+                          )
+                      });
+                  },
+                  error: function (e) {
+                     console.log(e)
+                  },
+              });
+          }
+  getNotification();
+  </script>
     </body>
 </html>

@@ -49,6 +49,17 @@
     <div class="added-successfully sell-successfully">
         Added Successfully!!
     </div>
+    @if(Session('success_message'))
+    <div class="added-successfully-blade">
+        {{Session('success_message')}}
+    </div>
+    @endif
+
+    @if(Session('warning_message'))
+    <div class="deleted-successfully-blade">
+        {{Session('warning_message')}}
+    </div>
+    @endif
     <header class="dashbrd-header">
         <div class="dashboard-header">
         <img src="img/hamburger.svg" alt="#" id="hamburger" class="hamburger1">
@@ -167,26 +178,13 @@
                                  <div class="line hide" style="height: 1px;width: 100%;background: #c4c4c4;margin-bottom: 10px;"></div>
                             </div>
                         <div class="line mobile-hide" style="height: 1px;width: 300px;background: #c4c4c4;margin-bottom: 10px;"></div>
+                        @foreach($category as $cat)
                         <div class="flex dashboard">
-                            <input type="checkbox" class="check" name='crop' {{ (old('crop'))=='on' ?"checked":null}}>
-                            <p class="sponsor-crop dashboard">Crop</p>
+                            <input type="checkbox" class="check" name="category[]" value="{{$cat->id}}" name='{{ $cat->name }}' {{old('category')  && in_array($cat->id,old('category')) ? 'checked':null}}>
+                            <p class="sponsor-crop dashboard">{{ $cat->name }}</p>
                             <P class="quant">0</P>
                         </div>
-                        <div class="flex dashboard">
-                            <input type="checkbox" name="cattle" {{ (old('cattle'))=='on' ?"checked":null}}>
-                            <p class="sponsor-crop dashboard">Cattles</p>
-                            <P class="quant">0</P>
-                        </div>
-                        <div class="flex dashboard">
-                            <input type="checkbox" class="poultry" name="poultry" {{ (old('poultry'))=='on' ?"checked":null}}>
-                            <p class="sponsor-crop dashboard">Poultry</p>
-                            <P class="quant">0</P>
-                        </div>
-                        <div class="flex dashboard">
-                            <input type="checkbox" name="livestock" {{ (old('livestock'))=='on' ?"checked":null}}>
-                            <p class="sponsor-crop dashboard live">Livestock</p>
-                            <P class="quant">0</P>
-                        </div>
+                        @endforeach
                     </form>
                     <div class="mobile-category">
                     <h3 class="sponsor-categories">CATEGORIES</h3>
@@ -245,7 +243,7 @@
                         </div>
                         <div class="sponsor-inner-flex">
                             <img src="img/sponsor-cart.svg" alt="">
-                            <p>74% sold</p>
+                            <p>{{round(($product->unit_sold/$product->unit)*100)}}% sold</p>
                         </div>
                         <h3 class="h3-dashboard">₦ {{$product->price}}</h3>
                         @if($product->label->name=="New")
@@ -284,9 +282,9 @@
                     <label>Product Category</label>
                     <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
                     </div> <br>
-                     <select name="product_type">
-                         @foreach($productType as $type)
-                         <option value="{{$type->id}}">{{$type->name}}</option>
+                     <select name="category_id">
+                         @foreach($category as $cat)
+                         <option value="{{$cat->id}}">{{$cat->name}}</option>
                          @endforeach
                      </select>
                 </div>

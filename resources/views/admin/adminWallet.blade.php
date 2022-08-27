@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style.css">
+    <meta name="_token" content="{{ csrf_token() }}" />
+    <script src="{{asset('js/jquery.min.js')}}"></script>
     <title>Admin Wallet</title>
 </head>
 
@@ -64,6 +66,17 @@
     <div class="added-successfully">
         Withdrawal Processed!
     </div>
+    @if(Session('success_message'))
+    <div class="added-successfully-blade">
+        {{Session('success_message')}}
+    </div>
+    @endif
+
+    @if(Session('warning_message'))
+    <div class="deleted-successfully-blade">
+        {{Session('warning_message')}}
+    </div>
+    @endif
     <header class="dashbrd-header">
         <div class="dashboard-header">
             <img src="../img/hamburger.svg" alt="#" id="hamburger" class="hamburger1">
@@ -88,18 +101,6 @@
                                 <div class="line"></div>
                             </div>
                             <button>Mark all as read</button>
-                        </div>
-                        <div class="notif-1">
-                            <p>New products arrival at Hi Marketplace.</p>
-                            <p>12mins ago</p>
-                        </div>
-                        <div class="notif-2">
-                            <p>Let's get started {{ Auth::user()->username }}.</p>
-                            <p>3hrs ago</p>
-                        </div>
-                        <div class="notif-3">
-                            <p>Welcome to Hi Farm.</p>
-                            <p>3hrs ago</p>
                         </div>
                     </div>
                 </div>
@@ -167,10 +168,12 @@
             <div>Show Entries: <span class="ten">10</span></div>
             <div class="entry-search">
                 <p>Search</p>
+                <form action="">
                 <div class="input-search">
-                    <input type="text" placeholder="search for">
-                    <img src="../img/Vector (8).png" alt="search-icon">
+                    <input type="text" placeholder="search for Transaction" value="{{old('search')}}" name="search">
+                    <button type="submit" class="btn"><img src="../img/Vector (8).png" alt="search-icon"></button>
                 </div>
+                </form>
             </div>
         </div>
         <div class="transaction-history">
@@ -186,17 +189,19 @@
                     </div>
 
                     @foreach($orders as $order)
+                        @foreach($order->orderitems as $investment)
                     <div class="transaction-records admin-with-list">
                         <div>Hi-{{ $order->user_id }}</div><br>
                         <div>{{ $order->id }}</div><br>
-                        @if($order->payment->status_code = 200)
+                        @if($order->payment!=null && $order->payment->status_code == 200)
                         <div style="color: #53AF46;">Paid</div><br>
                         @else
                         <div style="color: #1E88E5;">Pending</div><br>
                         @endif
-                        <div>{{$order->product_id?"Purchase":"Investment"}}</div>
-                        <div>₦ {{ number_format($order->amount, 0,'.',',') }}</div>
+                        <div>{{boolval($investment->product_id)? "Purchase":"Investment"}}</div>
+                        <div>₦ {{ $investment->amount }}</div>
                     </div>
+                    @endforeach
                     @endforeach
 
                     
@@ -226,6 +231,28 @@
     <!--Add status ends-->
     <script src="../js/userWallet.js"></script>
     <script src="../js/dashboardHamburger.js"></script>
+    <script>
+        function getNotification() {
+      jQuery.ajax({
+              url: "http://127.0.0.1:8000/user/messages",
+              method: "get",
+              success: function (data) {
+                  data.messages.forEach(message => {
+                      $('.notification-modal').append(`
+                          <div class="notif-${message.seen==0?'1':'2'}">
+                          <p>${message.message_body}.</p>
+                          <p>${message.created_at.split('T')[0]}</p>
+                          </div>`
+                      )
+                  });
+              },
+              error: function (e) {
+                 console.log(e)
+              },
+          });
+      }
+getNotification();
+</script>
 </body>
 
 </html>

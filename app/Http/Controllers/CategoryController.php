@@ -24,7 +24,7 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->save();
 
-        return redirect()->back()->with(['success'=>'Created Successfully']);
+        return redirect()->back()->with(['success_message'=>'Created Successfully']);
 
     }
 
@@ -33,10 +33,10 @@ class CategoryController extends Controller
         $deleted=$category->delete();
 
         if(!$deleted){
-            return redirect()->back()->with(['error'=>'Delete Failed']);
+            return redirect()->back()->with(['warning_message'=>'Delete Failed']);
         }
 
-        return redirect()->back()->with(['success'=>'Delete Successfully']);
+        return redirect()->back()->with(['success_message'=>'Delete Successfully']);
 
     }
 

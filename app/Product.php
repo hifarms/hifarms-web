@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\label;
 use App\Order_item;
 use App\Product_type;
 use App\Service_type;

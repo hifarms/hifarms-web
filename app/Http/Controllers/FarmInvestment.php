@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Farm;
 use App\Product;
+use App\Category;
 use App\Cart_item;
+use App\Order_item;
 use App\Product_type;
+use App\Farm_return_type;
 use Illuminate\Http\Request;
 
 class FarmInvestment extends Controller
@@ -38,7 +41,7 @@ class FarmInvestment extends Controller
         $farm->save();
         
         //
-        return redirect()->back()-with(['status'=>'success']);
+        return redirect()->back()-with(['success_message'=>'success']);
     }
     
 
@@ -63,44 +66,31 @@ class FarmInvestment extends Controller
         $return->farm_id = $farm->id;
         $return->save();
         
-        return redirect()->back()->with(['success'=>'Farm Invesment Return added']);
+        return redirect()->back()->with(['success_message'=>'Farm Invesment Return added']);
     }
 
     // list of farms looking for investment
     public function index(Request $request){
+
         $sort = $request->input('sort')=="new"? "ASC" : "DESC";
 
-        $products= Product::where('active','=',1)->orderBy('created_at',$sort)->paginate(50)->withQueryString();
+        $products= Product::where('active','=',1)->orderBy('created_at',$sort);
 
         session()->flashInput($request->input());
 
         if($request->input('range')){
-            $products= $products->where('price',"<",$request->input('range'));
+            $products= $products->where('unit_price',"<",$request->input('range'));
         }
 
-
-        $cat=[];
-        if($request->input('livestock')){
-            array_push($cat,1);
+        if($request->input('category')){
+            $products= $products->whereIn('category_id',$request->input('category'));
         }
-        if($request->input('cattle')){
-            array_push($cat,2);
-        }
-        if($request->input('crop')){
-            array_push($cat,3);
-        }
-        if($request->input('poultry')){
-            array_push($cat,4);
-        }
-        // $category= explode(',',$request->input('category'))
-
-        $cat && $products=$products->whereIn('category_id',$cat);
-        //$price = explode('-',$request->input('price)//
-        // $products = Farm::where('active','=',1)->where('category_id',$rquest->input('category'))->get();        }
+        $products= $products->paginate(50)->withQueryString();
 
         $product_type=Product_type::all();
+        $category = Category::all();
 
-        return view('sponsor',['products'=>$products,'productType'=>$product_type]);
+        return view('sponsor',['products'=>$products,'productType'=>$product_type,'category'=>$category]);
 
     }
 
@@ -111,12 +101,20 @@ class FarmInvestment extends Controller
         return view('product-show',['farm'=>$farm,"added_to_cart"=>boolval($added_to_cart)]);
     }
 
+    public function release(Request $request){
+        
+        Order_item::where(['farm_id'=>$request->id,'farm_return_type_id'=>$request->type])
+        ->update(array('delivered' => true ));
+
+        return redirect()->back()->with(['success_message'=>"Fund Released"]);
+    }
+
 
 
     public function farmInvest(Request $request){
         
             $sort = $request->input('sort')=="new"? "ASC" : "DESC";
-            $products= Farm::where('active','=',1)->orderBy('created_at',$sort)->paginate(50)->withQueryString();
+            $products= Farm::where('active','=',1)->orderBy('created_at',$sort);
 
             session()->flashInput($request->input());
 
@@ -124,26 +122,13 @@ class FarmInvestment extends Controller
                 $products= $products->where('unit_price',"<",$request->input('range'));
             }
 
-            $cat=[];
-            if($request->input('livestock')){
-                array_push($cat,1);
+            if($request->input('category')){
+                $products= $products->whereIn('category_id',$request->input('category'));
             }
-            if($request->input('cattle')){
-                array_push($cat,2);
-            }
-            if($request->input('crop')){
-                array_push($cat,3);
-            }
-            if($request->input('poultry')){
-                array_push($cat,4);
-            }
-            // $category= explode(',',$request->input('category'))
-
-            $cat && $products=$products->whereIn('category_id',$cat);
-            //$price = explode('-',$request->input('price)//
-            // $products = Farm::where('active','=',1)->where('category_id',$rquest->input('category'))->get();        }
-
-        return view('invest',['products'=>$products]);
+            $products= $products->paginate(50)->withQueryString();
+            $return = Farm_return_type::first();
+            $category = Category::all();
+        return view('invest',['products'=>$products,'return'=>$return,'category'=>$category]);
     
     }
 }
