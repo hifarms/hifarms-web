@@ -19,7 +19,7 @@ class CreateBlogPostsTable extends Migration
             $table->string('slug');
             $table->longText('content');
             $table->string('image_cover')->nullable();
-            $table->foreignId('blog_category_id')->constrained();
+            $table->foreignId('blog_category_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

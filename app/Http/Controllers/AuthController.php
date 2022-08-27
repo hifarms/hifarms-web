@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Bank;
 use App\User;
 use App\Wallet;
+use App\Message;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Mail\UserRegistration;
@@ -64,6 +65,7 @@ class AuthController extends Controller
         $user = new User();
         $wallet = new Wallet();
         $bank = new Bank();
+        $message = new Message();
         DB::transaction(function () use($request,$user,$wallet,$link,$bank){
             
 // Save Record into user DB
@@ -90,7 +92,13 @@ class AuthController extends Controller
         $bank->save();
         $user->bank_id = $bank->id;
         $user->save();
+
+        $message->sender_id = 0;
+        $message->recipient_id =$user->id;
+        $message->message_body = "Let/'s get started "+$user->username;
+        $message->save();
         });
+       
 
          Mail::to($user->email)->send(new UserRegistration($user,$link));
         return redirect()->back()->with('Success_message', 'You have successfully registered, Email Has Been Sent To You For Verification.');
