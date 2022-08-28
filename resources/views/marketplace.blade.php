@@ -157,7 +157,7 @@
                     <div class="sponsor-checkbox dashboard">
                        
                     <div class="sponsors-flex dashboard show-this">
-                        <p class="showing-result">Showing 1-{{$products->lastPage()}}</p>
+                        <p class="showing-result">Showing {{$products->currentPage()}}-{{$products->lastPage()}}</p>
                         <select class="sponsor-option dashboard " name="">
                             <option value="all">Sort By</option>
                             <option value="new">Newest</option>
@@ -245,7 +245,7 @@
                             <img src="img/sponsor-cart.svg" alt="">
                             <p>{{round(($product->unit_sold/$product->unit)*100)}}% sold</p>
                         </div>
-                        <h3 class="h3-dashboard">₦ {{$product->price}}</h3>
+                        <h3 class="h3-dashboard">₦{{number_format($product->price,0,'.',',')}}</h3>
                         @if($product->label->name=="New")
                         <div class="purchase-div dashboard" style="justify-content: right;">
                             <button class="purchaseBtn add-card" id="{{$product->id}}">Add to cart</button>

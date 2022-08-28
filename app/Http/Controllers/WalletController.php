@@ -71,6 +71,7 @@ class WalletController extends Controller
 
        $wallet= $user->wallet;
        $wallet->balance += $amount;
+       $wallet->leger_balance += $amount;
        $wallet->save();
         });
        
@@ -86,12 +87,12 @@ class WalletController extends Controller
 
         if($investment->delivered==1 && $investment->move_to_wallet=1){
             
-            return response()->json(['error'=>'Already moved to wallet'], 410);
+            return response()->json(['error'=>'Already moved to wallet'], 401);
 
         }
 
         if($investment->order->user_id != $user->id || boolval($investment->cleared_to_wallet)){
-            return response()->json(['error'=>'Invalid Request'], 410);
+            return response()->json(['error'=>'Invalid Request'], 401);
         }
         DB::transaction(function () use( $investment,$user) {
              //moving fund to wallet
@@ -101,6 +102,7 @@ class WalletController extends Controller
 
         $wallet= $user->wallet;
         $wallet->balance += $amount;
+        $wallet->ledger_balance += $amount;
         $wallet->save();
         });
        
@@ -112,11 +114,14 @@ class WalletController extends Controller
         
         $amount = $request->amount;
         $user = auth()->user();
-        if($user->wallet->balance <= intval($amount) || intval($amount)==0){
-            return response()->json(['error'=>'you dont have such amount'], 410);
+        if($user->wallet->ledger_balance < intval($amount) || intval($amount)==0){
+            return response()->json(['error'=>'You dont have such amount in ledger balance/Invalid amount'], 410);
         }
 
-        //sending request 
+
+        if($user->bank->bank_acc_no==null && $user->bank->bank_name==null){
+            return response()->json(['error'=>'Please Set Your Bank Details in Profile, Try Again'], 410);
+        }
         
         $withdraw = new withdraw();
         $withdraw->user_id = $user->id;
@@ -124,6 +129,9 @@ class WalletController extends Controller
         $withdraw->withdraw_status_id = 1;
         $withdraw->save();
 
+        $wallet= $user->wallet;
+        $wallet->ledger_balance -= $amount;
+        $wallet->save();
        
         return response()->json(['success'=>'Request is sent successfully'], 200);
 

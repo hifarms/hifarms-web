@@ -111,12 +111,12 @@ class CartItemController extends Controller
                 $cart->farm_id= $request->id;
                 $cart->unit = $request->unit;
                 $cart->price = $request->unit * $farm->unit_price;
-                $cart->farm_return_type_id = $request->investmentType;
+                $cart->farm_return_type_id = $request->investment;
                 Auth::check() && $cart->user_id = Auth::user()->id;
                 $cart->temp_id = $tempid;
                 $cart->save();
 
-                return response()->json(['success'=>'Added to Cart'], 201)->cookie($cookie);
+                return response()->json(['success'=>'Investment Added to Cart'], 201)->cookie($cookie);
         }
         else{
                 abort(404);

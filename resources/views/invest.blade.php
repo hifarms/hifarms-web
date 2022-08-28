@@ -188,10 +188,10 @@
             </div>
             <div class="sponsor-inner-flex">
                 <img src={{url("img/sponsor-cart.svg")}} alt="">
-                <p>{{round(($product->c_units/$product->i_units)*100)}}%</p>
+                <p>{{round(($product->c_units/$product->i_units)*100)}}% sold</p>
             </div>
             <div class="purchase-div invest">
-            <h3>₦ {{$product->unit_price}}</h3>
+            <h3>₦ {{number_format($product->unit_price,0,'.',',')}}</h3>
             @if($product->label->name == "New")
             <button class="investBtn" id="{{$product->id}}">Invest</button>
             @endif
@@ -229,9 +229,10 @@
                 <div class="invest-type">
                     <label style="font-weight:unset;">Investment Type:</label> <br>
                     <select name="investment-type" class="finvestment">
-                        <option value="1">Class A Investment</option>
-                        <option value="2">Class B Investment</option>
-                        <option value="3">Class C Investment</option>
+                    @forEach($invests as $invest){
+                        <option value="{{$invest->id}}">{{$invest->name}}</option>
+                    }
+                    @endforeach
                     </select>
                 </div>
 
@@ -288,8 +289,7 @@ getCartNum()
                     data: {
                         id:$('.farmselected').val(),
                         unit:1,
-                        // amount:$('.famount').val(),
-                        investmentType:$('.finvestment').val()
+                        investment:$('.finvestment').val()
                     },
                     success: function (data) {
                         alert(data.success)

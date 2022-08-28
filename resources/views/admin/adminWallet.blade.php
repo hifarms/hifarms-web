@@ -185,6 +185,7 @@
                         <div>Order ID</div>
                         <div>Status</div>
                         <div>Project Type</div>
+                        <div>FarmID/ProductID</div>
                         <div>Amount</div>
                     </div>
 
@@ -199,6 +200,7 @@
                         <div style="color: #1E88E5;">Pending</div><br>
                         @endif
                         <div>{{boolval($investment->product_id)? "Purchase":"Investment"}}</div>
+                        <div>{{boolval($investment->product_id)? '(#'.$investment->product_id.')'.$investment->product->name:'(#'.$investment->farm_id.')'.$investment->farm->name}}</div>
                         <div>₦ {{ $investment->amount }}</div>
                     </div>
                     @endforeach

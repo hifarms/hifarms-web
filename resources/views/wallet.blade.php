@@ -129,7 +129,7 @@
             <div class="spending">
                 <div class="spend-1">
                     <p class='spends'>My Spendings</p>
-                    <p>₦ {{$totalspend}}</p>
+                    <p>₦ {{number_format($totalspend,0,'.',',')}}</p>
                 </div>
                 <img src="img/analye.png" alt="chart" class="analyze">
                 <img src="img/options.png" >
@@ -137,12 +137,12 @@
             <div class="spending-2">
                 <div class="ledger">
                     <p>Ledger Balance</p>
-                    <p>₦ {{$user->wallet->ledger_balance}}</p>
+                    <p>₦ {{number_format($user->wallet->ledger_balance,0,'.',',')}}</p>
                 </div>
                 <div class="wallet-ledge">
                     <p>Available Balance</p>
                     <button class="wallet-ledge-btn">Withdraw</button>
-                    <p>₦ {{$user->wallet->balance}}</p>
+                    <p>₦ {{number_format($user->wallet->balance,0,'.',',')}}</p>
                 </div>
             </div>
         </div>
@@ -158,7 +158,7 @@
             </div>
         </div>
         <div class="transaction-history">
-                <p>Transaction history</p>
+                <p>Transaction Record</p>
                 <div class="scroll-table">
                 <div class="transaction-history-flex">
                     <div class="transact-history-option">
@@ -178,7 +178,7 @@
                         <div style="color: #1E88E5;">Pending</div>
                         @endif
                         <div>{{$investment->product_id?"Purchase":"Investment"}}</div>
-                        <div>₦ {{$investment->amount}}</div>
+                        <div>₦{{number_format($investment->amount,0,'.',',')}}</div>
                     </div>
                     @endforeach
                      

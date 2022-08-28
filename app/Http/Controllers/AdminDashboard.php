@@ -16,6 +16,7 @@ use App\Farm_type;
 use App\order_item;
 use App\blogCategory;
 use App\Product_type;
+use App\withdrawStatus;
 use App\Farm_return_type;
 use Illuminate\Http\Request;
 
@@ -93,6 +94,7 @@ class AdminDashboard extends Controller
         
         $data['category'] = Category::get();
         $data['farmtype'] = Farm_type::get();
+        $data['invests'] = Farm_return_type::get();
         $data['farmproduct'] = $farms;
         return view('admin.adminInvest', $data);
     }
@@ -214,8 +216,27 @@ class AdminDashboard extends Controller
     public function changeStatus(Request $request)
     {
         $with= withdraw::where('id',$request->id)->firstOrFail();
+        $status = withdrawStatus::where('id',$request->status)->first();
         $with->withdraw_status_id = $request->status;
         $with->save();
+        if($status->name=='paid'){
+            $user = $with->user->wallet;
+            $user->balance=$user->balance-$with->amount;
+            $user->save();
+
+            $message = new Message();
+            $message->sender_id = 0;
+            $message->recipient_id =$with->user->id;
+            $message->message_body = "Your Withdrawal #".$with->id." has being Paid";
+            $message->save();
+        }
+        elseif($status->name=="processing"){
+            $message = new Message();
+            $message->sender_id = 0;
+            $message->recipient_id =$with->user->id;
+            $message->message_body = "Your Withdrawal #".$with->id." is being Processing";
+            $message->save();
+        }
         return redirect()->back()->with(['success_message'=>"Status changed Succesfully"]);
     }
 }

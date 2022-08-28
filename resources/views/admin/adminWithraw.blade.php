@@ -102,7 +102,7 @@
                             </div>
                             <button>Mark all as read</button>
                         </div>
-                        
+                    </div>
                 </div>
                 <div class="guides">
                     <img src="../../img/Guides.png" alt="guides" width="32">

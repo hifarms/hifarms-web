@@ -355,9 +355,10 @@
                     <div class="invest-type">
                         <label style="font-weight:unset;">Investment Type:</label> <br>
                         <select name="type" class="finvestment">
-                            <option value="1">Class A Investment</option>
-                            <option value="2">Class B Investment</option>
-                            <option value="3">Class C Investment</option>
+                            @forEach($invests as $invest){
+                                <option value="{{$invest->id}}">{{$invest->name}}</option>
+                            }
+                            @endforeach
                         </select>
                     </div>
     

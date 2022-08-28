@@ -2,7 +2,8 @@ const investBtn = document.querySelectorAll('.investBtn');
 const submitButton = document.querySelector('.span-class');
 
 investBtn.forEach((btn)=>{{
-    btn.addEventListener('click', ()=>{
+    btn.addEventListener('click', (e)=>{
+      e.preventDefault()
        let InvestModal = document.querySelector('.invest-modal');
        let overlay = document.querySelector('.overlay');
        InvestModal.style.display = 'block';

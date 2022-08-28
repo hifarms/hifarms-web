@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->string('provider_id')->nullable();
-            $table->string('avatar')->nullable();
+            $table->string('avatar')->default('img/Profile.png');
             $table->string('address')->nullable();
             $table->unsignedInteger('phone')->nullable();
             $table->string('state')->nullable();
@@ -32,8 +32,9 @@ class CreateUsersTable extends Migration
             $table->string('refer_by_id')->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->foreignId('role_id')->default(1)->constrained()->onDelete('cascade');
+            $table->foreignId('role_id')->default(2)->constrained()->onDelete('cascade');
             $table->foreignId('bank_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('wallet_id')->nullable()->constrained()->onDelete('cascade');
             $table->string('google_id')->nullable();
             $table->string('facebook_id')->nullable();
             $table->rememberToken();

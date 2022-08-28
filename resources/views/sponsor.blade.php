@@ -111,7 +111,7 @@
                         </div>
                         <div class="sponsor-inner-flex">
                             <img src="img/sponsor-cart.svg" alt="">
-                            <p>{{round(($prod->unit_sold/$prod->unit)*100)}}% sold</p>
+                            <p>{{round(($product->unit_sold/$product->unit)*100)}}% sold</p>
                         </div>
                         <h3 class="h3-dashboard">₦ {{$product->price}}</h3>
 

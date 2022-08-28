@@ -278,7 +278,7 @@
                     <div class="messages-catalog">
                         @foreach($messages as $message)
                         <div class="message-inner">
-                            <small>{{ $message->user->email }}</small>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <small>{{ $message->user? $message->user->email : "toAdmin" }}</small>&nbsp;&nbsp;&nbsp;&nbsp;
                             <small> {{ $message->message_body }}</small>&nbsp;&nbsp;&nbsp;&nbsp;
                             <small> {{ date('F d, Y', strtotime($message->created_at)) }}</small>
                         </div>

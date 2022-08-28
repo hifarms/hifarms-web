@@ -29,6 +29,6 @@ class Order extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.order');
+        return $this->subject('HiFarm-Order Summary')->view('emails.orderEmail');
     }
 }

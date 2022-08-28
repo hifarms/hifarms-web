@@ -33,10 +33,10 @@ class ResetPasswordController extends Controller
             'token' => $token
         ]);
 
-        Mail::send('emails.forget-password-email', ['token' => $token], function($message) use($request){
+        Mail::send('emails.forgetPasswordEmail', ['token' => $token], function($message) use($request){
             $message->to($request->email);
             $message->from(env('MAIL_FROM_ADDRESS'), env('APP_NAME'));
-            $message->subject('Reset Password');
+            $message->subject('HiFarms-Reset Password');
         });
 
         return redirect()->back()->with('success_message', 'Reset email link sent successfully, please check your inbox or spam');
@@ -71,9 +71,15 @@ class ResetPasswordController extends Controller
  
          $user = User::where('email', $updatePassword->email)
                      ->update(['password' => Hash::make($request->password)]);
-
+                     
+         $user = User::where('email', $updatePassword->email)->first();
          DB::table('password_resets')->where(['email'=> $updatePassword->email])->delete();
- 
+
+         Mail::send('emails.backInEmail', ['token' => 'token'], function($message) use($user){
+            $message->to($user->email);
+            $message->from(env('MAIL_FROM_ADDRESS'), env('APP_NAME'));
+            $message->subject('HiFarms-You\'re back in!');
+        });
          return redirect('/signin')->with('success_message', 'Your password has been changed!');
      }
 }

@@ -98,9 +98,9 @@ Route::get('/farm-invest', 'FarmInvestment@farmInvest')->name('dashboard');
 
 Route::get('/costbenefit/profit', 'FarmController@costBenefitProfit')->name('dashboard');
 
-Route::post('/move-to-wallet', 'WalletController@moveToWallet')->name('dashboard');
+Route::get('/move-to-wallet', 'WalletController@moveToWallet')->name('dashboard');
 
-Route::post('/terminate-to-wallet', 'WalletController@terminateToWallet')->name('dashboard');
+Route::get('/terminate-to-wallet', 'WalletController@terminateToWallet')->name('dashboard');
 
 Route::post('/withdrawal-request', 'WalletController@withdrawRequest')->name('dashboard');
 

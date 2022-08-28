@@ -70,10 +70,6 @@ class UserController extends Controller
             $total_return=$total_return+$rtn;
             $active++;
         }
-        // $investment= User::with(['investments'=>function($query){
-        //     $query->where('farm_id','!=',null)->get();
-        // }])->where('id','=',Auth::user()->id)->get();
-        
         return view('invest-returns',['user'=>$user,'total_invest'=>$total_invest,'total_return'=>$total_return,'active'=>$active]);
 
    }

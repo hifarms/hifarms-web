@@ -32,7 +32,7 @@ class UserRegistration extends Mailable
      */
     public function build()
     {
-        return $this->subject('User Verification')->view('emails.verification');
+        return $this->subject('Welcome to Hi Farms')->view('emails.welcomeEmail');
     }
 }
  

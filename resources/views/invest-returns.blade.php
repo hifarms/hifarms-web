@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="_token" content="{{ csrf_token() }}" />
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="table.css">
-    <title>Investment</title>
-    <meta name="_token" content="{{ csrf_token() }}" />
     <script src="{{asset('js/jquery.min.js')}}"></script>
+    <title>Investment</title>
+   
 </head>
 <body>
     <!--Dashboard Hamburger Starts-->
@@ -82,18 +83,7 @@
                             </div>
                             <button>Mark all as read</button>
                         </div>
-                        {{-- <div class="notif-1">
-                            <p>New products arrival at Hi Marketplace.</p>
-                             <p>12mins ago</p>
-                        </div>
-                        <div class="notif-2">
-                            <p>Let's get started Hafiz.</p>
-                             <p>3hrs ago</p>
-                        </div>
-                        <div class="notif-3">
-                            <p>Welcome to Hi Farm.</p>
-                             <p>3hrs ago</p>
-                        </div> --}}
+                       
                     </div>
                 </div>
                  <div class="guides">
@@ -141,11 +131,11 @@
         <div class="investment-returns">
             <div class="total-investment">
                 <p>Total Investment</p>
-                <p>₦{{$total_invest}}.00</p>
+                <p>₦{{number_format($total_invest,0,'.',',')}}</p>
             </div>
             <div class="total-returns">
                 <p>Total Investment Returns</p>
-                <p>₦{{$total_return}}.000</p>
+                <p>₦{{number_format($total_return,0,'.',',')}}</p>
             </div>
             <div class="active-projects">
                 <p>Active Projects</p>
@@ -193,11 +183,11 @@
                 <th style="padding-top:0px;padding-bottom:0px;color:rgba(64, 74, 61, 1);padding-left:10px;padding-right:10px;">{{$investment->id}}</th>
                 <th style="padding-top:0px;padding-bottom:0px;color:rgba(64, 74, 61, 1);padding-left:0px;padding-right:50px;">{{$investment->returntype->name}}</th>
                 <th style="padding-top:0px;padding-bottom:0px;color:rgba(64, 74, 61, 1);padding-left:12px;padding-right:12px;">{{explode(' ',$investment->created_at)[0]}}</th>
-                <th style="padding-top:0px;padding-bottom:0px;color:rgba(64, 74, 61, 1);padding-left:0px;padding-right:7px;">{{$investment->amount}}</th>
+                <th style="padding-top:0px;padding-bottom:0px;color:rgba(64, 74, 61, 1);padding-left:0px;padding-right:7px;">{{number_format($investment->amount,0,'.',',')}}</th>
                 <th style="padding-top:5px;padding-bottom:5px;padding-left:10px;color:rgba(64, 74, 61, 1);padding-right:10px;">{{$investment->returntype->percentage}}</th>
-                <th style="padding-top:10px;padding-bottom:10px;color:rgba(64, 74, 61, 1);padding-left:20px;padding-right:20px;">{{($investment->returntype->percentage/100)*$investment->amount}}</th>
+                <th style="padding-top:10px;padding-bottom:10px;color:rgba(64, 74, 61, 1);padding-left:20px;padding-right:20px;">{{number_format(($investment->returntype->percentage/100)*$investment->amount,0,'.',',')}}</th>
 
-                <th style="padding-top:10px;padding-bottom:10px;color:rgba(64, 74, 61, 1);padding-left:10px;padding-right:10px;">{{$investment->amount + ($investment->returntype->percentage/100)*$investment->amount}}</th>
+                <th style="padding-top:10px;padding-bottom:10px;color:rgba(64, 74, 61, 1);padding-left:10px;padding-right:10px;">{{number_format($investment->amount + ($investment->returntype->percentage/100)*$investment->amount,0,'.',',')}}</th>
                 <th style="padding-top:10px;padding-bottom:10px;color:rgba(64, 74, 61, 1);padding-left:10px;padding-right:10px;">@if(boolval($investment->delivered) && !boolval($investment->cleared_to_wallet)) <div>Return ready</div> @elseif(boolval($investment->delivered) && boolval($investment->cleared_to_wallet))  <div>Cashout</div> @elseif(!boolval($investment->delivered) && !boolval($investment->cleared_to_wallet)) <div>Ongoing</div> @elseif(!boolval($investment->delivered) && boolval($investment->cleared_to_wallet)) <div>Terminated</div> @endif</th>
                 <th style="padding-top:10px;padding-bottom:10px;color:rgba(64, 74, 61, 1);padding-left:10px;padding-right:10px;">@if(boolval($investment->delivered))<button class="withdraw move-to-wallet " style="background:#8bc53e;cursor:pointer;border-radius:2px;padding:8px;color:#fff;border:1px solid #8bc53e;{{boolval($investment->delivered) && boolval($investment->cleared_to_wallet)? 'opacity:0.4;':null}}" id="{{$investment->id}}" {{boolval($investment->cleared_to_wallet)? "disabled":null}}>Move to Wallet</button> @else <button style="background:#FF3D00;cursor:pointer;border-radius:2px;padding:8px;color:#fff;border:1px solid #FF3D00;{{boolval($investment->cleared_to_wallet)?'opacity:0.4;':null}}" class="terminate-to-wallet" id="{{$investment->id}}" {{boolval($investment->cleared_to_wallet) && !boolval($investment->delivered) ? "disabled":null}}>Terminate</button> @endif</th>
 
@@ -222,15 +212,16 @@
             }
         });
 
-    $('.warning-alert').on('click',function()){
+    $('.warning-alert').on('click',function(){
         alert('Sorry but the fund is already moved to Wallet')
-    }
+    })
         
     $('.move-to-wallet').on('click',function(){
         let  id= this.id;
-         jQuery.ajax({
+        alert(id)
+         $.ajax({
                  url: `http://127.0.0.1:8000/move-to-wallet`,
-                 method: "post",
+                 method: "get",
                  data:{
                      id
                  },
@@ -245,11 +236,12 @@
 
          $('.terminate-to-wallet').on('click',function(){
         let  id= this.id;
-         jQuery.ajax({
+        alert(id)
+         $.ajax({
                  url: `http://127.0.0.1:8000/terminate-to-wallet`,
-                 method: "post",
+                 method: "get",
                  data:{
-                     id
+                     id:id
                  },
                  success: function (data) {
                   alert(data.success)
@@ -280,7 +272,7 @@
             }
     getNotification();
 </script>
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/v/bs/jq-2.2.4/dt-1.10.15/r-2.1.1/datatables.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"></script>

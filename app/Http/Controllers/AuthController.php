@@ -66,7 +66,7 @@ class AuthController extends Controller
         $wallet = new Wallet();
         $bank = new Bank();
         $message = new Message();
-        DB::transaction(function () use($request,$user,$wallet,$link,$bank){
+        DB::transaction(function () use($request,$user,$wallet,$link,$bank,$message){
             
 // Save Record into user DB
        
@@ -74,7 +74,7 @@ class AuthController extends Controller
         $user->fullname = $request->input('fullname');
         $user->username = $request->input('username');
         $user->password = bcrypt($request->input('password'));
-        $user->role_id = 1;
+        $user->role_id = 2;
         $user->activated = $link;
         $user->status = 1;
         $user->save();
@@ -95,7 +95,7 @@ class AuthController extends Controller
 
         $message->sender_id = 0;
         $message->recipient_id =$user->id;
-        $message->message_body = "Let/'s get started "+$user->username;
+        $message->message_body = "Let's get started ".$user->username;
         $message->save();
         });
        

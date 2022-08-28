@@ -127,8 +127,9 @@ class FarmInvestment extends Controller
             }
             $products= $products->paginate(50)->withQueryString();
             $return = Farm_return_type::first();
+            $invests =Farm_return_type::all();
             $category = Category::all();
-        return view('invest',['products'=>$products,'return'=>$return,'category'=>$category]);
+        return view('invest',['products'=>$products,'return'=>$return,'category'=>$category,'invests'=>$invests]);
     
     }
 }

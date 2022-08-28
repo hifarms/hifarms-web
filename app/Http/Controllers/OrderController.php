@@ -10,7 +10,9 @@ use App\Cart_item;
 use App\Order_item;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\Label;
+use App\Mail\Order as OrderEmail;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {    
@@ -43,12 +45,12 @@ class OrderController extends Controller
 
             if(boolval($item->farm_id)){
                 $orderitem->farm_id = $item->farm_id;
-                $orderitem->farm_return_type_id = 1;
+                $orderitem->farm_return_type_id = $item->farm_return_type_id;
                 $orderitem->amount = $item->farm->unit_price * $item->unit;
             }
             else if(boolval($item->product_id)){
                 $orderitem->product_id = $item->product_id;
-                $orderitem->amount = $item->product->price;
+                $orderitem->amount = $item->product->price * $item->unit;
             }
 
             $orderitem->save();
@@ -112,7 +114,7 @@ class OrderController extends Controller
           CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
           CURLOPT_CUSTOMREQUEST => "GET",
           CURLOPT_HTTPHEADER => array(
-            "Authorization: Bearer sk_live_d348a363b8d4f7b2b020aead86e18534817240aa",
+            "Authorization: Bearer sk_test_4a81d0d2b632d9f3422a154cb4d8052b5decd2b8",
             "Cache-Control: no-cache",
           ),
         ));
@@ -123,6 +125,10 @@ class OrderController extends Controller
         $response =json_decode($response);
         if ($err) {
           return view('test',['msg'=>$err]);
+        }
+        $check = Payment::where('ref_id',$response->data->reference)->first();
+        if($check){
+          return view('test',['msg'=>'Already Verified']);
         }
         if($response->status){
             $payment = new Payment();
@@ -152,23 +158,23 @@ class OrderController extends Controller
         foreach ($order->orderitems as $item) {
           if($item->product_id){
             $product = $item->product;
-            $product->unit_sold+=$item->units;
+            $product->unit_sold=$product->unit_sold+$item->unit;
             if($product->unit_sold==$product->unit){
             $lb= Label::where('name','Sold Out')->first();
                 $product->label_id = $lb->id;
             }
             $product->save();
-            
+
             $messages = new Message();
             $messages->sender_id = 0;
             $messages->recipient_id =$product->user_id;
-            $messages->message_body = "Your Product ID-".$product->id." has been purchase";
+            $messages->message_body = "Your Product #".$product->id." has been purchase";
             $messages->save();
           }
-          if($item->farm){
+          if($item->farm_id){
 
             $farm = $item->farm;
-            $farm->c_units+=$item->units;
+            $farm->c_units+=$item->unit;
             if($farm->c_units==$farm->i_units){
             $lb= Label::where('name','Sold Out')->first();
                 $farm->label_id = $lb->id;
@@ -181,10 +187,10 @@ class OrderController extends Controller
         $message = new Message();
         $message->sender_id = 0;
         $message->recipient_id =0;
-        $message->message_body = "New Order(ID".$order->id.") from User(UserId".$order->user_id.")";
+        $message->message_body = "New Order(#".$order->id.") from User(UserId".$order->user_id.")";
         $message->save();
 
-
+        Mail::to($order->user->email)->send(new OrderEmail($order));
         return redirect('/wallet');
 
         
