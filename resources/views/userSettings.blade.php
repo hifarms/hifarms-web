@@ -166,7 +166,7 @@
     </div>
     <div class="setting-options">
         <div class="settings-heading current">General Settings</div>
-        <div class="settings-heading">Projects</div>
+        <div class="settings-heading">Statistics</div>
         <div class="settings-heading stars">Weather</div>
         <div class="settings-heading">Live Location</div>
     </div>
