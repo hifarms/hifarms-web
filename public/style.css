@@ -13,9 +13,17 @@
      user-select: none;
 }
 
+.glider.round::before{
+  height: 19px!important;
+  width: 17px!important;
+  left: 4px!important;
+  bottom: 2px!important;
+}
+
 .cart-unit{
   margin-left: 32px!important;
 }
+
 
 .whole-cont{
   overflow: hidden!important;
@@ -4312,7 +4320,7 @@ input:checked + .slider:before {
 .settings-header{
   background: #fff;
   position: sticky;
-  top: 100px;
+  top: 80px;
 }
 
 .settings-inner{
@@ -4362,6 +4370,8 @@ input:checked + .slider:before {
 }
 
 .setting-options{
+  position: sticky;
+  top: 175px;
   margin-top: 10px;
   display: flex;
   align-items: center;
@@ -4379,6 +4389,12 @@ input:checked + .slider:before {
 }
 
 .current{
+  color: #8bc53e;
+  border-bottom: 2px solid #8bc53e;
+  transition: all 0.2s ease-in-out;  
+}
+
+.kurrent{
   color: #8bc53e;
   border-bottom: 2px solid #8bc53e;
   transition: all 0.2s ease-in-out;  
@@ -4684,7 +4700,7 @@ input:checked + .slider:before {
   padding-bottom: 25px
 }
 
-.users-list .user .user-part p{
+.users-list .user  p{
   font-size: 15px;
 }
 
@@ -5417,7 +5433,7 @@ input:checked + .slider:before {
 
 .my-profile-log-out{
   position: absolute;
-  top: 70px;
+  top: 28px;
   right: 1%;
   display: flex;
   border: 1.6px solid #545E66;
@@ -6414,6 +6430,9 @@ table, td, th {
 
 .dashboard-container.profile .profile-hero img{
   width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .dashboard-container.profile .profile-hero p{
@@ -6485,7 +6504,7 @@ table, td, th {
 
 .guide-download{
   position: absolute;
-  top: 61px;
+  top: 31px;
   right: 4%;
   background: #ffffff;
   padding-top: 20px;
@@ -6525,7 +6544,7 @@ table, td, th {
 
 .notification-modal{
   position: absolute;
-  top: 61px;
+  top: 31px;
   right: -10%;
   background: #FFFFFF;
   padding: 15px;
@@ -6534,6 +6553,7 @@ table, td, th {
   color: #545E66;
   width: 500px;
   display: none;
+  z-index: 4000!important;
 }
 
 .notification-modal .notif-head{
@@ -6588,6 +6608,7 @@ table, td, th {
 
 .notifs:hover .notification-modal{
   display: block;
+  z-index: 10000;
 }
 
 /*Statistics Page*/

@@ -143,7 +143,7 @@
         </div>
     </div>
     <div class="dashboard-container admin-setting">
-       <div class="settings-header">
+       <div class="settings-header" >
            <div class="settings-inner">
            <h1>Settings</h1>
         <div class="check-box-reset">
@@ -165,10 +165,10 @@
        </div>
     </div>
     <div class="setting-options">
-        <div class="settings-heading current">General Settings</div>
-        <div class="settings-heading">Projects</div>
-        <div class="settings-heading stars">Weather</div>
-        <div class="settings-heading">Live Location</div>
+        <div class="settings-heading kurrent">General Settings</div>
+        <div class="settings-heading">Statistics</div>
+        <div class="settings-heading">Weather</div>
+        <div class="settings-heading">Inbox</div>
     </div>
 
 
@@ -209,6 +209,180 @@
     </div>
 </div>
     <!---General Settings ends-->
+
+
+            <!--Inbox settings starts-->
+            <div class="display-general inbox">
+            <div class="general-settings generalify">
+                <div class="general-ser inbox">
+                    <div class="head">General Messages</div>
+                    <div class="all-mark">
+                        <div>All</div>
+                        <button>Mark all as read</button>
+                    </div>
+                    <div class="messages-catalog">
+                        
+                        <div class="message-inner">
+                            <div class="message-flex-inbox" style='width:100%;font-size:10px;display:flex;justify-content:space-between;'>
+                                <p><strong>New request on products to be sold.</strong></p>
+                                <p><strong>12mins ago</strong></p>
+                            </div>
+                        </div>
+
+                        <div class="message-inner">
+                            <div class="message-flex-inbox" style='width:100%;font-size:10px;display:flex;justify-content:space-between;'>
+                                <p>New request on products to be sold.</p>
+                                <p>3hrs ago</p>
+                            </div>
+                        </div>
+
+                        <div class="message-inner">
+                            <div class="message-flex-inbox" style='width:100%;font-size:10px;display:flex;justify-content:space-between;'>
+                                <p>New request on products to be sold.</p>
+                                <p>3hrs ago</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Inbox settings ends-->
+
+
+    <!---Weather starts-->    
+    <div class="weather"style='display:none'>
+            <div class="general-settings managify">
+                <div class="general-ser manage" style='padding-bottom:35px;'>
+                    <div class="head"><strong>Weather Settings</strong></div>
+                    <div class="users-list">
+                        <div class="user" style='border-bottom:1px solid #F0F3F4!important;border-top:1px solid #F0F3F4!important;'>
+                            <div class="user-part">
+                                 <p style='font-size:17px;color:#404a3d'>Weather</p>
+                                <img src="img/clouds.png" alt="user-avatar">
+                                <img style='margin-right:0px;margin-left:-15px;' src="img/temprature.png" alt="user-avatar">
+                            </div>
+                            <div class="delete-edit-user">
+                            <div  style="margin-left: 20px;" class="switch-button">
+                            <label class="switch" style='width: 50px;height: 24px;'>
+                            <input type="checkbox">
+                            <span class="slider glider round" style='border-radius: 24px;'></span>
+                            </label>
+                            </div>
+                            </div>
+                        </div>
+
+                        <div class="user" style='border-bottom:1px solid #F0F3F4!important;'>
+                            <div class="user-part">
+                                 <p style='font-size17px;color:#404a3d'>Humidity</p>
+                                <img src="img/clouds.png" alt="user-avatar">
+                                <img style='margin-right:0px;margin-left:-15px;' src="img/temprature.png" alt="user-avatar">
+                            </div>
+                            <div class="delete-edit-user">
+                            <div  style="margin-left: 20px;" class="switch-button">
+                            <label class="switch" style='width: 50px;height: 24px;'>
+                            <input type="checkbox">
+                            <span class="slider glider round" style='border-radius: 24px;'></span>
+                            </label>
+                            </div>
+                            </div>
+                        </div>
+                        
+
+                        <div class="user" style='border-bottom:1px solid #F0F3F4!important;'>
+                            <div class="user-part">
+                                 <p style='font-size17px;color:#404a3d'>Live Location</p>
+                            </div>
+                            <div class="delete-edit-user">
+                            <div  style="margin-left: 20px;" class="switch-button">
+                            <label class="switch" style='width: 50px;height: 24px;'>
+                            <input type="checkbox">
+                            <span class="slider glider round" style='border-radius: 24px;'></span>
+                            </label>
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+                     
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!---Weather ends-->
+
+
+      <!---Statistics settings starts-->
+    <div class="display-stats user-statistics">
+            <div class="general-settings managify">
+                <div class="general-ser stats">
+                    <div class="head">Statistics & Analytics</div>
+                    <select>
+                        <option>This Year</option>
+                        <option>This Month</option>
+                        <option>This Week</option>
+                        <option>Today</option>
+                    </select>
+                    <div class="general-information stats">
+                        <div class="info-1 diff">
+                            <div class="info-images">
+                                <img src="../img/admin-views.svg" alt="views">
+                                <img src="../img/admin-stats.png" alt="stats">
+                            </div>
+                            <h5>Total Views</h5>
+                            <h3>128</h3>
+                            <p>Start from Jan 1, 2021</p>
+                        </div>
+                        <div class="info-2">
+                            <div class="info-images">
+                                <img src="../img/admin-products.svg" alt="views">
+                            </div>
+                            <h5>Total Products</h5>
+                            <h2>12</h2>
+                            <p class="add-new-product">updates every day.</p>
+                        </div>
+                        <div class="info-3">
+                            <div class="info-images">
+                                <img src="../img/admin-vector.png" alt="views">
+                            </div>
+                            <h5>Total Users</h5>
+                            <h2>3</h2>
+                            <p>New user noted every week</p>
+                        </div>
+                        <div class="info-4">
+                            <div class="info-images">
+                                <img src="../img/admin-cart.png" alt="stats">
+                            </div>
+                            <h5>Total Sales</h5>
+                            <h2>5</h2>
+                            <p>Start from Jan 1, 2022</p>
+                        </div>
+                        <div class="info-4">
+                            <div class="info-images">
+                                <img src="../img/set-stat.png" alt="stats">
+                            </div>
+                            <h5>Total Products</h5>
+                            <h2>6</h2>
+                            <p>Updates every week</p>
+                        </div>
+                        <div class="info-1 diff">
+                            <div class="info-images">
+                                <img src="../img/not-set.png" alt="views">
+                                <img src="../img/admin-stats.png" alt="stats">
+                            </div>
+                            <h5>Active Projects</h5>
+                            <h3>10</h3>
+                            <p>Projects currently investing</p>
+                        </div>
+                    </div>
+                    <div class="farm-activities-setting">
+                    <img width='90%' src="img/Farm chart.svg" alt="farm-chart" class="farm-chart">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---Statistics settings ends-->
 
      <!--Change Password Modal starts-->
      <div class="admin-add-item change-password">
@@ -283,7 +457,7 @@
             }
     getNotification();
 </script>
-<script src="js/adminSettings.js"></script>
+<script src="js/userSetting.js"></script>
 <script src="js/dashboardHamburger.js"></script>
 </body>
 </html>

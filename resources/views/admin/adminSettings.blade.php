@@ -349,8 +349,7 @@
                         </div>
                     </div>
                     <div class="farm-activities-setting">
-                        <h3>Farm Activities</h3>
-                        <img src="../img/options.png" alt="" srcset="">
+                    <img width='90%' src="img/Farm chart.svg" alt="farm-chart" class="farm-chart">
                     </div>
                 </div>
             </div>
@@ -428,7 +427,7 @@
                         <div>Add/Edit Projects</div>
                     </div>
                     <div class="first-box this">
-                        <input type="checkbox" checked class="all">
+                      <input type="checkbox" checked class="all">
                         <div>Account Settings</div>
                     </div>
                     <div class="first-box this">

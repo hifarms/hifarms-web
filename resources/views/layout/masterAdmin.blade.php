@@ -12,8 +12,8 @@
 <body>
     <header>
         <div class="dashboard-header">
-            <div class="header-img">
-                <img src="../img/logo.png" alt="logo" width="113">
+            <div  class="header-img">
+               <a href="{{url('/')}}"><img src="../img/logo.png" alt="logo" width="113"></a>
             </div>
             <div class="header-icons">
                 <div class="input-search">

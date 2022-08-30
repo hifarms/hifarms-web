@@ -178,7 +178,7 @@
                 <br>
                 <div class="category">
                     <label>Account Number</label> <br> 
-                    <input class="category-select contact-input facc-no" name="acc-no" value="{{$user->bank->bank_acc_no}}" placeholder="Enter your email">    
+                    <input class="category-select contact-input facc-no" name="acc-no" value="{{$user->bank->bank_acc_no}}" placeholder="Enter your email" style='width:100%!important'>    
                 </div>
             </div>
             <div class="category-percentage-fle" style="margin-bottom: 10px;justify-content:left;">
