@@ -156,7 +156,10 @@ class ProductController extends Controller
         return redirect()->back()->with('success_message', 'Product Updated Success!');
 
    }
+   ln s- $HOME/domain.com/storage/app/public $HOME/public_html/storage
 
+   /home/u456892473/domains/hifarms.ng/hifarms/storage/app/public
+   
     public function destroy(Product $product){
 
 
