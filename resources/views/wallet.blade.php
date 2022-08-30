@@ -15,7 +15,7 @@
         <div class="dash-hamb-img-name">
         <img src="img/dashboard-hamburger-profile.png" alt="profile" class="profile-header ham">
         <h2>Welcome, <br>
-            Hafiz
+            {{auth()->user()->username}}
         </h2>
         </div>
         <div class="input-search ham">
@@ -30,12 +30,12 @@
             <a href="user-farms"><img src="img/livestock-dashboard.svg" alt="livestock"> <p>Manage my farm</p></a>
             <a href="farm-invest"><img src="img/invest.svg" alt="marketplace"> <p>Invest In a Project</p></a>
             <a href="investment"><img src="img/history.svg" alt="history"> <p>ROI</p></a>
-            <a href="wallet kun"><img src="img/wallet-active.svg" class="current" alt="wallet"> <p>Wallet</p></a>
+            <a href="wallet"><img src="img/wallet-active.svg" class="current" alt="wallet"> <p>Wallet</p></a>
         </div>
     </div>
     <div class="third-se-bar">
             <a href="user-settings"><img src="img/settings.png" alt="settings"> <p>Settings</p></a>
-            <a href=""><img src="img/log out.svg" alt="settings"> <p>Logout</p></a>
+            <a href="logout"><img src="img/log out.svg" alt="settings"> <p>Logout</p></a>
     </div>
     <div class="guide-dash">
         <img src="img/Notifications.png" alt="notifications" class="notifications">

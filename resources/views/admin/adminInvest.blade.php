@@ -267,12 +267,12 @@
                 <form method="POST" action="{{ url('admin/add-farm') }}" enctype="multipart/form-data">
                     @csrf
                     <label class="class-name">Name</label> <br>
-                    <input type="text" placeholder="Enter item name" class="name" name="name">
+                    <input type="text" placeholder="Enter item name" class="name" name="name" required>
                     <div class="category-percentage-flex ">
                         <div class="category cs" style="width:55%; margin-right: 20px;">
                             <label>Category</label> <br>
-                            <select class="category-select add-item" name="category_id">
-                                <option selected disabled>Select Category</option>
+                            <select class="category-select add-item" name="category_id" required>
+                                <option disabled>Select Category</option>
                                 @foreach($category as $cat)
                                 <option value="{{ $cat->id }}">{{ $cat->name }}</option>
                                 @endforeach
@@ -280,24 +280,24 @@
                         </div>
                         <div class="price">
                             <label>Quantity</label> <br>
-                            <input type="number" placeholder="Quantity" name="i_units">
+                            <input type="number" placeholder="Quantity" name="i_units" required>
                         </div>
                     </div>
                     <div class="price-image-flex">
                         <div class="price">
                             <label>Item Price(₦)</label> <br>
-                            <input type="text" placeholder="Enter Price..." name="unit_price">
+                            <input type="text" placeholder="Enter Price..." name="unit_price" required>
                         </div>
                         <div class="image">
                             <label style="margin-left: 20px;">Image</label> <br>
-                            <input type="file" class="category-select" name="image">
+                            <input type="file" class="category-select" name="image" required>
                         </div>
                     </div>
                     <div class="category-percentage-flex">
-                        <div class="percentage ">
+                        <div class="percentage">
                             <label class="admin-location">Location</label> <br>
-                            <select class="admin-location-input lc" name="location">
-                                <option selected disabled>Select Location</option>
+                            <select class="admin-location-input lc" name="location" required>
+                                <option selected>Select Location</option>
                                 <option value="Sokoto">Sokoto</option>
                                 <option value="Kebbi">Kebbi</option>
                                 <option value="Zamfara">Zamfara</option>

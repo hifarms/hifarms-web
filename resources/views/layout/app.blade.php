@@ -15,7 +15,7 @@
         <!--Header starts here-->
         <header>
             <div class="header-container">
-                <img src="img/hamburger.svg" alt="hamburger" class="hamburger">
+                <img src="{{asset('img/hamburger.svg')}}" alt="hamburger" class="hamburger">
                <a href="/"><img src="{{asset('img/logo.png')}}" alt="logo" class="logo4x"></a>
                 <div class="services">
                     <a href="{{url('/')}}"><span>Home</span></a>
@@ -30,12 +30,13 @@
                   <div class="services-hover">
                       <a href="{{url('/services')}}"><span>Services</span></a>
                       <div class="service-hover">
-                          <a href="{{url('/services/sponsor')}}"><span>Marketplace</span></a>
+                          <a href="{{url('/sponsors')}}"><span>Marketplace</span></a>
       
                         </div>
                   </div>
                     <a href="{{url('/contact')}}"><span>Contact</span></a>
-                    <a href="{{url('/blog')}}"><span>Blog</span></a>
+
+                    <a href="{{url('/blog/category')}}"><span>Blog</span></a>
                 </div>
                 <div class="buttons">
                     @guest
@@ -64,8 +65,17 @@
             <a href="/services">Services</a>
             <a href="/sponsors">Marketplace</a>
             <a href="/blog">Blog</a>
+            @guest
             <a href="/signup">Register</a>
             <a href="/signin">Login</a>
+            @endguest
+            @auth
+            @if(auth()->user()->isAdmin())
+            <a href="/admin/adminDashboard">Dashboard</a>
+            @else
+            <a href="/dashboard">Dashboard</a>
+            @endif
+            @endauth
             <div class="svg-flex" style="margin-bottom: 8px">
                 <svg width="103" height="42" viewBox="0 0 103 42" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                <rect width="103" height="42" rx="5" fill="url(#pattern0)"/>
@@ -144,7 +154,7 @@
                 const cartCounter = document.querySelector('.cart-counter');
                 const cartTotal = document.querySelector('.total-price');
                 cartCounter.innerHTML = data.cartNumber;
-                cartTotal? cartTotal.innerHTML = data.total:null;
+                cartTotal? cartTotal.innerHTML = data.total.toLocaleString():null;
                 },
                 error: function (e) {
                     console.log(e);

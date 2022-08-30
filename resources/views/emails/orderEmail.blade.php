@@ -144,7 +144,7 @@
                       <td style="padding-top: 15px;padding-bottom: 15px;padding-left: 55px;padding-right: 55px;">
 
                        <p style="color: #404a3d;font-size: 20px;font-weight: bold;">Hi {{auth()->user()->username}}, <img src="{{asset('img/Farmer Icon.svg')}}" alt="farmer-icon" style="margin-right: 5px;margin-left: 2px;" width="33px"></p>
-                       <p style="color: #404a3d;font-size: 15px; line-height: 23px;padding: 5px 0 15px;">Thanks for farming with Hi Farms, your order #10892, has 
+                       <p style="color: #404a3d;font-size: 15px; line-height: 23px;padding: 5px 0 15px;">Thanks for farming with Hi Farms, your order #{{$order->id}}, has 
                         been confirmed and currently being processed:</p>
   
                       <h1 style="font-weight: bold;font-size:20px;margin-top: 25px;margin-left: 6px;color: #EFB443;margin-bottom: -6px;">[Order #{{$order->id}}] ({{ date('F d, Y', strtotime($order->created_at)) }})</h1>
@@ -172,7 +172,7 @@
                              <td  style="  border: 1px solid #dddddd;text-align: center;
                             padding: 8px;color:#AEB8AB;padding-top:25px;padding-bottom:25px;width:100px">x{{$item->unit}}</td>
                              <td style="  border: 1px solid #dddddd;text-align: left;
-                            padding: 8px;color:#AEB8AB;padding-top:25px;padding-bottom:25px;padding-left:35px">₦{{$item->amount}}</td>
+                            padding: 8px;color:#AEB8AB;padding-top:25px;padding-bottom:25px;padding-left:35px">₦{{  number_format($item->amount,0,'.',',')}}</td>
                             </tr>
                             @endforeach
                             <tr>
@@ -180,7 +180,7 @@
                                 <td  style="  border: 1px solid #dddddd;text-align: center;
                               padding: 8px;color:#AEB8AB;padding-top:25px;padding-bottom:25px;width:100px;border-left:none;border-bottom:none"></td>
                                 <td style="  border: 1px solid #dddddd;text-align: left;
-                              padding: 8px;color:#AEB8AB;padding-top:25px;padding-bottom:25px;padding-left:35px;border-left:none">₦{{$order->total_amount}}</td>
+                              padding: 8px;color:#AEB8AB;padding-top:25px;padding-bottom:25px;padding-left:35px;border-left:none">₦{{number_format($order->total_amount,0,'.',',')}}</td>
                               </tr>
                               
                               <tr>

@@ -3,24 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\BlogPost;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\File;
+use App\blogCategory;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 
 class BlogPostController extends Controller
 {
     public function index(){
         return 'hello';
     }
-    public function getpost($category=null){
-        if($category !=null ){
-            $posts= BlogPost::where("blog_category_id",$category)->get();
-            return view('blog',['posts'=>$posts]);
+    public function getpost($index=null){
+        !$index && $posts = BlogPost::all();
+        if($index){
+            $posts= BlogPost::where("blog_category_id",$index)->get();
+           
         }
-        $posts = BlogPost::all();
-
-        return view('blog',['posts'=>$posts]);
+        $category = blogCategory::all();
+        return view('blog',['posts'=>$posts,'category'=>$category,'current'=>$index]);
     }
 
     public function show(Request $request,$slug){

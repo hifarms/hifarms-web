@@ -7,7 +7,33 @@ const successBlog = document.querySelector('.success-story');
 const outbreakBlog = document.querySelector('.out-break');
 const othersBlog = document.querySelector('.others');
 
+const section = document.querySelectorAll('.section');
 
+section.forEach((single)=>{
+    single.addEventListener('click', (e)=>{
+        //adding color and border bottom;
+        single.style.color = "#49a760";
+        single.style.borderBottom = '7px solid #49a760'
+
+        section.forEach((minisec)=>{
+           
+
+            minisec.style.color = "#404a3d";
+            minisec.style.borderBottom = "none";
+
+            if(minisec===single){
+                single.style.color = "#49a760";
+                single.style.borderBottom = '7px solid #49a760'
+                
+            }
+
+            
+        })
+    
+    
+    
+    });
+})
 
 agricTechBlog.addEventListener('click', ()=>{
     //adding color and border bottom;

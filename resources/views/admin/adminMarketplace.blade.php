@@ -436,7 +436,7 @@
 
     <!--Sell product modal starts-->
     <div class="overlay"></div>
-    <form method="post" action="{{ url('admin/add-sell-product') }}" enctype="multipart/form-data">
+    <form method="post" action="{{ route('sell-product') }}" enctype="multipart/form-data">
         @csrf
         <div class="admin-add-item want-to-sell-admin">
             <div class="admin-add-item-container">
@@ -448,15 +448,15 @@
                             <label>Product Name</label>
                             <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
                         </div> <br>
-                        <input type="text" name="name" placeholder="Enter product name">
+                        <input type="text" name="name" placeholder="Enter product name" required>
                     </div>
                     <div class="product-category-dash">
                         <div class="tooltip-flex">
                             <label>Product Category</label>
                             <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
                         </div> <br>
-                        <select name="category_id">
-                            <option selected disabled>Select Category</option>
+                        <select name="category_id" required>
+                            <option  disabled>Select Category</option>
                             @foreach($category as $cat)
                             <option value="{{ $cat->id }}">{{ $cat->name }}</option>
                             @endforeach
@@ -469,21 +469,21 @@
                             <label>Qty</label>
                             <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
                         </div> <br>
-                        <input type="number" min='0' placeholder="Quantity" name="unit">
+                        <input type="number" min='0' placeholder="Quantity" name="unit" required>
                     </div>
                     <div class="item-price">
                         <div class="tooltip-flex" style="margin-left:-70px">
                             <label>Item Price</label>
                             <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
                         </div> <br>
-                        <input type="text" placeholder="Enter item price" name="price">
+                        <input type="text" placeholder="Enter item price" name="price" required>
                     </div>
                     <div class="img-dash">
                         <div class="tooltip-flex">
                             <label>Image</label>
                             <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
                         </div> <br>
-                        <input type="file" name="image">
+                        <input type="file" name="image" required>
                     </div>
 
                 </div>

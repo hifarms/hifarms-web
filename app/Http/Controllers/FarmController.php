@@ -52,6 +52,7 @@ class FarmController extends Controller
         $farm->i_units = $request->i_units;
         $farm->c_units = $request->i_units;
         $farm->unit_price = $request->unit_price;
+        $farm->label_id = 1;
         $farm->active =true;
         $farm->description= $request->description || "Null";
         

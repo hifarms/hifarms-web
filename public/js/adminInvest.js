@@ -283,6 +283,7 @@ const addLoaderHover = (e) => {
     document.documentElement.scrollTop = 0;
 
     setTimeout(() => {
+        
         let addItemModal = document.querySelector('.admin-add-item');
         let overlayEffect = document.querySelector('.overlay');
         let addedClass = document.querySelector('.category-added');
@@ -304,5 +305,5 @@ const addLoaderHover = (e) => {
 
 }
 
-submitButton.addEventListener('click', addLoader);
-addLoaderBtn.addEventListener('click', addLoaderHover)
+//submitButton.addEventListener('click', addLoader);
+//addLoaderBtn.addEventListener('click', addLoaderHover)

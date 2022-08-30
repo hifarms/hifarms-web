@@ -187,15 +187,7 @@
                 <div class="general-ser">
                     <div class="head">General Settings</div>
                     <form class="general-settings-form">
-                        <label>User:</label>
-                        <input type="text"> <br>
-                        <label>Email:</label>
-                        <input type="text"> <br>
-                        <label>Phone Number:</label>
-                        <select>
-                            <option>+234</option>
-                        </select>
-                        <input type="text"> <br>
+                       
                         <label>Password:</label>
                         <button class="pass">Change Password</button> <br>
                         <div class="lb-auth">
@@ -374,26 +366,20 @@
             <div class="old-password-flex">
                 <label>Old Password:</label>
                 <div class="password-visible">
-                    <input type="password" style="margin-left: 15px;" class="pass-val">
+                    <input type="password" style="margin-left: 15px;" class="pass-val old">
                     <img src="../img/invisible.png" alt="" class="toggle-password">
                 </div>
             </div> <br>
             <div class="old-password-flex">
                 <label>New Password:</label>
                 <div class="password-visible">
-                    <input type="password" style="margin-left: 15px;" class="pass-val">
+                    <input type="password" style="margin-left: 15px;" class="pass-val new">
                     <img src="../img/invisible.png" alt="" class="toggle-password">
                 </div>
             </div> <br>
-            <div class="old-password-flex">
-                <label>Old Password:</label>
-                <div class="password-visible">
-                    <input type="password" style="margin-left: 15px;" class="pass-val">
-                    <img src="../img/invisible.png" alt="" class="toggle-password">
-                </div>
-            </div> <br>
+            
             <div class="button-admin-container">
-                <button class="add-item-submit admin-dash-submit"><span style="padding-left:47px ;padding-right: 46px;" class="edit-want-to-sell-span">Save</span> <img class="loader loader-edit" src="../img/loader-hifarm.gif" alt="#"> </button>
+                <button class="add-item-submit admin-dash-submit ch"><span style="padding-left:47px ;padding-right: 46px;" class="edit-want-to-sell-span">Save</span> <img class="loader loader-edit" src="../img/loader-hifarm.gif" alt="#"> </button>
             </div>
         </div>
     </div>
@@ -580,6 +566,29 @@
     <script src="../js/dashboardHamburger.js"></script>
     <script src="../js/adminSettings.js"></script>
     <script>
+$.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+
+$('.ch').on('click',function(e){
+      jQuery.ajax({
+              url: "http://127.0.0.1:8000/change-password",
+              method: "post",
+              data: {
+                  old:$('.old').val(),
+                  new:$('.new').val(),
+              },
+              success: function (data) {
+                alert("its going")
+                $('.added-successfully').text(data.success)
+              },
+              error: function (e) {
+                 $('.added-successfully').text(e.responseJSON.error)
+              },
+          });
+      })
         function getNotification() {
       jQuery.ajax({
               url: "http://127.0.0.1:8000/user/messages",

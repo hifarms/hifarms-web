@@ -52,11 +52,11 @@ Route::get('/contact', function () {
 
 Route::post('/send-phase', 'ContactController@sendPhrase')->name('contact');
 
-Route::get('/services/sponsor', 'Farminvestment@index');
+Route::get('/sponsors', 'FarmInvestment@index');
 
 Route::get('services/sponsor/{farm}', 'Farminvestment@show');
 
-Route::get('/blog', 'BlogPostController@getPost');
+Route::get('/blog/category/{id?}', 'BlogPostController@getPost');
 
 Route::get('/blog/{slug}/', 'BlogPostController@show')->name('showblog');
 

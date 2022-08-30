@@ -122,9 +122,9 @@
         <h1>My Profile.</h1>
         <p class="use-pro">Hello {{ Auth::user()->username }}</p>
         <div class="profile-hero">
-            <img src="../img/avatar.png" alt="profile-image" class="profile-image">
-            <p>{{ Auth::user()->fullname }}</p>
-            <input type="file" hidden class="file">
+            <img src="{{asset($user->avatar)}}" id="changed-image" class="profile-image" alt="profile-image">
+            <p>{{ $user->fullname }}</p>
+            <input type="file" hidden class="file add-photos">
             <button class="upload-img">Upload Image</button>
         </div>
         <div class="profile-details">
@@ -157,22 +157,22 @@
                 </div>
                 <div class="category">
                     <label>Email</label> <br> 
-                    <input class="category-select contact-input" placeholder="Enter your email" value="{{$user->email}}">    
+                    <input class="category-select contact-input" placeholder="Enter your email" value="{{$user->email}}" disabled>    
                 </div>
             </div>
             <div class="category-percentage-flex" style="justify-content:left;">
                 <div class="percentage">
                     <label>Bank Name</label>  <br>
-                    <input type="text" class="contact-input fbank-name" name="bank_name" value="{{$user->bank->bank_name}}" placeholder="Enter your contact">
+                    <input type="text" class="contact-input fbank-name" name="bank_name" value="{{$user->bank->bank_name}}" placeholder="Enter your Bank Name">
                 </div>
                 <div class="percentage">
                     <label>Bank Account Name</label>  <br>
-                    <input type="text" class="contact-input facc-name" name="acc_name" value="{{$user->bank->bank_acc_name}}" placeholder="Enter your contact">
+                    <input type="text" class="contact-input facc-name" name="acc_name" value="{{$user->bank->bank_acc_name}}" placeholder="Enter your Bank Account Name">
                 </div>
                 <br>
                 <div class="category">
                     <label>Account Number</label> <br> 
-                    <input type="text" class="category-select contact-input facc-no" name="acc_no" value="{{$user->bank->bank_acc_no}}" placeholder="Enter your email">    
+                    <input type="text" class="category-select contact-input facc-no" name="acc_no" value="{{$user->bank->bank_acc_no}}" placeholder="Enter your Bank No.">    
                 </div>
             </div>
             <div class="category-percentage-fle" style="margin-bottom: 10px;justify-content:left;">
@@ -204,6 +204,12 @@
     <script src="../js/userProfile.js"></script>
     <script src="../js/dashboardHamburger.js"></script>
     <script>
+    $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+
         function getNotification() {
       jQuery.ajax({
               url: "http://127.0.0.1:8000/user/messages",
@@ -224,6 +230,35 @@
           });
       }
     getNotification();
+
+const imageFile = document.querySelector('.add-photos');
+
+imageFile.addEventListener("change", function(){
+  const reader = new FileReader();
+  reader.addEventListener('load', ()=>{
+    uploadedImage = reader.result;
+    let image = document.querySelector('#changed-image');
+    image.setAttribute('src', uploadedImage);
+  })
+  reader.readAsDataURL(this.files[0]);
+  let formdata = new FormData()
+    formdata.append('image',imageFile.files[0])
+    jQuery.ajax({
+      url: `http://127.0.0.1:8000/update-profile-pic`,
+      method: 'post',
+      cache:false,
+      contentType: false,
+      processData: false,
+      data:formdata,
+      success: function(data){
+       alert(data.success);
+      },
+      error: function(e){
+          console.log(e);
+      }
+    
+    });
+})
     </script>
 </body>
 </html>

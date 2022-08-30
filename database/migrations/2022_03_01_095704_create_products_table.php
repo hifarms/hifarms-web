@@ -28,6 +28,7 @@ class CreateProductsTable extends Migration
             $table->foreignId('category_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('service_type_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('product_type_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('label_id')->nullable()->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
