@@ -64,6 +64,7 @@
             <a href="/services">Services</a>
             <a href="/sponsors">Marketplace</a>
             <a href="/blog">Blog</a>
+            <a href="/contact">Contact</a>
             <a href="/signup">Register</a>
             <a href="/signin">Login</a>
             <div class="svg-flex" style="margin-bottom: 8px">
