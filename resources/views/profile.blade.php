@@ -9,7 +9,7 @@
     <meta name="_token" content="{{ csrf_token() }}" />
     <script src="{{asset('js/jquery.min.js')}}"></script>
 </head>
-<body>
+<body style='background:#F0F3F4;'>
       <!--Dashboard Hamburger Starts-->
       <div class="dashboard-hamburger">
         <div class="dash-hamb-img-name">
@@ -150,7 +150,7 @@
    
     
        <!--edit profile Modal Begins-->
-       <div class="admin-add-item edit-profile-modal">
+       <div class="admin-add-item edit-profile-modal edit-prof">
         <div class="admin-add-item-container">
             <div class="close-add-item">x</div>
             <h1 style="text-transform: unset;margin-bottom: 10px;">Edit Profile</h1>

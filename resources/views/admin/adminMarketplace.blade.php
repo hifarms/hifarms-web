@@ -11,7 +11,7 @@
     <title> Admin Marketplace</title>
 </head>
 
-<body>
+<body style='background:#F0F3F4;'>
     <!--Dashboard Hamburger Starts-->
     <div class="dashboard-hamburger">
         <div class="dash-hamb-img-name">
@@ -84,13 +84,13 @@
         Deleted Successfully!!!
     </div>
     @if(Session('success_message'))
-    <div class="added-successfully-blade">
+    <div class="added-successfully added-successfully-blade">
         {{Session('success_message')}}
     </div>
     @endif
 
     @if(Session('warning_message'))
-    <div class="deleted-successfully-blade">
+    <div class="added-successfully deleted-successfully-blade">
         {{Session('warning_message')}}
     </div>
     @endif

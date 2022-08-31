@@ -9,7 +9,7 @@
     <script src="{{asset('js/jquery.min.js')}}"></script>
     <title>Marketplace</title>
 </head>
-<body>
+<body style='background:#F0F3F4;'>
        <!--Dashboard Hamburger Starts-->
        <div class="dashboard-hamburger">
         <div class="dash-hamb-img-name">
