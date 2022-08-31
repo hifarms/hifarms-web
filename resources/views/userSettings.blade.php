@@ -69,7 +69,7 @@
         <div class="dashboard-header">
             <img src="img/hamburger.svg" alt="#" id="hamburger" class="hamburger1">
             <div class="header-img">
-                <img src="img/logo.png" class="logo1x" alt="logo" width="113">
+                <a href='http://127.0.0.1:8000'><img src="img/logo.png" class="logo1x" alt="logo" width="113"><a>
             </div>
             <div class="header-icons">
                 <div class="cart-whatsapp cart-whatsapp-dash">
@@ -221,27 +221,15 @@
                         <button>Mark all as read</button>
                     </div>
                     <div class="messages-catalog">
-                        
+                        @foreach($messages as $message)
                         <div class="message-inner">
                             <div class="message-flex-inbox" style='width:100%;font-size:10px;display:flex;justify-content:space-between;'>
-                                <p><strong>New request on products to be sold.</strong></p>
-                                <p><strong>12mins ago</strong></p>
+                                <p><strong>{{$message->message_body}}</strong></p>
+                                <p><strong>{{$message->created_at->diffForHumans()}}</strong></p>
                             </div>
                         </div>
 
-                        <div class="message-inner">
-                            <div class="message-flex-inbox" style='width:100%;font-size:10px;display:flex;justify-content:space-between;'>
-                                <p>New request on products to be sold.</p>
-                                <p>3hrs ago</p>
-                            </div>
-                        </div>
-
-                        <div class="message-inner">
-                            <div class="message-flex-inbox" style='width:100%;font-size:10px;display:flex;justify-content:space-between;'>
-                                <p>New request on products to be sold.</p>
-                                <p>3hrs ago</p>
-                            </div>
-                        </div>
+                        @endforeach
                         
                     </div>
                 </div>
@@ -326,35 +314,29 @@
                     <div class="general-information stats">
                         <div class="info-1 diff">
                             <div class="info-images">
-                                <img src="../img/admin-views.svg" alt="views">
+                                <img src="../img/not-set.png" alt="views">
                                 <img src="../img/admin-stats.png" alt="stats">
                             </div>
-                            <h5>Total Views</h5>
-                            <h3>128</h3>
-                            <p>Start from Jan 1, 2021</p>
+                            <h5>Active Projects</h5>
+                            <h3>{{$active}}</h3>
+                            <p>Projects currently investing</p>
                         </div>
+
                         <div class="info-2">
                             <div class="info-images">
                                 <img src="../img/admin-products.svg" alt="views">
                             </div>
-                            <h5>Total Products</h5>
-                            <h2>12</h2>
+                            <h5>Total Products Bought</h5>
+                            <h2>{{$productB}}</h2>
                             <p class="add-new-product">updates every day.</p>
                         </div>
-                        <div class="info-3">
-                            <div class="info-images">
-                                <img src="../img/admin-vector.png" alt="views">
-                            </div>
-                            <h5>Total Users</h5>
-                            <h2>3</h2>
-                            <p>New user noted every week</p>
-                        </div>
+                       
                         <div class="info-4">
                             <div class="info-images">
                                 <img src="../img/admin-cart.png" alt="stats">
                             </div>
                             <h5>Total Sales</h5>
-                            <h2>5</h2>
+                            <h2>{{$totalS}}</h2>
                             <p>Start from Jan 1, 2022</p>
                         </div>
                         <div class="info-4">
@@ -362,18 +344,10 @@
                                 <img src="../img/set-stat.png" alt="stats">
                             </div>
                             <h5>Total Products</h5>
-                            <h2>6</h2>
+                            <h2>{{$totalP}}</h2>
                             <p>Updates every week</p>
                         </div>
-                        <div class="info-1 diff">
-                            <div class="info-images">
-                                <img src="../img/not-set.png" alt="views">
-                                <img src="../img/admin-stats.png" alt="stats">
-                            </div>
-                            <h5>Active Projects</h5>
-                            <h3>10</h3>
-                            <p>Projects currently investing</p>
-                        </div>
+                       
                     </div>
                     <div class="farm-activities-setting">
                     <img width='90%' src="img/Farm chart.svg" alt="farm-chart" class="farm-chart">
@@ -441,7 +415,7 @@
                     url: "http://127.0.0.1:8000/user/messages",
                     method: "get",
                     success: function (data) {
-                        data.messages.forEach(message => {
+                        data.messages.data.forEach(message => {
                             $('.notification-modal').append(`
                                 <div class="notif-${message.seen==0?'1':'2'}">
                                 <p>${message.message_body}.</p>

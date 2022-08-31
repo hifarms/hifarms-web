@@ -296,7 +296,7 @@
                     url: "http://127.0.0.1:8000/user/messages",
                     method: "get",
                     success: function (data) {
-                        data.messages.forEach(message => {
+                        data.messages.data.forEach(message => {
                             $('.notification-modal').append(`
                                 <div class="notif-${message.seen==0?'1':'2'}">
                                 <p>${message.message_body}.</p>

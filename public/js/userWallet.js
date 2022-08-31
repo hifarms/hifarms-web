@@ -42,7 +42,6 @@ const addLoader = (e)=>{
        loader.style.display = 'none';
        overlayEffect.style.display = 'none';
        addItemModal.style.display = 'none';
-       addedClass.style.display = 'block';
  
        setTimeout(()=>{
           let addedClass = document.querySelector('.added-successfully');

@@ -198,11 +198,13 @@
                         </div>
                         <div class="line mobile-hide" style="height: 1px;width: 300px;background: #c4c4c4;margin-bottom: 10px;"></div>
                         <div id="flex-dashboard-container">
-                            @foreach($category as $cat)
+
+                          
                             <div class="mobile-category">
                                 <h3 class="sponsor-categories">CATEGORIES</h3>
                                 <div class="line" style="height: 1px;width: 100%;background: #c4c4c4;margin-bottom: 10px;"></div>
                             </div>
+                              @foreach($category as $cat)
                             <div class="flex dashboard">
                                 <input type="checkbox" class="check" name="category[]" value="{{$cat->id}}" name='{{ $cat->name }}' {{old('category')  && in_array($cat->id,old('category')) ? 'checked':null}}>
                                 <p class="sponsor-crop dashboard">{{ $cat->name }}</p>
@@ -252,7 +254,7 @@
                         <h1>{{ $prod->name }}</h1>
                         <div class="sponsor-inner-flex">
                             <img src="../img/location.svg" alt="">
-                            <p class="location">{{ $prod->location }}</p>
+                            <p class="location lc">{{ $prod->location }}</p>
                         </div>
                         <input type="hidden" name="" value="{{$prod->id}}" class="id">
                         <input type="hidden" name="" value="{{$prod->unit}}" class="qs">
@@ -476,7 +478,7 @@
                             <label>Item Price</label>
                             <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
                         </div> <br>
-                        <input type="text" placeholder="Enter item price" name="price" required>
+                        <input type="number" placeholder="Enter item price" name="price" required>
                     </div>
                     <div class="img-dash">
                         <div class="tooltip-flex">
@@ -492,9 +494,8 @@
                         <label>Location</label>
                         <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
                     </div> <br>
-                    <select name="location" id="">
-                        <option value="Arkilla">Arkilla, Federal Lowcost</option>
-                    </select>
+                    <input type="text" name="location" required>
+
                 </div>
                 <div class="warning-button">
                     <div class="warning">
@@ -548,7 +549,7 @@
           url: "http://127.0.0.1:8000/user/messages",
           method: "get",
           success: function (data) {
-              data.messages.forEach(message => {
+              data.messages.data.forEach(message => {
                   $('.notification-modal').append(`
                       <div class="notif-${message.seen==0?'1':'2'}">
                       <p>${message.message_body}.</p>

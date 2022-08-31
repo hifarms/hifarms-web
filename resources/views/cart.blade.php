@@ -205,11 +205,14 @@
                     
                 },
                 error: function(e) {
-                    
                     if(e.status==401){
                     alert("Login/Register To CheckOut Cart")
                     window.location.replace('/signin');
-                }
+                    }
+
+                    if(e.status==419){
+                        alert('Cart Empty, Nothing to checkout')
+                    }
 
                 }
             });

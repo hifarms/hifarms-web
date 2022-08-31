@@ -196,10 +196,7 @@
                         <div class="line mobile-hide" style="height: 1px;width: 300px;background: #c4c4c4;margin-bottom: 10px;"></div>
                         <div id="flex-dashboard-container">
                          
-                            <div class="mobile-category">
-                                <h3 class="sponsor-categories">CATEGORIES</h3>
-                                <div class="line" style="height: 1px;width: 100%;background: #c4c4c4;margin-bottom: 10px;"></div>
-                            </div>
+                           
                                @foreach($category as $cat)
                             <div class="flex dashboard">
                                 <input type="checkbox" class="check" name="category[]" value="{{$cat->id}}" name='{{ $cat->name }}' {{old('category')  && in_array($cat->id,old('category')) ? 'checked':null}}>
@@ -237,7 +234,7 @@
                         <h1>{{ $prod->name }}</h1>
                         <div class="sponsor-inner-flex">
                             <img src="../img/location.svg" alt="">
-                            <p class="location">{{ $prod->location }}</p>
+                            <p class="location lc">{{ $prod->location }}</p>
                         </div>
                         <div class="sponsor-inner-flex">
                             <img src="../img/sponsor-cart.svg" alt="">
@@ -290,20 +287,11 @@
                         </div>
                         <div class="image">
                             <label style="margin-left: 20px;">Image</label> <br>
-                            <input type="file" class="category-select" name="image" required>
+                            <input type="file" class="category-select" name="image" required />
                         </div>
                     </div>
-                    <div class="category-percentage-flex">
-                        <div class="percentage">
-                            <label class="admin-location">Location</label> <br>
-                            <select class="admin-location-input lc" name="location" required>
-                                <option selected>Select Location</option>
-                                <option value="Sokoto">Sokoto</option>
-                                <option value="Kebbi">Kebbi</option>
-                                <option value="Zamfara">Zamfara</option>
-                            </select>
-                        </div>
-                    </div>
+                    <label class="admin-location">Location</label> <br>
+                    <input class="admin-location-input" value='' name="location">
 
                     <br>
                     <div class="button-admin-container">
@@ -392,7 +380,7 @@
                   url: "http://127.0.0.1:8000/user/messages",
                   method: "get",
                   success: function (data) {
-                      data.messages.forEach(message => {
+                      data.messages.data.forEach(message => {
                           $('.notification-modal').append(`
                               <div class="notif-${message.seen==0?'1':'2'}">
                               <p>${message.message_body}.</p>

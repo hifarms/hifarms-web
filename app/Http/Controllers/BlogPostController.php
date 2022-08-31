@@ -36,11 +36,28 @@ class BlogPostController extends Controller
         return view('blog.create');
     }
 
+    public function addCategory(Request $request){
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string',
+        ]);
+
+        if($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        $cat = new BlogCategory();
+        $cat->name = $request->name;
+        $cat->save();
+
+        return redirect()->back()->with(['success_message'=>'Category Added Successfullly']);
+    }
+
+
     public function store(Request $request){
 
         $validator = Validator::make($request->all(), [
             'title' => 'required|string',
             'content' => 'required|string',
+             'date'=>'required',
             'image'  => 'mimes:jpg,png'
         ]);
 
@@ -52,6 +69,7 @@ class BlogPostController extends Controller
         $post->title = $request->input('title');
         $post->blog_category_id = $request->input('blog_category_id');
         $post->content = $request->input('content');
+        $request->created_at = $request->date;
       
         if ($request->hasFile('image'))
         {

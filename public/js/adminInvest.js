@@ -125,7 +125,7 @@ editIcon.forEach((edit) => {
         
         let itemName = edit.parentElement.parentElement.parentElement.querySelector('h1');
         let itemPrice = edit.parentElement.parentElement.parentElement.querySelector('.h3-dashboard');
-        let itemLocation = document.querySelector('.lc');
+        let itemLocation = edit.parentElement.parentElement.parentElement.querySelector('.lc');
         let qs = edit.parentElement.parentElement.parentElement.querySelector('.qs').value;
         const editItemModal = document.querySelector('.edit-add-item');
         let category = document.querySelector('.cs');
@@ -158,9 +158,9 @@ editIcon.forEach((edit) => {
         </div>
         <input type='hidden'  value="${$('meta[name="_token"]').attr('content')}" name='_token' />
         <label class="admin-location">Location</label> <br>
-        <select class="admin-location-input" name="location">
-         ${itemLocation.innerHTML}
-        </select> <br>
+        <input class="admin-location-input" value=' ${itemLocation.innerHTML}' name="location">
+        
+       
         <div class="button-admin-container"  style="margin-top: 30px;">
             <button type="submit" class="add-item-submit admin-dash-submit"><span style="padding-left:39px ;padding-right: 39px;" class="edit-want-to-sell-span">Update</span>  <img class="loader loader-edit" src="../../img/loader-hifarm.gif" alt="#"> </button>
         </div>

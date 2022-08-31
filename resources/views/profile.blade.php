@@ -50,7 +50,7 @@
       <div class="dashboard-header">
       <img src="img/hamburger.svg" alt="#" id="hamburger" class="hamburger1">
         <div class="header-img">
-            <img src="img/logo.png" class="logo1x" alt="logo" width="113">
+            <a href='http://127.0.0.1:8000'><img src="img/logo.png" class="logo1x" alt="logo" width="113"><a>
         </div>
         <div class="header-icons">
         <div class="cart-whatsapp cart-whatsapp-dash">
@@ -169,16 +169,16 @@
             <div class="category-percentage-flex" style="justify-content:left;">
                 <div class="percentage">
                     <label>Bank Name</label>  <br>
-                    <input type="text" class="contact-input fbank-name" name="bank-name" value="{{$user->bank->bank_name}}" placeholder="Enter your contact">
+                    <input type="text" class="contact-input fbank-name" name="bank-name" value="{{$user->bank->bank_name}}" placeholder="Enter your Bank Name">
                 </div>
                 <div class="percentage">
                     <label>Bank Account Name</label>  <br>
-                    <input type="text" class="contact-input facc-name" name="acc-name" value="{{$user->bank->bank_acc_name}}" placeholder="Enter your contact">
+                    <input type="text" class="contact-input facc-name" name="acc-name" value="{{$user->bank->bank_acc_name}}" placeholder="Enter your Bank Account Name">
                 </div>
                 <br>
                 <div class="category">
                     <label>Account Number</label> <br> 
-                    <input class="category-select contact-input facc-no" name="acc-no" value="{{$user->bank->bank_acc_no}}" placeholder="Enter your email" style='width:100%!important'>    
+                    <input class="category-select contact-input facc-no" name="acc-no" value="{{$user->bank->bank_acc_no}}" placeholder="Enter your Account No." style='width:100%!important'>    
                 </div>
             </div>
             <div class="category-percentage-fle" style="margin-bottom: 10px;justify-content:left;">

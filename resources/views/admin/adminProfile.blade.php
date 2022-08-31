@@ -172,7 +172,7 @@
                 <br>
                 <div class="category">
                     <label>Account Number</label> <br> 
-                    <input type="text" class="category-select contact-input facc-no" name="acc_no" value="{{$user->bank->bank_acc_no}}" placeholder="Enter your Bank No.">    
+                    <input type="text" class="category-select contact-input facc-no" name="acc_no" value="{{$user->bank->bank_acc_no}}" placeholder="Enter your Bank No." style='width:100%!important'>    
                 </div>
             </div>
             <div class="category-percentage-fle" style="margin-bottom: 10px;justify-content:left;">
@@ -215,7 +215,7 @@
               url: "http://127.0.0.1:8000/user/messages",
               method: "get",
               success: function (data) {
-                  data.messages.forEach(message => {
+                  data.messages.data.forEach(message => {
                       $('.notification-modal').append(`
                           <div class="notif-${message.seen==0?'1':'2'}">
                           <p>${message.message_body}.</p>

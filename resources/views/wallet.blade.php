@@ -50,7 +50,7 @@
         <div class="dashboard-header">
         <img src="img/hamburger.svg" alt="#" id="hamburger" class="hamburger1">
             <div class="header-img">
-                <img src="img/logo.png" class="logo1x" alt="logo" width="113">
+                <a href='http://127.0.0.1:8000'><img src="img/logo.png" class="logo1x" alt="logo" width="113"><a>
             </div>
             <div class="header-icons">
             <div class="cart-whatsapp cart-whatsapp-dash">
@@ -71,18 +71,6 @@
                             </div>
                             <button>Mark all as read</button>
                         </div>
-                        {{-- <div class="notif-1">
-                            <p>New products arrival at Hi Marketplace.</p>
-                             <p>12mins ago</p>
-                        </div>
-                        <div class="notif-2">
-                            <p>Let's get started Hafiz.</p>
-                             <p>3hrs ago</p>
-                        </div>
-                        <div class="notif-3">
-                            <p>Welcome to Hi Farm.</p>
-                             <p>3hrs ago</p>
-                        </div> --}}
                     </div>
                 </div>
                  <div class="guides">
@@ -233,7 +221,7 @@
                     url: "http://127.0.0.1:8000/user/messages",
                     method: "get",
                     success: function (data) {
-                        data.messages.forEach(message => {
+                        data.messages.data.forEach(message => {
                             $('.notification-modal').append(`
                                 <div class="notif-${message.seen==0?'1':'2'}">
                                 <p>${message.message_body}.</p>

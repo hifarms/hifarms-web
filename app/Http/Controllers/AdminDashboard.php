@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Bank;
 use App\Farm;
 use App\User;
-use App\Label;
+use App\label;
 use App\Order;
 use App\Wallet;
 use App\Message;
@@ -18,7 +19,10 @@ use App\blogCategory;
 use App\Product_type;
 use App\withdrawStatus;
 use App\Farm_return_type;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class AdminDashboard extends Controller
 {
@@ -70,7 +74,7 @@ class AdminDashboard extends Controller
         $data['orders'] = order_item::count();
         $data['product'] = $products;
         $data['category'] = Category::get();
-        $data['label'] = Label::get();
+        $data['label'] = label::get();
         return view('admin.adminDashboard', $data);
     }
 
@@ -137,7 +141,7 @@ class AdminDashboard extends Controller
         $products= $products->paginate(50)->withQueryString();
         $data['category'] = Category::get();
         $data['producttype'] = Product_type::get();
-        $data['label'] = Label::get();
+        $data['label'] = label::get();
         $data['products'] = $products;
         $data['product'] = Product::first();
         return view('admin.adminMarketplace', $data);
@@ -209,10 +213,63 @@ class AdminDashboard extends Controller
         $data['users'] = User::where('status', 1)->count();
         $data['products'] = Product::count();
         $data['orders'] = order_item::count();
-        $data['messages'] = Message::paginate(9);
+
+        $data['messages'] = Message::where('recipient_id',0)->orWhere('sender_id',0)->orderBy('created_at','DESC')->get();
         return view('admin.adminSettings', $data);
     }
 
+    Public function addUser(Request $request) {
+
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|unique:users|email',
+             'password' => 'required'
+        ]);
+
+        if($validator->fails()) {
+            return redirect()->back()->with('warning_message', 'Email is already taken');
+        }
+        $link = Str::random(30);
+        $user = new User();
+        $wallet = new Wallet();
+        $bank = new Bank();
+        $message = new Message();
+        DB::transaction(function () use($request,$user,$wallet,$link,$bank,$message){
+            
+        // Save Record into user DB
+       
+        $user->email = $request->input('email');
+        $user->fullname = $request->input('email');
+        $user->username = $request->input('email');
+        $user->password = bcrypt($request->input('password'));
+        $user->role_id = 2;
+        $user->activated = $link;
+        $user->status = 1;
+        $user->is_verified = 1;
+        $user->save();
+        
+        //Save Record into profile DB
+       
+        $wallet->user_id = $user->id;
+        $wallet->ledger_balance = 0;
+        $wallet->balance = 0;
+        $wallet->save();
+
+        $user->wallet_id = $wallet->id;
+
+        $bank->user_id =$user->id;
+        $bank->save();
+        $user->bank_id = $bank->id;
+        $user->save();
+
+        $message->sender_id = 0;
+        $message->recipient_id =$user->id;
+        $message->message_body = "Let's get started ".$user->username;
+        $message->save();
+        });
+        
+        return redirect()->back()->with('success_message', 'Account Created succesfully');
+    }
+    
     public function changeStatus(Request $request)
     {
         $with= withdraw::where('id',$request->id)->firstOrFail();

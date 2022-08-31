@@ -940,7 +940,7 @@ header{
   color: #8bc53e;
 }
 
-.location-dash select{
+.location-dash input{
   margin-top: 10px;
   width: 65%;
   padding: 10px;
@@ -2264,6 +2264,11 @@ header{
   background-color: #8BC53E;
   transition: 0.5s solid ease-in-out;
 }
+.add-new-blog-category.top:hover{
+  background-color: #8BC53E;
+  transition: 0.5s solid ease-in-out;
+}
+
 
 .add-new-blog.top{
   padding-top: 10px;
@@ -2279,7 +2284,20 @@ header{
   margin-top: 15px;
   margin-bottom: -15px;
 }
-
+.add-new-blog-category.top{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 17px;
+  color: #fff;
+  background: rgba(139, 197, 62, 0.7);
+  border: 1px solid rgba(139, 197, 62, 0.7);
+  padding-left: 25px;
+  padding-right: 25px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 15px;
+  margin-bottom: -15px;
+}
 .if-no-published-blog button{
   padding-top: 10px;
   padding-bottom: 10px;
@@ -7726,7 +7744,7 @@ table, td, th {
   margin-bottom: 10px;
   width: 100%;
 }
-.location-dash select {
+.location-dash input {
   margin-top: 10px;
   width: 100%;
   padding: 7px;
@@ -9047,6 +9065,12 @@ font-size: 20px;
    display: block;
    margin: auto;
    padding-top: 7px;
+}
+.add-new-blog-category.top{
+  display: block;
+  margin: auto;
+  padding-top: 7px;
+  margin-top: 10px;
 }
 .src-blog{
   width:100px

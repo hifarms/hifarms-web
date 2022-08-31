@@ -160,7 +160,7 @@ class OrderController extends Controller
             $product = $item->product;
             $product->unit_sold=$product->unit_sold+$item->unit;
             if($product->unit_sold==$product->unit){
-            $lb= Label::where('name','Sold Out')->first();
+            $lb= label::where('name','Sold Out')->first();
                 $product->label_id = $lb->id;
             }
             $product->save();
@@ -176,7 +176,7 @@ class OrderController extends Controller
             $farm = $item->farm;
             $farm->c_units+=$item->unit;
             if($farm->c_units==$farm->i_units){
-            $lb= Label::where('name','Sold Out')->first();
+            $lb= label::where('name','Sold Out')->first();
                 $farm->label_id = $lb->id;
             }
             $farm->save();

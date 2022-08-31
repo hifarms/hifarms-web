@@ -264,7 +264,7 @@
 
 
     <div class="overlay"></div>
-    <form method="post" action="{{route('sell-product'))}}" enctype="multipart/form-data">
+    <form method="post" action="{{route('sell-product')}}" enctype="multipart/form-data">
     <div class="admin-add-item">
         <div class="admin-add-item-container">
             <div class="close-add-item">x</div>
@@ -319,10 +319,8 @@
                     <label>Location</label>
                     <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
                     </div> <br>
-                <select name="location" id="">
-                    <option value="Arkilla">Arkilla, Federal Lowcost</option>
-                    <option value="Quaters, kibbi">BQ Quaters, Kebbi</option>
-                </select>
+                    <input type="text" name="location" required>
+
             </div>
             @csrf
             <div class="warning-button">
@@ -376,7 +374,7 @@ clause also applies.</p>
                     url: "http://127.0.0.1:8000/user/messages",
                     method: "get",
                     success: function (data) {
-                        data.messages.forEach(message => {
+                        data.messages.data.forEach(message => {
                             $('.notification-modal').append(`
                                 <div class="notif-${message.seen==0?'1':'2'}">
                                 <p>${message.message_body}.</p>

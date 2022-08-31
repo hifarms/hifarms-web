@@ -147,6 +147,7 @@
         <p class="blob">Create, edit, and manage the posts here. </p>
         <div class="blog-container-admin">
             <button class="add-new-blog top">Add new post</button>
+            <button class="add-new-blog-category top add-category-btn">Add blog category</button>
             <div class="published-draft-trash-search">
                <div class="first">
                    <p class="settings-heading currently">Published ({{ $allblog }})</p>
@@ -229,8 +230,8 @@
                 @csrf
                 <div class="blog-category">
                     <label>Category:</label>
-                    <select name="blog_category_id">
-                        <option selected disabled>Select Category</option>
+                    <select name="blog_category_id" required>
+                        <option disabled>Select Category</option>
                         @foreach($blogcategory as $cat)
                         <option value="{{ $cat->id }}">{{ $cat->name }}</option>
                         @endforeach
@@ -239,15 +240,15 @@
                 <div class="topic-date">
                     <div class="topic">
                         <label>Topic:</label>
-                        <input type="text" placeholder="Input topic here" class="blgh" name="title">
+                        <input type="text" placeholder="Input topic here" class="blgh" name="title" required>
                     </div>
                     <div class="date">
                         <label>Date:</label>
-                        <input type="text" placeholder="Input date here" name="date">
+                        <input type="date" placeholder="Input date here" name="date" required>
                     </div>
                 </div>
                 <div class="text">
-                    <textarea name="content" id="" cols="30" rows="12"  placeholder="Write blog post..."></textarea>
+                    <textarea name="content" id="" cols="30" rows="12"  placeholder="Write blog post..." required></textarea>
                 </div>
                 <input type="hidden" value="" name="id" />
                 <div class="add-pic-submit">
@@ -262,6 +263,23 @@
         <div class="overlay"></div>
     <!--Add new blog post modal ends-->
 
+
+        <!--Add categories starts-->
+        <div class="delete-modal add-category-modal">
+            <div class="delete-modal-container add-category-mdl">
+                <div class="close-delete-modal close-category">x</div>
+                <h1 style="padding: 5px;font-size: 23px;text-align: center;margin-bottom:10px;margin-top: 25px;">ADD CATEGORY</h1>
+                <form method="post" action="{{ route('add-blog-category') }}">
+                    @csrf
+                    <label style="color:#cccccc;font-size: 20px;">Name:</label> <br>
+                    <input type="text" placeholder="Enter here..." name="name" class="category-value" style="border: 1px solid #cccccc;margin-top: 10px;padding: 15px;width: 100%;">
+                    <div class="button-admin-container" style="margin-top: 30px;">
+                        <button type="submit" class="add-item-submit admin-dash-submit"><span style="padding-left:50px ;padding-right: 50px;" class="category-span">Add</span> <img class=" loader loader-category" src="../img/loader-hifarm.gif" alt="#"> </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="overlay"></div>
     <!--Edit blog post modal starts-->
     <div class="add-blog-post-modal admin-add-item edit-modal">
         
@@ -347,7 +365,7 @@
                   url: "http://127.0.0.1:8000/user/messages",
                   method: "get",
                   success: function (data) {
-                      data.messages.forEach(message => {
+                      data.messages.data.forEach(message => {
                           $('.notification-modal').append(`
                               <div class="notif-${message.seen==0?'1':'2'}">
                               <p>${message.message_body}.</p>
