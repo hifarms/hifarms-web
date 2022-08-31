@@ -174,7 +174,7 @@
             </div>
         </div>
         <div class="setting-options">
-            <div class="settings-heading current">General Settings</div>
+            <div class="settings-heading yurrent">General Settings</div>
             <div class="settings-heading">Manage Users</div>
             <div class="settings-heading stars">Statistics</div>
             <div class="settings-heading">Inbox</div>
@@ -279,7 +279,7 @@
                         @foreach($messages as $message)
                         <div class="message-inner">
                             <small>{{ $message->user? $message->user->email : "toAdmin" }}</small>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <small> {{ $message->message_body }}</small>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <small  class='message-body-inbox'> {{ $message->message_body }}</small>&nbsp;&nbsp;&nbsp;&nbsp;
                             <small> {{ date('F d, Y', strtotime($message->created_at)) }}</small>
                         </div>
                         @endforeach
@@ -553,7 +553,7 @@
                 <div class="topic-date">
                     <div class="topic">
                         <label>To:</label>
-                        <select name="recipient_id" style="width: 700px;height:30px;">
+                        <select class='recipient' name="recipient_id" style="width: 700px;height:30px;">
                             <option selected disabled>Select Recipient</option>
                             @foreach($user as $use)
                             <option value="{{ $use->id }}">{{ $use->email }}</option>
@@ -572,7 +572,7 @@
         </div>
     </div>
     </div>
-    <div class="overlay"></div>
+    <div class="inbox-overlay"></div>
     <!--Add new message post modal ends-->
     </div>
     <div class="overlay"></div>

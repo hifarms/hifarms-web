@@ -3830,7 +3830,7 @@ width: 338px;
 }
 
 .sponsor-grid .sponsor-option .flex .sponsor-crop{
-    margin-left: -36px;
+    margin-left: unset;
     text-align: center;
 }
 
@@ -4320,7 +4320,7 @@ input:checked + .slider:before {
 .settings-header{
   background: #fff;
   position: sticky;
-  top: 80px;
+  top: 70px;
 }
 
 .settings-inner{
@@ -4371,7 +4371,7 @@ input:checked + .slider:before {
 
 .setting-options{
   position: sticky;
-  top: 175px;
+  top: 165px;
   margin-top: 10px;
   display: flex;
   align-items: center;
@@ -4433,7 +4433,7 @@ input:checked + .slider:before {
 }
 
 .general-ser.inbox{
-  width: 580px;
+  width: 680px;
   padding-left: 25px;
   padding-right: 25px;
 }
@@ -4470,6 +4470,7 @@ input:checked + .slider:before {
 }
 
 .messages-catalog{
+  width: 100%;
   padding-top: 10px;
   padding-left: 10px;
   padding-right: 10px;
@@ -4935,6 +4936,17 @@ input:checked + .slider:before {
   margin-top: 30px;
 }
 
+.admin-view form button{
+  background: #b4b4ff;
+  width: 120px;
+  cursor: pointer;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: rgb(71, 70, 70);
+  border: 1px solid #fff;
+  border-radius: 3px;
+}
+
 .add-category{
   margin-top: 25px;
 }
@@ -4971,12 +4983,12 @@ input:checked + .slider:before {
 }
 
 .product-table .admin-status{
-  margin-left: 35px;
+  margin-right: 38px;
 }
 
 .product-table .product-names{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   font-weight: 600;
   color: #404A3D;
 }
@@ -5028,6 +5040,20 @@ input:checked + .slider:before {
 .product-list-grid p{
   font-size: 14px;
 
+}
+
+.inbox-overlay{
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
+  transition: .5s ease;
+  background: linear-gradient( rgba(64, 74, 61, 0.73),  rgba(64, 74, 61, 0.73)) ;  
 }
 
 .overlay{
@@ -5763,7 +5789,7 @@ input:checked + .slider:before {
 }
 
 .sponsor-grid .sponsor-option .flex .sponsor-crop.dashboard{
-  margin-left: -120px;
+ 
   font-weight: bold;
 }
 
@@ -6546,6 +6572,8 @@ table, td, th {
   position: absolute;
   top: 31px;
   right: -10%;
+  height: 300px;
+  overflow-y: auto;
   background: #FFFFFF;
   padding: 15px;
   border: 1px solid #545E66;
@@ -6646,6 +6674,12 @@ table, td, th {
  .header-container{
    justify-content: space-between;
  }
+ .message-body-inbox{
+  display: none;
+}
+.recipient{
+  width: 100%!important;
+}
  .header-container .cart-whatsapp .cart{
    width: 20px;
  }
@@ -7084,10 +7118,125 @@ table, td, th {
 /*cart page ends*/
 /*sponsors page starts */
 /*sponsort page end*/
+@media (min-width: 700px){
+    .side-bar{
+       width: 6.5vw;
+    }
+    .header-icons{
+      width: 60%;
+   }
+   .notification-modal{
+      right: 10%;
+   }
+   .cart-whatsapp-dash {
+    width: 10px;
+    left: -58px;
+    position: absolute;
+  }
+  .cart-whatsapp-dash img {
+    width: 67px;
+    object-fit: contain;
+    height: 19px;
+  }
+  .dashboard-flex {
+    margin-left: 120px!important;
+  }
+  .admin-add-item{
+    width: 500px!important;
+  }
+  .item-price .tooltip-flex {
+    margin-left: unset; 
+    margin-top: 10px;
+  }
+  .farm-chart {
+    margin-top: 260px!important;
+    margin-right: unset;
+    width: 75%!important;
+    margin-left: -305px!important;
+   }
+   .marketplace-flex {
+    width: 345px;
+    margin-top: 40px;
+  }
+  .marketplace-flex.invest-your-farm {
+    margin-top: 40px!important;
+    margin-left: 105px;
+  }
+  .define-height{
+    margin-left: 50px!important;
+  }
+  .add-farm-view-farm .view-existing-farm {
+    width: 35%!important;
+  }
+  .types-farming div {
+    width: 220px;
+  }
+  .sponsor-data{
+    grid-template-columns: 1fr!important;
+  }
+  .sponsor-data.dashboard.marketplace .grid.dashboard.invest {
+    height: 460px;
+  }
+  .investment-table {
+    margin-left: 121px!important;
+    max-width: unset;
+    width: 80%;
+  }
+  .dashboard-container .spending .spend-1 {
+    height: 20vh!important;
+  }
+  .search-show-entry {
+    justify-content: space-between!important;
+    margin-right: 40px!important;
+  }
+  .settings-inner h1 {
+    padding-left: 8px;
+    margin-left: 100px!important;
+  }
+  .dashboard-container.profile .use-pro {
+    margin-left: 70px;
+  }
+  .profile-details {
+    margin-left: 100px!important;
+  }
+  .general-information {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-left: 131px!important;
+    grid-gap: 14px;
+    max-width: 600px!important;
+  }
+  .admin-view-sell {
+    width: 70%!important;
+  }
+  .product-table.dash {
+    margin-left: 85px!important;
+  }
+
+
+}
+
+
 @media (max-width: 700px){
- .cart-container p{
+.edit-prof{
+   height: 500px!important;
+   overflow-y: auto;
+}
+.sponsor-data{
+  grid-template-columns: 1fr 1fr!important;
+}
+.sponsor-data.dashboard.marketplace .grid.dashboard.invest {
+  height: 398px!important;
+}
+.cart-container p{
   font-size: 14px;
   padding: 0px;
+}
+.setting-header{
+  top: 13px;
+}
+.setting-options{
+  top: 100px;
 }
 .tooltip-flex {
   margin-left: unset!important;
@@ -8739,9 +8888,7 @@ table, td, th {
 .purchase-div.invest button{
   width: 70px;
 }
-.sponsor-data.dashboard.marketplace .grid.dashboard.invest{
-  height: 368px;
-}
+
 .close-add-item.add-user-close{
   width: 30px;
 height: 30px;

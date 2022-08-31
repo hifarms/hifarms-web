@@ -236,9 +236,9 @@
 
 </div>
 </div>
-<script src="js/livestock.js"></script>
-<script src="js/adminMyFarm.js"></script>
-<script src="js/dashboardHamburger.js"></script>
+<script src="../js/livestock.js"></script>
+<script src="../js/adminMyFarm.js"></script>
+<script src="../js/dashboardHamburger.js"></script>
 <script>
     function getNotification() {
   jQuery.ajax({

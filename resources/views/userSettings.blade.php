@@ -9,7 +9,7 @@
     <meta name="_token" content="{{ csrf_token() }}" />
     <script src="{{asset('js/jquery.min.js')}}"></script>
 </head>
-<body>
+<body style='background:#F0F3F4;'>
       <!--Dashboard Hamburger Starts-->
       <div class="dashboard-hamburger">
         <div class="dash-hamb-img-name">

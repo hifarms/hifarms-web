@@ -439,6 +439,7 @@ kbd {
 
 /* Stack panels */
 @media (max-width: 600px) {
+  
   .panel {
     position: static;
     width: 100%;

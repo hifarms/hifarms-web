@@ -187,9 +187,9 @@
            <div class="product-names">
                <div>No</div>
                <div>Product Name</div>
-               <div class="admin-status">Status</div>
+               <div>Status</div>
                <div>Sold</div>
-               <div>Action</div>
+               <div class="admin-status">Action</div>
            </div>
            <div class="views-sell-container"></div>
            <div class="product-list-container">
