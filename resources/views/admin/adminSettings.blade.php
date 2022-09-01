@@ -11,7 +11,7 @@
     <title>Admin Settings</title>
 </head>
 
-<body>
+<body style='background:#F0F3F4;'>
     <!--Dashboard Hamburger Starts-->
     <div class="dashboard-hamburger">
         <div class="dash-hamb-img-name">
@@ -134,7 +134,7 @@
         </div>
     </header>
     <div class="side-bar">
-        <div class="first-side-bar">
+    <div class="first-side-bar">
             <img src="../img/side-bar.svg" alt="side-bar" style="margin-bottom: 30px;">
         </div>
         <div class="second-side-bar admin">
@@ -143,12 +143,12 @@
             <a href="{{ url('admin/adminMyFarm')}}"><img src="../img/livestock-dashboard.svg" alt="livestock"></a>
             <a href="{{ url('admin/adminInvest')}}"><img src="../img/invest.svg" alt="marketplace"></a>
             <a href="{{ url('admin/adminInvestReturns')}}"><img src="../img/history.svg" alt="history"></a>
-            <a href="{{ url('admin/adminWithraw')}}"><img src="../img/wallet.svg" alt="wallet"></a>
+            <a href="{{ url('admin/adminWallet')}}"><img src="../img/wallet.svg" alt="wallet"></a>
             <a href="{{ url('admin/adminBlog') }}"><img src="../img/blog-pin.png" alt="blog-pin"> </a>
         </div>
         <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;margin-bottom: 0px;">
-            <a href="{{ url('admin/adminSettings')}}"><img src="../img/settings-clicked.png" class="currensly" alt="settings"></a>
-            <a href="{{ url('logout') }}"> <img src="../img/log out.svg" alt="log-out"></a>
+            <a href="{{ url('admin/adminSettings')}}" style="margin-bottom: 30px;"><img src="../img/settings-clicked.png" class="currensly" alt="settings"></a>
+            <img src="../img/log out.svg" alt="log-out">
         </div>
     </div>
     <div class="dashboard-container admin-setting">
@@ -304,7 +304,7 @@
                         <option>This Week</option>
                         <option>Today</option>
                     </select>
-                    <div class="general-information stats">
+                    <div class="general-information stats managify-settings">
                         <div class="info-1 diff">
                             <div class="info-images">
                                 <img src="../img/admin-views.svg" alt="views">
@@ -357,7 +357,7 @@
                         </div>
                     </div>
                     <div class="farm-activities-setting">
-                    <img width='90%' src="img/Farm chart.svg" alt="farm-chart" class="farm-chart">
+                    <img width='90%' src="../img/Farm chart.svg" alt="farm-chart" class="farm-chart">
                     </div>
                 </div>
             </div>

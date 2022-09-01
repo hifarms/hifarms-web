@@ -13,6 +13,14 @@
      user-select: none;
 }
 
+
+.remove-boring-border{
+  border: none;
+  background: white;
+}
+
+
+
 .glider.round::before{
   height: 19px!important;
   width: 17px!important;
@@ -2565,6 +2573,11 @@ header{
 
 .blog-flex-grid .blog-content p{
   margin-bottom: 40px;
+  white-space: pre-wrap;
+}
+
+.blog-flex-grid .blog-content div{
+  white-space: pre-wrap;
 }
 
 .blog-flex-grid img{
@@ -4175,6 +4188,7 @@ width: 338px;
   font-size: 17px;
   padding-bottom: 70px;
   line-height: 150%;
+  white-space: pre-wrap;
 }
 /*Blog page ends */
 
@@ -4942,7 +4956,7 @@ input:checked + .slider:before {
   cursor: pointer;
   padding-top: 5px;
   padding-bottom: 5px;
-  color: rgb(71, 70, 70);
+  color: rgb(255 246 246);
   border: 1px solid #fff;
   border-radius: 3px;
 }
@@ -7212,7 +7226,50 @@ table, td, th {
   .product-table.dash {
     margin-left: 85px!important;
   }
-
+  .sponsors-flex .filter-heading {
+    margin-left: 28px!important;
+  }
+  .sponsor-option {
+    margin-left: 60px!important;
+  }
+  .stats-cate{
+   display: unset!important;
+  }
+  .sponsor-grid.dashboard.admin {
+    flex-direction: unset!important;
+  }
+  .add-sell-reverse{
+    display: unset!important;
+   }
+   .marketplace-flex.manage-your-farm.livestock {
+    margin-top: 280px!important;
+    margin-left: 280px;
+  }
+  .marketplace-flex.invest-your-farm.livestock {
+    margin-left: 280px;
+  } 
+  .tooltip-flex{
+    margin-left: unset!important;
+  }
+  .general-information.stats.managify-settings{
+    margin-left: unset!important; 
+  }
+  .general-ser.stats select {
+    margin-right: 20px;
+  }
+  .dashboard-container h1 {
+    padding-top: 0px;
+  }
+  .published-draft-trash-search .first{
+    margin-left: 70px;
+  }
+  .last-sect{
+    display: unset!important;
+    margin-left: 20px!important;
+  }
+  .published-blogs .blog-flex-grid {
+    margin-left: 80px!important;
+  }
 
 }
 
@@ -7472,6 +7529,7 @@ table, td, th {
 .mobile-category .sponsor-categories{
    text-align: center;
   font-size: 20px;
+  display: none;
 }
 .sponsors-flex.dashboard{
   display: none;

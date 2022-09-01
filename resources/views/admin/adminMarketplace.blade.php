@@ -143,21 +143,21 @@
         </div>
     </header>
     <div class="side-bar">
-        <div class="first-side-bar">
+    <div class="first-side-bar">
             <img src="../img/side-bar.svg" alt="side-bar">
         </div>
         <div class="second-side-bar admin">
-            <a href="{{ url('admin/adminDashboard')}}"><img src="../img/Dashboard (1).svg" alt="dashboard"></a>
+    <a href="{{ url('admin/adminDashboard')}}"><img src="../img/Dashboard (1).svg" alt="dashboard"></a>
             <a href="{{ url('admin/adminMarketplace')}}"><img src="../img/marketplaces-current.svg" alt="marketplace" class="current"></a>
-            <a href="{{ url('admin/adminMyFarm')}}"><img src="../img/livestock-dashboard.svg" alt="livestock"></a>
-            <a href="{{ url('admin/adminInvest')}}"><img src="../img/invest.svg" alt="marketplace"></a>
-            <a href="{{ url('admin/adminInvestReturns')}}"> <img src="../img/history.svg" alt="history"> </a>
-            <a href="{{ url('admin/adminWithraw')}}"><img src="../img/wallet.svg" alt="wallet"> </a>
-            <a href="{{ url('admin/adminBlog') }}"><img src="../img/blog-pin.png" alt="blog-pin"> </a>
+             <a href="{{ url('admin/adminMyFarm')}}"><img src="../img/livestock-dashboard.svg" alt="livestock"></a>
+             <a href="{{ url('admin/adminInvest')}}"><img src="../img/invest.svg" alt="marketplace"></a>
+             <a href="{{ url('admin/adminInvestReturns')}}"> <img src="../img/history.svg" alt="history"> </a>
+             <a href="{{ url('admin/adminWithraw')}}"><img src="../img/wallet.svg" alt="wallet"> </a>
+             <a href="{{ url('admin/adminBlog') }}"><img src="../img/blog-pin.png" alt="blog-pin> </a>
         </div>
-        <div class=" third-side-bar" style="display: flex;flex-direction: column; align-items: center;">
-                <a href="{{ url('admin/adminSettings')}}"><img src="../img/settings.png" alt="settings"></a>
-                <a href="{{ url('logout') }}"><img src="../img/log out.svg" alt="log-out"></a>
+        <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;">
+            <a href="{{ url('admin/adminSettings')}}"><img src="../img/settings.png" alt="settings"></a>
+            <img src="../img/log out.svg" alt="log-out">
         </div>
     </div>
     <div class="dashboard-container admn-mrkt">

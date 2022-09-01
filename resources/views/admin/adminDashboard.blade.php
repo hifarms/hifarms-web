@@ -112,7 +112,7 @@
         </div>
     </header>
     <div class="side-bar">
-        <div class="first-side-bar">
+                <div class="first-side-bar">
             <img src="../img/side-bar.svg" alt="side-bar">
         </div>
         <div class="second-side-bar admin">
@@ -122,11 +122,11 @@
             <a href="{{ url('admin/adminInvest')}}"><img src="../img/invest.svg" alt="marketplace"></a>
             <a href="{{ url('admin/adminInvestReturns')}}"><img src="../img/history.svg" alt="history"></a>
             <a href="{{ url('admin/adminWithraw')}}"><img src="../img/wallet.svg" alt="wallet"></a>
-            <a href="{{ url('admin/adminBlog') }}"><img src="../img/blog-pin.png" alt="blog-pin"> </a>
+            <a href="{{ url('admin/adminBlog') }}"><img src="../img/blog-pin.png" alt="blog-pin> </a>
         </div>
         <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;margin-bottom: 0px;">
          <a href="{{ url('admin/adminSettings')}}"><img src="../img/settings.png" alt="settings"></a>
-         <a href="{{ url('logout') }}"><img src="../img/log out.svg" alt="log-out"></a>
+            <img src="../img/log out.svg" alt="log-out">
         </div>
     </div>
     <div class="dashboard-container admin-dash">
@@ -172,7 +172,7 @@
         <div class="input-search">
             
            <input type="text" placeholder="search for product" value="{{old('search')}}" name="search">
-           <button type="submit"><img src="../img/Vector (8).png" style="cursor: pointer;" alt="search-icon"></button>
+           <button type="submit" class='remove-boring-border'><img src="../img/Vector (8).png" style="cursor: pointer;" alt="search-icon"></button>
            
        </div>
     </form>
@@ -221,12 +221,7 @@
                     @endif
                   </div>
               </div>
-			
-                @endforeach
-
-              
-
-            
+                @endforeach            
            </div>
        </div>
        </div>

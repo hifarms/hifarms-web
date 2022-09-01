@@ -144,7 +144,7 @@
     </div>-->
     <div class="quality-service">
         <div class="quality-service-flex">
-            <img src="img/Picture 1.png" alt="image" data-aos="fade-right">
+            <img src="img/organic-farm.jpg" alt="image" data-aos="fade-right">
             <div class="quality-service-content" data-aos="fade-left">
                 <h1>Providing Quality Services And Products</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada scelerisque ipsum, et cursus magna Donec mollis efficitur mauris, vehicula convallis metus tincidunt sit amet. Aenean magna sapien, semper ac rutrum a mass.</p>
@@ -223,13 +223,30 @@
         </div>
     </div>
     <div class="farm-location">
-        <img src="img/Farm location.png" alt="map">
+    <div class="map" id="map" style='width:100%!important'>
+          
+    </div>
     </div>
     </div>
   <!--Home page end-->
 
 @endsection('content')
 @section('js')
+ <!--Google Maps Starts-->
+     <script>
+          function initMap(){
+             const options = {
+                 zoom: 8,
+                 center: {lat:12.3450,lng:4.1935}
+             }
+
+             const map = new google.maps.Map(document.getElementById('map'), options)
+          }
+      </script>
+     <script async
+     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXewrIGtonz81xHFQ8Pd4pilUPAd3MAB8&callback=initMap">
+      </script>
+ <!--Google Maps ends-->
 <script src="/js/main.js"></script>
 <script src="/js/index.js"></script>
 @endsection('js')

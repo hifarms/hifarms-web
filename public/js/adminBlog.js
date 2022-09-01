@@ -62,10 +62,10 @@ settingsOption.forEach((setting) => {
 
 allBlogDraft.forEach((item) => {
     item.addEventListener('mouseover', () => {
-        item.src = 'img/draft-hover-blog.png';
+        item.src = '../img/draft-hover-blog.png';
     })
     item.addEventListener('mouseout', () => {
-        item.src = 'img/blog-draft.png';
+        item.src = '../img/blog-draft.png';
     })
 
     item.addEventListener('click', () => {
@@ -105,10 +105,10 @@ allBlogEdit.forEach((edit) => {
 
 allBlogdelete.forEach((item) => {
     item.addEventListener('mouseover', () => {
-        item.src = 'img/delete-hover-blog.png';
+        item.src = '../img/delete-hover-blog.png';
     })
     item.addEventListener('mouseout', () => {
-        item.src = 'img/blog-delete.png';
+        item.src = '../img/blog-delete.png';
     })
 
     item.addEventListener('click', (e) => {
@@ -202,7 +202,8 @@ const addEditLoader = (e) => {
 }
 
 
-const addLoader = () => {
+const addLoader = () => {  
+
     let submitButton = document.querySelector('.span-class');
     let loader = document.querySelector('.loader');
 
