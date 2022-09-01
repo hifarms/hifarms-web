@@ -133,7 +133,7 @@
                 <div class="flex-1">
                     <p>Humidity</p>
                     <img src="../img/clouds.png" alt="clouds">
-                    <img src="../img/16º.svg" alt="celsius" class="celsius">
+                    <img src="{{asset('img/16º.svg')}}" alt="celsius" class="celsius">
                 </div>
                 <div class="flex-2">
                     <img src="../img/options.png" class="optin" alt="">
@@ -245,7 +245,7 @@
           url: "http://127.0.0.1:8000/user/messages",
           method: "get",
           success: function (data) {
-              data.messages.forEach(message => {
+              data.messages.data.forEach(message => {
                   $('.notification-modal').append(`
                       <div class="notif-${message.seen==0?'1':'2'}">
                       <p>${message.message_body}.</p>

@@ -52,11 +52,11 @@ Route::get('/contact', function () {
 
 Route::post('/send-phase', 'ContactController@sendPhrase')->name('contact');
 
-Route::get('/services/sponsor', 'Farminvestment@index');
+Route::get('/sponsors', 'FarmInvestment@index');
 
 Route::get('services/sponsor/{farm}', 'Farminvestment@show');
 
-Route::get('/blog', 'BlogPostController@getPost');
+Route::get('/blog/category/{id?}', 'BlogPostController@getPost');
 
 Route::get('/blog/{slug}/', 'BlogPostController@show')->name('showblog');
 
@@ -127,6 +127,9 @@ Route::group(['middleware' => 'auth.admin', 'prefix' => 'admin', 'before' => 'ad
     Route::get('/adminWallet', 'AdminDashboard@adminWallet');
 
     Route::get('/adminBlog', 'AdminDashboard@adminBlog');
+
+    Route::post('/blog/category/add', 'BlogPostController@addCategory')->name('add-blog-category');
+
     
     Route::get('/adminWithraw', 'AdminDashboard@adminWithdraw');
 
@@ -175,7 +178,9 @@ Route::group(['middleware' => 'auth.admin', 'prefix' => 'admin', 'before' => 'ad
 
     Route::post('/withdrawal-request', 'WalletController@withdrawRequest')->name('adminwithdraw');
 
-    Route::post('/update-profile-pic', 'UserController@changeProfilePic')->name('change-profile');
+    Route::post('/update-profile-pic', 'UserController@changeProfilePic')->name('change-profile')
+    ;
+    Route::post('/add-new-user', 'AdminDashboard@addUser')->name('add-user');
 
     Route::post('/update-profile', 'UserController@updateProfile')->name('updateprofile');
 });

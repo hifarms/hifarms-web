@@ -3,24 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\BlogPost;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\File;
+use App\blogCategory;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 
 class BlogPostController extends Controller
 {
     public function index(){
         return 'hello';
     }
-    public function getpost($category=null){
-        if($category !=null ){
-            $posts= BlogPost::where("blog_category_id",$category)->get();
-            return view('blog',['posts'=>$posts]);
+    public function getpost($index=null){
+        !$index && $posts = BlogPost::all();
+        if($index){
+            $posts= BlogPost::where("blog_category_id",$index)->get();
+           
         }
-        $posts = BlogPost::all();
-
-        return view('blog',['posts'=>$posts]);
+        $category = blogCategory::all();
+        return view('blog',['posts'=>$posts,'category'=>$category,'current'=>$index]);
     }
 
     public function show(Request $request,$slug){
@@ -35,11 +36,28 @@ class BlogPostController extends Controller
         return view('blog.create');
     }
 
+    public function addCategory(Request $request){
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string',
+        ]);
+
+        if($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        $cat = new BlogCategory();
+        $cat->name = $request->name;
+        $cat->save();
+
+        return redirect()->back()->with(['success_message'=>'Category Added Successfullly']);
+    }
+
+
     public function store(Request $request){
 
         $validator = Validator::make($request->all(), [
             'title' => 'required|string',
             'content' => 'required|string',
+             'date'=>'required',
             'image'  => 'mimes:jpg,png'
         ]);
 
@@ -51,6 +69,7 @@ class BlogPostController extends Controller
         $post->title = $request->input('title');
         $post->blog_category_id = $request->input('blog_category_id');
         $post->content = $request->input('content');
+        $request->created_at = $request->date;
       
         if ($request->hasFile('image'))
         {

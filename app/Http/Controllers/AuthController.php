@@ -132,7 +132,7 @@ class AuthController extends Controller
 
         $user = User::where('activated','=',$request->input('token'))->first();
         if(!$user){
-            return redirect('signin')->with('warning_message','Failed To Verify Email');
+            return redirect('signin')->with('warning_message','Failed To Verify Email, Expired or Invalid Token');
         }
         $user->is_verified = 1;
         $user->save();
@@ -148,17 +148,17 @@ class AuthController extends Controller
     public function redirectToGoogle()
     {
         return Socialite::driver('google')->redirect();
-    }
+    } 
 
     //Google Callback
     public function handleGoogleCallback()
     {
         $user = Socialite::driver('google')->user();
 
-        $this-> _registerOrLoginUser($table);
+        $this-> _registerOrLoginUser($user);
 
         //Return to Idex after sign in
-        return redirect()->route('index');
+        return redirect('/dashboard');
     }
 
 
@@ -173,25 +173,25 @@ class AuthController extends Controller
     {
         $user = Socialite::driver('facebook')->user();
 
-        $this-> _registerOrLoginUser($table);
+        $this-> _registerOrLoginUser($user);
 
-        //Return to Idex after sign in
-        return redirect()->route('index');
+        //Return to Index after sign in
+        return redirect('/dashboard');
     }
 
     protected function _registerOrLoginUser($table)
     {
         $user = User::where('email', '=', $table->email)->first();
         if(!$table){
-            $table = new User();
-            $table->name = $table->name;
-            $table->email = $table->email;
-            $table->provider_id = $table->id;
-            $table->avatar = $table->avatar;
-            $table->save();
+            $user = new User();
+            $user->name = $table->name;
+            $user->email = $table->email;
+            $user->provider_id = $table->id;
+            $user->avatar = $table->avatar;
+            $user->save();
         }
 
-        Auth::login($table);
+        Auth::login($user);
     }
 
     
@@ -201,7 +201,7 @@ class AuthController extends Controller
         $user = User::where('id', $id)->first();
         $user->delete();
 
-        \Session::flash('Success_message', 'You Have Successfully Deleted User');
+        \Session::flash('success_message', 'You Have Successfully Deleted User');
 
         return back();
     }

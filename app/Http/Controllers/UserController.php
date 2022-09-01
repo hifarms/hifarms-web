@@ -6,6 +6,7 @@ use App\Bank;
 use App\Farm;
 use App\User;
 use App\Order;
+use App\Order_item;
 use App\Message;
 use App\Product;
 use App\Farm_return_type;
@@ -61,7 +62,8 @@ class UserController extends Controller
         $total_invest=0;
         $active_invest=$user->investments;
         foreach($active_invest as $invest){
-            if($invest->order->payment==null || boolval($invest->product_id)){
+            
+            if($invest->order->payment==null || boolval($invest->product_id) || $invest->order->payment->status_code==201 || boolval($invest->delivered) || boolval($invest->cleared_to_wallet) ){
                 continue;
             }
             $per = Farm_return_type::where('id',$invest->farm_return_type_id)->first();
@@ -87,8 +89,43 @@ class UserController extends Controller
    }
 
    public function settings(){
-  
-       return view('userSettings');
+
+        $user = auth()->user();
+        $messages = Message::where('recipient_id',$user->id)->orderBy('created_at','DESC')->get();
+        $totalProduct = Product::where('user_id',$user->id)->where('active',1)->count();
+        $userProduct = Product::where('user_id',$user->id)->where('active',1)->pluck('id');
+        $totalProductB = 0;
+        $active=0;
+        $totalSales = 0;
+        $active_invest=$user->investments;
+        foreach($active_invest as $invest){
+
+            //check if payment is success and not null
+            if($invest->order->payment==null || $invest->order->payment->status_code==201 ){
+                continue;
+            }
+            if($invest->product_id){
+                $totalProductB = $totalProductB + $invest->unit;
+                continue;
+            }
+            if(boolval($invest->delivered) || boolval($invest->cleared_to_wallet)){
+                continue;
+            }
+            $active++;
+        }
+
+        $items = Order_item::whereIn('product_id',$userProduct)->get();
+        foreach($items as $item){
+
+            //check if payment is success and not null
+            if($item->order->payment==null || $item->order->payment->status_code==201 ){
+                continue;
+            }
+            $totalSales++;
+        }
+
+
+       return view('userSettings',['messages'=>$messages,'productB'=>$totalProductB,'totalS'=>$totalSales,'active'=>$active,'totalP'=>$totalProduct]);
    }
 
    public function changePassword(Request $request){
@@ -156,7 +193,7 @@ class UserController extends Controller
             session()->flashInput($request->input());
           $investments = $investments->where('order_items.id',$request->input('search'));
          }
-         $investments = $investments->paginate(10);
+         $investments = $investments->get();
         return view('wallet',['user'=>$user,'totalspend'=>$totalspend,'investments'=>$investments]);
     }
 
@@ -241,17 +278,12 @@ class UserController extends Controller
     if ($request->hasFile('image'))
         {
             $user = Auth::user();
-            // try{
             $file  = $request->file('image');
             $path = $file->store('/images/user','public');
-            File::delete($user->avatar);
+            $user->avatar!='img/Profile.png' && File::delete($user->avatar);
             $user->avatar = 'storage/'.$path;
             $user->save();
             return response()->json(['success'=>'Profile  Updated successfully'], 200);
-            // }
-            // catch(){
-            //     return response()->json(['error'=>'Failed To Updated'], 402);
-            // }
         }
     }
 
@@ -259,10 +291,10 @@ class UserController extends Controller
 
   
    if(auth()->user()->isAdmin()){
-    $messages =Message::where('recipient_id',0)->get();
+    $messages =Message::where('recipient_id',0)->orderBy('created_at','DESC')->paginate(7);
    }
    else{
-    $messages= Message::where('recipient_id',auth()->user()->id)->get();
+    $messages= Message::where('recipient_id',auth()->user()->id)->orderBy('created_at','DESC')->paginate(7);
    }
    return response()->json(['messages'=>$messages], 200);
 }

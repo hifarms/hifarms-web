@@ -29,10 +29,10 @@
                     <p id="unit">{{ $cart->unit }}</p>
                 </div>
                 <div class="rate">
-                    <p>{{ $cart->farm->unit_price }}</p>
+                    <p>{{ number_format($cart->farm->unit_price,0,'.',',') }}</p>
                 </div>
                 <div class="amount">
-                    <p>₦ {{ $cart->farm->unit_price * $cart->unit }}</p>
+                    <p>₦ {{  number_format($cart->farm->unit_price * $cart->unit,0,'.',',') }}</p>
                 </div>
                 <div class="remove" style="color:#FF3D00;">Remove</div>
             </div>
@@ -51,10 +51,10 @@
                     <p id="unit">{{ $cart->unit }}</p>
                 </div>
                 <div class="rate">
-                    <p>{{ $cart->product->price }}</p>
+                    <p>{{ number_format($cart->product->price,0,'.',',') }}</p>
                 </div>
                 <div class="amount">
-                    <p>₦ {{ $cart->product->price * $cart->unit }}</p>
+                    <p>₦ {{ number_format($cart->product->price * $cart->unit,0,'.',',') }}</p>
                 </div>
                 <div class="remove" style="color:#FF3D00;">Remove</div>
             </div>
@@ -208,7 +208,11 @@
                     if(e.status==401){
                     alert("Login/Register To CheckOut Cart")
                     window.location.replace('/signin');
-                }
+                    }
+
+                    if(e.status==419){
+                        alert('Cart Empty, Nothing to checkout')
+                    }
 
                 }
             });

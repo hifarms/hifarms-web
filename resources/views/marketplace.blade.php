@@ -15,7 +15,7 @@
         <div class="dash-hamb-img-name">
         <img src="img/dashboard-hamburger-profile.png" alt="profile" class="profile-header ham">
         <h2>Welcome, <br>
-            Hafiz
+            {{auth()->user()->username}}
         </h2>
         </div>
         <div class="input-search ham">
@@ -30,12 +30,12 @@
             <a href="user-farms"><img src="img/livestock-dashboard.svg" alt="livestock"> <p>Manage my farm</p></a>
             <a href="farm-invest"><img src="img/invest.svg" alt="marketplace"> <p>Invest In a Project</p></a>
             <a href="investment"><img src="img/history.svg" alt="history"> <p>ROI</p></a>
-            <a href="wallet kun"><img src="img/wallet.svg" alt="wallet"> <p>Wallet</p></a>
+            <a href="wallet"><img src="img/wallet.svg" alt="wallet"> <p>Wallet</p></a>
         </div>
     </div>
     <div class="third-se-bar">
             <a href="user-settings"><img src="img/settings.png" alt="settings"> <p>Settings</p></a>
-            <a href=""><img src="img/log out.svg" alt="settings"> <p>Logout</p></a>
+            <a href="logout"><img src="img/log out.svg" alt="settings"> <p>Logout</p></a>
     </div>
     <div class="guide-dash">
         <img src="img/Notifications.png" alt="notifications" class="notifications">
@@ -264,7 +264,7 @@
 
 
     <div class="overlay"></div>
-    <form method="post" action="/add-sell-product" enctype="multipart/form-data">
+    <form method="post" action="{{route('sell-product')}}" enctype="multipart/form-data">
     <div class="admin-add-item">
         <div class="admin-add-item-container">
             <div class="close-add-item">x</div>
@@ -275,14 +275,14 @@
                     <label>Product Name</label>
                     <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
                     </div> <br>
-                    <input type="text" name="name" placeholder="Enter product name">
+                    <input type="text" name="name" placeholder="Enter product name" required>
                 </div>
                 <div class="product-category-dash">
                 <div class="tooltip-flex">
                     <label>Product Category</label>
                     <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
                     </div> <br>
-                     <select name="category_id">
+                     <select name="category_id" required>
                          @foreach($category as $cat)
                          <option value="{{$cat->id}}">{{$cat->name}}</option>
                          @endforeach
@@ -295,21 +295,21 @@
                     <label>Qty</label>
                     <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
                     </div> <br>
-                <input type="number" min='0' placeholder="Quantity" name="unit">
+                <input type="number" min='0' placeholder="Quantity" name="unit" required>
                 </div>
                  <div class="item-price">
                  <div class="tooltip-flex">
                     <label>Item Price</label>
                     <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
                     </div> <br>
-                <input type="text" placeholder="Enter item price" name="price"> 
+                <input type="text" placeholder="Enter item price" name="price" required> 
                  </div>
                  <div class="img-dash">
                  <div class="tooltip-flex">
                     <label>Image</label>
                     <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
                     </div> <br>
-                <input type="file" name="image">
+                <input type="file" name="image" required>
                  </div>
                 
             </div>
@@ -319,9 +319,8 @@
                     <label>Location</label>
                     <div class="tooltip">? <span class="tooltiptext">Input Product type</span></div>
                     </div> <br>
-                <select name="location" id="">
-                    <option value="Arkilla">Arkilla, Federal Lowcost</option>
-                </select>
+                    <input type="text" name="location" required>
+
             </div>
             @csrf
             <div class="warning-button">
@@ -375,7 +374,7 @@ clause also applies.</p>
                     url: "http://127.0.0.1:8000/user/messages",
                     method: "get",
                     success: function (data) {
-                        data.messages.forEach(message => {
+                        data.messages.data.forEach(message => {
                             $('.notification-modal').append(`
                                 <div class="notif-${message.seen==0?'1':'2'}">
                                 <p>${message.message_body}.</p>

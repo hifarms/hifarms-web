@@ -86,6 +86,17 @@
     <div class="deleted-successfully-2" style="z-index: 3000;">
         Deleted Successfully!!!
     </div>
+    @if(Session('success_message'))
+    <div class="added-successfully-blade">
+        {{Session('success_message')}}
+    </div>
+    @endif
+
+    @if(Session('warning_message'))
+    <div class="deleted-successfully-blade">
+        {{Session('warning_message')}}
+    </div>
+    @endif
     <header class="dashbrd-header">
         <div class="dashboard-header">
             <img src="../img/hamburger.svg" alt="#" id="hamburger" class="hamburger1">
@@ -187,15 +198,7 @@
                 <div class="general-ser">
                     <div class="head">General Settings</div>
                     <form class="general-settings-form">
-                        <label>User:</label>
-                        <input type="text"> <br>
-                        <label>Email:</label>
-                        <input type="text"> <br>
-                        <label>Phone Number:</label>
-                        <select>
-                            <option>+234</option>
-                        </select>
-                        <input type="text"> <br>
+                       
                         <label>Password:</label>
                         <button class="pass">Change Password</button> <br>
                         <div class="lb-auth">
@@ -373,26 +376,20 @@
             <div class="old-password-flex">
                 <label>Old Password:</label>
                 <div class="password-visible">
-                    <input type="password" style="margin-left: 15px;" class="pass-val">
+                    <input type="password" style="margin-left: 15px;" class="pass-val old">
                     <img src="../img/invisible.png" alt="" class="toggle-password">
                 </div>
             </div> <br>
             <div class="old-password-flex">
                 <label>New Password:</label>
                 <div class="password-visible">
-                    <input type="password" style="margin-left: 15px;" class="pass-val">
+                    <input type="password" style="margin-left: 15px;" class="pass-val new">
                     <img src="../img/invisible.png" alt="" class="toggle-password">
                 </div>
             </div> <br>
-            <div class="old-password-flex">
-                <label>Old Password:</label>
-                <div class="password-visible">
-                    <input type="password" style="margin-left: 15px;" class="pass-val">
-                    <img src="../img/invisible.png" alt="" class="toggle-password">
-                </div>
-            </div> <br>
+            
             <div class="button-admin-container">
-                <button class="add-item-submit admin-dash-submit"><span style="padding-left:47px ;padding-right: 46px;" class="edit-want-to-sell-span">Save</span> <img class="loader loader-edit" src="../img/loader-hifarm.gif" alt="#"> </button>
+                <button class="add-item-submit admin-dash-submit ch"><span style="padding-left:47px ;padding-right: 46px;" class="edit-want-to-sell-span">Save</span> <img class="loader loader-edit" src="../img/loader-hifarm.gif" alt="#"> </button>
             </div>
         </div>
     </div>
@@ -491,26 +488,29 @@
 
     <!--Add User to manage platform starts-->
     <div class="admin-add-item change-password admin-add-user">
+        <form action="{{route('add-user')}}" method="post">
+            @csrf
         <div class="admin-add-item-container">
             <div class="close-add-item add-user-close" style="padding-top: unset;">x</div>
             <h1 style="font-size:25px;margin-bottom: 20px;display: flex;justify-content: left;margin-top: 15px;">Add User</h1>
             <div class="old-password-flex user">
                 <label>Email:</label>
                 <div class="password-visible user val">
-                    <input type="email" class="pass-val user">
+                    <input type="email" class="pass-val user" name="email" required>
                 </div>
             </div> <br>
             <div class="old-password-flex user">
                 <label>Password:</label>
                 <div class="password-visible user">
-                    <input type="password" class="pass-val">
-                    <img src="../img/invisible.png" alt="" class="toggle-password">
+                    <input type="password" class="pass-val" name="password">
+                    <img src="../img/invisible.png" alt="" class="toggle-password" name='password' required>
                 </div>
             </div> <br>
             <div class="button-admin-container">
-                <button class="add-item-submit admin-dash-submit"><span style="padding-left:47px ;padding-right: 46px;" class="edit-want-to-add-span">Save</span> <img class="loader loader-add" src="../img/loader-hifarm.gif" alt="#"> </button>
+                <button type="submit" class="add-item-submit admin-dash-submit"><span style="padding-left:47px ;padding-right: 46px;" class="edit-want-to-add-span">Save</span> <img class="loader loader-add" src="../img/loader-hifarm.gif" alt="#"> </button>
             </div>
         </div>
+    </form>
     </div>
     <div class="overlay"></div>
     <!--Add User to manage platform ends-->
@@ -579,12 +579,35 @@
     <script src="../js/dashboardHamburger.js"></script>
     <script src="../js/adminSettings.js"></script>
     <script>
+$.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+
+$('.ch').on('click',function(e){
+      jQuery.ajax({
+              url: "http://127.0.0.1:8000/change-password",
+              method: "post",
+              data: {
+                  old:$('.old').val(),
+                  new:$('.new').val(),
+              },
+              success: function (data) {
+                alert("its going")
+                $('.added-successfully').text(data.success)
+              },
+              error: function (e) {
+                 $('.added-successfully').text(e.responseJSON.error)
+              },
+          });
+      })
         function getNotification() {
       jQuery.ajax({
               url: "http://127.0.0.1:8000/user/messages",
               method: "get",
               success: function (data) {
-                  data.messages.forEach(message => {
+                  data.messages.data.forEach(message => {
                       $('.notification-modal').append(`
                           <div class="notif-${message.seen==0?'1':'2'}">
                           <p>${message.message_body}.</p>
