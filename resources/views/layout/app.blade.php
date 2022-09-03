@@ -64,7 +64,7 @@
             <a href="/gallery">Gallery</a>
             <a href="/services">Services</a>
             <a href="/sponsors">Marketplace</a>
-            <a href="/sponsors">Contact</a>
+            <a href="/contact">Contact</a>
             <a href="/blog">Blog</a>
             @guest
             <a href="/signup">Register</a>

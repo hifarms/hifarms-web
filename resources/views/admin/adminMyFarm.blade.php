@@ -86,7 +86,7 @@
                       </div>
                  </div>
                 <div class="profile-inclusive">
-                    <img src="../img/Profile.png" alt="profile" class="profile-header">
+                    <img src="{{url(auth()->user()->avatar)}}" alt="profile" class="profile-header" style="width:50px;height:50px;border-radius:50%;">
                     <div class="my-profile-log-out">
                         <button><a href="profile">My Profile</a></button>
                         <button><a href="{{ url('logout') }}">Log Out</a></button>
@@ -236,7 +236,7 @@
 
 </div>
 </div>
-<script src="../js/livestock.js"></script>
+<script src="../js/Livestock.js"></script>
 <script src="../js/adminMyFarm.js"></script>
 <script src="../js/dashboardHamburger.js"></script>
 <script>

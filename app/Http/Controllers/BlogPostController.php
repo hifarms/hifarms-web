@@ -48,7 +48,7 @@ class BlogPostController extends Controller
         $cat->name = $request->name;
         $cat->save();
 
-        return redirect()->back()->with(['success_message'=>'Category Added Successfullly']);
+        return redirect()->back()->with(['success_message'=>'Category Added Successfully']);
     }
 
 
@@ -57,7 +57,7 @@ class BlogPostController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => 'required|string',
             'content' => 'required|string',
-             'date'=>'required',
+            'date'=>'required|date',
             'image'  => 'mimes:jpg,png'
         ]);
 
@@ -91,7 +91,7 @@ class BlogPostController extends Controller
     public function update(Request $request){
 
         $validator = Validator::make($request->all(), [
-            'id'=> 'required',
+            'id'=> 'required|numeric',
             'title' => 'required|string',
             'content' => 'required|string',
             'image'  => 'mimes:jpg,png'

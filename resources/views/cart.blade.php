@@ -91,7 +91,7 @@
                 },
                 success: function(data) {
                     getCartNum()
-                    alert("Update sucessfully");
+                    alert(data.success);
                 },
                 error: function(e) {
                     console.log(e);

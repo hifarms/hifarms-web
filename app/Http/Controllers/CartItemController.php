@@ -87,6 +87,9 @@ class CartItemController extends Controller
         }
 
             $product= Product::where('id',$request->id)->firstOrFail();
+            if($product->unit==$product->unit_sold){
+                return response()->json(['error'=>'This product has been sold out'],403);
+            }
             $cart = new Cart_item();
                 $cart = new Cart_item();
                 $cart->product_id= $request->id;
@@ -106,7 +109,11 @@ class CartItemController extends Controller
             if($Item){
                 return response()->json(['error'=>'Item is already in the cart'],403);
             }
+            
                $farm= Farm::where('id',$request->id)->firstOrFail();
+               if($farm->i_units==$farm->c_units){
+                return response()->json(['error'=>'This product has been sold out'],403);
+            }
                 $cart = new Cart_item();
                 $cart->farm_id= $request->id;
                 $cart->unit = $request->unit;
@@ -135,23 +142,24 @@ class CartItemController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        if($cartitem->product_id==null){
-             if($request->unit > $cartitem->farm->i_units){
+        if($cartitem->farm_id){
+            
+             if($request->unit > ($cartitem->farm->i_units-$cartitem->$farm->c_units)){
 
-            return response()->json(['error'=>'Unit Not Available'],400);
+            return response()->json(['success'=>'Such Number OF Unit Not Available'],200);
             }
         }
-        else{
-            if($request->unit > $cartitem->product->unit){
+        else if($cartitem->product_id){
+            if($request->unit > ($cartitem->product->unit - $cartitem->product->solt_unit)){
 
-                return response()->json(['error'=>'Unit Not Available'],400);
-                }
+                return response()->json(['success'=>'Such Number OF Unit Not Available'],200);
+            }
         }
        
 
         $cartitem->unit = $request->unit;
         $cartitem->save();
-        return response()->json(['success'=>'Item updated'],200);
+        return response()->json(['success'=>'updated Sucessfully'],200);
 
     }
 

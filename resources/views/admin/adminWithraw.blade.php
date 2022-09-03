@@ -72,9 +72,19 @@
     </div>
     @endif
 
-    @if(Session('warning_message'))
-    <div class="deleted-successfully-blade">
-        {{Session('warning_message')}}
+  @if(Session('warning_message') || $errors->any())
+    <div class="added-successfully deleted-successfully-blade">
+        <ul style="">
+            @foreach($errors->all() as $error)
+            <li>
+                {{$error}}
+            </li>
+            @endforeach
+            @if(Session('warning_message'))
+            <li>{{Session('warning_message')}}</li>
+            @endif
+        </ul>
+       
     </div>
     @endif
     <header class="dashbrd-header">
@@ -114,7 +124,7 @@
                     </div>
                 </div>
                 <div class="profile-inclusive">
-                    <img src="../../img/Profile.png" alt="profile" class="profile-header">
+                    <img src="{{url(auth()->user()->avatar)}}" style="width:50px;height:50px;border-radius:50%;" alt="profile" class="profile-header">
                     <div class="my-profile-log-out">
                         <button><a href="{{ url('admin/adminProfile') }}">My Profile</a></button>
                         <button><a href="{{ url('logout') }}">Log Out</a></button>

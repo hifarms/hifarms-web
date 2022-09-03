@@ -61,11 +61,11 @@ class ProductController extends Controller
     public function store(Request $request){
 
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'price' => 'required',
-            'unit' => 'required',
-            'location' => 'required',
-            'category_id'=>'required',
+            'name' => 'required|string',
+            'price' => 'required|numeric|min:100|Max:50000',
+            'unit' => 'required|numeric|min:1',
+            'location' => 'required|string',
+            'category_id'=>'required|numeric',
             'image'  => 'mimes:jpg,png,jpeg'
         ]);
 
@@ -93,8 +93,8 @@ class ProductController extends Controller
             $product->image = 'storage/'.$path;
         }
         $product->save();
-        $message = auth()->user()->isAdmin()? "Product Created" : "Product Created-Wait for Approval";
-        return redirect()->back()->with('success_message', 'Product Created!');
+        $message = auth()->user()->isAdmin()? "Product Created!" : "Product Created-Wait for Approval";
+        return redirect()->back()->with(['success_message'=>$message]);
     
    }
 
@@ -126,9 +126,9 @@ class ProductController extends Controller
         
 
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'price' => 'required',
-            'unit' => 'required',
+            'name' => 'required|string',
+            'price' => 'required|numeric|min:100',
+            'unit' => 'required|numeric|min:1',
             'image'  => 'mimes:jpg,png'
         ]);
 

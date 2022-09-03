@@ -88,7 +88,7 @@
                   </div>
              </div>
             <div class="profile-inclusive">
-                <img src="../img/Profile.png" alt="profile" class="profile-header">
+                <img src="{{url(auth()->user()->avatar)}}" alt="profile" class="profile-header">
                 <div class="my-profile-log-out">
                     <button><a href="adminProfile.html">My Profile</a></button>
                     <button><a href="{{ url('logout') }}">Log Out</a></button>
@@ -180,6 +180,7 @@
                     <label>Occupation</label>  <br>
                     <input type="text"    name="occupation" class="contact-input foccupation" value="{{$user->occupation}}" placeholder="Enter your occupation">
                 </div>
+              
                 <div class="category">
                     <label>State Of Origin</label> <br> 
                     <select class="this-select" name="state">
@@ -188,6 +189,15 @@
                         <option value="Zamfara">Zamfara</option>
                     </select>  
                 </div>
+
+                <div class="category">
+                    <label>Gender</label> <br> 
+                    <select class="this-select" name="gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>  
+                </div>
+                
             </div>
             <label class="admin-location">Residential Address</label> <br>
             <input type="text"  class="admin-location-input faddress" value="{{$user->address}}" name="address" placeholder="Enter residential address">

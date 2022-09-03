@@ -146,11 +146,28 @@ class UserController extends Controller
     return response()->json(['success'=>'Password changed succesfully'], 200);
 }
    public function updateProfile(Request $request){
+       
+        $validator = Validator::make($request->all(), [
+            'fullname' => 'required|string',
+            'occupation' => 'required|string',
+            'contact' => 'required|string',
+            'gender' => 'required|string',
+            'address' => 'required|string',
+            'state' => 'required|string',
+            'acc_name' => 'required|string',
+            'bank_name' => 'required|string',
+            'acc_no' => 'required|numeric',
+        ]);
+
+        if($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
        $user = auth()->user();
        $user->fullname = $request->fullname;
        $user->occupation = $request->occupation;
        $user->phone = $request->contact;
+       $user->gender = $request->gender;
        $user->address = $request->address;
        $user->state = $request->state;
        $userbank = $user->bank;
@@ -287,7 +304,7 @@ class UserController extends Controller
         }
     }
 
-   public function getMessage(Request $request){
+   public function getMessage(){
 
   
    if(auth()->user()->isAdmin()){

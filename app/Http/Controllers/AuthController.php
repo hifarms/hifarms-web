@@ -188,6 +188,8 @@ class AuthController extends Controller
             $user->email = $table->email;
             $user->provider_id = $table->id;
             $user->avatar = $table->avatar;
+            $user->active = 1;
+            $user->is_verified =1;
             $user->save();
         }
 

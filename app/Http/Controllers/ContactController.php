@@ -29,10 +29,10 @@ class ContactController extends Controller
 		 'subject'=> $request->input('subject'),
 		 'message' => $request->input('message')
          ];
-         $email = env("MAIL_USERNAME");
+         $email = env("MAIL_INFO",'info@hifarms.ng');
 
         Mail::to($email)->send(new ContactMail($contact));
-         return redirect()->back()->with('success_message', 'Message Sent Successfuly. We will get Back to you Shortly');
+         return redirect()->back()->with(['success_message' =>'Message Sent Successfuly. We will get Back to you Shortly']);
      }
  
 }

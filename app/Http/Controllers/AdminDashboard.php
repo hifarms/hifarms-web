@@ -14,7 +14,7 @@ use App\BlogPost;
 use App\Category;
 use App\withdraw;
 use App\Farm_type;
-use App\order_item;
+use App\Order_item;
 use App\blogCategory;
 use App\Product_type;
 use App\withdrawStatus;
@@ -71,7 +71,7 @@ class AdminDashboard extends Controller
         }
         $data['users'] = User::where('status', 1)->count();
         $data['products'] = Product::count();
-        $data['orders'] = order_item::count();
+        $data['orders'] = Order_item::count();
         $data['product'] = $products;
         $data['category'] = Category::get();
         $data['label'] = label::get();
@@ -108,7 +108,7 @@ class AdminDashboard extends Controller
         $totalreturn = 0;
         $totalinvest = 0;
         $active=0;
-        $activeinvest = order_item::get();
+        $activeinvest = Order_item::get();
         foreach ($activeinvest as $invest) {
             if ($invest->order->payment == null || boolval($invest->product_id)) {
                 continue;
@@ -163,10 +163,10 @@ class AdminDashboard extends Controller
     public function AdminWallet(Request $request)
     {
         if($request->input('search')){
-            $orders = order::where('id','like','%'.$request->input('search').'%')->orWhere('user_id','like','%'.$request->input('search').'%')->paginate(50);
+            $orders = Order::where('id','like','%'.$request->input('search').'%')->orWhere('user_id','like','%'.$request->input('search').'%')->paginate(50);
             session()->flashInput($request->input());
         }else{
-            $orders = order::paginate(50);
+            $orders = Order::paginate(50);
         }
         $data['ledgerbalance'] = Wallet::sum('ledger_balance');
         $data['balance'] = Wallet::sum('balance');
@@ -208,11 +208,10 @@ class AdminDashboard extends Controller
 
     public function AdminSettings()
     {
-        $data['user'] = User::where('role_id', 1)->get();
-        $data['user'] = User::where('role_id', 1)->get();
+        $data['user'] = User::where('role_id', 2)->get();
         $data['users'] = User::where('status', 1)->count();
         $data['products'] = Product::count();
-        $data['orders'] = order_item::count();
+        $data['orders'] = Order_item::count();
 
         $data['messages'] = Message::where('recipient_id',0)->orWhere('sender_id',0)->orderBy('created_at','DESC')->get();
         return view('admin.adminSettings', $data);

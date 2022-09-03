@@ -20,9 +20,6 @@ addedCart.forEach((btn)=>{{
        InvestModal.style.display = 'block';
        overlay.style.display = 'block';
        document.querySelector('.investmentSelected').value = btn.id;
-       alert(btn.id)
-
-
        let closeModal = document.querySelector('.add-user-close');
        closeModal.addEventListener('click', ()=>{
         InvestModal.style.display = 'none';
@@ -149,7 +146,7 @@ editIcon.forEach((edit) => {
         <div class="price-image-flex">
             <div class="price">
                 <label>Item Price(₦)</label> <br>
-                 <input type="text" name='unit_price' value="${Number(itemPrice.innerHTML.substring(1).replace(',',''))}" placeholder="Enter Price...">
+                 <input type="text" name='unit_price' value="${Number(itemPrice.innerHTML.substring(1).replace(/,/g,''))}" placeholder="Enter Price...">
             </div>
             <div class="image">
                 <label style="margin-left: 20px;">Image</label> <br>
