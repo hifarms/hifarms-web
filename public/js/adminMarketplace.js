@@ -197,9 +197,13 @@ editIcon.forEach((edit) => {
         </div>
     </div>
     <input type='hidden'  value="${$('meta[name="_token"]').attr('content')}" name='_token' />
-    <label class="admin-location">Location</label> <br>
-    <input type="text" name="location" value="${location.innerHTML}" required>
-     <br>
+  
+     <div class="category-percentage-flex" style="justify-content:left;">
+     <div class="category">
+         <label>Location</label> <br> 
+         <input class="category-select contact-input" name="location" value="${location.innerHTML}" placeholder="Location" required>    
+     </div>
+ </div>
     <div class="button-admin-container"  style="margin-top: 30px;">
     <button class="add-item-submit admin-dash-submit"><span style="padding-left:38px ;padding-right: 39px;" class="edit-want-to-sell-span">Update</span>  <img class="loader loader-main-edit" src="../../img/loader-hifarm.gif" alt="#"> </button>
     </div>
