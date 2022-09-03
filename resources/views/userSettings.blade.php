@@ -139,7 +139,7 @@
         </div>
         <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;margin-bottom: 10px;">
             <a href="user-settings"><img src="img/settings-clicked.png" class="current" style="margin-bottom: 30px;" alt="settings"></a>
-            <img src="img/log out.svg" alt="log-out">
+            <a href='logout'><img src="img/log out.svg" alt="log-out"></a>
         </div>
     </div>
     <div class="dashboard-container admin-setting">

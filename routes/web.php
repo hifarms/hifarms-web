@@ -203,6 +203,7 @@ Route::get('/signin',  "AuthController@signinForm")->name('signInForm');
 Route::get('/delete/{id}',  "AuthController@deleteuser")->name('deleteuser');
 
 Route::get('/single-checkout/{farm}', 'OrderController@singleCheckout')->name('single-checkout');
+
 Route::get('/paystack/callback', 'OrderController@verifyTransaction')->name('verify');
 
 Route::get('/logout', 'AuthController@logout')->name('logout');

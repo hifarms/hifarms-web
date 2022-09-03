@@ -13,10 +13,11 @@ use Illuminate\Support\Facades\Date;
 
 class WalletController extends Controller
 {   
-    public function __construct() {
-
-        $this->middlewere(['auth']);
+    public function __construct(){
+        
+        $this->middleware('auth');
     }
+
     public function MakePayment(Request $request,Order $order){
 
        $wallet = Auth::user()->wallet();

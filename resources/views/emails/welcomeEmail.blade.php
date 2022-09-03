@@ -108,7 +108,7 @@
 <!--FLOWER IMAGE-->
  
      <tr>
-        <td><img style="position: absolute;top:-75px;right:-39px;" src="{{asset('img/Flower.svg')}}" alt=""></td>
+        <td><img style="position: absolute;top:-75px;right:-39px;" src="{{asset('img/Flower 1.png')}}" alt=""></td>
      </tr>
 
 <!-- LOGO SECTION --> 
@@ -168,10 +168,11 @@
                     <td style="text-align: center;padding: 0px 20px; font-size: 15px;">
                         
                       <p style="padding: 10px;padding-bottom: 10px;font-size: 11px;"> Copyright Hi Farms 2022 • Proudly Made by Hi B Teams. Kebbi, Nigeria 🇳🇬</p>
-                      <a href="#" style="padding: 5px;"><img src="{{asset('img/email-sm-4.svg')}}" alt="SM" width="28"></a>
-                      <a href="#" style="padding: 5px;"><img src="{{asset('img/email-sm-3.svg')}}" alt="SM" width="28"></a>
-                      <a href="# "style="padding: 5px;"><img src="{{asset('img/email-sm-2.svg')}}" alt="SM" width="28"></a>
-                      <a href="# "style="padding: 5px;"><img src="{{asset('img/email-sm-1.svg')}}" alt="SM" width="28"></a>
+                      <p style="padding: 10px;padding-bottom: 10px;font-size: 11px;"> Copyright Hi Farms 2022 • Proudly Made by Hi B Teams. Kebbi, Nigeria 🇳🇬</p>
+                        <a href="https//wa.me/2348034068234" style="padding: 5px;"><img src="{{asset('img/sm-whatsapp-png.png')}}" alt="SM" width="28"></a>
+                        <a href="https//instagram.com/hifarms" style="padding: 5px;"><img src="{{asset('img/sm-insta-png.png')}}" alt="SM" width="28"></a>
+                        <a href="https//instagram.com/hifarms "style="padding: 5px;"><img src="{{asset('img/sm-fb-png.png')}}" alt="SM" width="28"></a>
+                        <a href="https//twitter.com/hifarmsng"style="padding: 5px;"><img src="{{asset('img/tweet-fb-png.png')}}" alt="SM" width="28"></a>
                       <p style="padding-left: 55px;padding-right:55px;padding-top: 10px;padding-bottom:40px;font-size: 11px;">You are receiving this message because you signed up on Hi Farms. For more information about how we 
                         process data, please see our <a href="#">Privacy Policy</a>.
                         </p> 
@@ -180,7 +181,7 @@
                 </tr>
 
                 <tr>
-                    <td><img style="position: absolute;bottom:-55px;left:-39px;" src="{{asset('img/Flower.svg')}}" alt=""></td>
+                    <td><img style="position: absolute;bottom:-55px;left:-39px;" src="{{asset('img/Flower 1.png')}}" alt=""></td>
                  </tr>
             
 

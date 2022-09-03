@@ -119,8 +119,8 @@
             <a href="wallet"><img src="img/wallet.svg" alt="wallet"></a>
         </div>
         <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;margin-bottom: 10px;">
-            <a href="adminSettings.html"><img src="img/settings.png" style="margin-bottom: 30px;" alt="settings"></a>
-            <img src="img/log out.svg" alt="log-out">
+            <a href="user-settings"><img src="img/settings.png" style="margin-bottom: 30px;" alt="settings"></a>
+            <a href='logout'><img src="img/log out.svg" alt="log-out"></a>
         </div>
     </div> 
     <div class="dashboard-container profile">
@@ -192,6 +192,13 @@
                         <option value="sokoto">Sokoto</option>
                         <option value="kebbi">Kebbi</option>
                         <option id="zamfara">Zamfara</option>
+                    </select>  
+                </div>
+                <div class="category">
+                    <label>Gender</label> <br> 
+                    <select class="this-select" name="gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
                     </select>  
                 </div>
             </div>
