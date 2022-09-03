@@ -119,7 +119,7 @@
             <div class="sponsors-flex dashboard">
                 <p class="filter-heading dashboard">FILTER BY PRICE</p>
                 <p class="showing-result">Showing {{$products->currentPage()}}-{{$products->lastPage()}}</p>
-                <select class="sponsor-option dashboard sort" name="sort">
+                <select id="senior-sort" class="sponsor-option dashboard sort" name="sort">
                     <option value="all">Sort By</option>
                     <option value="new">Newest</option>
                     <option value="old">Oldest</option>
@@ -132,7 +132,7 @@
                         
                     <div class="sponsors-flex dashboard show-this">
                         <p class="showing-result">Showing {{$products->currentPage()}}-{{$products->lastPage()}}</p>
-                        <select class="sponsor-option dashboard " name="">
+                        <select class="sponsor-option dashboard mobile-sort" name="">
                             <option value="all">Sort By</option>
                             <option value="new">Newest</option>
                             <option value="old">Oldest</option>
@@ -145,9 +145,9 @@
                                 <h2 class="filter-mobile">Filter By Price</h2>
                                  <div class="line" style="height: 1px;width: 100%;background: #c4c4c4;margin-bottom: 10px;"></div>
                                 </div>
-                                <input type="range" min="0" max="50000" step="0.1" value="{{old('range')==null? 0 :old('range')}}" name='range' class="rate">
+                                <input type="range" min="0" max="50000" step="0.1" value="{{old('range')==null? 0 :old('range')}}" name='range' class="rate price-selector">
                                 <input type="submit" class="button-filter" value='FILTER'>
-                                <p class="filter-price">Price: ₦ 0 - ₦ 50,000</p>
+                                <p class="filter-price">Price: ₦ 0 - ₦ 50,000 ~ (₦<span id="price-value">{{number_format(old('range'),0,'.',',')}}</span>)</p>
                                  <h3 class="sponsor-categories mobile-hide">CATEGORIES</h3>
                                  <div class="line hide" style="height: 1px;width: 100%;background: #c4c4c4;margin-bottom: 10px;"></div>
                             </div>
@@ -303,6 +303,15 @@ getCartNum()
                 e.preventDefault()
         $('form')[0].submit()
     })
+    $('.mobile-sort').on('change',(e)=>{
+    $('#senior-sort').val(e.target.value) ;
+    $('form')[0].submit()
+    })
+    $('.price-selector').on('change',(e)=>{
+       value = Number(e.target.value)
+        $('#price-value').text(value.toLocaleString())
+})
+    
     function getNotification() {
             jQuery.ajax({
                     url: "http://127.0.0.1:8000/user/messages",

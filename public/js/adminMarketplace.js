@@ -189,7 +189,7 @@ editIcon.forEach((edit) => {
     <div class="price-image-flex">
         <div class="price">
             <label>Item Price(₦)</label> <br>
-             <input type="text" name="price" value="${Number(itemPrice.innerHTML.substring(1).replace(',',''))}" placeholder="Enter Price...">
+             <input type="text" name="price" value="${Number(itemPrice.innerHTML.substring(1).replace(/,/g,''))}" placeholder="Enter Price...">
         </div>
         <div class="image">
             <label style="margin-left: 20px;">Image</label> <br>

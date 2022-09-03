@@ -12,7 +12,11 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Date;
 
 class WalletController extends Controller
-{
+{   
+    public function __construct() {
+
+        $this->middlewere(['auth']);
+    }
     public function MakePayment(Request $request,Order $order){
 
        $wallet = Auth::user()->wallet();
@@ -56,6 +60,15 @@ class WalletController extends Controller
     }
 
     public function moveToWallet(Request $request){
+        $validator = Validator::make($request->all(), [
+            'id' => 'required',
+          
+        ]);
+
+        if($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
         $id = $request->id;
         $user = auth()->user();
         $investment = Order_item::where('id',$id)->firstOrFail();
@@ -80,7 +93,15 @@ class WalletController extends Controller
     }
 
     public function terminateToWallet(Request $request){
+        $validator = Validator::make($request->all(), [
+            'id' => 'required',
+          
+        ]);
 
+        if($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        
         $id = $request->id;
         $user = auth()->user();
         $investment = Order_item::where('id',$id)->firstOrFail();

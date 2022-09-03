@@ -13,8 +13,8 @@ class MessageController extends Controller
         $user = Auth::user();
         // Validation
         $this->validate($request, [
-            'recipient_id' => 'required',
-            'message_body' => 'required',
+            'recipient_id' => 'required|numeric',
+            'message_body' => 'required|string',
         ]);
 
         // Save Record into Message DB

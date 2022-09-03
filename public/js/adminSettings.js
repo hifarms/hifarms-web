@@ -139,7 +139,6 @@ const editLoader = document.querySelector('.edit-want-to-sell-span');
 
 const addEditLoader = (e) => {
     e.preventDefault();
-
     let submitButton = document.querySelector('.edit-want-to-sell-span');
     let loader = document.querySelector('.loader-edit');
 
@@ -273,7 +272,6 @@ editUserSetting.forEach((editUser) => {
     const addUserBtn = document.querySelector('.edit-want-to-add-span');
 
     const addUserLoader = (e) => {
-        e.preventDefault();
 
         let submitButton = document.querySelector('.edit-want-to-add-span');
         let loader = document.querySelector('.loader-add');
@@ -305,7 +303,7 @@ editUserSetting.forEach((editUser) => {
         }, 1500)
     }
 
-    addUserBtn.addEventListener('click', addUserLoader);
+    //addUserBtn.addEventListener('click', addUserLoader);
 
 
     /*const editUserBtn = document.querySelector('.edit-want-to-edit-span');

@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Farm;
+use App\label;
 use App\Order;
 use App\Message;
 use App\Payment;
 use App\Cart_item;
 use App\Order_item;
 use Illuminate\Http\Request;
-use PhpParser\Node\Stmt\Label;
 use App\Mail\Order as OrderEmail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -18,11 +18,21 @@ class OrderController extends Controller
 {    
     public function __construct(){
         
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['checkout']);
     }
 
     public function checkout(Request $request){
 
+        if(!auth()->check()){
+          return response()->json(['warning_message'=>'Login To CheckOut'], 401);
+
+        }
+        $tempid=$request->cookie('carts');
+        $cartitems = Cart_item::where('temp_id',$tempid)->get();
+
+        if(count($cartitems)==0){
+          return response()->json(['warning_message'=>'Empty Cart'], 419);
+        }
 
         $order = new Order();
         $order->user_id = Auth::user()->id;
@@ -30,8 +40,8 @@ class OrderController extends Controller
 
         $total =0;
         //
-        $tempid=$request->cookie('carts');
-        $cartitems = Cart_item::where('temp_id',$tempid)->get();
+      
+       
         foreach($cartitems as $item){
             $orderitem = new Order_item();
             $orderitem->order_id = $order->id;

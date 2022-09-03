@@ -34,11 +34,11 @@ class FarmController extends Controller
     public function create(Request $request){
         
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'category_id' => 'required',
-            'i_units' => 'required',
-            'unit_price' => 'required',
-            'location' => 'required',
+            'name' => 'required|string',
+            'category_id' => 'required|numeric',
+            'i_units' => 'required|numeric|min:1',
+            'unit_price' => 'required|numeric|min:100',
+            'location' => 'required|string',
             'image'  => 'mimes:jpg,png'
         ]);
 
@@ -89,9 +89,9 @@ class FarmController extends Controller
        public function update(Request $request,$id){
 
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'i_units' => 'required',
-            'unit_price' => 'required',
+            'name' => 'required|string',
+            'i_units' => 'required|numeric|min:1',
+            'unit_price' => 'required|numeric|min:100',
             'image'  => 'mimes:jpg,png'
         ]);
 
@@ -120,10 +120,18 @@ class FarmController extends Controller
             
             $farm->save();
 
-            return redirect()->back()->with(['success_message'=>'Farm Updated successfully']);
+            return redirect()->back()->with(['success_message'=>'Investment Updated successfully']);
         }
 
        public function costBenefitProfit(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'type' => 'required|numeric',
+        ]);
+
+        if($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
             if($request->type=="1"){
             $chicks=costInput::where('cost_farm_id',$request->type)->where('variable_name','chicks')->first();

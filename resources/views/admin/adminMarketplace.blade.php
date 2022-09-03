@@ -89,9 +89,19 @@
     </div>
     @endif
 
-    @if(Session('warning_message'))
+    @if(Session('warning_message') || $errors->any())
     <div class="added-successfully deleted-successfully-blade">
-        {{Session('warning_message')}}
+        <ul style="">
+            @foreach($errors->all() as $error)
+            <li>
+                {{$error}}
+            </li>
+            @endforeach
+            @if(Session('warning_message'))
+            <li>{{Session('warning_message')}}</li>
+            @endif
+        </ul>
+       
     </div>
     @endif
     <header class="dashbrd-header">
@@ -133,7 +143,7 @@
                     </div>
                 </div>
                 <div class="profile-inclusive">
-                    <img src="../img/Profile.png" alt="profile" class="profile-header">
+                    <img src="{{url(auth()->user()->avatar)}}" alt="profile" class="profile-header" style="width:50px;height:50px;border-radius:50%;">
                     <div class="my-profile-log-out">
                         <button><a href="{{ url('admin/adminProfile') }}">My Profile</a></button>
                         <button><a href="{{ url('logout') }}">Log Out</a></button>
@@ -168,8 +178,8 @@
             <div class="sponsors-flex dashboard">
                 <p class="filter-heading dashboard">FILTER BY PRICE</p>
                 <p class="showing-result">Showing {{$products->currentPage()}}-{{$products->lastPage()}}</p>
-                <select class="sponsor-option dashboard sort" name="sort">
-                    <option value="all">Sort By</option>
+                <select id="senior-sort" class="sponsor-option dashboard sort" name="sort">
+                    <option value="all" selected>Sort By</option>
                     <option value="new">Newest</option>
                     <option value="old">Oldest</option>
                 </select>
@@ -178,8 +188,8 @@
                <div class="sponsor-option">
                     <div class="sponsor-checkbox dashboard">
                         <div class="sponsors-flex dashboard show-this">
-                            <p class="showing-result">Showing 1-42</p>
-                            <select class="sponsor-option dashboard">
+                            <p class="showing-result">Showing {{$products->currentPage()}}-{{$products->lastPage()}}</p>
+                            <select class="sponsor-option dashboard mobile-sort">
                                 <option value="all">Sort By</option>
                                 <option value="new">Newest</option>
                                 <option value="old">Oldest</option>
@@ -191,9 +201,9 @@
                                     <h2 class="filter-mobile">Filter By Price</h2>
                                     <div class="line" style="height: 1px;width: 100%;background: #c4c4c4;margin-bottom: 10px;"></div>
                                 </div>
-                                <input type="range" min="0" max="50000" step="0.1" value="{{old('range')==null? 0 :old('range')}}" name='range' class="rate">
+                                <input type="range" class="price-selector rate" min="0" max="50000" step="0.1" value="{{old('range')==null? 0 :old('range')}}" name='range' >
                                 <input type="submit" class="button-filter" value='FILTER'>
-                                <p class="filter-price">Price: ₦ 0 - ₦ 50,000</p>
+                                <p class="filter-price">Price: ₦ 0 - ₦ 50,000 ~ (₦<span id="price-value">{{number_format(old('range'),0,'.',',')}}</span>)</p>
                                 <h3 class="sponsor-categories mobile-hide">CATEGORIES</h3>
                         </div>
                         <div class="line mobile-hide" style="height: 1px;width: 300px;background: #c4c4c4;margin-bottom: 10px;"></div>
@@ -541,10 +551,19 @@
 
     $('.sort').on('change',()=>{
     $('form')[0].submit()
+    })
+
+    $('.mobile-sort').on('change',(e)=>{
+    $('#senior-sort').val(e.target.value);
+    $('form')[0].submit()
+    })
+$('.price-selector').on('change',(e)=>{
+       value = Number(e.target.value)
+        $('#price-value').text(value.toLocaleString())
 })
 </script>
 <script>
-    function getNotification() {
+   function getNotification() {
   jQuery.ajax({
           url: "http://127.0.0.1:8000/user/messages",
           method: "get",

@@ -243,7 +243,7 @@
 
 </div>
 </div>
-<script src="js/livestock.js"></script>
+<script src="js/Livestock.js"></script>
 <script>
     $.ajaxSetup({
       headers: {
