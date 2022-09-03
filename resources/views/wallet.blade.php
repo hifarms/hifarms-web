@@ -140,7 +140,7 @@
                 <form action="">
                     <div class="input-search">
                         <input type="text" placeholder="search for Transaction" value="{{old('search')}}" name="search">
-                        <button type="submit" class="btn"><img src="../img/Vector (8).png" alt="search-icon"></button>
+                        <button type="submit" class="btn remove-boring-border"><img src="../img/Vector (8).png" alt="search-icon"></button>
                     </div>
                     </form>
             </div>

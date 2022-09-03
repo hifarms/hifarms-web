@@ -50,24 +50,14 @@
         Added Successfully!!
     </div>
     @if(Session('success_message'))
-    <div class="added-successfully-blade">
+    <div class="added-successfully added-successfully-blade">
         {{Session('success_message')}}
     </div>
     @endif
 
-  @if(Session('warning_message') || $errors->any())
-    <div class="added-successfully deleted-successfully-blade">
-        <ul style="">
-            @foreach($errors->all() as $error)
-            <li>
-                {{$error}}
-            </li>
-            @endforeach
-            @if(Session('warning_message'))
-            <li>{{Session('warning_message')}}</li>
-            @endif
-        </ul>
-       
+    @if(Session('warning_message'))
+    <div class="deleted-successfully-blade">
+        {{Session('warning_message')}}
     </div>
     @endif
     <header class="dashbrd-header">

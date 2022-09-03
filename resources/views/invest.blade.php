@@ -225,10 +225,10 @@
                      <input type="text" value="LSF/01/001/001" disabled>
                  </div>
              </div> --}}
-            <div class="type-date">
+            <div class="type-date" style='display:unset'>
                 <div class="invest-type">
                     <label style="font-weight:unset;">Investment Type:</label> <br>
-                    <select name="investment-type" class="finvestment">
+                    <select name="investment-type" class="finvestment" style='width:100%'>
                     @forEach($invests as $invest){
                         <option value="{{$invest->id}}">{{$invest->name}}</option>
                     }

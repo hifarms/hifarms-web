@@ -138,7 +138,7 @@ editIcon.forEach((edit) => {
                     <div class="category" style="width:55%; margin-right: 20px;">
                         ${category.innerHTML}
                     </div>
-                    <div class="price">
+                    <div class="price quant-invest">
                             <label>Quantity</label> <br>
                             <input type="number" placeholder="Quantity" value="${qs}" name="i_units">
                         </div>

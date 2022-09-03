@@ -153,21 +153,21 @@
         </div>
     </header>
     <div class="side-bar">
-        <div class="first-side-bar">
+    <div class="first-side-bar">
             <img src="../img/side-bar.svg" alt="side-bar">
         </div>
         <div class="second-side-bar admin">
-            <a href="{{ url('admin/adminDashboard')}}"><img src="../img/Dashboard (1).svg" alt="dashboard"></a>
+    <a href="{{ url('admin/adminDashboard')}}"><img src="../img/Dashboard (1).svg" alt="dashboard"></a>
             <a href="{{ url('admin/adminMarketplace')}}"><img src="../img/marketplaces-current.svg" alt="marketplace" class="current"></a>
-            <a href="{{ url('admin/adminMyFarm')}}"><img src="../img/livestock-dashboard.svg" alt="livestock"></a>
-            <a href="{{ url('admin/adminInvest')}}"><img src="../img/invest.svg" alt="marketplace"></a>
-            <a href="{{ url('admin/adminInvestReturns')}}"> <img src="../img/history.svg" alt="history"> </a>
-            <a href="{{ url('admin/adminWithraw')}}"><img src="../img/wallet.svg" alt="wallet"> </a>
-            <a href="{{ url('admin/adminBlog') }}"><img src="../img/blog-pin.png" alt="blog-pin"> </a>
+             <a href="{{ url('admin/adminMyFarm')}}"><img src="../img/livestock-dashboard.svg" alt="livestock"></a>
+             <a href="{{ url('admin/adminInvest')}}"><img src="../img/invest.svg" alt="marketplace"></a>
+             <a href="{{ url('admin/adminInvestReturns')}}"> <img src="../img/history.svg" alt="history"> </a>
+             <a href="{{ url('admin/adminWithraw')}}"><img src="../img/wallet.svg" alt="wallet"> </a>
+             <a href="{{ url('admin/adminBlog') }}"><img src="../img/blog-pin.png" alt="blog-pin> </a>
         </div>
-        <div class=" third-side-bar" style="display: flex;flex-direction: column; align-items: center;">
-                <a href="{{ url('admin/adminSettings')}}"><img src="../img/settings.png" alt="settings"></a>
-                <a href="{{ url('logout') }}"><img src="../img/log out.svg" alt="log-out"></a>
+        <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;">
+            <a href="{{ url('admin/adminSettings')}}"><img src="../img/settings.png" alt="settings"></a>
+            <img src="../img/log out.svg" alt="log-out">
         </div>
     </div>
     <div class="dashboard-container admn-mrkt">
@@ -312,7 +312,7 @@
                     </div>
                     <div class="percentage">
                         <label>Percentage Sold(%)</label> <br>
-                        <select name="unit">
+                        <select class='unit-select' name="unit"style='width:146%'>
                             <option selected disabled>Choose Percentage</option>
                             <option value="10">10%</option>
                             <option value="40">40%</option>
@@ -350,7 +350,7 @@
     <div class="edit-add-item"></div>
 
     <!---Edit item modal for i want to sell starts-->
-    <div class="edit-add-item edit-item-i-want-to-sell">
+    <div class="edit-add-item edit-item-i-want-to-sell" style='top:50%!important;'>
         <div class="admin-add-item-container">
             <div class="close-edit-item close-edit-want-to-sell">x</div>
             <h1>Edit Item</h1>
@@ -514,7 +514,7 @@
                             24hrs. And further details will be notified to you. A re-negotiation
                             clause also applies.</p>
                     </div>
-                    <button style="height: 42px;" class="add-item-submit"><span style="padding-left:47px ;padding-right: 47px;" class="add-admin-dash">Add</span> <img class="loader loader-add" src="../img/loader-hifarm.gif" alt="#"> </button>
+                    <button style="height: 42px;margin-left:20px" class="add-item-submit"><span style="padding-left:47px ;padding-right: 47px;" class="add-admin-dash">Add</span> <img class="loader loader-add" src="../img/loader-hifarm.gif" alt="#"> </button>
                 </div>
             </div>
     </form>

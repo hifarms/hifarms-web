@@ -10,7 +10,7 @@
     <script src="{{asset('js/jquery.min.js')}}"></script>
     <title>Admin Blog</title>
 </head>
-<body>
+<body style='background:#F0F3F4;'>
        <!--Dashboard Hamburger Starts-->
        <div class="dashboard-hamburger">
         <div class="dash-hamb-img-name">
@@ -137,7 +137,7 @@
         </div>
     </header>
     <div class="side-bar">
-        <div class="first-side-bar">
+    <div class="first-side-bar">
             <img src="../img/side-bar.svg" alt="side-bar">
         </div>
         <div class="second-side-bar admin" style="margin-top: 27px;">
@@ -151,7 +151,7 @@
         </div>
         <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;margin-bottom: 10px;">
             <a href="{{ url('admin/adminSettings')}}"><img src="../img/settings.png" style="margin-bottom: 30px;" alt="settings"></a>
-            <a href="{{ url('logout') }}"><img src="../img/log out.svg" alt="log-out"></a>
+            <img src="../img/log out.svg" alt="log-out">
         </div>
     </div>
     <div class="dashboard-container blog">
@@ -170,13 +170,14 @@
                 <form action="">
                     <div class="input-search">
                         <input type="text" placeholder="search for Blog" value="{{old('search')}}" name="search">
-                        <button type="submit" class="btn"><img src="../img/Vector (8).png" alt="search-icon"></button>
+                        <button type="submit" class="btn remove-boring-border"><img src="../img/Vector (8).png" alt="search-icon"></button>
                     </div>
                 </form>
             </div>
 
               
             </div>
+            
 
             <div class="drafted-blogs" style="display: none;">
 

@@ -134,21 +134,21 @@
         </div>
     </header>
     <div class="side-bar">
-        <div class="first-side-bar">
+    <div class="first-side-bar">
             <img src="../img/side-bar.svg" alt="side-bar">
         </div>
         <div class="second-side-bar admin">
-            <a href="{{ url('admin/adminDashboard')}}"> <img src="../../img/Dashboard (1).svg" alt="dashboard"></a>
-            <a href="{{ url('admin/adminMarketplace')}}"><img src="../../img/marketplace.svg" alt="marketplace"></a>
-            <a href="{{ url('admin/adminMyFarm')}}"><img src="../../img/livestock-dashboard.svg" alt="livestock"></a>
-            <a href="{{ url('admin/adminInvest')}}"><img src="../../img/invest.svg" alt="marketplace"></a>
-            <a href="{{ url('admin/adminInvestReturns')}}"><img src="../../img/history.svg" alt="history"></a>
-            <a href="{{ url('admin/adminWithraw')}}"><img src="../../img/wallet-active.svg" class="current" alt="wallet"></a>
-            <a href="{{ url('admin/adminBlog') }}"><img src="../../img/blog-pin.png" alt="blog-pin"> </a>
+            <a href="{{ url('admin/adminDashboard')}}"> <img src="../img/Dashboard (1).svg" alt="dashboard"></a>
+            <a href="{{ url('admin/adminMarketplace')}}"><img src="../img/marketplace.svg" alt="marketplace"></a>
+            <a href="{{ url('admin/adminMyFarm')}}"><img src="../img/livestock-dashboard.svg" alt="livestock"></a>
+            <a href="{{ url('admin/adminInvest')}}"><img src="../img/invest.svg" alt="marketplace"></a>
+            <a href="{{ url('admin/adminInvestReturns')}}"><img src="../img/history.svg" alt="history"></a>
+            <a href="{{ url('admin/adminWithraw')}}"><img src="../IMG/wallet-active.svg" class="current" alt="wallet"></a>
+            <a href="{{ url('admin/adminBlog') }}"><img src="../img/blog-pin.png" alt="blog-pin> </a>
         </div>
-        <div class=" third-side-bar" style="display: flex;flex-direction: column; align-items: center;margin-bottom: 0px;">
-            <a href="{{ url('admin/adminSettings')}}"><img src="../../img/settings.png" alt="settings"></a>
-            <a href="{{ url('logout') }}"><img src="../../img/log out.svg" alt="log-out"></a>
+        <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;margin-bottom: 0px;">
+         <a href="{{ url('admin/adminSettings')}}"><img src="../img/settings.png" alt="settings"></a>
+            <img src="../img/log out.svg" alt="log-out">
         </div>
     </div>
     <div class="dashboard-container sponsor mrkt-plc">
@@ -181,7 +181,7 @@
                 <form action="">
                     <div class="input-search">
                         <input type="text" placeholder="search for withdraw by WID/UID" value="{{old('search')}}" name="search">
-                        <button type="submit" class="btn"><img src="../img/Vector (8).png" alt="search-icon"></button>
+                        <button type="submit" class="btn remove-boring-border"><img src="../img/Vector (8).png" alt="search-icon"></button>
                     </div>
                 </form>
             </div>
