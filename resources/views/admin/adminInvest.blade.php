@@ -275,7 +275,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="price">
+                        <div class="price quant-invest">
                             <label>Quantity</label> <br>
                             <input type="number" placeholder="Quantity" name="i_units" required>
                         </div>

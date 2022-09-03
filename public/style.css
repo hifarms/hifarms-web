@@ -14,6 +14,16 @@
 }
 
 
+.quant-invest input{
+    width: 140%;
+    padding: 10px;
+    border: 1px solid #8bc53e;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+
 .remove-boring-border{
   border: none;
   background: white;
@@ -1467,7 +1477,7 @@ header{
 }
 
 .signup-footer{
-   margin-top: 50px;
+  
    background-color: #1f3233;
 }
 
@@ -3194,11 +3204,7 @@ header{
 
 .blog-container .blog-grid{
    margin-bottom: 30px;
-}
-
-.farm-location{
-  margin-bottom: -55px;
-}
+} 
 
 .farm-location img{
   width: 100%;
@@ -3685,7 +3691,7 @@ width: 338px;
 }
 
 .signup-footer.contact{
-  margin-top: 20;
+  margin-top: unset;
 }
 
 .edit-icon{
@@ -7154,6 +7160,18 @@ table, td, th {
     .side-bar{
        width: 6.5vw;
     }
+    .add-category.invst {
+       margin-top: unset!important;
+       margin-bottom: unset!important;
+       display: unset!important;
+       justify-content: unset!important;
+    }
+    .unit-select{
+      width: 100%!important;
+    }
+    .quant-invest input{
+      width: 100%;
+    }
     .header-icons{
       width: 60%;
    }
@@ -7276,7 +7294,7 @@ table, td, th {
     margin-right: 20px;
   }
   .dashboard-container h1 {
-    padding-top: 0px;
+    padding-top: 25px;
   }
   .published-draft-trash-search .first{
     margin-left: 70px;
@@ -7296,6 +7314,9 @@ table, td, th {
 .edit-prof{
    height: 500px!important;
    overflow-y: auto;
+}
+.quant-invest input{
+  width: 100%;
 }
 .sponsor-data{
   grid-template-columns: 1fr 1fr!important;
@@ -8329,9 +8350,6 @@ table, td, th {
   }
   .signup-footer{
     margin-top: 20;
-  }
-  .farm-location{
-    margin-bottom: -15px;
   }
   .blog-container .blog-grid {
     grid-template-columns: 1fr;
@@ -9441,6 +9459,9 @@ font-size: 20px;
   .showcase-home-image .image-container img{
     width: 160px;
   }
+  .quant-invest input{
+    width: 100%;
+  }
   .showcase-home-image .image-container{
     left: 285px;
   }
@@ -9652,6 +9673,9 @@ font-size: 20px;
   }
   .showcase-home-image{
     height: 300px;
+  }
+  .quant-invest input{
+    width: 100%;
   }
   #right-icon{
     display: none;

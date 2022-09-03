@@ -36,7 +36,7 @@
    </div>
 
    
-   <div class="our-partners powered">
+   <div class="our-partners powered" style='margin-bottom:40px'>
     <h1>POWERED BY</h1>
     <div class="partners-container" data-aos="fade-up">
         <img src="img/PB 1.png" alt="providus-bank">

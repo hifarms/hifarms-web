@@ -302,7 +302,7 @@
                     </div>
                     <div class="percentage">
                         <label>Percentage Sold(%)</label> <br>
-                        <select name="unit">
+                        <select class='unit-select' name="unit"style='width:146%'>
                             <option selected disabled>Choose Percentage</option>
                             <option value="10">10%</option>
                             <option value="40">40%</option>
@@ -340,7 +340,7 @@
     <div class="edit-add-item"></div>
 
     <!---Edit item modal for i want to sell starts-->
-    <div class="edit-add-item edit-item-i-want-to-sell">
+    <div class="edit-add-item edit-item-i-want-to-sell" style='top:50%!important;'>
         <div class="admin-add-item-container">
             <div class="close-edit-item close-edit-want-to-sell">x</div>
             <h1>Edit Item</h1>
@@ -504,7 +504,7 @@
                             24hrs. And further details will be notified to you. A re-negotiation
                             clause also applies.</p>
                     </div>
-                    <button style="height: 42px;" class="add-item-submit"><span style="padding-left:47px ;padding-right: 47px;" class="add-admin-dash">Add</span> <img class="loader loader-add" src="../img/loader-hifarm.gif" alt="#"> </button>
+                    <button style="height: 42px;margin-left:20px" class="add-item-submit"><span style="padding-left:47px ;padding-right: 47px;" class="add-admin-dash">Add</span> <img class="loader loader-add" src="../img/loader-hifarm.gif" alt="#"> </button>
                 </div>
             </div>
     </form>

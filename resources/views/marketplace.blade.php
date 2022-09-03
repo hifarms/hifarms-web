@@ -50,13 +50,13 @@
         Added Successfully!!
     </div>
     @if(Session('success_message'))
-    <div class="added-successfully-blade">
+    <div class="added-successfully added-successfully-blade">
         {{Session('success_message')}}
     </div>
     @endif
 
     @if(Session('warning_message'))
-    <div class="deleted-successfully-blade">
+    <div class="error-successfully deleted-successfully-blade">
         {{Session('warning_message')}}
     </div>
     @endif
