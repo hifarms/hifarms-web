@@ -161,18 +161,18 @@
              <table id="datatables" >
               <thead>
                <tr>
-                <th style="padding-top:10px;padding-bottom:10px;padding-left:20px;padding-right:20px;">S/N</th>
-                <th style="padding-top:5px;padding-bottom:5px;padding-left:10px;padding-right:10px;">Investment ID</th>
-                <th style="padding-top:5px;padding-bottom:5px;padding-left:10px;padding-right:10px;">Investment Type</th>
-                <th style="padding-top:10px;padding-bottom:10px;padding-left:0px;padding-right:0px;">Date</th>
-                <th style="padding-top:10px;padding-bottom:10px;padding-left:20px;padding-right:20px;">Amount Invested (₦)</th>
-                <th style="padding-top:5px;padding-bottom:5px;padding-left:10px;padding-right:10px;">ROI (%)</th>
-                <th style="padding-top:10px;padding-bottom:10px;padding-left:20px;padding-right:20px;">Annual Return <br> 
+                <th class="all" style="padding-top:10px;padding-bottom:10px;padding-left:20px;padding-right:20px;">S/N</th>
+                <th class="all" style="padding-top:5px;padding-bottom:5px;padding-left:10px;padding-right:10px;">Investment ID</th>
+                <th class="all" style="padding-top:5px;padding-bottom:5px;padding-left:10px;padding-right:10px;">Investment Type</th>
+                <th class="all" style="padding-top:10px;padding-bottom:10px;padding-left:0px;padding-right:0px;">Date</th>
+                <th class="all" style="padding-top:10px;padding-bottom:10px;padding-left:20px;padding-right:20px;">Amount Invested (₦)</th>
+                <th class="all" style="padding-top:5px;padding-bottom:5px;padding-left:10px;padding-right:10px;">ROI (%)</th>
+                <th class="all" style="padding-top:10px;padding-bottom:10px;padding-left:20px;padding-right:20px;">Annual Return <br> 
                  on Investment (₦)</th>
                 <br>(₦)</th>
-                <th style="padding-top:10px;padding-bottom:10px;padding-left:10px;padding-right:10px;">Total (₦)</th>
-                <th style="padding-top:10px;padding-bottom:10px;padding-left:10px;padding-right:10px;">Status</th>
-                <th style="padding-top:10px;padding-bottom:10px;padding-left:10px;padding-right:10px;">Action</th>
+                <th class="all" style="padding-top:10px;padding-bottom:10px;padding-left:10px;padding-right:10px;">Total (₦)</th>
+                <th class="all" style="padding-top:10px;padding-bottom:10px;padding-left:10px;padding-right:10px;">Status</th>
+                <th class="all" style="padding-top:10px;padding-bottom:10px;padding-left:10px;padding-right:10px;">Action</th>
 
               </tr>
               @php($counter=0)
