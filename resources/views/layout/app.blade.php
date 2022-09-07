@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @yield('title')
+    <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" type="image/x-icon">
     <link rel="stylesheet" href="{{asset('style.css')}}">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.0/dist/aos.css">
     <meta name="_token" content="{{ csrf_token() }}" />
     <script src="{{asset('js/jquery.min.js')}}"></script>
-    <title>Home</title>
+
+
 </head>
 <body>
 
@@ -50,8 +53,9 @@
                 </div>
                 <div class="cart-whatsapp">
                     <a href='{{url('/cart')}}'><img src="{{asset('img/Group 51.png')}}" alt="cart" class="cart"></a>
-                       <img src="{{asset('img/Group 47@2x.png')}}" alt="call" class="call">
+                    <a href='https://wa.me/2348034068234'>  <img src="{{asset('img/Group 47@2x.png')}}" alt="call" class="call"></a>
                        <span class="cart-counter"></span>
+                       
                 </div>
             </div>
         </header>
@@ -65,7 +69,7 @@
             <a href="/services">Services</a>
             <a href="/sponsors">Marketplace</a>
             <a href="/contact">Contact</a>
-            <a href="/blog">Blog</a>
+            <a href="/blog/category">Blog</a>
             @guest
             <a href="/signup">Register</a>
             <a href="/signin">Login</a>
@@ -99,27 +103,28 @@
             <img src={{asset("img/logo.png")}} alt="logo" width="75">
             <p>We are industry leading organic farm delivering the best products that boost your daily life energy and potential.</p>
              <div class="footer-social">
-                 <a href="#"><img src={{asset("img/whatsapp-footer.svg")}} alt="whatsapp" width="20"></a>
-                 <a href="#"><img src={{asset("img/ig.svg")}} alt="instagram" width="20"></a>
-                 <a href="#"><img src={{asset("img/twitter-footer.png")}} alt="twitter" width="20"></a>
-                 <a href="#"><img src={{asset("img/fb-footer.png")}} alt="facebook" width="20"></a>
+                 <a href="https://wa.me/2348034068234"><img src={{asset("img/whatsapp-footer.svg")}} alt="whatsapp" width="20"></a>
+                 <a href="https://instagram.com/hifarms"><img src={{asset("img/ig.svg")}} alt="instagram" width="20"></a>
+                 <a href="https://twitter.com/hifarmsng?t=2qfY4No5MSE8HXX0pBJ59g&s=09"><img src={{asset("img/twitter-footer.png")}} alt="twitter" width="20"></a>
+                 <a href="https://web.facebook.com/profile.php?id=1000685658021"><img src={{asset("img/fb-footer.png")}} alt="facebook" width="20"></a>
              </div>
            </div>
         <div class="footer-links">
             <p>Links</p>
             <ul>
-                <li>Home</li>
-                <li>About</li>
-                <li>Services</li>
-                <li>Blog</li>
-                <li>Contact</li>
+                <li><a href="{{url('/')}}">Home</a></li>
+                <li><a href="{{url('about')}}">About</a></li>
+                <li><a href="{{url('services')}}">Services</a></li>
+                <li><a href="{{url('blog/category')}}">Blog</a></li>
+                <li><a href="{{url('contact')}}">Contact</a></li>
+                <li><a href="{{url('terms-and-conditions')}}">T&C</a></li>
             </ul>
          </div>
          <div class="footer-address">
              <p class="address-head">Corporate Headquarters</p>
              <p class="address">Block 22, Mahe Gora Plaza, No. 2A Birnin Kebbi/Argungu Expressway, Birnin Kebbi, KebbI State.</p>
              <p>08034068234</p>
-             <p>hifarmsltd@gmail.com</p>
+             <p>info@hifarms.ng</p>
          </div>
          <div class="footer-newsletter about-page">
              <p class="newsletter-head">Newsletter</p>

@@ -4,7 +4,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE-edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Order summary</title>
+<title>Order summary</title>    <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" type="image/x-icon">
+
+
 <style type="text/css">
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&family=Roboto:ital,wght@1,300&display=swap');
@@ -246,10 +248,10 @@
                     <td style="text-align: center;padding: 0px 20px; font-size: 15px;">
                         
                         <p style="padding: 10px;padding-bottom: 10px;font-size: 11px;"> Copyright Hi Farms 2022 • Proudly Made by Hi B Teams. Kebbi, Nigeria 🇳🇬</p>
-                        <a href="https//wa.me/2348034068234" style="padding: 5px;"><img src="{{asset('img/sm-whatsapp-png.png')}}" alt="SM" width="28"></a>
-                        <a href="https//instagram.com/hifarms" style="padding: 5px;"><img src="{{asset('img/sm-insta-png.png')}}" alt="SM" width="28"></a>
-                        <a href="https//instagram.com/hifarms "style="padding: 5px;"><img src="{{asset('img/sm-fb-png.png')}}" alt="SM" width="28"></a>
-                        <a href="https//twitter.com/hifarmsng"style="padding: 5px;"><img src="{{asset('img/tweet-fb-png.png')}}" alt="SM" width="28"></a>
+                        <a href="https://wa.me/2348034068234" style="padding: 5px;"><img src="{{asset('img/sm-whatsapp-png.png')}}" alt="SM" width="28"></a>
+                        <a href="https://instagram.com/hifarms" style="padding: 5px;"><img src="{{asset('img/sm-insta-png.png')}}" alt="SM" width="28"></a>
+                        <a href="https://instagram.com/hifarms "style="padding: 5px;"><img src="{{asset('img/sm-fb-png.png')}}" alt="SM" width="28"></a>
+                        <a href="https://twitter.com/hifarmsng?t=2qfY4No5MSE8HXX0pBJ59g&s=09"style="padding: 5px;"><img src="{{asset('img/tweet-fb-png.png')}}" alt="SM" width="28"></a>
                         <p style="padding-left: 55px;padding-right:55px;padding-top: 10px;padding-bottom:40px;font-size: 11px;">You are receiving this message because you signed up on Hi Farms. For more information about how we 
                           process data, please see our <a href="#">Privacy Policy</a>.
                           </p> 

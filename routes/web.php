@@ -1,5 +1,6 @@
 <?php
 
+use App\BlogPost;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FarmInvestment;
@@ -23,7 +24,8 @@ use App\Http\Controllers\ResetPasswordController;
 
 //Static Page
 Route::get('/', function () {
-    return view('index');
+    $posts= BlogPost::latest()->paginate(3);
+    return view('index',['posts'=>$posts]);
 });
 
 Route::get('/services', function () {
@@ -48,7 +50,9 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return view('contact');
 });
-
+Route::get('/terms-and-conditions', function () {
+    return view('terms');
+});
 
 Route::post('/send-phase', 'ContactController@sendPhrase')->name('contact');
 
@@ -168,7 +172,7 @@ Route::group(['middleware' => 'auth.admin', 'prefix' => 'admin', 'before' => 'ad
 
     Route::post('/post-category', 'CategoryController@create')->name('postcategory');
 
-    Route::post('/post-label', 'CategoryController@createlabel')->name('postlabel');
+    Route::post('/post-label', 'CategoryController@createlabel')->name('postlabel');                       
 
     Route::post('/post-blog', 'BlogPostController@store')->name('postblog');
 
@@ -178,8 +182,9 @@ Route::group(['middleware' => 'auth.admin', 'prefix' => 'admin', 'before' => 'ad
 
     Route::post('/withdrawal-request', 'WalletController@withdrawRequest')->name('adminwithdraw');
 
-    Route::post('/update-profile-pic', 'UserController@changeProfilePic')->name('change-profile')
-    ;
+    Route::post('/update-profile-pic', 'UserController@changeProfilePic')->name('change-profile');
+    Route::get('/activate-user/{id}', 'UserController@activateUser')->name('activateUser');
+
     Route::post('/add-new-user', 'AdminDashboard@addUser')->name('add-user');
 
     Route::post('/update-profile', 'UserController@updateProfile')->name('updateprofile');
@@ -219,4 +224,4 @@ Route::get('signin/google/callback', [App\Http\Controllers\AuthController::class
 
 //facebook Login
 Route::get('signin/facebook', [App\Http\Controllers\AuthController::class, 'redirectToFacebook'])->name('signin.facebook');
-Route::get('signin/facebook/callback', [App\Http\Controllers\AuthController::class, 'handleFacebokCallback']);
+Route::get('signin/facebook/callback', [App\Http\Controllers\AuthController::class, 'handleFacebookCallback']);

@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@section('title')
+<title>Hifarms | Verify</title>
+@endsection
+
 @section('content')
  <div>
      {{$msg}}

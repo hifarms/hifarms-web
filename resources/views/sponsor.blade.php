@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@section('title')
+<title>Hifarms | Marketplace</title>
+@endsection
+
 @section('content')                                                
   <div class="showcase-img sponsor">
     <div class="showcase-content">

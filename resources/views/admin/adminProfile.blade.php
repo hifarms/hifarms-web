@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="../style.css">
     <meta name="_token" content="{{ csrf_token() }}" />
     <script src="{{asset('js/jquery.min.js')}}"></script>
-    <title>Profile</title>
+    <title>Profile</title>    <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" type="image/x-icon">
+
+
 </head>
 <body style='background:#F0F3F4;'>
          <!--Dashboard Hamburger Starts-->
@@ -45,9 +47,27 @@
           </div>
         <!--Dashboard Hamburger Ends-->
     <!--Dashboard Hamburger Ends-->
-<div class="added-successfully">
-        Profile Updated!!
+    @if(Session('success_message'))
+    <div class="added-successfully added-successfully-blade">
+        {{Session('success_message')}}
     </div>
+    @endif
+
+    @if(Session('warning_message') || $errors->any())
+    <div class="added-successfully deleted-successfully-blade">
+        <ul style="">
+            @foreach($errors->all() as $error)
+            <li>
+                {{$error}}
+            </li>
+            @endforeach
+            @if(Session('warning_message'))
+            <li>{{Session('warning_message')}}</li>
+            @endif
+        </ul>
+       
+    </div>
+    @endif
     <header class="dashbrd-header">
       <div class="dashboard-header">
       <img src="../img/hamburger.svg" alt="#" id="hamburger" class="hamburger1">
@@ -181,15 +201,7 @@
                     <input type="text"    name="occupation" class="contact-input foccupation" value="{{$user->occupation}}" placeholder="Enter your occupation">
                 </div>
               
-                <div class="category">
-                    <label>State Of Origin</label> <br> 
-                    <select class="this-select" name="state">
-                        <option value="Sokoto">Sokoto</option>
-                        <option value="Kebbi">Kebbi</option>
-                        <option value="Zamfara">Zamfara</option>
-                    </select>  
-                </div>
-
+        
                 <div class="category">
                     <label>Gender</label> <br> 
                     <select class="this-select" name="gender">
@@ -199,6 +211,11 @@
                 </div>
                 
             </div>
+            <label class="admin-location">State</label>  <br>
+            <input type="text"    name="state" class="admin-location-input faddress" value="{{$user->state}}" placeholder="Enter your state">
+        
+        <br>
+        <br>
             <label class="admin-location">Residential Address</label> <br>
             <input type="text"  class="admin-location-input faddress" value="{{$user->address}}" name="address" placeholder="Enter residential address">
              <br>

@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@section('title')
+<title>Hifarms | Blog section</title>
+@endsection
+
 @section('content')
   <!--Blog Page starts here-->
    <div class="showcase-img blog">
@@ -34,7 +38,7 @@
            <h4>{{$post->blog_category->name}} <span style="font-weight: 300;">• {{ \Carbon\Carbon::parse($post->created_at)->isoFormat('MMM Do YYYY')}}
         </span></h4>
            <a href="{{url('blog/'.$post->slug)}}"><h1>{{$post->title}}.</h1></a>
-           <p><pre style="">{{ Str::limit($post->content,300) }}</pre> <a href="{{url('blog/'.$post->slug)}}" style="color: rgb(44, 44, 189)">Read more</a></p>
+           <p>{{ Str::limit($post->content,300) }}<a href="{{url('blog/'.$post->slug)}}" style="color: rgb(44, 44, 189)">Read more</a></p>
        </div>
        <img src="{{url($post->image_cover)}}" alt="">
     </div>

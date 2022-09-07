@@ -151,7 +151,7 @@ const addEditLoader = (e) => {
     setTimeout(() => {
         let addItemModal = document.querySelector('.admin-add-item');
         let overlayEffect = document.querySelector('.overlay');
-        let addedClass = document.querySelector('.added-successfully');
+        //et addedClass = document.querySelector('.added-successfully');
         let submitButton = document.querySelector('.edit-want-to-sell-span');
         let loader = document.querySelector('.loader-edit');
 
@@ -159,11 +159,11 @@ const addEditLoader = (e) => {
         loader.style.display = 'none';
         overlayEffect.style.display = 'none';
         addItemModal.style.display = 'none';
-        addedClass.style.display = 'block';
+        //addedClass.style.display = 'block';
 
         setTimeout(() => {
             let addedClass = document.querySelector('.added-successfully');
-            addedClass.style.display = 'none'
+           // addedClass.style.display = 'none'
         }, 2500)
 
     }, 1500)
@@ -471,8 +471,8 @@ allDelete.forEach((btn) => {
     btn.addEventListener('click', (e) => {
         e.preventDefault();
 
-        let deleteModal = document.querySelector('.btn-delete');
-        let overlay = document.querySelector('.overlay');
+        let deleteModal = e.target.parentElement.parentElement.querySelector('.btn-delete');
+        let overlay = e.target.parentElement.parentElement.querySelector('.overlay');
 
         deleteModal.style.display = 'block';
         overlay.style.display = 'block';
@@ -480,13 +480,13 @@ allDelete.forEach((btn) => {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
 
-        let closeModal = document.querySelector('.btn-delete-modal');
+        let closeModal = e.target.parentElement.parentElement.querySelector('.btn-delete-modal');
         closeModal.addEventListener('click', () => {
             deleteModal.style.display = 'none';
             overlay.style.display = 'none';
         })
 
-        let nocloseModal = document.querySelector('.no-delete-modal-btn');
+        let nocloseModal = e.target.parentElement.parentElement.querySelector('.no-delete-modal-btn');
         nocloseModal.addEventListener('click', () => {
             deleteModal.style.display = 'none';
             overlay.style.display = 'none';

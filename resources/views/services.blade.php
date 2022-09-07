@@ -1,4 +1,7 @@
 @extends('layout.app')
+@section('title')
+<title>Hifarms | Services</title>
+@endsection
 
 @section('content')
   <!--Services Page starts here-->

@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="../table.css">
     <meta name="_token" content="{{ csrf_token() }}" />
     <script src="{{asset('js/jquery.min.js')}}"></script>
-    <title>Admin Blog</title>
+    <title>Admin Blog</title>    <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" type="image/x-icon">
+
+
 </head>
 <body style='background:#F0F3F4;'>
        <!--Dashboard Hamburger Starts-->

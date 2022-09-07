@@ -58,7 +58,7 @@ class AuthController extends Controller
             'fullname' => 'required',
             'username' => 'required|unique:users',
             'email' => 'required|unique:users|email',
-            'password' => 'required|confirmed|min:4',
+            'password' => 'required|confirmed|min:8',
         ]);
 
         $link = Str::random(30);

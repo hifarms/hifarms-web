@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="../style.css">
     <meta name="_token" content="{{ csrf_token() }}" />
     <script src="{{asset('js/jquery.min.js')}}"></script>
-    <title>Admin Withdrawal Page</title>
+    <title>Admin Withdrawal Page</title>    <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" type="image/x-icon">
+
+
 </head>
 
 <body>

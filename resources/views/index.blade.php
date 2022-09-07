@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@section('title')
+<title>Hifarms | Home</title>
+@endsection
+
 @section('content')
   <!--Home Page starts here-->
   <div class="whole-cont">
@@ -70,8 +74,8 @@
                 </div>
             </div>
                 <div class="button-container"  data-aos="zoom-out">
-                    <button class="sb-2">Read More</button>
-                    <button class="sb-3">Read More</button>
+                    <button class="sb-2"><a href="/about">Read More</a> </button>
+                    <button class="sb-3"><a href="/about">Read More</a> </button>
                 </div>          
             </div>
         </div>
@@ -101,7 +105,7 @@
                    <p>Vegetables from FreshDirect. Our farms deliver to us daily, ensuring you only eat the best of what's in season</p>
                 </div>
             </div>
-            <button>View More</button>
+            <button><a href="/services">View More</a> </button>
         </div>
     </div>
     <div class="special-offers" data-aos="fade-left">
@@ -148,7 +152,7 @@
             <div class="quality-service-content" data-aos="fade-left">
                 <h1>Providing Quality Services And Products</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada scelerisque ipsum, et cursus magna Donec mollis efficitur mauris, vehicula convallis metus tincidunt sit amet. Aenean magna sapien, semper ac rutrum a mass.</p>
-                <button>Read More</button>
+                <button><a href="/services">Read More</a> </button>
             </div>
         </div>
     </div>
@@ -193,31 +197,19 @@
         <h1>Latest News</h1>
         <div class="blog-container" data-aos="fade-down">
             <div class="blog-grid">
+                @foreach($posts as $post)
                 <div class="grid-blog">
-                    <img src="img/unsplash_0ZX8_HDWHN4.png" alt="blog-img">
-                    <h1>Best Way To Do Eco Agriculture</h1>
+                    <img src="{{asset($post->image_cover)}}" alt="blog-img">
+                    <h1><a href="{{url('blog/'.$post->slug)}}">{{$post->title}}</a></h1>
                     <div class="author-comment">
-                        <p>Mubi -</p>
-                        <p>123 comments</p>
+                        <p>Null -</p>
+                        <p>0 comments</p>
                     </div>
                 </div>
+                @endforeach
      
-                <div class="grid-blog">
-                 <img src="img/unsplash_KEKVOJt7lOY.png" alt="blog-img">
-                 <h1>Best Way To Do Eco Agriculture</h1>
-                 <div class="author-comment">
-                     <p>Mubi -</p>
-                     <p>123 comments</p>
-                 </div>
-             </div>
+                
      
-             <div class="grid-blog">
-                 <img src="img/unsplash_auijD19Byq8.png" alt="blog-img">
-                 <h1>Best Way To Do Eco Agriculture</h1>
-                 <div class="author-comment">
-                     <p>Mubi -</p>
-                     <p>123 comments</p>
-                 </div>
              </div>
             </div>
         </div>

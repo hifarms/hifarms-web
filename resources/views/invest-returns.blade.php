@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="table.css">
     <script src="{{asset('js/jquery.min.js')}}"></script>
-    <title>Investment</title>
+    <title>Investment</title>    <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" type="image/x-icon">
+
+
    
 </head>
 <body>

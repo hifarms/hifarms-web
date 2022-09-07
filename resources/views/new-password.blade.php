@@ -1,4 +1,7 @@
 @extends('layout.app')
+@section('title')
+<title>Hifarms | New Password</title>
+@endsection
 
 @section('content')
   <!--Registration form starts here-->

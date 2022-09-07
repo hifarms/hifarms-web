@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="../style.css">
     <meta name="_token" content="{{ csrf_token() }}" />
     <script src="{{asset('js/jquery.min.js')}}"></script>
-    <title>Admin Invest</title>
+    <title>Admin Invest</title>    <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" type="image/x-icon">
+
+
 </head>
 
 <body style='background:#F0F3F4;'>
@@ -86,9 +88,19 @@
     </div>
     @endif
 
-    @if(Session('warning_message'))
-    <div class="deleted-successfully deleted-successfully-blade">
-        {{Session('warning_message')}}
+    @if(Session('warning_message') || $errors->any())
+    <div class="added-successfully deleted-successfully-blade">
+        <ul style="">
+            @foreach($errors->all() as $error)
+            <li>
+                {{$error}}
+            </li>
+            @endforeach
+            @if(Session('warning_message'))
+            <li>{{Session('warning_message')}}</li>
+            @endif
+        </ul>
+       
     </div>
     @endif
     <header class="dashbrd-header">

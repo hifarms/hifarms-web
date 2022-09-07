@@ -6,14 +6,15 @@ use App\Bank;
 use App\Farm;
 use App\User;
 use App\Order;
-use App\Order_item;
 use App\Message;
 use App\Product;
+use App\Order_item;
 use App\Farm_return_type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -314,5 +315,19 @@ class UserController extends Controller
     $messages= Message::where('recipient_id',auth()->user()->id)->orderBy('created_at','DESC')->paginate(7);
    }
    return response()->json(['messages'=>$messages], 200);
-}
+ }
+
+    public function activateUser(Request $request,$id){
+        $user = User::where('id',$id)->firstOrFail();
+        
+        if($user->status){
+            $user->status = 0;
+            $user->save();
+            return redirect()->back()->with(['success_message'=>'User DeActivated']);
+        }
+        $user->status = 1;
+        $user->save();
+        return redirect()->back()->with(['success_message'=>'User Activation is successfully']);
+
+    }
 }

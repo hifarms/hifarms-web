@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@section('title')
+<title>Hifarms | Signin</title>
+@endsection
+
 @section('content')
   <!--Registration form starts here-->
   <div class="container">

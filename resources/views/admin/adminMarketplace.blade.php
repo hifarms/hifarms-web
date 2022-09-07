@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="../style.css">
     <meta name="_token" content="{{ csrf_token() }}" />
     <script src="{{asset('js/jquery.min.js')}}"></script>
-    <title> Admin Marketplace</title>
+    <title> Admin Marketplace</title>    <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" type="image/x-icon">
+
+
 </head>
 
 <body style='background:#F0F3F4;'>

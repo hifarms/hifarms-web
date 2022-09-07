@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@section('title')
+<title>Hifarms | Product</title>
+@endsection
+
 @section('content')
   <!--Single sponsors Page starts here-->
   <div class="showcase-img sponsor">
