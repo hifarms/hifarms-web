@@ -287,7 +287,7 @@ eyeIcon.forEach((eye)=>{
     eye.addEventListener('click', (e)=>{
         e.preventDefault();
         jQuery.ajax({
-          url: "http://127.0.0.1:8000/admin/bank-details/"+eye.id,
+          url: "https://hifarms.ng/admin/bank-details/"+eye.id,
           method: "get",
           success: function ({data}) {
            document.querySelector('.acc-num').value=data.bank_acc_no;
@@ -323,7 +323,7 @@ $('.w-option').on('change',(e)=>{
 <script>
     function getNotification() {
   jQuery.ajax({
-          url: "http://127.0.0.1:8000/user/messages",
+          url: "https://hifarms.ng/user/messages",
           method: "get",
           success: function (data) {
               data.messages.data.forEach(message => {

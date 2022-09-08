@@ -66,7 +66,7 @@
   }
 });
 jQuery.ajax({
-                url: "http://127.0.0.1:8000/check-in-cart/"+$('.farmid')[0].id,
+                url: "https://hifarms.ng/check-in-cart/"+$('.farmid')[0].id,
                 method: "get",
                 success: function (data) {
                     if(data.status){
@@ -84,7 +84,7 @@ jQuery.ajax({
 $('.add-to-cart-button').on('click',()=>{
         // add your logic before ajax
         jQuery.ajax({
-                    url: "http://127.0.0.1:8000/addcart/investment",
+                    url: "https://hifarms.ng/addcart/investment",
                     method: "post",
                     data: {
                         id:$('.farmid')[0].id,

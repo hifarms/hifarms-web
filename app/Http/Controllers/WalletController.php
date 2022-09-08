@@ -10,6 +10,7 @@ use App\WalletTransaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\Validator;
 
 class WalletController extends Controller
 {   

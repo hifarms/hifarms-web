@@ -156,7 +156,7 @@
 
    $('.purchaseBtn').on('click',function(){
        jQuery.ajax({
-               url: "http://127.0.0.1:8000/addcart/product",
+               url: "https://hifarms.ng/addcart/product",
                method: "post",
                data: {
                    id:this.id,

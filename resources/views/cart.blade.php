@@ -88,7 +88,7 @@
         function update(id, qauntity) {
             console.log(qauntity);
             jQuery.ajax({
-                url: `http://127.0.0.1:8000/cart/${id}`,
+                url: `https://hifarms.ng/cart/${id}`,
                 method: "put",
                 data: {
                     unit: qauntity
@@ -106,7 +106,7 @@
 
         function remove(id, cart) {
             jQuery.ajax({
-                url: `http://127.0.0.1:8000/cart/${id}`,
+                url: `https://hifarms.ng/cart/${id}`,
                 method: "delete",
                 success: function(data) {
                     cart.remove();
@@ -167,7 +167,7 @@
         checkoutBtn.addEventListener('click', () => {
 
             jQuery.ajax({
-                    url: `http://127.0.0.1:8000/checkout`,
+                    url: `https://hifarms.ng/checkout`,
                     method: "get",
                     success: function(data) {
                         console.log(data)

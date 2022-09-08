@@ -117,7 +117,9 @@ class AdminDashboard extends Controller
             $rtn = ($data['per']->percentage / 100)*$invest->amount;
             $totalinvest = $totalinvest + $invest->amount;
             $totalreturn = $totalreturn + $rtn;
+            if($invest->delivered==0){
             $active++;
+            }
         }
         return view('admin.adminInvestReturns', ['totalinvest'=>$totalinvest,'totalreturn'=>$totalreturn,'active'=>$active, 'activeinvest'=>$activeinvest]);
     }

@@ -64,14 +64,16 @@ class UserController extends Controller
         $active_invest=$user->investments;
         foreach($active_invest as $invest){
             
-            if($invest->order->payment==null || boolval($invest->product_id) || $invest->order->payment->status_code==201 || boolval($invest->delivered) || boolval($invest->cleared_to_wallet) ){
+            if ($invest->order->payment == null || boolval($invest->product_id)) {
                 continue;
             }
-            $per = Farm_return_type::where('id',$invest->farm_return_type_id)->first();
-            $rtn=($per->percentage/100)*$invest->amount;
-            $total_invest=$total_invest+$invest->amount;
-            $total_return=$total_return+$rtn;
+            $data['per'] = Farm_return_type::where('id',$invest->farm_return_type_id)->first();
+            $rtn = ($data['per']->percentage / 100)*$invest->amount;
+            $total_invest = $total_invest + $invest->amount;
+            $total_return = $total_return + $rtn;
+            if($invest->delivered==0){
             $active++;
+            }
         }
         return view('invest-returns',['user'=>$user,'total_invest'=>$total_invest,'total_return'=>$total_return,'active'=>$active]);
 

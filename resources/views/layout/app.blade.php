@@ -154,7 +154,7 @@
  <script>
      function getCartNum(){
     jQuery.ajax({
-                url: "http://127.0.0.1:8000/cartnum",
+                url: "https://hifarms.ng/cartnum",
                 method: "get",
                 success: function (data) {
                 const cartCounter = document.querySelector('.cart-counter');
@@ -169,7 +169,7 @@
 }
 function getNotification() {
             jQuery.ajax({
-                    url: "http://127.0.0.1:8000/user/messages",
+                    url: "https://hifarms.ng/user/messages",
                     method: "get",
                     success: function (data) {
                         data.messages.data.forEach(message => {
@@ -190,6 +190,6 @@ getCartNum()
  </script>
  <script src="https://unpkg.com/aos@2.3.0/dist/aos.js"></script>
  <script src="js/animate.js"></script>
- <script src="http://127.0.0.1:8000/js/hamburger.js"></script>
+ <script src="https://hifarms.ng/js/hamburger.js"></script>
 </body>
 </html>

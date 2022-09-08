@@ -239,7 +239,7 @@
 
         function getNotification() {
       jQuery.ajax({
-              url: "http://127.0.0.1:8000/user/messages",
+              url: "https://hifarms.ng/user/messages",
               method: "get",
               success: function (data) {
                   data.messages.data.forEach(message => {
@@ -271,7 +271,7 @@ imageFile.addEventListener("change", function(){
   let formdata = new FormData()
     formdata.append('image',imageFile.files[0])
     jQuery.ajax({
-      url: `http://127.0.0.1:8000/update-profile-pic`,
+      url: `https://hifarms.ng/update-profile-pic`,
       method: 'post',
       cache:false,
       contentType: false,

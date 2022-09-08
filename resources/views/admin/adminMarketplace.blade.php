@@ -567,7 +567,7 @@ $('.price-selector').on('change',(e)=>{
 <script>
    function getNotification() {
   jQuery.ajax({
-          url: "http://127.0.0.1:8000/user/messages",
+          url: "https://hifarms.ng/user/messages",
           method: "get",
           success: function (data) {
               data.messages.data.forEach(message => {

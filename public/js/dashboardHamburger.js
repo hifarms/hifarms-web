@@ -8,7 +8,7 @@ const hamburger = document.querySelector('.hamburger1');
         hamburgerModal.style.left = '0%';
         hamburgerModal.style.transition = '0.6s all ease-in-out'
         setTimeout(()=>{
-            hamburger.src = 'http://127.0.0.1:8000/img/cancel-hamburger.svg'
+            hamburger.src = 'https://hifarms.ng/img/cancel-hamburger.svg'
         }, 400)
         openHamburger =  false
     } else{
@@ -16,7 +16,7 @@ const hamburger = document.querySelector('.hamburger1');
         hamburgerModal.style.left = '-115%';
         hamburgerModal.style.transition = '0.6s all ease-in-out'
         setTimeout(()=>{
-            hamburger.src = 'http://127.0.0.1:8000/img/hamburger.svg'
+            hamburger.src = 'https://hifarms.ng/img/hamburger.svg'
         }, 400)
         openHamburger = true;
     }

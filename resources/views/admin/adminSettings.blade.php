@@ -590,7 +590,7 @@ $.ajaxSetup({
 
 $('.ch').on('click',function(e){
       jQuery.ajax({
-              url: "http://127.0.0.1:8000/change-password",
+              url: "https://hifarms.ng/change-password",
               method: "post",
               data: {
                   old:$('.old').val(),
@@ -607,7 +607,7 @@ $('.ch').on('click',function(e){
       })
         function getNotification() {
       jQuery.ajax({
-              url: "http://127.0.0.1:8000/user/messages",
+              url: "https://hifarms.ng/user/messages",
               method: "get",
               success: function (data) {
                   data.messages.data.forEach(message => {

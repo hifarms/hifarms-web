@@ -52,7 +52,7 @@
         <div class="dashboard-header">
         <img src="img/hamburger.svg" alt="#" id="hamburger" class="hamburger1">
             <div class="header-img">
-                <a href='http://127.0.0.1:8000'><img src="img/logo.png" class="logo1x" alt="logo" width="113"><a>
+                <a href='https://hifarms.ng'><img src="img/logo.png" class="logo1x" alt="logo" width="113"><a>
             </div>
             <div class="header-icons">
             <div class="cart-whatsapp cart-whatsapp-dash">
@@ -258,7 +258,7 @@
     <script>
             function getCartNum(){
     jQuery.ajax({
-                url: "http://127.0.0.1:8000/cartnum",
+                url: "https://hifarms.ng/cartnum",
                 method: "get",
                 success: function (data) {
                 const cartCounter = document.querySelector('.cart-counter');
@@ -286,7 +286,7 @@ getCartNum()
          });
         $('.investmentBtn').on('click',function(){
             jQuery.ajax({
-                    url: "http://127.0.0.1:8000/addcart/investment",
+                    url: "https://hifarms.ng/addcart/investment",
                     method: "post",
                     data: {
                         id:$('.farmselected').val(),
@@ -316,7 +316,7 @@ getCartNum()
     
     function getNotification() {
             jQuery.ajax({
-                    url: "http://127.0.0.1:8000/user/messages",
+                    url: "https://hifarms.ng/user/messages",
                     method: "get",
                     success: function (data) {
                         data.messages.data.forEach(message => {

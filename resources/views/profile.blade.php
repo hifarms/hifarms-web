@@ -70,7 +70,7 @@
       <div class="dashboard-header">
       <img src="img/hamburger.svg" alt="#" id="hamburger" class="hamburger1">
         <div class="header-img">
-            <a href='http://127.0.0.1:8000'><img src="img/logo.png" class="logo1x" alt="logo" width="113"><a>
+            <a href='https://hifarms.ng'><img src="img/logo.png" class="logo1x" alt="logo" width="113"><a>
         </div>
         <div class="header-icons">
         <div class="cart-whatsapp cart-whatsapp-dash">
@@ -163,7 +163,7 @@
         <div class="admin-add-item-container">
             <div class="close-add-item">x</div>
             <h1 style="text-transform: unset;margin-bottom: 10px;">Edit Profile</h1>
-			<form method="POST" action="{{ url('admin/update-profile') }}">
+			<form method="POST" action="{{ url('update-profile') }}">
                 @csrf
             <label class="class-name" name="fullname">Full Name</label> <br>
             <input type="text"placeholder="Enter your name" class="name ffullname" name="fullname" value="{{$user->fullname}}">
@@ -237,7 +237,7 @@
 
        $('.update-profile').on('click',function(){
            jQuery.ajax({
-                   url: "http://127.0.0.1:8000/update-profile",
+                   url: "https://hifarms.ng/update-profile",
                    method: "post",
                    data: {
                        fullname:$('.ffullname').val(),
@@ -273,7 +273,7 @@ imageFile.addEventListener("change", function(){
   let formdata = new FormData()
     formdata.append('image',imageFile.files[0])
     jQuery.ajax({
-      url: `http://127.0.0.1:8000/update-profile-pic`,
+      url: `https://hifarms.ng/update-profile-pic`,
       method: 'post',
       cache:false,
       contentType: false,
@@ -290,7 +290,7 @@ imageFile.addEventListener("change", function(){
 })
 function getNotification() {
             jQuery.ajax({
-                    url: "http://127.0.0.1:8000/user/messages",
+                    url: "https://hifarms.ng/user/messages",
                     method: "get",
                     success: function (data) {
                         data.messages.data.forEach(message => {
