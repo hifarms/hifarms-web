@@ -5,18 +5,18 @@ const hamburger = document.querySelector('.hamburger');
     if(openHamburger){
         let hamburgerModal = document.querySelector('.hamburger-modal');
         hamburgerModal.style.top = '7%';
-        hamburgerModal.style.transition = '0.6s all ease-in-out'
+        hamburgerModal.style.transition = '1.5s all ease-in-out'
         setTimeout(()=>{
             hamburger.src = 'img/cancel-hamburger.svg'
-        }, 400)
+        }, 900)
         openHamburger =  false
     } else{
         let hamburgerModal = document.querySelector('.hamburger-modal');
-        hamburgerModal.style.top = '-150%';
-        hamburgerModal.style.transition = '0.6s all ease-in-out'
+        hamburgerModal.style.top = '-1250%';
+        hamburgerModal.style.transition = '1.5s all ease-in-out'
         setTimeout(()=>{
             hamburger.src = 'img/hamburger.svg'
-        }, 400)
+        }, 500)
         openHamburger = true;
     }
  })

@@ -16,7 +16,7 @@
         <header>
             <div class="header-container">
                 <img src="{{asset('img/hamburger.svg')}}" alt="hamburger" class="hamburger">
-               <a href="/"><img src="{{asset('img/logo.png')}}" alt="logo" class="logo4x"></a>
+               <a href="/"><img src="{{asset('img/logo.png')}}" alt="logo" class="logo4x logo-happy"></a>
                 <div class="services">
                     <a href="{{url('/')}}"><span>Home</span></a>
                     <div class="gug">
@@ -77,7 +77,7 @@
             <a href="/dashboard">Dashboard</a>
             @endif
             @endauth
-            <div class="svg-flex" style="margin-bottom: 8px">
+            <div class="svg-flex hamburger-flex" style="margin-bottom: 8px">
                 <svg width="103" height="42" viewBox="0 0 103 42" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                <rect width="103" height="42" rx="5" fill="url(#pattern0)"/>
                 <defs>

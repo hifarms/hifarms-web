@@ -192,7 +192,7 @@
         <p data-aos="fade-up">BLOG</p>
         <h1>Latest News</h1>
         <div class="blog-container" data-aos="fade-down">
-            <div class="blog-grid">
+            <div class="blog-grid home-blog-grid">
                 <div class="grid-blog">
                     <img src="img/unsplash_0ZX8_HDWHN4.png" alt="blog-img">
                     <h1>Best Way To Do Eco Agriculture</h1>
