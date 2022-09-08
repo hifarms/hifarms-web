@@ -177,6 +177,7 @@
                 <th class="all" style="padding-top:10px;padding-bottom:10px;padding-left:10px;padding-right:10px;">Action</th>
 
               </tr>
+              </thead>
               @php($counter=0)
               @foreach(auth()->user()->investments as $investment)
               @if($investment->order->payment && $investment->order->payment->status_code==200 && boolval($investment->farm_id))
@@ -222,7 +223,7 @@
         let  id= this.id;
         alert(id)
          $.ajax({
-                 url: `http://127.0.0.1:8000/move-to-wallet`,
+                 url: `https://hifarms.ng/move-to-wallet`,
                  method: "get",
                  data:{
                      id
@@ -240,13 +241,14 @@
         let  id= this.id;
         alert(id)
          $.ajax({
-                 url: `http://127.0.0.1:8000/terminate-to-wallet`,
+                 url: `https://hifarms.ng/terminate-to-wallet`,
                  method: "get",
                  data:{
                      id:id
                  },
                  success: function (data) {
                   alert(data.success)
+                  
                  },
                  error: function (e) {
                     console.log(e);
@@ -255,7 +257,7 @@
          })
          function getNotification() {
             jQuery.ajax({
-                    url: "http://127.0.0.1:8000/user/messages",
+                    url: "https://hifarms.ng/user/messages",
                     method: "get",
                     success: function (data) {
                         data.messages.data.forEach(message => {
