@@ -196,7 +196,7 @@
         <p data-aos="fade-up">BLOG</p>
         <h1>Latest News</h1>
         <div class="blog-container" data-aos="fade-down">
-            <div class="blog-grid">
+            <div class="blog-grid home-blog-grid">
                 @foreach($posts as $post)
                 <div class="grid-blog">
                     <img src="{{asset($post->image_cover)}}" alt="blog-img">

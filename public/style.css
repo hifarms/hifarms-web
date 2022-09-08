@@ -7158,6 +7158,126 @@ table, td, th {
 /*sponsors page starts */
 /*sponsort page end*/
 @media (min-width: 700px){
+    .logo-happy{
+     margin-right: 470px;
+    }
+    .showcase-home-image .image-container{
+      left: 50%!important;
+    }
+    #right-icon{
+       display: none!important;
+    }
+    .nutrition-grid{
+      flex-direction: row!important;
+    }
+    .nutrition-grid img {
+      object-fit: cover!important;
+    }
+    .nutrition-grid .nutrition-content h1{
+      font-size: 20px!important;
+      margin-bottom: 10px!important;
+    }
+    .special-offers .offers-flex {
+      width: 86%;
+    }
+    .management-homepage .management-flex .content {
+      width: 80%!important;
+     }
+    .homepage-services .images-grid{
+      position: unset!important;
+    }
+    .harvest-info .harvest-flex {
+      margin: auto!important;
+      width: 86%!important;
+    }
+    .blog-homepage .blog-container .blog-grid {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .blog-container .blog-grid .grid-blog {
+      width: 50%;
+    }
+    .footer-address{
+      margin-left: -70px;
+    }
+    .footer-container .footer-newsletter {
+       margin-left: unset;
+       margin-bottom: unset;
+    }
+    .form-subscribe{
+      width: 60%!important;
+    }
+    .about-grid .about-showcase p {
+      width: 90%;
+      margin: auto;
+      padding-bottom: 20px;
+    }
+    .what-drives-us-content {
+      margin-left: 50px;
+      width: 80%;
+    }
+    .purpose-content .line {
+      margin-left: 16px;
+    }
+    .blog-container .blog-grid {
+      grid-template-columns: 1fr;
+    }
+    .row > .column img {
+      width: 80%!important;
+      margin-left: 70px;
+    }
+    .services-grid{
+      margin-left: 20px;
+    }
+    .services-grid img{
+      margin-top: 10px;
+      object-fit: cover;
+      width: 95%!important;
+    }
+    .contact-map{
+      margin-left: unset;
+      flex-direction: column;
+    }
+    .map{
+      width: 100%;
+    }
+    .contact-form{
+      margin-top: 50px;
+      margin-left: 50px;
+    }
+    .blog-flex .flex-line{
+      width: 100%!important;
+    }
+    .blog-flex {
+      width: 100%!important;
+      max-width: 750px!important;
+      margin-left: 45px!important;
+    }
+    .blog-flex-grid{
+      display: unset!important;
+    }
+    .showcase-img.blog{
+      height: 27vh!important;
+    }
+    .hamburger-flex{
+      justify-content: center!important;
+    }
+    .home-blog-grid{
+     margin-left: unset!important;
+    }
+    .container .form-container form input {
+      width: 75%;
+      margin: auto;
+    }
+    .forgot-password{
+      margin-right: 90px;
+    }
+    .svg-flex{
+      justify-content: left;
+    }
     .side-bar{
        width: 6.5vw;
     }
@@ -8609,7 +8729,7 @@ table, td, th {
   }
   .hamburger-modal{
      position: fixed;
-    top: -155%;
+    top: -1250%;
     z-index: 10;
      background: rgba(160, 212, 104, 0.65);
      display: flex;
@@ -8618,6 +8738,8 @@ table, td, th {
      padding-top: 23px;
      padding-bottom: 8px;
      width: 100%;
+     height: 500px;
+     overflow-y: scroll;
   }
   .hamburger-modal a{
     padding: 17px;
