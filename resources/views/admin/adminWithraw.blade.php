@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="../style.css">
     <meta name="_token" content="{{ csrf_token() }}" />
     <script src="{{asset('js/jquery.min.js')}}"></script>
-    <title>Admin Withdrawal Page</title>
+    <title>Admin Withdrawal Page</title>    <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" type="image/x-icon">
+
+
 </head>
 
 <body>
@@ -144,7 +146,7 @@
             <a href="{{ url('admin/adminInvest')}}"><img src="../img/invest.svg" alt="marketplace"></a>
             <a href="{{ url('admin/adminInvestReturns')}}"><img src="../img/history.svg" alt="history"></a>
             <a href="{{ url('admin/adminWithraw')}}"><img src="../IMG/wallet-active.svg" class="current" alt="wallet"></a>
-            <a href="{{ url('admin/adminBlog') }}"><img src="../img/blog-pin.png" alt="blog-pin> </a>
+            <a href="{{ url('admin/adminBlog') }}"><img src="../img/blog-pin.png" alt="blog-pin"> </a>
         </div>
         <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;margin-bottom: 0px;">
          <a href="{{ url('admin/adminSettings')}}"><img src="../img/settings.png" alt="settings"></a>

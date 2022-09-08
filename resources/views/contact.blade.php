@@ -1,4 +1,7 @@
 @extends('layout.app')
+@section('title')
+<title>Hifarms | Contact</title>
+@endsection
 
 @section('content')
     <!--Hamburger Modal ends -->
@@ -9,7 +12,7 @@
     </div>
 
     <div class="about-description">
-        <a href="index.html">Home</a> <img src="img/Arrow 1.svg" width="12"> <a href="contact.html">Contact</a>
+        <a href="/">Home</a> <img src="img/Arrow 1.svg" width="12"> <a href="">Contact</a>
     </div>
 
     <!--Contact and Map flex-->

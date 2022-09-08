@@ -1,4 +1,7 @@
 @extends('layout.app')
+@section('title')
+<title>Hifarms | Gallery</title>
+@endsection
 
 @section('content')
   <!--Gallery page starts here-->

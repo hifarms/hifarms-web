@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@section('title')
+<title>Hifarms | Cart</title>
+@endsection
+
 @section('content')
     <!--Cart starts here-->
     <img src="img/Flower.svg" alt="flower" class="flower cart">

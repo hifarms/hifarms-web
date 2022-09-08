@@ -255,6 +255,6 @@ addCategory.addEventListener('click', (e) => {
 
 })
 
-submitButton.addEventListener('click', addLoader);
-editButton.addEventListener('click', addEditLoader);
+//submitButton.addEventListener('click', addLoader);
+//editButton.addEventListener('click', addEditLoader);
 //addNewBlog.addEventListener('click', showModal);

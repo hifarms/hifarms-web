@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@section('title')
+<title>Hifarms | signup</title>
+@endsection
+
 @section('content')
   <!--Registration form starts here-->
   <div class="container">
@@ -23,7 +27,7 @@
             @error('email')<span class="email-msg">{{$message}}</span>@enderror
             <input type="text" placeholder="Email" name="email">
             @error('password')<span class="password-msg">{{$message}}</span>@enderror
-            <input type="password" placeholder="Password" name="password">
+            <input type="password" placeholder="Password e.g K_dfhL#4" name="password">
             <input type="password" placeholder="Confirm Password" name="password_confirmation">
             <div class="google-fb-btn">
             <a href="{{ route('signin.google')}}"><img src="img/google.jpg" alt="google" class="google-logo"></a>

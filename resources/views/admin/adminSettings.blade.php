@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="../style.css">
     <meta name="_token" content="{{ csrf_token() }}" />
     <script src="{{asset('js/jquery.min.js')}}"></script>
-    <title>Admin Settings</title>
+    <title>Admin Settings</title>    <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" type="image/x-icon">
+
+
 </head>
 
 <body style='background:#F0F3F4;'>
@@ -249,13 +251,13 @@
                                 <img src="../img/user-list-edit.png" class="edit-setting" alt="edit">
                                 <a href="{{ $use->id }}"><img src="../img/user-list-delete.png" class="delete-setting" alt="delete"></a>
                                 <!--Delete all manage users list starts-->
-                                <div class="delete-modal invest">
+                                <div class="delete-modal invest btn-delete">
                                     <div class="delete-modal-container">
-                                        <div class="close-delete-modal">x</div>
-                                        <h1 style="margin-bottom: 50px;margin-top: 60px;text-align: center;">Are you sure?🙁</h1>
+                                        <div class="close-delete-modal btn-delete-modal">x</div>
+                                        <h1 style="margin-bottom: 50px;margin-top: 60px;text-align: center;">Are you sure you want to {{$use->status==1?'Deactive User' : 'Activate'}}?🙁</h1>
                                         <div class="yes-no-delete-modal">
-                                            <button class=""><a href="{{ route('deleteuser', $use->id) }}">Yes</a></button>
-                                            <button class="no no-delete-modal">No</button>
+                                            <button class="" style="padding: 0px"><a style="margin:15px;display:block" href="{{ route('activateUser', $use->id) }}">Yes</a></button>
+                                            <button class="no no-delete-modal-btn">No</button>
                                         </div>
                                     </div>
                                 </div>
@@ -528,16 +530,7 @@
 
 
     <!--Delete Item starts-->
-    <div class="delete-modal invest btn-delete">
-        <div class="delete-modal-container">
-            <div class="close-delete-modal btn-delete-modal">x</div>
-            <h1 style="margin-bottom: 50px;margin-top: 60px;text-align: center;">Are you sure?🙁</h1>
-            <div class="yes-no-delete-modal">
-                <button class="yes-delete-modal"><a href="{{ route('deleteuser', $use->id) }}">Yes</a></button>
-                <button class="no no-delete-modal-btn">No</button>
-            </div>
-        </div>
-    </div>
+
     <div class="overlay"></div>
     <!--Delete item ends-->
 

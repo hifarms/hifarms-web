@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="style.css">
     <meta name="_token" content="{{ csrf_token() }}" />
     <script src="{{asset('js/jquery.min.js')}}"></script>
-    <title>Invest</title>
+    <title>Invest</title>    <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" type="image/x-icon">
+
+
 </head>
 <body style='background:#F0F3F4;'>
         <!--Dashboard Hamburger Starts-->
@@ -109,7 +111,7 @@
         </div>
         <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;margin-bottom: 10px;">
             <a href="user-settings"><img src="img/settings.png" style="margin-bottom: 30px;" alt="settings"></a>
-            <img src="img/log out.svg" alt="log-out">
+            <a href='logout'><img src="img/log out.svg" alt="log-out"></a>
         </div>
     </div>
     <div class="dashboard-container sponsor mrkt-plc">

@@ -1,4 +1,7 @@
 @extends('layout.app')
+@section('title')
+<title>Hifarms | Forgotten</title>
+@endsection
 
 @section('content')
   <!--Registration form starts here-->

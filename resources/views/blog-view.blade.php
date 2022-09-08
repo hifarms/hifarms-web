@@ -1,5 +1,7 @@
 @extends('layout.app')
-
+@section('title')
+<title>Hifarms | {{$post->slug}}</title>
+@endsection
 @section('content')
   <!--Blog Page starts here-->    
    <div class="showcase-img blog">

@@ -1,4 +1,7 @@
 @extends('layout.app')
+@section('title')
+<title>Hifarms | Partners</title>
+@endsection
 
 @section('content')
   <!--Blog Page starts here-->

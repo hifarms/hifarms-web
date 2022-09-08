@@ -266,7 +266,7 @@ class AdminDashboard extends Controller
         $message->save();
         });
         
-        return redirect()->back()->with('success_message', 'Account Created succesfully');
+        return redirect()->back()->with(['success_message'=>'Account Created succesfully']);
     }
     
     public function changeStatus(Request $request)

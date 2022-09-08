@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Profile</title>
+    <title>Profile | {{$user->username}}</title>    <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" type="image/x-icon">
+
+
     <meta name="_token" content="{{ csrf_token() }}" />
     <script src="{{asset('js/jquery.min.js')}}"></script>
 </head>
@@ -43,9 +45,27 @@
     </div>
       </div>
     <!--Dashboard Hamburger Ends-->
-<div class="added-successfully">
-        Profile Updated!!
+    @if(Session('success_message'))
+    <div class="added-successfully added-successfully-blade">
+        {{Session('success_message')}}
     </div>
+    @endif
+
+    @if(Session('warning_message') || $errors->any())
+    <div class="added-successfully deleted-successfully-blade">
+        <ul style="">
+            @foreach($errors->all() as $error)
+            <li>
+                {{$error}}
+            </li>
+            @endforeach
+            @if(Session('warning_message'))
+            <li>{{Session('warning_message')}}</li>
+            @endif
+        </ul>
+       
+    </div>
+    @endif
     <header class="dashbrd-header">
       <div class="dashboard-header">
       <img src="img/hamburger.svg" alt="#" id="hamburger" class="hamburger1">
@@ -71,18 +91,7 @@
                         </div>
                         <button>Mark all as read</button>
                     </div>
-                    <div class="notif-1">
-                        <p>New products arrival at Hi Marketplace.</p>
-                         <p>12mins ago</p>
-                    </div>
-                    <div class="notif-2">
-                        <p>Let's get started Hafiz.</p>
-                         <p>3hrs ago</p>
-                    </div>
-                    <div class="notif-3">
-                        <p>Welcome to Hi Farm.</p>
-                         <p>3hrs ago</p>
-                    </div>
+                    
                 </div>
             </div>
              <div class="guides">
@@ -119,8 +128,8 @@
             <a href="wallet"><img src="img/wallet.svg" alt="wallet"></a>
         </div>
         <div class="third-side-bar" style="display: flex;flex-direction: column; align-items: center;margin-bottom: 10px;">
-            <a href="adminSettings.html"><img src="img/settings.png" style="margin-bottom: 30px;" alt="settings"></a>
-            <img src="img/log out.svg" alt="log-out">
+            <a href="user-settings"><img src="img/settings.png" style="margin-bottom: 30px;" alt="settings"></a>
+            <a href='logout'><img src="img/log out.svg" alt="log-out"></a>
         </div>
     </div> 
     <div class="dashboard-container profile">
@@ -154,53 +163,65 @@
         <div class="admin-add-item-container">
             <div class="close-add-item">x</div>
             <h1 style="text-transform: unset;margin-bottom: 10px;">Edit Profile</h1>
-            <label class='class-name' name="fullname" >Full Name</label> <br>
-            <input type="text" class="name ffullname" value="{{$user->fullname}}" placeholder="Enter your name" >
+			<form method="POST" action="{{ url('admin/update-profile') }}">
+                @csrf
+            <label class="class-name" name="fullname">Full Name</label> <br>
+            <input type="text"placeholder="Enter your name" class="name ffullname" name="fullname" value="{{$user->fullname}}">
             <div class="category-percentage-flex" style="justify-content:left;">
                 <div class="percentage">
                     <label>Contact</label>  <br>
-                    <input type="text"  value="{{$user->phone}}" name="contact-address"  class="contact-input fcontact" placeholder="Enter your contact">
+                    <input type="text" value="{{$user->phone}}" name="contact" class="contact-input fcontact" placeholder="Enter your contact">
                 </div>
                 <div class="category">
                     <label>Email</label> <br> 
-                    <input class="category-select contact-input" name="email" value="{{$user->email}}" placeholder="Enter your email" disabled>    
+                    <input class="category-select contact-input" placeholder="Enter your email" value="{{$user->email}}" disabled>    
                 </div>
             </div>
             <div class="category-percentage-flex" style="justify-content:left;">
                 <div class="percentage">
                     <label>Bank Name</label>  <br>
-                    <input type="text" class="contact-input fbank-name" name="bank-name" value="{{$user->bank->bank_name}}" placeholder="Enter your Bank Name">
+                    <input type="text" class="contact-input fbank-name" name="bank_name" value="{{$user->bank->bank_name}}" placeholder="Enter your Bank Name">
                 </div>
                 <div class="percentage">
                     <label>Bank Account Name</label>  <br>
-                    <input type="text" class="contact-input facc-name" name="acc-name" value="{{$user->bank->bank_acc_name}}" placeholder="Enter your Bank Account Name">
+                    <input type="text" class="contact-input facc-name" name="acc_name" value="{{$user->bank->bank_acc_name}}" placeholder="Enter your Bank Account Name">
                 </div>
                 <br>
                 <div class="category">
                     <label>Account Number</label> <br> 
-                    <input class="category-select contact-input facc-no" name="acc-no" value="{{$user->bank->bank_acc_no}}" placeholder="Enter your Account No." style='width:100%!important'>    
+                    <input type="text" class="category-select contact-input facc-no" name="acc_no" value="{{$user->bank->bank_acc_no}}" placeholder="Enter your Bank No." style='width:100%!important'>    
                 </div>
             </div>
             <div class="category-percentage-fle" style="margin-bottom: 10px;justify-content:left;">
                 <div class="percentage">
                     <label>Occupation</label>  <br>
-                    <input type="text" name="occupation" class="contact-input foccupation" value="{{$user->occupation}}" placeholder="Enter your occupation">
+                    <input type="text"    name="occupation" class="contact-input foccupation" value="{{$user->occupation}}" placeholder="Enter your occupation">
                 </div>
+              
+                
+
                 <div class="category">
-                    <label>State Of Origin</label> <br> 
-                    <select class="this-select fstate" name="state">
-                        <option value="sokoto">Sokoto</option>
-                        <option value="kebbi">Kebbi</option>
-                        <option id="zamfara">Zamfara</option>
+                    <label>Gender</label> <br> 
+                    <select class="this-select" name="gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
                     </select>  
                 </div>
+                
             </div>
+            
+                <label class="admin-location">State</label>  <br>
+                <input type="text"    name="state" class="admin-location-input faddress" value="{{$user->state}}" placeholder="Enter your state">
+            
+            <br>
+            <br>
             <label class="admin-location">Residential Address</label> <br>
-            <input type="text" name="address"  class="admin-location-input faddress" value="{{$user->address}}" placeholder="Enter residential address">
+            <input type="text"  class="admin-location-input faddress" value="{{$user->address}}" name="address" placeholder="Enter residential address">
              <br>
-            <div class="button-admin-container">
-            <button class="add-item-submit adminfu admin-main-submit update-profile"><span style="padding-left:39px ;padding-right: 40px;" class="add-main-dash">Update</span>  <img class="loader loader-add-main" src="img/loader-hifarm.gif" alt="#"> </button>
+            <div class="button-admin-container">   
+            <button class="add-item-submit" type="submit"><span style="padding-left:39px ;padding-right: 40px;">Update</span>  </button>
             </div>
+            </form>
         </div>
     </div>
     <!--edit profile Modal ends-->
@@ -229,10 +250,11 @@
                        contact:$('.fcontact').val(),
                    },
                    success: function (data) {
-                       alert(data.success)
-                       location.reload()
+                       console.log(data)
+                       
                    },
                    error: function (data) {
+                    console.log(e);
                       console.log(data.error);
                    },
                });
@@ -266,6 +288,26 @@ imageFile.addEventListener("change", function(){
     
     });
 })
+function getNotification() {
+            jQuery.ajax({
+                    url: "http://127.0.0.1:8000/user/messages",
+                    method: "get",
+                    success: function (data) {
+                        data.messages.data.forEach(message => {
+                            $('.notification-modal').append(`
+                                <div class="notif-${message.seen==0?'1':'2'}">
+                                <p>${message.message_body}.</p>
+                                <p>${message.created_at.split('T')[0]}</p>
+                                </div>`
+                            )
+                        });
+                    },
+                    error: function (e) {
+                       console.log(e)
+                    },
+                });
+            }
+    getNotification();
    </script>
     <script src="js/dashboardHamburger.js"></script>
 </body>

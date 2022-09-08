@@ -4,7 +4,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE-edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Forgotten Password Email</title>
+<title>Forgotten Password Email</title>    <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" type="image/x-icon">
+
+
 <style type="text/css">
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&family=Roboto:ital,wght@1,300&display=swap');
@@ -108,7 +110,7 @@
 <!--FLOWER IMAGE-->
  
      <tr>
-        <td><img style="position: absolute;top:-75px;right:-39px;" src="{{asset('img/Flower.svg')}}" alt=""></td>
+        <td><img style="position: absolute;top:-75px;right:-39px;" src="{{asset('img/Flower 1.png')}}" alt=""></td>
      </tr>
 
 <!-- LOGO SECTION --> 
@@ -143,7 +145,7 @@
                   <tr>
                       <td style="padding-top: 15px;padding-bottom: 15px;padding-left: 55px;padding-right: 55px;">
 
-                       <p style="color: #404a3d;font-size: 20px;font-weight: bold;">Welcome <img src="{{asset('img/Farmer Icon.svg')}}" alt="farmer-icon" style="margin-right: 5px;margin-left: 2px;" width="33px"></p>
+                       <p style="color: #404a3d;font-size: 20px;font-weight: bold;">Welcome <img src="{{asset('img/Farmer Icon-1.png')}}" alt="farmer-icon" style="margin-right: 5px;margin-left: 2px;" width="33px"></p>
                        <p style="color: #404a3d;font-size: 15px; line-height: 23px;padding: 5px 0 15px;">Forgotten your password? Please click the link below
                         to reset it.</p>
                        <a style="color: #404a3d;" href="{{url('reset-password?token='.$token)}}">
@@ -167,19 +169,19 @@
                     <td style="text-align: center;padding: 0px 20px; font-size: 15px;">
                         
                         <p style="padding: 10px;padding-bottom: 10px;font-size: 11px;"> Copyright Hi Farms 2022 • Proudly Made by Hi B Teams. Kebbi, Nigeria 🇳🇬</p>
-                        <a href="#" style="padding: 5px;"><img src="{{asset('img/email-sm-4.svg')}}" alt="SM" width="28"></a>
-                        <a href="#" style="padding: 5px;"><img src="{{asset('img/email-sm-3.svg')}}" alt="SM" width="28"></a>
-                        <a href="# "style="padding: 5px;"><img src="{{asset('img/email-sm-2.svg')}}" alt="SM" width="28"></a>
-                        <a href="# "style="padding: 5px;"><img src="{{asset('img/email-sm-1.svg')}}" alt="SM" width="28"></a>
+                        <a href="https://wa.me/2348034068234" style="padding: 5px;"><img src="{{asset('img/sm-whatsapp-png.png')}}" alt="SM" width="28"></a>
+                        <a href="https://instagram.com/hifarms" style="padding: 5px;"><img src="{{asset('img/sm-insta-png.png')}}" alt="SM" width="28"></a>
+                        <a href="https://instagram.com/hifarms "style="padding: 5px;"><img src="{{asset('img/sm-fb-png.png')}}" alt="SM" width="28"></a>
+                        <a href="https://twitter.com/hifarmsng?t=2qfY4No5MSE8HXX0pBJ59g&s=09"style="padding: 5px;"><img src="{{asset('img/tweet-fb-png.png')}}" alt="SM" width="28"></a>
                         <p style="padding-left: 55px;padding-right:55px;padding-top: 10px;padding-bottom:40px;font-size: 11px;">You are receiving this message because you signed up on Hi Farms. For more information about how we 
                           process data, please see our <a href="#">Privacy Policy</a>.
-                          </p> 
+                          </p>
 
                       </td>
                 </tr>
 
                 <tr>
-                    <td><img style="position: absolute;bottom:-55px;left:-39px;" src="{{asset('img/Flower.svg')}}" alt=""></td>
+                    <td><img style="position: absolute;bottom:-55px;left:-39px;" src="{{asset('img/Flower 1.png')}}" alt=""></td>
                  </tr>
             
 
